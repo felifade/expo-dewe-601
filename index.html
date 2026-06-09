@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Proyectos DEWE 601 | CONALEP</title>
+    
+    <!-- Meta tags for SEO & Context -->
+    <meta name="description" content="Portal de evaluación y exposición digital de los proyectos finales individuales de la materia Elaboración de Páginas Web en CONALEP para el grupo 601.">
+    <meta name="author" content="Docente DEWE 601">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Theme Toggler (Absolute position inside hero) -->
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema">
+        <!-- SVG Icon will be loaded dynamically by app.js -->
+    </button>
+
+    <!-- ==========================================================================
+       HERO BANNER / HEADER
+       ========================================================================== -->
+    <header class="hero-banner">
+        <div class="container hero-content-wrapper">
+            <div class="hero-text">
+                <div class="institution-tag">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px; vertical-align: middle;">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.5L12 15.8l6.11-3.33L12 18.8l-6.11-3.3M12 5.3l6.58 3.59L12 12.48 5.42 8.89 12 5.3z"/>
+                    </svg>
+                    CONALEP Pachuca II • Sexto Semestre
+                </div>
+                <h1 class="main-title">Galería de Proyectos DEWE 601</h1>
+                <p class="subtitle">
+                    Portal de evaluación y feria tecnológica digital de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).
+                    <br>
+                    Docente evaluador: <strong>Dr. Felipe López Salazar</strong>.
+                </p>
+            </div>
+            
+            <!-- Statistics Widgets -->
+            <div class="stats-container">
+                <div class="stat-card" id="stat-card-total">
+                    <span class="stat-number" id="stat-total-projects">0</span>
+                    <span class="stat-label">Total Alumnos</span>
+                </div>
+                <div class="stat-card" id="stat-card-regular">
+                    <span class="stat-number" id="stat-regular-projects">0</span>
+                    <span class="stat-label">Regulares</span>
+                </div>
+                <div class="stat-card" id="stat-card-dual">
+                    <span class="stat-number gold" id="stat-dual-projects">0</span>
+                    <span class="stat-label">Dual</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       STICKY CONTROLS SECTION (Search & Filters)
+       ========================================================================== -->
+    <section class="controls-section">
+        <div class="container controls-wrapper" style="justify-content: center;">
+            <!-- Search input with SVG icon -->
+            <div class="search-box-wrapper" style="max-width: 600px; width: 100%;">
+                <input type="text" id="search-input" class="search-input" placeholder="Buscar por nombre del alumno..." aria-label="Buscador de alumnos">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       PROJECTS GRID LISTING
+       ========================================================================== -->
+    <main class="projects-grid-section">
+        <div class="container">
+            <div id="projects-grid" class="projects-grid">
+                <!-- Projects cards will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+       INTEGRATED MODAL PREVIEW (Iframe Viewer)
+       ========================================================================== -->
+    <dialog id="project-modal" class="modal-backdrop" aria-modal="true" aria-labelledby="modal-title-text">
+        <div class="modal-window">
+            <header class="modal-header">
+                <div class="modal-title-info">
+                    <h3 id="modal-title-text">Nombre del Proyecto</h3>
+                    <p id="modal-author-text">Desarrollado por: Estudiante</p>
+                </div>
+                <div class="modal-controls">
+                    <a id="modal-new-tab-btn" class="btn-modal-action primary" href="#" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                        <span>Abrir en nueva pestaña</span>
+                    </a>
+                    <button id="modal-close-btn" class="btn-close-modal" aria-label="Cerrar visor de proyecto">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="modal-body">
+                <!-- Loader spinner while iframe resolves -->
+                <div id="iframe-loader" class="iframe-loader">
+                    <div class="spinner"></div>
+                    <p>Cargando sitio del alumno...</p>
+                </div>
+                <!-- Live student project rendering -->
+                <iframe id="modal-iframe" class="modal-iframe" title="Visor de proyecto de alumno"></iframe>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-logo">EXPO DEWE 601</div>
+            <p>&copy; 2026 CONALEP Pachuca II. Materia: Elaboración de Páginas Web. Grupo 601. Dr. Felipe López Salazar.</p>
+            
+            <!-- Instructions for Teacher to scale and maintain -->
+            <div class="footer-instructions">
+                <strong>💡 Guía para el Docente:</strong> Para incorporar nuevos proyectos en esta feria digital, simplemente:
+                <br>
+                1. Pegue la carpeta del sitio web del alumno dentro de <code>alumnos/</code> (ej. <code>alumnos/alumno50/</code>).
+                <br>
+                2. Agregue el registro del estudiante con su ruta en <code>data/alumnos.json</code>.
+                La plataforma actualizará los buscadores, estadísticas y filtros de manera automática.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Logic -->
+    <script src="js/app.js"></script>
+</body>
+</html>

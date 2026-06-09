@@ -1,0 +1,14 @@
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignorar archivos comprimidos de estudiantes
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
