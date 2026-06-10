@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const fetchProjects = async () => {
         try {
-            const response = await fetch('data/alumnos.json');
+            const response = await fetch(`data/alumnos.json?v=${Date.now()}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -654,6 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pillText = grade === 10 ? 'Entregado' : 'Pendiente';
 
         card.innerHTML = `
+            <div class="card-grade-corner ${pillClass}">${grade}<span class="grade-denom">/10</span></div>
             <div class="card-browser-header">
                 <div class="browser-dots">
                     <span class="dot red"></span>
