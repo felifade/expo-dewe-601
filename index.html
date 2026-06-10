@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Galería de Proyectos DEWE 601 | CONALEP</title>
+    <script>
+    (function(){
+        var V = '20260610c';
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ r.unregister(); }); });
+        }
+        if (window.caches) {
+            caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); });
+        }
+        try {
+            if (localStorage.getItem('expoAppV') !== V) {
+                localStorage.setItem('expoAppV', V);
+                if (!location.search.includes('fresh')) {
+                    location.replace(location.pathname + '?fresh=' + Date.now());
+                }
+            }
+        } catch(e) {}
+    })();
+    </script>
     
     <!-- Meta tags for SEO & Context -->
     <meta name="description" content="Portal de evaluación y exposición digital de los proyectos finales individuales de la materia Elaboración de Páginas Web en CONALEP para el grupo 601.">
