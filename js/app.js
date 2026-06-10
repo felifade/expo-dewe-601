@@ -628,42 +628,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Check project completion - simple: 10 (complete) or 0 (not done)
-    const checkProjectCompletion = async (project) => {
-        const folderPath = project.ruta.substring(0, project.ruta.lastIndexOf('/'));
-
-        const checkFile = async (path) => {
-            try {
-                const res = await Promise.race([
-                    fetch(path, { method: 'HEAD' }),
-                    new Promise((_, reject) => setTimeout(() => reject('timeout'), 800))
-                ]);
-                return res.ok;
-            } catch {
-                return false;
-            }
-        };
-
-        try {
-            // Check if has ALL required folders/files (NOT just index)
-            const [hasCss, hasJs, hasPaginas] = await Promise.all([
-                checkFile(folderPath + '/css/'),      // Must have css folder
-                checkFile(folderPath + '/js/'),       // Must have js folder
-                checkFile(folderPath + '/paginas/')   // Must have paginas folder
-            ]);
-
-            // COMPLETE only if has all folders
-            const completo = hasCss && hasJs && hasPaginas;
-
-            return { completo };
-        } catch (error) {
-            return { completo: false };
-        }
-    };
-
-    // Calculate grade: 10 (completo) o 0 (no hizo nada)
-    const calculateGrade = (checks) => {
-        return checks.completo ? 10 : 0;
+    // Read grade from pre-calculated field in alumnos.json
+    // (GitHub Pages does not support directory listing, so runtime folder-checking via fetch always returns 404)
+    const getProjectGrade = (project) => {
+        return project.calificacion !== undefined ? project.calificacion : 0;
     };
 
     const createProjectCard = (project, index) => {
@@ -708,24 +676,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = card.querySelector('.btn-view-project');
         btn.addEventListener('click', () => openProjectModal(project));
 
-        // Calculate and display grade in badge
-        checkProjectCompletion(project).then(checks => {
-            const grade = calculateGrade(checks);
-            const badgeEl = card.querySelector(`#grade-${cardId}`);
-
-            // Store grade for filtering
-            projectGrades.set(project.nombre, grade);
-
-            if (badgeEl) {
-                badgeEl.textContent = grade;
-                badgeEl.className = grade === 10
-                    ? 'card-grade-badge complete'      // Verde para 10
-                    : 'card-grade-badge incomplete';   // Rojo para 0
-                console.log(`${project.nombre}: ${grade}/10`);
-            }
-        }).catch(err => {
-            console.error(`Error loading grade for ${project.nombre}:`, err);
-        });
+        // Display grade badge (synchronous — read from alumnos.json)
+        const grade = getProjectGrade(project);
+        projectGrades.set(project.nombre, grade);
+        const badgeEl = card.querySelector(`#grade-${cardId}`);
+        if (badgeEl) {
+            badgeEl.textContent = grade;
+            badgeEl.className = grade === 10
+                ? 'card-grade-badge complete'
+                : 'card-grade-badge incomplete';
+        }
 
         return card;
     };
@@ -845,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const studentsWithGrades = projectsData.map(project => ({
             nombre: project.nombre,
             modalidad: project.modalidad,
-            grade: projectGrades.get(project.nombre) || 0
+            grade: project.calificacion !== undefined ? project.calificacion : 0
         }));
 
         // Sort alphabetically by default
