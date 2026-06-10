@@ -648,8 +648,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Use index as unique ID (safer than name with spaces)
         const cardId = `card-${index}`;
 
+        const grade = getProjectGrade(project);
+        projectGrades.set(project.nombre, grade);
+        const pillClass = grade === 10 ? 'complete' : 'incomplete';
+        const pillText = grade === 10 ? 'Entregado' : 'Pendiente';
+
         card.innerHTML = `
-            <div class="card-grade-badge" id="grade-${cardId}">--</div>
             <div class="card-browser-header">
                 <div class="browser-dots">
                     <span class="dot red"></span>
@@ -660,8 +664,8 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <img class="card-preview-image" src="${previewImagePath}" alt="Vista previa del sitio de ${project.nombre}" onerror="this.style.display='none'">
             <div class="card-body">
-                <!-- Name of the student as main Title -->
-                <h3 class="project-title" style="margin-bottom: 12px; min-height: 48px; display: flex; align-items: center;">${project.nombre}</h3>
+                <h3 class="project-title" style="margin-bottom: 8px; min-height: 48px; display: flex; align-items: center;">${project.nombre}</h3>
+                <span class="card-status-pill ${pillClass}">${pillText}</span>
                 <div class="student-author" style="margin-bottom: 24px;">
                     <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                     <span>Grupo 601 • CONALEP Pachuca II</span>
@@ -675,17 +679,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btn = card.querySelector('.btn-view-project');
         btn.addEventListener('click', () => openProjectModal(project));
-
-        // Display grade badge (synchronous — read from alumnos.json)
-        const grade = getProjectGrade(project);
-        projectGrades.set(project.nombre, grade);
-        const badgeEl = card.querySelector(`#grade-${cardId}`);
-        if (badgeEl) {
-            badgeEl.textContent = grade;
-            badgeEl.className = grade === 10
-                ? 'card-grade-badge complete'
-                : 'card-grade-badge incomplete';
-        }
 
         return card;
     };
