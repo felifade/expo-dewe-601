@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timbre Arduino — Contacto</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">🔔</div>
+      TIMBRE<span style="color:var(--text-muted);">.ino</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="desarrollo.html">Desarrollo</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="t-icon t-moon">🌙</span>
+        <span class="t-icon t-sun">☀️</span>
+      </button>
+      <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="desarrollo.html">Desarrollo</a>
+    <a href="acerca.html">Acerca de</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="section-label fade-in" style="justify-content:center;">Escríbenos</p>
+    <h1 class="fade-in">Contacta al <span style="color:var(--accent);">equipo</span></h1>
+    <div class="accent-line"></div>
+    <p class="fade-in">¿Tienes dudas sobre el proyecto, quieres replicarlo o tienes sugerencias? ¡Escríbenos!</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+
+      <!-- FORM -->
+      <div>
+        <p class="section-label fade-in">Formulario</p>
+        <h2 class="section-title fade-in">Envía un mensaje</h2>
+
+        <form class="contact-form fade-in" id="contact-form" style="margin-top:1.5rem;">
+          <div class="form-group">
+            <label for="nombre">// NOMBRE</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+          </div>
+          <div class="form-group">
+            <label for="email">// CORREO ELECTRÓNICO</label>
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required />
+          </div>
+          <div class="form-group">
+            <label for="tema">// TEMA</label>
+            <select id="tema" name="tema">
+              <option value="">Selecciona un tema…</option>
+              <option value="duda">Duda técnica del proyecto</option>
+              <option value="replicar">Quiero replicar el proyecto</option>
+              <option value="mejora">Sugerencia de mejora</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">// MENSAJE</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;">
+            📨 Enviar mensaje
+          </button>
+        </form>
+      </div>
+
+      <!-- INFO -->
+      <div>
+        <p class="section-label fade-in">Info del proyecto</p>
+        <h2 class="section-title fade-in">Datos del equipo</h2>
+
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+          <div class="card fade-in">
+            <span class="card-icon">🏫</span>
+            <h3>Institución educativa</h3>
+            <p>Diseño y elaboracion de paginas web. Conalep II.</p>
+          </div>
+          <div class="card fade-in">
+            <span class="card-icon">📅</span>
+            <h3>Período</h3>
+            <p>6to semestre.</p>
+          </div>
+          <div class="card fade-in">
+            <span class="card-icon">👨‍🏫</span>
+            <h3>Asesor</h3>
+            <p>Lopez Salasar Felipe.</p>
+          </div>
+        </div>
+
+        <!-- Simulated terminal -->
+        <div class="code-block fade-in" style="margin-top:2rem;">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            </div>
+            <span class="code-title">terminal</span>
+          </div>
+          <div class="code-body" style="min-height:80px;">
+<pre id="terminal-output"><span class="c-fn">$</span> <span class="c-var">timbre</span> --status
+<span class="c-cm">Sistema activo ✓</span>
+<span class="c-fn">$</span> <span class="c-var">ping</span> equipo.arduino
+<span class="c-str">PONG · latencia: 2ms</span>
+<span class="c-fn">$</span> <span id="cursor" class="blink">█</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">🔔 TIMBRE.ino</div>
+        <p class="footer-sub">Proyecto de electrónica con Arduino UNO · 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Inicio</a>
+        <a href="desarrollo.html">Desarrollo</a>
+        <a href="acerca.html">Acerca de</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+  <button id="sound-btn" title="¡Tocar timbre!">🔔</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

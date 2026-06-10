@@ -1,79 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Moises Gonzales Castillo</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeartSense — Sensor de Ritmo Cardíaco Inteligente</title>
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Moises Gonzales Castillo</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/moises-gonzales-castillo/
-        </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+  ════════════════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+<!-- Foto y nombre del autor -->
+<div style="display:flex; align-items:center; gap:14px; margin-bottom:24px;">
+  <img src="img/moises.jpg" alt="Mi foto"
+       style="width:180px; height:180px; border-radius:70%;
+              object-fit:cover; border:2px solid var(--accent);" />
+  <div>
+    <div style="font-family:'Orbitron',monospace; font-size:0.75rem;
+                color:var(--text-muted); letter-spacing:0.1em;">DESARROLLADO POR</div>
+    <div style="font-weight:700; font-size:1.05rem;">Moises Gonzalez CAstillo</div>
+  </div>
+</div>
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo">
+        <span class="pulse-dot"></span>
+        HEARTSENSE
+      </a>
+
+      <!-- Links desktop -->
+      <ul class="nav-links">
+        <li><a href="index.html"             class="active">Inicio</a></li>
+        <li><a href="paginas/desarrollo.html">Desarrollo</a></li>
+        <li><a href="paginas/acerca.html">   Acerca de</a></li>
+        <li><a href="paginas/contacto.html"> Contacto</a></li>
+      </ul>
+
+      <!-- Controles -->
+      <div class="nav-controls">
+        <button id="theme-toggle" title="Cambiar tema">☀️</button>
+        <button class="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu">
+    <a href="index.html"             class="active">Inicio</a>
+    <a href="paginas/desarrollo.html">Desarrollo</a>
+    <a href="paginas/acerca.html">   Acerca de</a>
+    <a href="paginas/contacto.html"> Contacto</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ════════════════════════════════════════════════════════ -->
+  <main class="page-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+
+        <!-- Texto -->
+        <div class="hero-text">
+          <span class="hero-badge">🫀 Tecnología de Salud</span>
+          <h1 class="hero-title">
+            Sensor de<br>
+            Ritmo <span class="accent">Cardíaco</span><br>
+            Inteligente
+          </h1>
+          <p class="hero-desc">
+            Monitorea tu corazón en tiempo real con precisión médica.
+            Nuestro sensor detecta, analiza y alerta sobre cualquier
+            variación en tu ritmo cardíaco de forma continua.
+          </p>
+          <div class="hero-ctas">
+            <a href="paginas/desarrollo.html" class="btn-primary">
+              ⚡ Ver cómo funciona
+            </a>
+            <a href="paginas/contacto.html" class="btn-secondary">
+              ✉ Contáctanos
+            </a>
+          </div>
+        </div>
+
+        <!-- Monitor interactivo -->
+        <div class="hero-visual">
+          <div class="monitor-card">
+            <div class="monitor-header">
+              <span class="monitor-label">Monitor Cardíaco</span>
+              <span class="status-dot"></span>
+            </div>
+
+            <!-- BPM en tiempo real -->
+            <div class="bpm-display">
+              <span id="bpm-value" class="bpm-number">72</span>
+              <div class="bpm-unit">BPM</div>
+            </div>
+
+            <!-- Onda ECG animada -->
+            <svg class="ecg-wave" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+              <path class="ecg-line"
+                d="M0,35 L40,35 L50,35 L55,10 L60,55 L65,10 L70,35 L80,35
+                   L130,35 L140,35 L145,10 L150,55 L155,10 L160,35 L170,35
+                   L220,35 L230,35 L235,10 L240,55 L245,10 L250,35 L260,35 L300,35" />
+            </svg>
+
+            <!-- Estado -->
+            <div id="status-bar" class="status-bar status-normal">✔ NORMAL</div>
+
+            <!-- Meta info -->
+            <div class="monitor-meta">
+              <div class="meta-item">
+                <div class="meta-val">98%</div>
+                <div class="meta-key">SpO₂</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-val">36.5°</div>
+                <div class="meta-key">Temp.</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-val">120/80</div>
+                <div class="meta-key">P. Arterial</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── ESTADÍSTICAS ── -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stats-inner">
+          <div>
+            <span class="stat-val">±2</span>
+            <div class="stat-lbl">Margen de error (BPM)</div>
+          </div>
+          <div>
+            <span class="stat-val">2s</span>
+            <div class="stat-lbl">Frecuencia de actualización</div>
+          </div>
+          <div>
+            <span class="stat-val">24/7</span>
+            <div class="stat-lbl">Monitoreo continuo</div>
+          </div>
+          <div>
+            <span class="stat-val">3</span>
+            <div class="stat-lbl">Niveles de alerta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARACTERÍSTICAS ── -->
+    <section class="section">
+      <div class="container">
+        <span class="section-tag">Características</span>
+        <h2 class="section-title">¿Por qué elegir<br><span class="text-accent">HeartSense</span>?</h2>
+        <p class="section-desc">
+          Diseñado con tecnología de punta para ofrecer lecturas precisas,
+          alertas inteligentes y una experiencia de usuario fluida.
+        </p>
+
+        <div class="features-grid">
+          <div class="feat-card">
+            <span class="feat-icon">🎯</span>
+            <h3 class="feat-title">Alta Precisión</h3>
+            <p class="feat-text">
+              Algoritmos avanzados que filtran el ruido y entregan lecturas
+              con un margen de error menor a ±2 BPM.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">⚡</span>
+            <h3 class="feat-title">Tiempo Real</h3>
+            <p class="feat-text">
+              Actualización cada 2 segundos para un monitoreo continuo
+              y sin interrupciones durante toda la jornada.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🔔</span>
+            <h3 class="feat-title">Alertas Inteligentes</h3>
+            <p class="feat-text">
+              Tres niveles de alerta (Normal, Precaución, Peligro) con
+              notificaciones visuales inmediatas.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📱</span>
+            <h3 class="feat-title">Multi-dispositivo</h3>
+            <p class="feat-text">
+              Diseño responsive adaptado a computadoras, tabletas y
+              teléfonos inteligentes sin perder funcionalidad.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🌙</span>
+            <h3 class="feat-title">Modo Oscuro</h3>
+            <p class="feat-text">
+              Interfaz adaptable con modo claro y oscuro, ideal para
+              entornos hospitalarios o uso nocturno.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📊</span>
+            <h3 class="feat-title">Visualización ECG</h3>
+            <p class="feat-text">
+              Onda electrocardiográfica animada para identificar
+              patrones y variaciones en tiempo real.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="section-sm" style="background: var(--surface); border-top: 1px solid var(--border);">
+      <div class="container" style="text-align:center;">
+        <h2 class="section-title">¿Listo para conocer más?</h2>
+        <p class="section-desc" style="margin:12px auto 32px;">
+          Explora cómo funciona la tecnología detrás del sensor o ponte en contacto con nosotros.
+        </p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <a href="paginas/desarrollo.html" class="btn-primary">Ver Desarrollo</a>
+          <a href="paginas/acerca.html"     class="btn-secondary">Acerca del Proyecto</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">❤ HEARTSENSE</div>
+        <p>Proyecto Escolar Final — Sensor de Ritmo Cardíaco Inteligente</p>
+        <p>© 2026 · Desarrollado con HTML, CSS y JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

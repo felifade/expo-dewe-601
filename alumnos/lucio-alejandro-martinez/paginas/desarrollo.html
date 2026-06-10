@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timbre Arduino — Desarrollo</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">🔔</div>
+      TIMBRE<span style="color:var(--text-muted);">.ino</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="t-icon t-moon">🌙</span>
+        <span class="t-icon t-sun">☀️</span>
+      </button>
+      <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="desarrollo.html">Desarrollo</a>
+    <a href="acerca.html">Acerca de</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="section-label fade-in" style="justify-content:center;">Proceso técnico</p>
+    <h1 class="fade-in">Desarrollo del <span style="color:var(--accent);">Proyecto</span></h1>
+    <div class="accent-line"></div>
+    <p class="fade-in">Documentación completa del proceso de diseño, conexión y programación del timbre con Arduino.</p>
+  </div>
+
+  <!-- MATERIALES -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label fade-in">Lista de materiales</p>
+      <h2 class="section-title fade-in">Componentes necesarios</h2>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <span class="card-icon">🎛️</span>
+          <h3>Arduino UNO R3</h3>
+          <p>Microcontrolador ATmega328P. 14 pines digitales, 6 analógicos, 32 KB flash.</p>
+          <br><span class="badge badge-blue">x1 unidad</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">🔘</span>
+          <h3>Botón pulsador</h3>
+          <p>Push button 12×12 mm, normalmente abierto. 4 terminales.</p>
+          <br><span class="badge badge-blue">x1 unidad</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">📢</span>
+          <h3>Buzzer piezoeléctrico</h3>
+          <p>Transductor activo de 5 V, 85 dB. Frecuencia operativa 2-4 kHz.</p>
+          <br><span class="badge badge-blue">x1 unidad</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">⚡</span>
+          <h3>Resistencia 10 kΩ</h3>
+          <p>Resistencia pull-down para el botón. Tolerancia ±5%, 1/4 W.</p>
+          <br><span class="badge badge-green">x1 unidad</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">🧵</span>
+          <h3>Cables Dupont</h3>
+          <p>Cables macho-macho para conexiones en protoboard. Variados colores.</p>
+          <br><span class="badge badge-green">x10 cables</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">🔲</span>
+          <h3>Protoboard</h3>
+          <p>Breadboard de 830 puntos para prototipado sin soldadura.</p>
+          <br><span class="badge badge-orange">x1 unidad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- DIAGRAMA DE CONEXIÓN -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label fade-in">Esquema eléctrico</p>
+      <h2 class="section-title fade-in">Diagrama de conexión</h2>
+      <p class="section-desc fade-in">Conecta los componentes según el siguiente esquema. Respeta la polaridad del buzzer.</p>
+
+      <!-- SVG Wiring Diagram -->
+      <div class="fade-in" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-bottom:2rem;">
+        <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:auto;">
+          <!-- Arduino board -->
+          <rect x="250" y="60" width="200" height="220" rx="10" fill="#1a3a1a" stroke="#3fb950" stroke-width="2"/>
+          <text x="350" y="90" text-anchor="middle" fill="#3fb950" font-family="monospace" font-size="11" font-weight="bold">ARDUINO UNO</text>
+          <!-- Arduino pins labels -->
+          <text x="265" y="115" fill="#8b949e" font-family="monospace" font-size="9">5V ●</text>
+          <text x="265" y="135" fill="#8b949e" font-family="monospace" font-size="9">GND ●</text>
+          <text x="265" y="155" fill="#8b949e" font-family="monospace" font-size="9">D2 ●</text>
+          <text x="265" y="175" fill="#8b949e" font-family="monospace" font-size="9">D8 ●</text>
+          <!-- Pin dots left -->
+          <circle cx="258" cy="112" r="4" fill="#3fb950"/>
+          <circle cx="258" cy="132" r="4" fill="#3fb950"/>
+          <circle cx="258" cy="152" r="4" fill="#00e5ff"/>
+          <circle cx="258" cy="172" r="4" fill="#ff6b35"/>
+
+          <!-- BUTTON -->
+          <rect x="60" y="120" width="60" height="60" rx="6" fill="var(--bg3)" stroke="#00e5ff" stroke-width="1.5"/>
+          <circle cx="90" cy="150" r="15" fill="none" stroke="#00e5ff" stroke-width="2"/>
+          <circle cx="90" cy="150" r="8" fill="#00e5ff" opacity=".5"/>
+          <text x="90" y="200" text-anchor="middle" fill="#8b949e" font-family="monospace" font-size="9">BOTÓN</text>
+
+          <!-- BUZZER -->
+          <rect x="580" y="120" width="60" height="60" rx="6" fill="var(--bg3)" stroke="#ff6b35" stroke-width="1.5"/>
+          <circle cx="610" cy="150" r="20" fill="none" stroke="#ff6b35" stroke-width="2"/>
+          <circle cx="610" cy="150" r="8" fill="#ff6b35" opacity=".4"/>
+          <text x="610" y="200" text-anchor="middle" fill="#8b949e" font-family="monospace" font-size="9">BUZZER</text>
+
+          <!-- RESISTOR -->
+          <rect x="155" y="143" width="40" height="14" rx="3" fill="#8b949e" stroke="#6272a4" stroke-width="1"/>
+          <text x="175" y="132" text-anchor="middle" fill="#8b949e" font-family="monospace" font-size="9">10kΩ</text>
+
+          <!-- Wires -->
+          <!-- GND → Button -->
+          <line x1="258" y1="132" x2="90" y2="132" stroke="#6272a4" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <!-- Button → D2 -->
+          <line x1="120" y1="150" x2="155" y2="150" stroke="#00e5ff" stroke-width="2"/>
+          <line x1="195" y1="150" x2="258" y2="152" stroke="#00e5ff" stroke-width="2"/>
+          <!-- 5V → Buzzer -->
+          <line x1="258" y1="112" x2="610" y2="112" stroke="#3fb950" stroke-width="1.5"/>
+          <line x1="610" y1="112" x2="610" y2="120" stroke="#3fb950" stroke-width="1.5"/>
+          <!-- D8 → Buzzer -->
+          <line x1="450" y1="172" x2="610" y2="172" stroke="#ff6b35" stroke-width="2"/>
+          <line x1="610" y1="172" x2="610" y2="180" stroke="#ff6b35" stroke-width="2"/>
+
+          <!-- Wire junction dots -->
+          <circle cx="610" cy="112" r="4" fill="#3fb950"/>
+          <circle cx="610" cy="172" r="4" fill="#ff6b35"/>
+
+          <!-- Legend -->
+          <line x1="60" y1="300" x2="90" y2="300" stroke="#3fb950" stroke-width="2"/>
+          <text x="95" y="304" fill="#8b949e" font-family="monospace" font-size="9">5V / Alimentación</text>
+          <line x1="200" y1="300" x2="230" y2="300" stroke="#6272a4" stroke-width="2" stroke-dasharray="4 2"/>
+          <text x="235" y="304" fill="#8b949e" font-family="monospace" font-size="9">GND</text>
+          <line x1="340" y1="300" x2="370" y2="300" stroke="#00e5ff" stroke-width="2"/>
+          <text x="375" y="304" fill="#8b949e" font-family="monospace" font-size="9">Señal entrada (D2)</text>
+          <line x1="520" y1="300" x2="550" y2="300" stroke="#ff6b35" stroke-width="2"/>
+          <text x="555" y="304" fill="#8b949e" font-family="monospace" font-size="9">Señal salida (D8)</text>
+        </svg>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item fade-in">
+          <div class="feature-icon">1️⃣</div>
+          <div class="feature-info">
+            <h4>Botón → Pin D2</h4>
+            <p>Conecta un terminal del botón al pin digital D2 del Arduino. El otro terminal va a GND con resistencia pull-down de 10 kΩ.</p>
+          </div>
+        </div>
+        <div class="feature-item fade-in">
+          <div class="feature-icon">2️⃣</div>
+          <div class="feature-info">
+            <h4>Buzzer → Pin D8</h4>
+            <p>Conecta el pin positivo (+) del buzzer al pin D8. El pin negativo (–) va directamente a GND del Arduino.</p>
+          </div>
+        </div>
+        <div class="feature-item fade-in">
+          <div class="feature-icon">3️⃣</div>
+          <div class="feature-info">
+            <h4>Alimentación</h4>
+            <p>Conecta el Arduino por USB al PC (5 V). Verifica la polaridad antes de encender para evitar daños en el buzzer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- CÓDIGO -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label fade-in">Programación</p>
+      <h2 class="section-title fade-in">Código fuente</h2>
+      <p class="section-desc fade-in">El siguiente código implementa la lógica del timbre con dos notas musicales.</p>
+
+      <div class="code-block fade-in">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+          </div>
+          <span class="code-title">timbre_completo.ino</span>
+          <button class="copy-btn">Copiar</button>
+        </div>
+        <div class="code-body">
+<pre><span class="c-cm">/*
+ * Timbre con Arduino UNO
+ * Pines: Botón → D2 | Buzzer → D8
+ * Autor: Proyecto Timbre Arduino
+ */</span>
+
+<span class="c-kw">const int</span> <span class="c-var">PIN_BOTON</span>  = <span class="c-num">2</span>;
+<span class="c-kw">const int</span> <span class="c-var">PIN_BUZZER</span> = <span class="c-num">8</span>;
+
+<span class="c-cm">// Frecuencias en Hz</span>
+<span class="c-kw">const int</span> <span class="c-var">NOTA_A5</span> = <span class="c-num">880</span>;
+<span class="c-kw">const int</span> <span class="c-var">NOTA_E5</span> = <span class="c-num">659</span>;
+
+<span class="c-fn">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">pinMode</span>(<span class="c-var">PIN_BOTON</span>,  INPUT);
+  <span class="c-fn">pinMode</span>(<span class="c-var">PIN_BUZZER</span>, OUTPUT);
+  Serial.<span class="c-fn">begin</span>(<span class="c-num">9600</span>);
+  Serial.<span class="c-fn">println</span>(<span class="c-str">"Timbre listo ✓"</span>);
+}
+
+<span class="c-fn">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">int</span> <span class="c-var">estado</span> = <span class="c-fn">digitalRead</span>(<span class="c-var">PIN_BOTON</span>);
+
+  <span class="c-kw">if</span> (<span class="c-var">estado</span> == HIGH) {
+    Serial.<span class="c-fn">println</span>(<span class="c-str">"¡Timbre pulsado!"</span>);
+    <span class="c-fn">tocarTimbre</span>();
+  }
+}
+
+<span class="c-fn">void</span> <span class="c-fn">tocarTimbre</span>() {
+  <span class="c-fn">tone</span>(<span class="c-var">PIN_BUZZER</span>, <span class="c-var">NOTA_A5</span>, <span class="c-num">200</span>);
+  <span class="c-fn">delay</span>(<span class="c-num">260</span>);
+  <span class="c-fn">tone</span>(<span class="c-var">PIN_BUZZER</span>, <span class="c-var">NOTA_E5</span>, <span class="c-num">400</span>);
+  <span class="c-fn">delay</span>(<span class="c-num">500</span>);
+  <span class="c-fn">noTone</span>(<span class="c-var">PIN_BUZZER</span>);
+}</pre>
+        </div>
+      </div>
+
+      <!-- Timeline del proceso -->
+      <div style="margin-top:4rem;">
+        <p class="section-label fade-in">Cronograma</p>
+        <h2 class="section-title fade-in">Proceso de desarrollo</h2>
+        <div class="timeline" style="margin-top:2rem;">
+          <div class="timeline-item fade-in">
+            <p class="timeline-date">FASE 01</p>
+            <h4>Investigación y diseño</h4>
+            <p>Selección de componentes, lectura de datasheets del Arduino UNO y buzzer piezoeléctrico. Diseño del esquema en Tinkercad.</p>
+          </div>
+          <div class="timeline-item fade-in">
+            <p class="timeline-date">FASE 02</p>
+            <h4>Montaje en protoboard</h4>
+            <p>Conexión física de todos los componentes según el diagrama. Verificación de continuidad con multímetro.</p>
+          </div>
+          <div class="timeline-item fade-in">
+            <p class="timeline-date">FASE 03</p>
+            <h4>Programación y pruebas</h4>
+            <p>Escritura del código en Arduino IDE. Pruebas de funcionamiento y ajuste de frecuencias del buzzer.</p>
+          </div>
+          <div class="timeline-item fade-in">
+            <p class="timeline-date">FASE 04</p>
+            <h4>Documentación final</h4>
+            <p>Elaboración de este sitio web, diagramas y manual de usuario para replicar el proyecto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">🔔 TIMBRE.ino</div>
+        <p class="footer-sub">Proyecto de electrónica con Arduino UNO · 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Inicio</a>
+        <a href="desarrollo.html">Desarrollo</a>
+        <a href="acerca.html">Acerca de</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+  <button id="sound-btn" title="¡Tocar timbre!">🔔</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

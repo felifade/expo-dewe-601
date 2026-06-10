@@ -1,79 +1,233 @@
 <!DOCTYPE html>
+<!-- ================================================================
+     index.html — Página Principal
+     Monitor de Ritmo Cardíaco con Arduino + Sensor MAX30102
+     Autor: Jared Martínez Santiago | Páginas Web · 2026
+     ================================================================ -->
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Jared Martinez Santiago</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Monitor de Ritmo Cardíaco con Arduino y sensor MAX30102 — Proyecto de Emprendimiento e Innovación" />
+  <title>HeartMonitor MAX30102 | Inicio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💚</text></svg>" />
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Jared Martinez Santiago</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/jared-martinez-santiago/
-        </div>
+
+<!-- ================================================================
+     BARRA DE NAVEGACIÓN
+     ================================================================ -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <span class="heart-beat">♥</span> HeartMonitor
+  </a>
+
+  <!-- Botón para móvil -->
+  <button class="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-menu">
+    <li><a href="index.html" class="active">Inicio</a></li>
+    <li><a href="paginas/proyectos.html">Proyecto</a></li>
+    <li><a href="paginas/innovacion.html">Innovación</a></li>
+    <li><a href="paginas/contacto.html">Contacto</a></li>
+  </ul>
+
+  <div class="nav-controls">
+    <button class="btn-theme" aria-label="Cambiar tema">
+      <span class="theme-icon">☀️</span>
+      <span class="theme-text">Modo Claro</span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ================================================================
+     SECCIÓN HERO — MONITOR CARDÍACO
+     Interfaz principal inspirada en equipos médicos de hospital
+     ================================================================ -->
+<section class="monitor-section" id="inicio">
+  <div style="width:100%; max-width:860px;">
+
+    <!-- Texto encima del monitor -->
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <div class="section-badge" style="margin-bottom:0.7rem;">⚕️ Proyecto Escolar · Emprendimiento e Innovación · 2026</div>
+      <h1 style="font-family:var(--font-display); font-size:clamp(1.5rem,4vw,2.5rem); font-weight:700; color:var(--text-primary); letter-spacing:0.04em; line-height:1.2;">
+        Monitor de Ritmo Cardíaco<br>
+        <span style="color:var(--neon-green); text-shadow:var(--glow-green);">con Arduino + MAX30102</span>
+      </h1>
     </div>
+
+    <!-- ---- PANEL DEL MONITOR ---- -->
+    <div class="monitor-display">
+
+      <!-- Cabecera del monitor (tipo equipo médico) -->
+      <div class="monitor-header">
+        <span class="monitor-title">◈ CARDIO MONITOR v1.0 — MAX30102</span>
+        <div class="monitor-status-bar">
+          <!-- Hora en tiempo real -->
+          <span class="status-chip"><span class="led"></span><span id="monitorClock">00:00:00</span></span>
+          <!-- Indicadores de canales -->
+          <span class="status-chip"><span class="led blue"></span>SPO₂ CH</span>
+          <span class="status-chip"><span class="led red"></span>ECG CH</span>
+          <span class="status-chip"><span class="led amber"></span>TEMP</span>
+        </div>
+      </div>
+
+      <!-- Cuerpo principal: ECG + valores vitales -->
+      <div class="monitor-body">
+
+        <!-- Columna izquierda: canales ECG -->
+        <div>
+          <!-- Canal 1: Ritmo cardíaco (verde) -->
+          <div class="ecg-panel">
+            <span class="ecg-label">▸ CANAL I — RITMO CARDÍACO</span>
+            <div class="ecg-grid"></div>
+            <!-- Canvas: JavaScript dibuja el ECG aquí -->
+            <canvas id="ecgCanvas" style="height:120px;"></canvas>
+          </div>
+
+          <!-- Canal 2: SpO2 (azul) -->
+          <div class="ecg-panel ecg-panel-2">
+            <span class="ecg-label">▸ CANAL II — SpO₂ / PLETH</span>
+            <div class="ecg-grid"></div>
+            <canvas id="ecgCanvas2" style="height:70px;"></canvas>
+          </div>
+        </div>
+
+        <!-- Columna derecha: valores vitales numéricos -->
+        <div class="vitals-panel">
+
+          <!-- BPM principal (número grande) -->
+          <div class="vital-card bpm-main">
+            <div class="vital-label">◈ FRECUENCIA CARDÍACA</div>
+            <!-- JavaScript actualiza este número dinámicamente -->
+            <div class="vital-value" id="bpmValue">72</div>
+            <div class="vital-unit">BPM · latidos/min</div>
+            <!-- Corazón animado -->
+            <span class="heart-anim" id="heartIcon">♥</span>
+          </div>
+
+          <!-- SpO2 -->
+          <div class="vital-card">
+            <div class="vital-label">◈ SpO₂</div>
+            <div class="vital-value small">98<span style="font-size:1rem;">%</span></div>
+            <div class="vital-unit">Saturación O₂</div>
+          </div>
+
+          <!-- Temperatura -->
+          <div class="vital-card">
+            <div class="vital-label">◈ TEMPERATURA</div>
+            <div class="vital-value small2">36.7<span style="font-size:0.9rem;">°C</span></div>
+            <div class="vital-unit">Corporal</div>
+          </div>
+
+        </div>
+
+        <!-- Estado del paciente (fila completa) -->
+        <div class="patient-status" style="grid-column: 1 / -1;">
+          <span class="status-label">▸ DIAGNÓSTICO DEL SISTEMA</span>
+          <div class="status-line">
+            <div class="status-dot"></div>
+            <span id="patientStatus">SISTEMA EN ESPERA — Presione Iniciar para comenzar</span>
+          </div>
+        </div>
+
+      </div>
+      <!-- Fin monitor-body -->
+
+      <!-- Pie del monitor -->
+      <div class="monitor-footer">
+        <div class="sensor-info">
+          Sensor: <strong>MAX30102</strong> · Placa: <strong>Arduino Uno</strong> · Protocolo: <strong>I²C</strong>
+        </div>
+        <!-- Botón principal: inicia/detiene la simulación de BPM -->
+        <button class="btn-monitor" id="btnMonitor" aria-label="Iniciar monitoreo">
+          ▶ INICIAR MONITOREO
+        </button>
+      </div>
+
+    </div>
+    <!-- Fin monitor-display -->
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: INTRODUCCIÓN AL PROYECTO
+     ================================================================ -->
+<section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-badge">📋 Introducción</span>
+      <h2>¿De qué trata el <span>proyecto</span>?</h2>
+      <div class="section-line"></div>
+      <p>Una solución tecnológica accesible para medir el ritmo cardíaco usando electrónica de bajo costo.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Tarjeta: Qué es Arduino -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">🔵</div>
+        <h3>¿Qué es Arduino?</h3>
+        <p>Arduino es una plataforma de electrónica de código abierto que combina una placa de microcontrolador y un entorno de desarrollo. Permite crear prototipos electrónicos interactivos de forma rápida y económica, ideal para proyectos educativos y de innovación.</p>
+      </div>
+
+      <!-- Tarjeta: Sensor MAX30102 -->
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">❤️</div>
+        <h3>Sensor MAX30102</h3>
+        <p>El MAX30102 es un sensor de oximetría de pulso y frecuencia cardíaca de alta integración. Utiliza LEDs rojo e infrarrojo para medir la variación de luz absorbida por la sangre, calculando con precisión el ritmo cardíaco y la saturación de oxígeno (SpO₂).</p>
+      </div>
+
+      <!-- Tarjeta: Objetivo -->
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">🎯</div>
+        <h3>Objetivo del Proyecto</h3>
+        <p>Construir un monitor de ritmo cardíaco funcional usando Arduino y el sensor MAX30102 para demostrar cómo la tecnología accesible puede aplicarse en el monitoreo de salud, abriendo posibilidades de innovación en el área biomédica.</p>
+      </div>
+
+      <!-- Tarjeta: Importancia -->
+      <div class="card reveal">
+        <div class="card-icon">🌍</div>
+        <h3>Importancia del Proyecto</h3>
+        <p>El acceso a tecnología de monitoreo cardíaco básico puede ser transformador en comunidades con recursos limitados. Este proyecto demuestra que con menos de 300 pesos en componentes, es posible construir un dispositivo que en hospitales cuesta miles de pesos.</p>
+      </div>
+
+    </div>
+
+    <!-- Botón de llamada a la acción -->
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+      <a href="paginas/proyectos.html" class="btn-primary">🔬 Ver el proyecto completo</a>
+      &nbsp;&nbsp;
+      <a href="paginas/innovacion.html" class="btn-outline">💡 Ver innovación</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     PIE DE PÁGINA
+     ================================================================ -->
+<footer>
+  <div class="footer-brand">💚 HeartMonitor MAX30102 · Arduino</div>
+  <nav class="footer-links">
+    <a href="index.html">Inicio</a>
+    <a href="paginas/proyectos.html">Proyecto</a>
+    <a href="paginas/innovacion.html">Innovación</a>
+    <a href="paginas/contacto.html">Contacto</a>
+  </nav>
+  <p>Desarrollado por <strong>Jared Martínez Santiago</strong> · Páginas Web &amp; Emprendimiento e Innovación · 2026</p>
+</footer>
+
+
+<!-- Script principal al final del body para mejor rendimiento -->
+<script src="js/script.js"></script>
 </body>
 </html>

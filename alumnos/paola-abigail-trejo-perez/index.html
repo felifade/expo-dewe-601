@@ -1,79 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Paola Abigail Trejo Pérez</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+    <title>Digital Bell System</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Paola Abigail Trejo Pérez</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/paola-abigail-trejo-perez/
-        </div>
-    </div>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <section id="inicio">
+
+            <h1>DIGITAL BELL SYSTEM</h1>
+            <p>Sistema Inteligente de Timbre Programable</p>
+
+            <button onclick="cambiarTema()" id="tema-btn">
+                 Modo Oscuro
+            </button>
+
+            <hr>
+
+        </section>
+    </header>
+
+    <!-- MENÚ -->
+    <nav>
+        <ul>
+            <li><a href="#creadora">Fundadora</a></li>
+            <li><a href="#producto">Modelos</a></li>
+            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#planes">Planes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <hr>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <!-- FUNDADORA -->
+        <section id="creadora">
+
+            <h2>Fundadora de Digital Bell System</h2>
+
+            <img src="img/paola.jpg" width="220" alt="Paola Trejo">
+
+            <h3>Paola Trejo</h3>
+
+            <p>
+                Fundadora y desarrolladora de Digital Bell System, un proyecto
+                enfocado en la creación de timbres inteligentes programables para
+                escuelas, oficinas y negocios.
+            </p>
+
+            <p>
+                Este sistema permite automatizar horarios de manera eficiente,
+                ofreciendo una solución moderna y confiable para la gestión del
+                tiempo.
+            </p>
+
+            <p>
+                <a href="paginas/paginas_nosotros.html">Conocer más sobre la fundadora</a>
+            </p>
+
+            <hr>
+
+        </section>
+
+        <!-- MODELOS -->
+        <section id="producto">
+
+            <h2>Modelos del Producto</h2>
+
+            <p>Seleccione el modelo que desea comprar:</p>
+
+            <form>
+
+                <input type="radio" name="modelo">
+                Modelo Color Negro
+
+                <br><br>
+
+                <input type="radio" name="modelo">
+                Modelo Color Azul
+
+                <br><br>
+
+                <input type="radio" name="modelo">
+                Modelo Color Rojo
+
+            </form>
+
+            <br>
+
+            <h3>Modelo Negro</h3>
+            <img src="img/modelo_negro.jpg" width="250" alt="Modelo Negro">
+
+            <h3>Modelo Azul</h3>
+            <img src="img/modelo_azul.jpg" width="250" alt="Modelo Azul">
+
+            <h3>Modelo Rojo</h3>
+            <img src="img/modelo_rojo.jpg" width="250" alt="Modelo Rojo">
+
+            <p>
+    <a href="paginas/paginas_catalogo.html">Ver catálogo completo</a>
+</p>
+
+            <hr>
+
+        </section>
+
+        <!-- CARACTERÍSTICAS -->
+        <section id="caracteristicas">
+
+            <h2>Características Principales</h2>
+
+            <article>
+                <h3>Programación Automática</h3>
+
+                <p>
+                    Configura horarios específicos para que el timbre
+                    funcione automáticamente.
+                </p>
+            </article>
+
+            <article>
+                <h3>Fácil Configuración</h3>
+
+                <p>
+                    Permite adaptar horarios según las necesidades
+                    del cliente.
+                </p>
+            </article>
+
+            <article>
+                <h3>Uso Escolar y Empresarial</h3>
+
+                <p>
+                    Ideal para escuelas, oficinas y negocios.
+                </p>
+            </article>
+
+            <hr>
+
+        </section>
+
+        <!-- PLANES -->
+        <section id="planes">
+
+            <h2>Planes de Programación</h2>
+
+            <table border="1">
+
+                <tr>
+                    <th>Plan</th>
+                    <th>Horarios</th>
+                    <th>Costo</th>
+                </tr>
+
+                <tr>
+                    <td>Básico</td>
+                    <td>Hasta 5 horarios</td>
+                    <td>$100 MXN</td>
+                </tr>
+
+                <tr>
+                    <td>Intermedio</td>
+                    <td>Hasta 10 horarios</td>
+                    <td>$150 MXN</td>
+                </tr>
+
+                <tr>
+                    <td>Premium</td>
+                    <td>Horarios Ilimitados</td>
+                    <td>$250 MXN</td>
+                </tr>
+
+            </table>
+
+            <hr>
+
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+
+            <h2>Solicitud de Programación</h2>
+
+            <form>
+
+                <label>Nombre:</label><br>
+                <input type="text"><br><br>
+
+                <label>Correo:</label><br>
+                <input type="email"><br><br>
+
+                <label>Teléfono:</label><br>
+                <input type="tel"><br><br>
+
+                <label>Horarios Deseados:</label><br>
+                <textarea rows="4" cols="30"></textarea><br><br>
+
+                <input type="submit" value="Guardar Información">
+
+                <br><br>
+
+                <button type="button">Comprar</button>
+
+                <br><br>
+
+              <br><br>
+
+           <a href="paginas/paginas_soporte.html">
+    Centro de soporte y ayuda
+</a>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <hr>
+
+    <center>
+        <a href="#inicio">⬆ Regresar al Inicio</a>
+    </center>
+
+    <hr>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>Digital Bell System - Proyecto Final</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desarrollo — HeartSense</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="pulse-dot"></span>
+        HEARTSENSE
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">       Inicio</a></li>
+        <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+        <li><a href="acerca.html">         Acerca de</a></li>
+        <li><a href="contacto.html">       Contacto</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" title="Cambiar tema">☀️</button>
+        <button class="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../index.html">       Inicio</a>
+    <a href="desarrollo.html" class="active">Desarrollo</a>
+    <a href="acerca.html">         Acerca de</a>
+    <a href="contacto.html">       Contacto</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTENIDO
+  ════════════════════════════════════════════════════════ -->
+  <main class="page-wrap">
+
+    <!-- ── ENCABEZADO ── -->
+    <header class="page-header">
+      <div class="container page-header-inner">
+        <p class="page-header-tag">⚙ Cómo funciona</p>
+        <h1>Desarrollo del<br><span style="color:var(--teal)">Sensor Cardíaco</span></h1>
+        <p>
+          Descubre el proceso técnico que convierte señales eléctricas del corazón
+          en datos legibles, alertas y visualizaciones en tiempo real.
+        </p>
+      </div>
+    </header>
+
+    <!-- ── PROCESO PASO A PASO ── -->
+    <section class="section">
+      <div class="container">
+        <span class="section-tag">Proceso</span>
+        <h2 class="section-title">¿Cómo funciona el sensor?</h2>
+        <p class="section-desc">
+          El sensor de ritmo cardíaco sigue una cadena de pasos precisos desde
+          la captura de la señal hasta la presentación del dato final.
+        </p>
+
+        <div class="steps">
+
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3>Detección Óptica (PPG)</h3>
+              <p>
+                El sensor utiliza tecnología de Fotopletismografía (PPG). Un LED verde
+                emite luz hacia el tejido del dedo o muñeca; un fotodetector mide
+                cuánta luz es absorbida por la sangre. Cuando el corazón late, el volumen
+                sanguíneo aumenta y absorbe más luz, creando una señal periódica.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3>Amplificación y Filtrado de Señal</h3>
+              <p>
+                La señal cruda es muy débil (microvoltios), por lo que un amplificador
+                operacional (OpAmp) la eleva. Luego, filtros pasa-banda (0.5–4 Hz)
+                eliminan el ruido de baja frecuencia (movimiento) y alta frecuencia
+                (interferencia eléctrica), dejando solo la señal cardíaca limpia.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3>Conversión Analógico-Digital (ADC)</h3>
+              <p>
+                La señal analógica pasa por un convertidor ADC de 12 bits integrado
+                en el microcontrolador. Con una frecuencia de muestreo de 100 Hz se
+                obtienen 100 muestras por segundo, suficiente para detectar con precisión
+                cada pico R del ciclo cardíaco (onda QRS).
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h3>Algoritmo de Detección de Picos</h3>
+              <p>
+                El firmware implementa el algoritmo Pan-Tompkins para detectar los
+                picos R en la señal digitalizada. Calcula el intervalo R-R (tiempo
+                entre latidos consecutivos) y aplica la fórmula:<br>
+                <code style="color:var(--teal); font-size:0.95em;">BPM = 60 000 ms ÷ promedio(R-R ms)</code><br>
+                El promedio de los últimos 4 intervalos reduce lecturas erráticas.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">05</div>
+            <div class="step-content">
+              <h3>Clasificación y Alertas</h3>
+              <p>
+                Con el BPM calculado, el sistema lo clasifica según rangos clínicos:
+                Bradicardia (&lt;60 BPM), Normal (60–100 BPM) y Taquicardia (&gt;100 BPM).
+                Activa LEDs de color, vibración o notificaciones push según el nivel de riesgo.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">06</div>
+            <div class="step-content">
+              <h3>Transmisión y Visualización</h3>
+              <p>
+                Los datos se envían vía UART/Bluetooth al dispositivo de visualización.
+                La interfaz web recibe el valor cada 2 segundos, actualiza el contador BPM,
+                anima la onda ECG y cambia los colores de estado para facilitar la
+                interpretación inmediata.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DEMO EN VIVO ── -->
+    <section class="section-sm" style="background: var(--surface); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="sensor-demo">
+          <h2>🫀 Simulación en Tiempo Real</h2>
+          <p>
+            Observa cómo el sensor actualiza las lecturas automáticamente cada 2 segundos.
+            El color y mensaje cambian según el estado cardíaco detectado.
+          </p>
+
+          <div class="demo-grid">
+            <!-- Onda ECG grande -->
+            <div>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:8px; font-family:var(--font-display); letter-spacing:0.1em;">ONDA ECG</p>
+              <div class="ecg-full">
+                <svg width="100%" height="84" viewBox="0 0 500 84" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="ecg-full-line"
+                    d="M0,42 L60,42 L70,42 L78,14 L83,65 L88,14 L95,42 L110,42
+                       L170,42 L178,42 L186,14 L191,65 L196,14 L203,42 L218,42
+                       L278,42 L286,42 L294,14 L299,65 L304,14 L311,42 L326,42
+                       L386,42 L394,42 L402,14 L407,65 L412,14 L419,42 L434,42 L500,42" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- BPM grande -->
+            <div class="bpm-big">
+              <span id="bpm-dev" class="bpm-big-num" style="color:var(--teal)">72</span>
+              <div class="bpm-big-lbl">BPM EN VIVO</div>
+              <div id="status-dev" class="status-bar status-normal mt-4">✔ NORMAL</div>
+            </div>
+          </div>
+
+          <!-- Leyenda -->
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:24px; justify-content:center;">
+            <span class="status-bar status-normal"  style="padding:6px 16px; font-size:0.78rem;">✔ Normal: 60–100 BPM</span>
+            <span class="status-bar status-warning" style="padding:6px 16px; font-size:0.78rem;">⚠ Precaución: &lt; 60 BPM</span>
+            <span class="status-bar status-alert"   style="padding:6px 16px; font-size:0.78rem;">🚨 Alerta: &gt; 100 BPM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMPONENTES ── -->
+    <section class="section">
+      <div class="container">
+        <span class="section-tag">Hardware</span>
+        <h2 class="section-title">Componentes del Sistema</h2>
+
+        <div class="features-grid" style="margin-top:40px;">
+          <div class="feat-card">
+            <span class="feat-icon">💡</span>
+            <h3 class="feat-title">Sensor MAX30102</h3>
+            <p class="feat-text">
+              Módulo PPG con LED rojo (660 nm) e infrarrojo (880 nm) para
+              medición de SpO₂ y frecuencia cardíaca con interfaz I²C.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🤖</span>
+            <h3 class="feat-title">Microcontrolador</h3>
+            <p class="feat-text">
+              Arduino UNO o ESP32 procesan la señal ADC, ejecutan el
+              algoritmo Pan-Tompkins y gestionan la comunicación serial.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📡</span>
+            <h3 class="feat-title">Módulo Bluetooth</h3>
+            <p class="feat-text">
+              HC-05 o BLE integrado en ESP32 transmite los datos BPM al
+              dispositivo de visualización inalámbricamente.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🖥</span>
+            <h3 class="feat-title">Interfaz Web</h3>
+            <p class="feat-text">
+              HTML5, CSS3 y JavaScript muestran los datos en tiempo real
+              con animaciones, gráficas ECG y alertas visuales dinámicas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">❤ HEARTSENSE</div>
+        <p>Proyecto Escolar — Sensor de Ritmo Cardíaco Inteligente</p>
+        <p>© 2025 · Desarrollado con HTML, CSS y JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

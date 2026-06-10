@@ -1,79 +1,489 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Irvin Ariel Máximo Paredes</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timbre Inteligente — Timbre Inteligente</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Irvin Ariel Máximo Paredes</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/irvin-ariel-maximo-paredes/
-        </div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon">🔔</span>
+  <div>
+    <div class="toast-title">¡Alguien está en la puerta!</div>
+    <div class="toast-sub">Timbre Inteligente — Ahora mismo</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">timbre<span>Inteligente</span></a>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">CÓMO FUNCIONA</a></li>
+    <li><a href="#caracteristicas">CARACTERÍSTICAS</a></li>
+    <li><a href="#hardware">HARDWARE</a></li>
+    <li><a href="#demo">DEMO</a></li>
+    <li><a href="paginas/desarrollo.html">DESARROLLO</a></li>
+    <li><a href="paginas/acerca-de.html">ACERCA DE</a></li>
+    <li><a href="paginas/contacto.html">CONTACTO</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    SISTEMA EN LÍNEA
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="status-dot"></div>
+      PROYECTO IoT — ESP32 + PROTOBOARD
     </div>
+    <h1 class="hero-title">
+      <span class="line1">TU PUERTA,</span>
+      <span class="line2">SIEMPRE</span>
+      <span class="line3">CONECTADA.</span>
+    </h1>
+    <p class="hero-desc">
+      Un timbre inteligente que te permite ver, escuchar y recibir mensajes de tus visitas desde cualquier lugar del mundo, controlado desde tu smartphone.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">VER DEMO EN VIVO</button>
+      <button class="btn-outline" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">¿CÓMO FUNCIONA?</button>
+    </div>
+  </div>
+
+  <!-- Device SVG -->
+  <div class="hero-device">
+    <div class="device-wrap">
+      <div class="device-glow-ring"></div>
+      <svg viewBox="0 0 280 420" xmlns="http://www.w3.org/2000/svg" width="280">
+        <rect x="100" y="0" width="80" height="420" fill="#0d1520" rx="6" stroke="#1e2f45" stroke-width="1"/>
+        <rect x="60" y="80" width="160" height="260" rx="16" fill="#111927" stroke="#1e2f45" stroke-width="2"/>
+        <rect x="60" y="80" width="160" height="4" rx="2" fill="#00d4ff" opacity="0.6"/>
+        <circle cx="140" cy="150" r="40" fill="#0a1520" stroke="#1e2f45" stroke-width="2"/>
+        <circle cx="140" cy="150" r="28" fill="#040c18" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+        <circle cx="140" cy="150" r="16" fill="#020810"/>
+        <circle cx="140" cy="150" r="8" fill="#00d4ff" opacity="0.3"/>
+        <circle cx="135" cy="145" r="4" fill="#00d4ff" opacity="0.6"/>
+        <circle cx="148" cy="142" r="5" fill="white" opacity="0.1"/>
+        <circle cx="140" cy="150" r="22" fill="none" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 4" opacity="0.4">
+          <animateTransform attributeName="transform" type="rotate" from="0 140 150" to="360 140 150" dur="8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="124" cy="205" r="3" fill="#1e2f45"/>
+        <circle cx="132" cy="205" r="3" fill="#1e2f45"/>
+        <circle cx="140" cy="205" r="3" fill="#1e2f45"/>
+        <circle cx="148" cy="205" r="3" fill="#1e2f45"/>
+        <circle cx="156" cy="205" r="3" fill="#1e2f45"/>
+        <text x="140" y="220" fill="#6b8aaa" font-size="8" text-anchor="middle" font-family="monospace">MIC</text>
+        <rect x="110" y="240" width="60" height="60" rx="12" fill="#0d1520" stroke="#1e2f45" stroke-width="2"/>
+        <circle cx="140" cy="270" r="20" fill="#0a1520" stroke="#00d4ff" stroke-width="1.5"/>
+        <text x="140" y="274" fill="#00d4ff" font-size="12" text-anchor="middle" font-family="monospace" opacity="0.8">◉</text>
+        <circle cx="140" cy="320" r="5" fill="#00ff88" opacity="0.8">
+          <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="75" cy="95" r="4" fill="#0d1520" stroke="#1e2f45" stroke-width="1"/>
+        <circle cx="205" cy="95" r="4" fill="#0d1520" stroke="#1e2f45" stroke-width="1"/>
+        <circle cx="75" cy="325" r="4" fill="#0d1520" stroke="#1e2f45" stroke-width="1"/>
+        <circle cx="205" cy="325" r="4" fill="#0d1520" stroke="#1e2f45" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como-funciona">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <div class="section-label">PROCESO</div>
+      <h2 class="section-title">¿Cómo funciona?</h2>
+      <p class="section-desc">Un flujo de 4 pasos que conecta tu puerta con tu smartphone de forma inteligente y automática.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔘</div>
+        <div class="step-title">Visita presiona el botón</div>
+        <div class="step-text">El visitante presiona el botón físico conectado al ESP32 en la protoboard. El microcontrolador detecta la señal y activa el sistema.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">📲</div>
+        <div class="step-title">Notificación al dueño</div>
+        <div class="step-text">Se envía una notificación push inmediata a la aplicación del propietario. La cámara se activa y transmite el video en tiempo real.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">🔊</div>
+        <div class="step-title">Audio automático</div>
+        <div class="step-text">Si el dueño no responde, el sistema reproduce automáticamente el mensaje: <em>"Lo siento, no me encuentro en casa, deja tu mensaje"</em>.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">🎙️</div>
+        <div class="step-title">Grabación del visitante</div>
+        <div class="step-text">El visitante graba su mensaje de voz. Este se almacena y el propietario puede escucharlo desde la app en cualquier momento.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="caracteristicas">
+  <div class="features reveal">
+    <div class="features-layout">
+      <div>
+        <div class="section-label">CARACTERÍSTICAS</div>
+        <h2 class="section-title">Todo lo que necesitas en un timbre inteligente</h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon-box">📹</div>
+            <div class="feature-text">
+              <h3>Cámara en tiempo real</h3>
+              <p>Visualiza quién está en tu puerta desde cualquier parte del mundo a través de la app móvil con transmisión en vivo.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🔔</div>
+            <div class="feature-text">
+              <h3>Notificaciones instantáneas</h3>
+              <p>Recibe alertas push en tu smartphone en cuanto alguien toque el timbre, sin importar dónde estés.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🎤</div>
+            <div class="feature-text">
+              <h3>Mensajes de voz</h3>
+              <p>Los visitantes pueden grabar un mensaje que queda almacenado para que lo escuches cuando regreses a casa.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon-box">🤖</div>
+            <div class="feature-text">
+              <h3>Respuesta automática</h3>
+              <p>El sistema reproduce un mensaje de audio automatizado cuando el propietario no está disponible para atender.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="app-mockup reveal">
+        <div class="phone-screen">
+          <div class="phone-topbar">
+            <div class="app-name">SMARTBELL APP</div>
+            <div class="live-badge"><div class="live-dot"></div>EN VIVO</div>
+          </div>
+          <div class="camera-feed" style="position:relative;">
+            <div class="camera-corner tl"></div>
+            <div class="camera-corner tr"></div>
+            <div class="camera-corner bl"></div>
+            <div class="camera-corner br"></div>
+            <video id="phoneCamVideo" autoplay playsinline muted
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 0.5s;transform:scaleX(-1);"></video>
+            <span class="camera-icon-big" id="phoneCamIcon" style="position:relative;z-index:2;">📷</span>
+          </div>
+          <div class="phone-controls">
+            <div class="ctrl-btn active"><span class="ctrl-icon">🎙️</span>MICRÓFONO</div>
+            <div class="ctrl-btn active"><span class="ctrl-icon">🔊</span>AUDIO</div>
+            <div class="ctrl-btn"><span class="ctrl-icon">📸</span>CAPTURA</div>
+            <div class="ctrl-btn"><span class="ctrl-icon">🔴</span>GRABAR</div>
+          </div>
+          <div class="phone-messages">
+            <div class="msg-label">MENSAJES GRABADOS</div>
+            <div class="msg-item">
+              <div class="msg-time">14:32</div>
+              <div class="msg-bar"><div class="msg-bar-fill" style="width:70%"></div></div>
+              <div class="msg-play">▶</div>
+            </div>
+            <div class="msg-item">
+              <div class="msg-time">11:15</div>
+              <div class="msg-bar"><div class="msg-bar-fill" style="width:45%"></div></div>
+              <div class="msg-play">▶</div>
+            </div>
+            <div class="msg-item">
+              <div class="msg-time">09:04</div>
+              <div class="msg-bar"><div class="msg-bar-fill" style="width:90%"></div></div>
+              <div class="msg-play">▶</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HARDWARE -->
+<section class="hardware-section" id="hardware">
+  <div class="hw-inner">
+    <div class="reveal">
+      <div class="section-label">PROTOTIPO FÍSICO</div>
+      <h2 class="section-title">Hardware utilizado</h2>
+      <p class="section-desc">El sistema está construido sobre componentes accesibles y potentes que permiten conectividad WiFi, procesamiento local y expansión futura.</p>
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card reveal">
+        <div class="hw-img">🔌</div>
+        <div class="hw-name">ESP32</div>
+        <div class="hw-model">ESPRESSIF ESP32-WROOM-32</div>
+        <div class="hw-desc">Microcontrolador de doble núcleo con WiFi y Bluetooth integrados. Es el cerebro del sistema.</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-key">CPU</span><span class="spec-val">Xtensa LX6 240MHz</span></div>
+          <div class="spec-row"><span class="spec-key">RAM</span><span class="spec-val">520KB SRAM</span></div>
+          <div class="spec-row"><span class="spec-key">WiFi</span><span class="spec-val">802.11 b/g/n</span></div>
+          <div class="spec-row"><span class="spec-key">GPIO</span><span class="spec-val">34 pines</span></div>
+        </div>
+      </div>
+      <div class="hw-card reveal">
+        <div class="hw-img">🧪</div>
+        <div class="hw-name">Protoboard</div>
+        <div class="hw-model">BREADBOARD 830 PUNTOS</div>
+        <div class="hw-desc">Placa de pruebas sin soldadura para prototipar el circuito de manera rápida y flexible.</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-key">Puntos</span><span class="spec-val">830 tie-points</span></div>
+          <div class="spec-row"><span class="spec-key">Rieles</span><span class="spec-val">4 buses de poder</span></div>
+          <div class="spec-row"><span class="spec-key">Paso</span><span class="spec-val">2.54mm</span></div>
+          <div class="spec-row"><span class="spec-key">Voltaje</span><span class="spec-val">3.3V / 5V</span></div>
+        </div>
+      </div>
+      <div class="hw-card reveal">
+        <div class="hw-img">⚡</div>
+        <div class="hw-name">Botón + Cables</div>
+        <div class="hw-model">PULSADOR + JUMPERS M-M</div>
+        <div class="hw-desc">Botón pulsador táctil como entrada del timbre y cables macho-macho para las conexiones.</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-key">Tipo botón</span><span class="spec-val">NO (normalmente abierto)</span></div>
+          <div class="spec-row"><span class="spec-key">Cables</span><span class="spec-val">Jumpers 20cm M-M</span></div>
+          <div class="spec-row"><span class="spec-key">Señal</span><span class="spec-val">Digital GPIO input</span></div>
+          <div class="spec-row"><span class="spec-key">Pull-up</span><span class="spec-val">Interno ESP32</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM DIAGRAM -->
+<section class="diagram-section">
+  <div class="diag-inner">
+    <div class="reveal">
+      <div class="section-label">ARQUITECTURA</div>
+      <h2 class="section-title">Flujo del sistema</h2>
+    </div>
+    <div class="diag-flow reveal">
+      <div class="diag-node">
+        <div class="diag-node-icon">🔘</div>
+        <div class="diag-node-name">BOTÓN</div>
+        <div class="diag-node-sub">Entrada física</div>
+      </div>
+      <div class="diag-arrow">
+        <div class="diag-arrow-line"></div>
+        <div class="diag-arrow-label">GPIO</div>
+      </div>
+      <div class="diag-node">
+        <div class="diag-node-icon">🔌</div>
+        <div class="diag-node-name">ESP32</div>
+        <div class="diag-node-sub">Protoboard</div>
+      </div>
+      <div class="diag-arrow">
+        <div class="diag-arrow-line"></div>
+        <div class="diag-arrow-label">WiFi</div>
+      </div>
+      <div class="diag-node">
+        <div class="diag-node-icon">☁️</div>
+        <div class="diag-node-name">NUBE</div>
+        <div class="diag-node-sub">Servidor MQTT</div>
+      </div>
+      <div class="diag-arrow">
+        <div class="diag-arrow-line"></div>
+        <div class="diag-arrow-label">Push</div>
+      </div>
+      <div class="diag-node">
+        <div class="diag-node-icon">📱</div>
+        <div class="diag-node-name">APP</div>
+        <div class="diag-node-sub">Smartphone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SECTION -->
+<section id="demo" style="background: var(--bg2); border-top: 1px solid var(--border);">
+  <div class="demo-section">
+    <div class="reveal">
+      <div class="section-label">DEMO INTERACTIVA</div>
+      <h2 class="section-title">Prueba el timbre aquí mismo</h2>
+      <p class="section-desc">Simula el funcionamiento completo del SmartBell: presiona el botón, escucha el audio automático y deja un mensaje de voz.</p>
+    </div>
+
+    <div class="demo-container reveal">
+      <div class="demo-header">
+        <div class="demo-dots">
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+          <div class="demo-dot"></div>
+        </div>
+        <div class="demo-title-bar">TIMBRE SIMULATOR v1.0 — ESP32 MODE</div>
+        <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--muted);">IP: 192.168.1.42</div>
+      </div>
+      <div class="demo-body" style="grid-template-columns:1fr 1fr;min-height:500px;">
+        <!-- LEFT: CAMERA FEED -->
+        <div class="demo-visual" style="padding:0;position:relative;flex-direction:column;align-items:stretch;justify-content:stretch;">
+          <div id="camViewport" style="position:relative;flex:1;background:#040810;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;min-height:320px;">
+            <div class="demo-visual-grid" style="z-index:3;pointer-events:none;"></div>
+            <div id="scanlineOverlay" style="position:absolute;inset:0;z-index:4;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,0.025) 2px,rgba(0,212,255,0.025) 4px);animation:scanlines 8s linear infinite;"></div>
+            <video id="camVideo" autoplay playsinline muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 0.5s;"></video>
+            <canvas id="snapCanvas" style="display:none;"></canvas>
+            <img id="snapPreview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;display:none;"/>
+            <div style="position:absolute;top:10px;left:10px;width:22px;height:22px;border-top:2px solid var(--accent);border-left:2px solid var(--accent);z-index:6;opacity:0.7;"></div>
+            <div style="position:absolute;top:10px;right:10px;width:22px;height:22px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);z-index:6;opacity:0.7;"></div>
+            <div style="position:absolute;bottom:10px;left:10px;width:22px;height:22px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent);z-index:6;opacity:0.7;"></div>
+            <div style="position:absolute;bottom:10px;right:10px;width:22px;height:22px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent);z-index:6;opacity:0.7;"></div>
+            <div style="position:absolute;top:0;left:0;right:0;z-index:7;padding:0.5rem 0.8rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(rgba(4,8,16,0.8),transparent);">
+              <div id="camLiveBadge" style="display:flex;align-items:center;gap:0.4rem;font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);">
+                <div style="width:6px;height:6px;border-radius:50%;background:var(--muted);"></div>
+                SIN CÁMARA
+              </div>
+              <div id="camTimestamp" style="font-family:var(--font-mono);font-size:0.55rem;color:rgba(0,212,255,0.5);"></div>
+            </div>
+            <div style="position:absolute;bottom:0;left:0;right:0;z-index:7;padding:0.5rem 0.8rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(transparent,rgba(4,8,16,0.8));">
+              <div style="font-family:var(--font-mono);font-size:0.55rem;color:rgba(0,212,255,0.4);" id="camResLabel">---</div>
+              <div style="font-family:var(--font-mono);font-size:0.55rem;color:rgba(0,212,255,0.4);">ESP32-CAM SIM</div>
+            </div>
+            <div id="camPlaceholder" style="position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem;">
+              <svg viewBox="0 0 80 60" width="80" xmlns="http://www.w3.org/2000/svg" opacity="0.25">
+                <rect x="2" y="8" width="76" height="52" rx="6" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                <circle cx="40" cy="34" r="14" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                <circle cx="40" cy="34" r="6" fill="#00d4ff" opacity="0.3"/>
+                <rect x="28" y="2" width="24" height="10" rx="3" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                <circle cx="66" cy="18" r="4" fill="#00d4ff" opacity="0.4"/>
+              </svg>
+              <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;">CÁMARA INACTIVA</div>
+              <button onclick="startCamera()" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--accent);padding:0.5rem 1.2rem;font-family:var(--font-mono);font-size:0.7rem;cursor:pointer;letter-spacing:0.08em;transition:all 0.3s;">📷 ACTIVAR CÁMARA</button>
+            </div>
+            <div id="doorbellOverlay" style="position:absolute;bottom:50px;right:16px;z-index:8;display:none;flex-direction:column;align-items:center;gap:0.4rem;">
+              <div class="doorbell-pulse" id="doorbellPulse" style="position:absolute;inset:-14px;border:1px solid var(--accent);border-radius:50%;opacity:0;"></div>
+              <div id="doorbellBtn" onclick="ringDoorbell()" style="width:56px;height:56px;border-radius:50%;background:#0a1520;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 20px rgba(0,212,255,0.3);transition:all 0.2s;">
+                <span style="font-size:1.4rem;">🔔</span>
+              </div>
+              <div id="pressHint" style="font-family:var(--font-mono);font-size:0.55rem;color:var(--muted);text-align:center;white-space:nowrap;">TOCAR TIMBRE</div>
+            </div>
+          </div>
+          <div style="background:var(--bg2);border-top:1px solid var(--border);padding:0.6rem 0.8rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button onclick="startCamera()" style="background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);color:var(--green);padding:0.4rem 0.8rem;font-family:var(--font-mono);font-size:0.6rem;cursor:pointer;transition:all 0.3s;letter-spacing:0.05em;">▶ INICIAR</button>
+            <button onclick="stopCamera()" style="background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.2);color:var(--accent2);padding:0.4rem 0.8rem;font-family:var(--font-mono);font-size:0.6rem;cursor:pointer;transition:all 0.3s;">■ DETENER</button>
+            <button onclick="flipCamera()" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--accent);padding:0.4rem 0.8rem;font-family:var(--font-mono);font-size:0.6rem;cursor:pointer;transition:all 0.3s;">⇄ VOLTEAR</button>
+            <button onclick="takeSnapshot()" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--accent);padding:0.4rem 0.8rem;font-family:var(--font-mono);font-size:0.6rem;cursor:pointer;transition:all 0.3s;">📸 SNAP</button>
+            <button onclick="toggleMirror()" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--accent);padding:0.4rem 0.8rem;font-family:var(--font-mono);font-size:0.6rem;cursor:pointer;transition:all 0.3s;">↔ ESPEJO</button>
+            <div class="waveform" id="waveform" style="margin-left:auto;height:28px;">
+              <div class="wave-bar" style="height:8px"></div>
+              <div class="wave-bar" style="height:16px"></div>
+              <div class="wave-bar" style="height:24px"></div>
+              <div class="wave-bar" style="height:12px"></div>
+              <div class="wave-bar" style="height:20px"></div>
+              <div class="wave-bar" style="height:8px"></div>
+              <div class="wave-bar" style="height:30px"></div>
+              <div class="wave-bar" style="height:18px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CONTROLS & LOG -->
+        <div class="demo-controls">
+          <div>
+            <div class="demo-progress">
+              <div class="prog-step" id="ps1"></div>
+              <div class="prog-label">TIMBRE</div>
+              <div class="prog-step" id="ps2"></div>
+              <div class="prog-label">NOTIF.</div>
+              <div class="prog-step" id="ps3"></div>
+              <div class="prog-label">AUDIO</div>
+              <div class="prog-step" id="ps4"></div>
+              <div class="prog-label">GRABACIÓN</div>
+            </div>
+            <div class="demo-state-title" id="stateLabel">ESPERANDO INTERACCIÓN</div>
+            <div class="demo-state-desc" id="stateDesc">Sistema listo</div>
+            <div class="demo-state-sub" id="stateSub">Presiona el botón del timbre para iniciar la simulación completa del SmartBell.</div>
+            <div class="recording-vis" id="recordingVis">
+              <div class="rec-indicator">
+                <div class="rec-dot"></div>
+                GRABANDO MENSAJE...
+              </div>
+              <div class="waveform" id="recWaveform" style="height:30px">
+                <div class="wave-bar active" style="height:8px"></div>
+                <div class="wave-bar active" style="height:20px"></div>
+                <div class="wave-bar active" style="height:14px"></div>
+                <div class="wave-bar active" style="height:26px"></div>
+                <div class="wave-bar active" style="height:10px"></div>
+                <div class="wave-bar active" style="height:18px"></div>
+                <div class="wave-bar active" style="height:22px"></div>
+                <div class="wave-bar active" style="height:12px"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="demo-log" id="demoLog">
+              <div class="log-entry"><span class="log-time">00:00</span><span class="log-msg info">Sistema SmartBell iniciado...</span></div>
+              <div class="log-entry"><span class="log-time">00:01</span><span class="log-msg ok">ESP32 conectado a la red WiFi</span></div>
+              <div class="log-entry"><span class="log-time">00:02</span><span class="log-msg ok">Cámara lista para transmisión</span></div>
+              <div class="log-entry"><span class="log-time">00:03</span><span class="log-msg info">Esperando señal del botón GPIO...</span></div>
+            </div>
+            <div class="demo-btn-area">
+              <button class="demo-btn" id="mainDemoBtn" onclick="ringDoorbell()">🔔 TOCAR TIMBRE</button>
+              <button class="demo-btn danger" onclick="resetDemo()">↺ REINICIAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Timbre<span>Inteligente</span></div>
+      <div class="footer-tagline">Proyecto de timbre inteligente IoT desarrollado con ESP32 y protoboard. Conecta tu hogar con tecnología accesible y efectiva.</div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:1rem;">TECNOLOGÍAS</div>
+      <div class="footer-tech">
+        <div class="tech-badge">ESP32</div>
+        <div class="tech-badge">PROTOBOARD</div>
+        <div class="tech-badge">WiFi / HTTP</div>
+        <div class="tech-badge">MQTT</div>
+        <div class="tech-badge">C++ Arduino</div>
+        <div class="tech-badge">HTML/CSS/JS</div>
+        <div class="tech-badge">Web Audio API</div>
+        <div class="tech-badge">IoT</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>Timbre Inteligente — PROYECTO IoT © 2025</div>
+    <div>
+      <a href="paginas/desarrollo.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Desarrollo</a>
+      <a href="paginas/acerca-de.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Acerca de</a>
+      <a href="paginas/contacto.html" style="color:var(--muted);text-decoration:none;">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>

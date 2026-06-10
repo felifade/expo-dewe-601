@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acerca de — HeartSense</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="pulse-dot"></span>
+        HEARTSENSE
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">       Inicio</a></li>
+        <li><a href="desarrollo.html">     Desarrollo</a></li>
+        <li><a href="acerca.html" class="active">Acerca de</a></li>
+        <li><a href="contacto.html">       Contacto</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" title="Cambiar tema">☀️</button>
+        <button class="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../index.html">       Inicio</a>
+    <a href="desarrollo.html">     Desarrollo</a>
+    <a href="acerca.html" class="active">Acerca de</a>
+    <a href="contacto.html">       Contacto</a>
+  </div>
+
+  <main class="page-wrap">
+
+    <header class="page-header">
+      <div class="container page-header-inner">
+        <p class="page-header-tag">ℹ Información del proyecto</p>
+        <h1>Acerca del<br><span style="color:var(--accent)">Proyecto</span></h1>
+        <p>
+          Conoce los objetivos, tecnologías y al equipo detrás de
+          este sistema de monitoreo cardíaco inteligente.
+        </p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- Descripción del proyecto -->
+          <div class="about-card">
+            <h3>📋 Descripción del Proyecto</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.75;">
+              HeartSense es un sistema de monitoreo de ritmo cardíaco en tiempo real
+              desarrollado como proyecto escolar. Combina hardware embebido (sensores PPG)
+              con una interfaz web moderna para visualizar, analizar y alertar sobre
+              variaciones en la frecuencia cardíaca del usuario.
+            </p>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.75; margin-top:12px;">
+              El sistema está orientado a la prevención de problemas cardiovasculares
+              mediante el monitoreo continuo y las alertas inteligentes en tres niveles:
+              Normal, Precaución y Alerta.
+            </p>
+          </div>
+
+          <!-- Objetivos -->
+          <div class="about-card">
+            <h3>🎯 Objetivos del Proyecto</h3>
+            <div class="obj-list">
+              <div class="obj-item">Desarrollar un sistema de monitoreo cardíaco en tiempo real accesible y preciso.</div>
+              <div class="obj-item">Implementar alertas visuales dinámicas según rangos clínicos establecidos.</div>
+              <div class="obj-item">Crear una interfaz web moderna, responsive y con modo oscuro/claro.</div>
+              <div class="obj-item">Aprender y aplicar HTML, CSS y JavaScript en un proyecto con impacto real.</div>
+              <div class="obj-item">Simular la integración entre hardware (sensor) y software (interfaz web).</div>
+              <div class="obj-item">Documentar el proceso de desarrollo de forma clara y estructurada.</div>
+            </div>
+          </div>
+
+          <!-- Tecnologías -->
+          <div class="about-card">
+            <h3>🛠 Tecnologías Utilizadas</h3>
+            <div class="tech-list">
+              <div class="tech-badge">🌐 HTML5</div>
+              <div class="tech-badge">🎨 CSS3</div>
+              <div class="tech-badge">⚡ JavaScript</div>
+              <div class="tech-badge">📐 CSS Grid</div>
+              <div class="tech-badge">📦 Flexbox</div>
+              <div class="tech-badge">🔠 Google Fonts</div>
+              <div class="tech-badge">🎞 CSS Animations</div>
+              <div class="tech-badge">💾 localStorage</div>
+              <div class="tech-badge">👁 Intersection Observer</div>
+              <div class="tech-badge">📡 SVG</div>
+              <div class="tech-badge">🤖 Arduino</div>
+              <div class="tech-badge">💡 Sensor PPG</div>
+            </div>
+          </div>
+
+          <!-- Metodología -->
+          <div class="about-card">
+            <h3>📐 Metodología</h3>
+            <div class="obj-list">
+              <div class="obj-item"><strong style="color:var(--text)">Investigación:</strong> Estudio de señales PPG y algoritmos de detección cardíaca.</div>
+              <div class="obj-item"><strong style="color:var(--text)">Diseño:</strong> Prototipado de interfaz con wireframes y paleta de colores médica.</div>
+              <div class="obj-item"><strong style="color:var(--text)">Desarrollo:</strong> Implementación iterativa de HTML, CSS y JavaScript.</div>
+              <div class="obj-item"><strong style="color:var(--text)">Pruebas:</strong> Validación en distintos dispositivos y navegadores.</div>
+              <div class="obj-item"><strong style="color:var(--text)">Documentación:</strong> Código comentado y estructura clara de archivos.</div>
+            </div>
+          </div>
+
+          <!-- Tarjeta del estudiante -->
+          <div class="about-card student-card">
+            <img src="../img/moy2.jpg" alt="Moisés González"
+                 style="width:90px; height:90px; border-radius:50%;
+                        object-fit:cover; border:2px solid var(--accent);
+                        flex-shrink:0;" />
+            <div>
+              <div class="student-name">Moisés González Castillo</div>
+              <div class="student-role">Estudiante · Informática</div>
+              <div class="student-tags">
+                <span class="student-tag">Grupo: 601</span>
+                <span class="student-tag">Carrera: Informática</span>
+                <span class="student-tag">pro en roblox (●'◡'●) </span>
+                <span class="student-tag">Estudiante</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO -->
+    <section class="section-sm" style="background: var(--surface); border-top: 1px solid var(--border);">
+      <div class="container">
+        <span class="section-tag">Cronología</span>
+        <h2 class="section-title mt-4">Etapas del Proyecto</h2>
+
+        <div class="steps mt-8">
+
+          <!-- Semana 1 -->
+          <div class="step-card">
+            <div class="step-num">s1</div>
+            <div class="step-content">
+              <h3>Semana 1 — Investigación</h3>
+              <p>Revisión bibliográfica sobre sensores PPG, algoritmo Pan-Tompkins y rangos clínicos de frecuencia cardíaca.</p>
+              <img src="../img/semana1.jpg" alt="Semana 1"
+                   style="width:20%; border-radius:10px; margin-top:14px;
+                          object-fit:cover; aspect-ratio:1/1;" />
+            </div>
+          </div>
+
+          <!-- Semana 2 -->
+          <div class="step-card">
+            <div class="step-num">s2</div>
+            <div class="step-content">
+              <h3>Semana 2 — Diseño UI/UX</h3>
+              <p>Definición de paleta de colores, tipografías, estructura de páginas y bocetos de los componentes visuales.</p>
+              <img src="../img/semana2.jpg" alt="Semana 2"
+                   style="width:20%; border-radius:10px; margin-top:14px;
+                          object-fit:cover; aspect-ratio:1/1;" />
+            </div>
+          </div>
+
+          <!-- Semana 3 -->
+          <div class="step-card">
+            <div class="step-num">s3</div>
+            <div class="step-content">
+              <h3>Semana 3 — Desarrollo</h3>
+              <p>Implementación de HTML, CSS y JavaScript. Animaciones ECG, monitor BPM en vivo y sistema de alertas.</p>
+              <img src="../img/semana3.jpg" alt="Semana 3"
+                   style="width:20%; border-radius:10px; margin-top:14px;
+                          object-fit:cover; aspect-ratio:1/1;" />
+            </div>
+          </div>
+
+          <!-- Semana 4 -->
+          <div class="step-card">
+            <div class="step-num">s4</div>
+            <div class="step-content">
+              <h3>Semana 4 — Pruebas y Entrega</h3>
+              <p>Testing en móvil, tablet y desktop. Corrección de bugs, optimización de rendimiento y documentación final.</p>
+              <img src="../img/semana4.jpg" alt="Semana 4"
+                   style="width:20%; border-radius:10px; margin-top:14px;
+                          object-fit:cover; aspect-ratio:1/1;" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">❤ HEARTSENSE</div>
+        <p>Proyecto Escolar — Sensor de Ritmo Cardíaco Inteligente</p>
+        <p>© 2026 · Desarrollado con HTML, CSS y JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

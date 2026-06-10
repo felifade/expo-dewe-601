@@ -1,0 +1,1005 @@
+/* ================================================================
+   ESTILOS PRINCIPALES — Monitor de Ritmo Cardíaco con Arduino
+   Sensor MAX30102 | Autor: Jared Martínez Santiago
+   Materia: Páginas Web | Año: 2026
+   ================================================================ */
+
+/* Fuentes: Rajdhani (tecnológica) + Share Tech Mono (monoespaciada) */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;700&display=swap');
+
+/* ================================================================
+   VARIABLES — Modo Oscuro (predeterminado)
+   Paleta inspirada en monitores médicos de hospital
+   ================================================================ */
+:root {
+  --bg-base:        #040d0f;
+  --bg-panel:       #071318;
+  --bg-card:        #0a1c22;
+  --bg-card2:       #0d2029;
+  --bg-nav:         rgba(4, 13, 15, 0.94);
+
+  --neon-green:     #00ff88;       /* Verde neón principal */
+  --neon-blue:      #00cfff;       /* Azul cian */
+  --neon-dim:       #00c86a;       /* Verde más suave */
+  --red-alert:      #ff4466;       /* Rojo alerta */
+  --amber:          #ffaa00;       /* Ámbar para advertencias */
+
+  --text-primary:   #d6fff0;
+  --text-secondary: #7abfa0;
+  --text-muted:     #3a6e58;
+
+  --border:         rgba(0, 255, 136, 0.15);
+  --border-bright:  rgba(0, 255, 136, 0.45);
+  --glow-green:     0 0 18px rgba(0, 255, 136, 0.35);
+  --glow-blue:      0 0 18px rgba(0, 207, 255, 0.35);
+  --glow-strong:    0 0 32px rgba(0, 255, 136, 0.55);
+
+  --gradient-hero:  linear-gradient(160deg, #040d0f 0%, #071d18 50%, #040d0f 100%);
+  --gradient-green: linear-gradient(90deg, #00ff88, #00cfff);
+  --gradient-card:  linear-gradient(145deg, #0a1c22, #071318);
+
+  --font-display:   'Rajdhani', sans-serif;
+  --font-mono:      'Share Tech Mono', monospace;
+  --font-body:      'Exo 2', sans-serif;
+  --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================================
+   VARIABLES — Modo Claro
+   Se activan con la clase "light-mode" en el body
+   ================================================================ */
+body.light-mode {
+  --bg-base:        #e8f5f0;
+  --bg-panel:       #d4eee5;
+  --bg-card:        #ffffff;
+  --bg-card2:       #f0faf6;
+  --bg-nav:         rgba(232, 245, 240, 0.95);
+
+  --neon-green:     #007a42;
+  --neon-blue:      #0077aa;
+  --neon-dim:       #009955;
+  --red-alert:      #cc2244;
+
+  --text-primary:   #092518;
+  --text-secondary: #1a6040;
+  --text-muted:     #5a9070;
+
+  --border:         rgba(0, 122, 66, 0.18);
+  --border-bright:  rgba(0, 122, 66, 0.5);
+  --glow-green:     0 2px 12px rgba(0, 122, 66, 0.2);
+  --glow-blue:      0 2px 12px rgba(0, 119, 170, 0.2);
+  --glow-strong:    0 4px 24px rgba(0, 122, 66, 0.3);
+
+  --gradient-hero:  linear-gradient(160deg, #d4eee5 0%, #c5e8dc 100%);
+  --gradient-card:  linear-gradient(145deg, #ffffff, #edf9f4);
+}
+
+/* ================================================================
+   RESET Y BASE
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: var(--transition);
+  overflow-x: hidden;
+  /* Cuadrícula sutil de fondo tipo pantalla de osciloscopio */
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ================================================================
+   BARRA DE NAVEGACIÓN
+   ================================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 64px;
+  background: var(--bg-nav);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: var(--glow-green);
+  transition: var(--transition);
+}
+
+/* Logo de la barra */
+.navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--neon-green);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.06em;
+  text-shadow: var(--glow-green);
+}
+
+/* Ícono de corazón pulsante en el logo */
+.heart-beat {
+  display: inline-block;
+  color: var(--red-alert);
+  animation: heartPulse 1.2s ease-in-out infinite;
+  font-size: 1.2rem;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.3); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.2); }
+  60%       { transform: scale(1); }
+}
+
+/* Links del menú */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--neon-green);
+  border-color: var(--border-bright);
+  background: rgba(0, 255, 136, 0.07);
+  text-shadow: var(--glow-green);
+}
+
+/* Controles derecha */
+.nav-controls { display: flex; gap: 0.7rem; align-items: center; }
+
+/* Botón de tema claro/oscuro */
+.btn-theme {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  color: var(--neon-green);
+  padding: 0.38rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.btn-theme:hover {
+  background: rgba(0, 255, 136, 0.12);
+  box-shadow: var(--glow-green);
+}
+
+/* Menú hamburguesa (móvil) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.3rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--neon-green);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ================================================================
+   MONITOR CARDÍACO — SECCIÓN HERO
+   Interfaz principal tipo hospital
+   ================================================================ */
+.monitor-section {
+  min-height: 100vh;
+  background: var(--gradient-hero);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 1.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de barrido de radar de fondo */
+.monitor-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(0,255,136,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Carcasa del monitor (panel oscuro estilo equipo médico) */
+.monitor-display {
+  width: 100%;
+  max-width: 860px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-bright);
+  border-radius: 16px;
+  box-shadow: var(--glow-strong), inset 0 0 60px rgba(0,0,0,0.4);
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Barra superior del monitor (como la de un equipo de hospital) */
+.monitor-header {
+  background: #050f13;
+  border-bottom: 1px solid var(--border-bright);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.monitor-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neon-green);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Indicadores de estado en la cabecera */
+.monitor-status-bar {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.status-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Punto de LED parpadeante */
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  box-shadow: 0 0 6px var(--neon-green);
+  animation: ledBlink 1.5s ease-in-out infinite;
+}
+
+.led.red   { background: var(--red-alert); box-shadow: 0 0 6px var(--red-alert); }
+.led.blue  { background: var(--neon-blue); box-shadow: 0 0 6px var(--neon-blue); animation-delay: 0.5s; }
+.led.amber { background: var(--amber);     box-shadow: 0 0 6px var(--amber); animation-delay: 1s; }
+
+@keyframes ledBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Cuerpo principal del monitor */
+.monitor-body {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 1.5rem;
+}
+
+/* ---- Canal ECG (osciloscopio) ---- */
+.ecg-panel {
+  background: #020d10;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ecg-label {
+  position: absolute;
+  top: 8px; left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--neon-dim);
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+/* Canvas donde se dibuja el ECG con JavaScript */
+#ecgCanvas {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+/* Cuadrícula superpuesta al canvas (aspecto de osciloscopio) */
+.ecg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Segunda fila: SpO2 u otro canal */
+.ecg-panel-2 { margin-top: 0.8rem; }
+
+#ecgCanvas2 { height: 70px; }
+
+/* ---- Panel de valores vitales ---- */
+.vitals-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Tarjeta de un valor vital (BPM, SpO2...) */
+.vital-card {
+  background: #020d10;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.vital-card.bpm-main {
+  border-color: var(--border-bright);
+  box-shadow: var(--glow-green);
+}
+
+.vital-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+/* Número grande de BPM */
+.vital-value {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--neon-green);
+  line-height: 1;
+  text-shadow: var(--glow-green);
+  transition: color 0.3s ease;
+}
+
+.vital-value.small { font-size: 1.9rem; color: var(--neon-blue); text-shadow: var(--glow-blue); }
+.vital-value.small2 { font-size: 1.5rem; color: var(--amber); text-shadow: 0 0 12px var(--amber); }
+
+.vital-unit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Corazón animado debajo del BPM */
+.heart-anim {
+  font-size: 1.6rem;
+  animation: heartPulse 1.2s ease-in-out infinite;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* ---- Estado del paciente ---- */
+.patient-status {
+  margin-top: 0.9rem;
+  background: #020d10;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  grid-column: 1 / -1;
+}
+
+.patient-status .status-label {
+  color: var(--neon-dim);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Barra de estado tipo terminal */
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  box-shadow: var(--glow-green);
+  flex-shrink: 0;
+  animation: ledBlink 1.8s ease-in-out infinite;
+}
+
+/* Pie del monitor */
+.monitor-footer {
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.monitor-footer .sensor-info {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.monitor-footer .sensor-info strong {
+  color: var(--neon-blue);
+}
+
+/* Botón "Iniciar Monitoreo" */
+.btn-monitor {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1.5px solid var(--neon-green);
+  color: var(--neon-green);
+  padding: 0.6rem 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-monitor:hover,
+.btn-monitor.active {
+  background: rgba(0, 255, 136, 0.12);
+  box-shadow: var(--glow-strong);
+}
+
+.btn-monitor.running {
+  border-color: var(--red-alert);
+  color: var(--red-alert);
+  text-shadow: 0 0 10px var(--red-alert);
+}
+
+/* ================================================================
+   CONTENEDOR GENERAL
+   ================================================================ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ================================================================
+   SECCIONES COMUNES
+   ================================================================ */
+section { padding: 5rem 0; }
+
+.section-alt { background: var(--bg-panel); }
+
+/* Encabezado de sección */
+.section-header { text-align: center; margin-bottom: 3rem; }
+
+.section-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neon-green);
+  border: 1px solid var(--border-bright);
+  padding: 0.3rem 0.9rem;
+  border-radius: 3px;
+  margin-bottom: 0.9rem;
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+
+.section-header h2 span { color: var(--neon-green); }
+
+.section-line {
+  width: 60px; height: 2px;
+  background: var(--gradient-green);
+  margin: 0.7rem auto 1rem;
+  border-radius: 2px;
+}
+
+.section-header p { color: var(--text-secondary); max-width: 520px; margin: 0 auto; font-size: 0.97rem; }
+
+/* ================================================================
+   TARJETAS (CARDS)
+   ================================================================ */
+.card {
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.8rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient-green);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--glow-green);
+  transform: translateY(-4px);
+}
+
+.card:hover::after { opacity: 1; }
+
+.card-icon {
+  width: 46px; height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  background: rgba(0,255,136,0.04);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.3rem; }
+
+/* ================================================================
+   BOTONES GENERALES
+   ================================================================ */
+.btn-primary {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--gradient-green);
+  color: #040d0f;
+  padding: 0.75rem 1.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: var(--transition);
+  box-shadow: var(--glow-green);
+}
+
+.btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
+
+.btn-outline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--neon-blue);
+  padding: 0.75rem 1.8rem;
+  border: 1.5px solid var(--neon-blue);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-outline:hover { background: rgba(0,207,255,0.1); box-shadow: var(--glow-blue); transform: translateY(-2px); }
+
+/* ================================================================
+   DOS COLUMNAS
+   ================================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ================================================================
+   LISTA DE MATERIALES
+   ================================================================ */
+.materials-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+
+.materials-list li {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.materials-list li:hover {
+  border-color: var(--border-bright);
+  transform: translateX(5px);
+  color: var(--text-primary);
+}
+
+.materials-list li .mat-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+/* ================================================================
+   PASOS
+   ================================================================ */
+.steps-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.step-item {
+  display: flex; gap: 1.1rem;
+  padding: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  transition: var(--transition);
+}
+
+.step-item:hover { border-color: var(--border-bright); box-shadow: var(--glow-green); }
+
+.step-number {
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--neon-green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--neon-green);
+  flex-shrink: 0;
+  text-shadow: var(--glow-green);
+}
+
+.step-content h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.step-content p { font-size: 0.88rem; color: var(--text-secondary); }
+
+/* ================================================================
+   IMAGEN CON MARCO TECNOLÓGICO
+   ================================================================ */
+.tech-image {
+  border: 1px solid var(--border-bright);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--glow-green);
+  position: relative;
+}
+
+.tech-image img {
+  width: 100%; height: 280px;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+
+.tech-image:hover img { transform: scale(1.04); }
+
+.tech-image-caption {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* Placeholder cuando no hay imagen */
+.img-placeholder {
+  height: 280px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--bg-card);
+}
+
+/* ================================================================
+   BARRAS DE PROGRESO (beneficios)
+   ================================================================ */
+.bar-group { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.bar-item label {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.bar-track {
+  height: 6px;
+  background: var(--bg-card);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--gradient-green);
+  border-radius: 6px;
+  width: 0;
+  box-shadow: var(--glow-green);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================================
+   TARJETA DE PERFIL (contacto)
+   ================================================================ */
+.profile-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--glow-green);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Esquinas decorativas tipo circuito */
+.profile-card::before,
+.profile-card::after {
+  content: '';
+  position: absolute;
+  width: 60px; height: 60px;
+  border: 1.5px solid var(--border-bright);
+  opacity: 0.5;
+}
+.profile-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; border-radius: 14px 0 0 0; }
+.profile-card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; border-radius: 0 0 14px 0; }
+
+.profile-photo {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-green);
+  box-shadow: var(--glow-strong);
+  margin: 0 auto 1.2rem;
+  overflow: hidden;
+  background: var(--bg-panel);
+}
+
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.profile-role {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--neon-green);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+
+/* Línea divisora tipo ECG */
+.ecg-divider {
+  height: 2px;
+  background: var(--gradient-green);
+  border-radius: 2px;
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.ecg-divider::after {
+  content: '';
+  position: absolute; top: 0; left: -60%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 2s ease infinite;
+}
+@keyframes shimmer { to { left: 120%; } }
+
+.profile-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center; margin: 1rem 0;
+}
+
+.profile-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  color: var(--neon-green);
+  border: 1px solid var(--border-bright);
+  padding: 0.25rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(0,255,136,0.05);
+}
+
+.profile-row {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ================================================================
+   ANIMACIÓN REVEAL AL SCROLL
+   ================================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ================================================================
+   PIE DE PÁGINA
+   ================================================================ */
+footer {
+  background: #020a0c;
+  border-top: 1px solid var(--border-bright);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+footer .footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--neon-green);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  display: flex; justify-content: center; gap: 1.5rem;
+  flex-wrap: wrap; margin: 0.7rem 0;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  transition: var(--transition);
+}
+
+.footer-links a:hover { color: var(--neon-green); }
+
+footer p { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.4rem; }
+
+/* ================================================================
+   RESPONSIVE — Tablets
+   ================================================================ */
+@media (max-width: 860px) {
+  .monitor-body { grid-template-columns: 1fr; }
+  .vitals-panel { flex-direction: row; flex-wrap: wrap; }
+  .vital-card { flex: 1; min-width: 120px; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ================================================================
+   RESPONSIVE — Móviles
+   ================================================================ */
+@media (max-width: 600px) {
+  .hamburger { display: flex; }
+
+  .nav-menu {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--bg-nav);
+    backdrop-filter: blur(18px);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-bright);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    gap: 0.3rem;
+  }
+
+  .nav-menu.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-menu a { display: block; text-align: center; padding: 0.6rem; }
+
+  .btn-theme .theme-text { display: none; }
+
+  section { padding: 3rem 0; }
+
+  .vital-value { font-size: 2.2rem; }
+  .vital-value.small { font-size: 1.5rem; }
+
+  .cards-grid { grid-template-columns: 1fr; }
+}

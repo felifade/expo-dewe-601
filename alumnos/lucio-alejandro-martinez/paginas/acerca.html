@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timbre Arduino — Acerca de</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">🔔</div>
+      TIMBRE<span style="color:var(--text-muted);">.ino</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="desarrollo.html">Desarrollo</a></li>
+      <li><a href="acerca.html" class="active">Acerca de</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="t-icon t-moon">🌙</span>
+        <span class="t-icon t-sun">☀️</span>
+      </button>
+      <button class="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="desarrollo.html">Desarrollo</a>
+    <a href="acerca.html">Acerca de</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="section-label fade-in" style="justify-content:center;">El proyecto y el equipo</p>
+    <h1 class="fade-in">Acerca <span style="color:var(--accent);">de nosotros</span></h1>
+    <div class="accent-line"></div>
+    <p class="fade-in">Conoce el equipo detrás del proyecto y los objetivos educativos que lo impulsan.</p>
+  </div>
+
+  <!-- OBJETIVO -->
+  <section class="section">
+    <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div>
+        <p class="section-label fade-in">Misión</p>
+        <h2 class="section-title fade-in">Objetivo del proyecto</h2>
+        <p class="fade-in" style="color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9;">
+          Este proyecto tiene como finalidad aplicar los conocimientos de electrónica básica
+          y programación en C++ para crear un dispositivo funcional con Arduino UNO.
+        </p>
+        <p class="fade-in" style="color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9;">
+          A través del timbre, exploramos conceptos como entradas digitales, señales PWM,
+          resistencias pull-down y uso de la biblioteca tone() de Arduino.
+        </p>
+        <p class="fade-in" style="color:var(--text-muted);line-height:1.9;">
+          La documentación en este sitio busca que cualquier persona pueda replicar
+          el proyecto paso a paso, fomentando el aprendizaje autónomo en electrónica.
+        </p>
+      </div>
+
+      <div>
+        <p class="section-label fade-in">Tecnologías usadas</p>
+        <h2 class="section-title fade-in">Stack del proyecto</h2>
+
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;">
+          <div class="fade-in" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+            <span style="font-size:1.5rem;">🎛️</span>
+            <div>
+              <div style="font-family:var(--font-display);font-size:.85rem;margin-bottom:.2rem;">Arduino IDE 2.0</div>
+              <div style="font-size:.8rem;color:var(--text-muted);">Entorno de desarrollo y carga de código</div>
+            </div>
+            <span class="badge badge-green" style="margin-left:auto;">Usado</span>
+          </div>
+          <div class="fade-in" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+            <span style="font-size:1.5rem;">💻</span>
+            <div>
+              <div style="font-family:var(--font-display);font-size:.85rem;margin-bottom:.2rem;">C++ (Arduino)</div>
+              <div style="font-size:.8rem;color:var(--text-muted);">Lenguaje de programación del microcontrolador</div>
+            </div>
+            <span class="badge badge-blue" style="margin-left:auto;">Usado</span>
+          </div>
+          <div class="fade-in" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+            <span style="font-size:1.5rem;">🔌</span>
+            <div>
+              <div style="font-family:var(--font-display);font-size:.85rem;margin-bottom:.2rem;">Tinkercad Circuits</div>
+              <div style="font-size:.8rem;color:var(--text-muted);">Simulación y diseño de circuitos online</div>
+            </div>
+            <span class="badge badge-orange" style="margin-left:auto;">Simulación</span>
+          </div>
+          <div class="fade-in" style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+            <span style="font-size:1.5rem;">🌐</span>
+            <div>
+              <div style="font-family:var(--font-display);font-size:.85rem;margin-bottom:.2rem;">HTML / CSS / JavaScript</div>
+              <div style="font-size:.8rem;color:var(--text-muted);">Documentación web del proyecto</div>
+            </div>
+            <span class="badge badge-green" style="margin-left:auto;">Este sitio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- EQUIPO -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label fade-in">Integrantes</p>
+      <h2 class="section-title fade-in">El equipo</h2>
+      <p class="section-desc fade-in">Estudiantes responsables del diseño, desarrollo y documentación del proyecto.</p>
+
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <div class="team-photo">
+  <!-- <img src="../img/lucio.jpg" alt="Lucio"> -->
+  👤
+</div>
+          <h4>Integrante 1</h4>
+          <span>Hardware & Circuitos</span>
+          <p>Lucio Alejandro Martinez Bautista.</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-photo">
+  <!-- <img src="../img/jesus.jpg" alt="Jesús"> -->
+  👤
+</div>
+          <h4>Integrante 2</h4>
+          <span>Programación Arduino</span>
+          <p>Jesus Alejandro Hernandez Flores.</p>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-photo">
+  <!-- <img src="../img/oliver.jpg" alt="Oliver"> -->
+  👤
+</div>
+          <h4>Integrante 3</h4>
+          <span>Documentación</span>
+          <p>Oliver Gerardo Maravilla Zuñiga.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- FAQ ACCORDION -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label fade-in">Preguntas frecuentes</p>
+      <h2 class="section-title fade-in">FAQ</h2>
+      <p class="section-desc fade-in">Dudas comunes sobre el proyecto y su replicación.</p>
+
+      <div class="accordion">
+        <div class="acc-item fade-in">
+          <button class="acc-header">
+            ¿Necesito conocimientos previos de electrónica?
+            <span class="acc-arrow">+</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              No necesariamente. El proyecto está diseñado para ser accesible a principiantes.
+              Con seguir el diagrama de conexión y cargar el código paso a paso es suficiente
+              para obtener el resultado. Se recomienda leer la documentación de Arduino UNO básico.
+            </div>
+          </div>
+        </div>
+        <div class="acc-item fade-in">
+          <button class="acc-header">
+            ¿Puedo usar un buzzer activo en lugar de piezoeléctrico?
+            <span class="acc-arrow">+</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              Sí, pero con diferencias. Un buzzer activo genera sonido solo con alimentación
+              (no necesita la función tone()), mientras que el piezoeléctrico (pasivo) requiere
+              una señal PWM. Si usas buzzer activo, simplifica el código a digitalWrite en lugar de tone().
+            </div>
+          </div>
+        </div>
+        <div class="acc-item fade-in">
+          <button class="acc-header">
+            ¿Cómo cambio el sonido del timbre?
+            <span class="acc-arrow">+</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              Modifica los valores de frecuencia en Hz dentro de la función tocarTimbre(). 
+              El rango audible va de 20 Hz a 20,000 Hz, pero el buzzer responde mejor entre 
+              500 Hz y 4,000 Hz. Puedes crear melodías encadenando múltiples llamadas a tone() 
+              con diferentes frecuencias y duraciones.
+            </div>
+          </div>
+        </div>
+        <div class="acc-item fade-in">
+          <button class="acc-header">
+            ¿Funciona sin conexión a la computadora?
+            <span class="acc-arrow">+</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              Sí. Una vez cargado el código, el Arduino guarda el programa en su memoria flash.
+              Puedes alimentarlo con una batería de 9 V conectada al jack de alimentación
+              y funcionará de forma autónoma sin necesitar la PC.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">🔔 TIMBRE.ino</div>
+        <p class="footer-sub">Proyecto de electrónica con Arduino UNO · 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Inicio</a>
+        <a href="desarrollo.html">Desarrollo</a>
+        <a href="acerca.html">Acerca de</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+  <button id="sound-btn" title="¡Tocar timbre!">🔔</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

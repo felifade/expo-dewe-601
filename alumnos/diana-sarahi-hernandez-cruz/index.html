@@ -1,79 +1,252 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Diana Sarahi Hernández Cruz</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBell ESP32 — Timbre Inteligente</title>
+  <meta name="description" content="Proyecto final: timbre inteligente con ESP32, conteo de 5 segundos, cámara y mensaje de ausencia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/script.js"></script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Diana Sarahi Hernández Cruz</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/diana-sarahi-hernandez-cruz/
-        </div>
+  <div class="bg-fx"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- NAV -->
+
+ <nav class="nav-links">
+  <a href="index.html">Inicio</a>
+  <a href="paginas/desarrollo.html">Desarrollo</a>
+  <a href="paginas/acerca.html">Acerca de</a>
+  <a href="paginas/contacto.html">Contacto</a>
+
+ <button id="themeBtn" class="btn-primary">
+ 🌙
+</button>
+
+</nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="badge"><span class="dotpulse"></span> Proyecto Final · ESP32 + IoT</span>
+      <h1>Timbre <span class="gradient">inteligente</span> que nunca duerme.</h1>
+      <p class="lead">
+        Cuando alguien toca el timbre, inicia un conteo de 5 segundos. Si no respondes,
+        la cámara graba y un mensaje anuncia: <strong>"No me encuentro en casa"</strong>.
+      </p>
+      <div class="cta-row">
+        <a href="#steps" class="btn-primary">▶ Empezar paso a paso</a>
+        <a href="#parts" class="btn-ghost">⚙ Ver componentes</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>5s</b><span>Conteo</span></div>
+        <div class="stat"><b>ESP32</b><span>Microcontrolador</span></div>
+        <div class="stat"><b>24/7</b><span>Vigilancia</span></div>
+      </div>
     </div>
+
+    <!-- DEMO INTERACTIVA -->
+    <div class="demo">
+      <div class="demo-card glass">
+        <div class="demo-top">
+          <span id="statusDot" class="status-dot"></span>
+          <span id="statusText" class="mono">STANDBY</span>
+          <span class="mono right">ESP32 · v1.0</span>
+        </div>
+
+        <div class="lens-wrap">
+          <span class="ring-wave"></span>
+          <span class="ring-wave d2"></span>
+          <div id="lens" class="lens">
+            <div class="lens-inner"><div id="scanLine" class="scan-line"></div></div>
+            <span class="cam-ico">📷</span>
+          </div>
+        </div>
+
+   <div id="display" class="display">
+  <p class="label">Listo</p>
+  <p class="value">Toca el botón →</p>
+</div>
+
+<div class="progress-container">
+    <div id="progressBar" class="progress-bar"></div>
+</div>
+
+<button id="ringBtn" class="ring-btn">🔔</button>
+
+<video
+    id="video"
+    autoplay
+    playsinline
+    muted
+    style="
+        display:none;
+        width:100%;
+        margin-top:15px;
+        border-radius:15px;
+        border:2px solid #ff6b6b;
+    ">
+</video>
+
+  <!-- HOW -->
+  <section id="how" class="section">
+    <div class="section-head">
+      <p class="kicker">Flujo del sistema</p>
+      <h2>Cómo funciona</h2>
+      <p class="muted">Un flujo simple, automatizado y siempre activo.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card"><div class="ico">🔔</div><h3>1. Visitante toca</h3><p>Pulsa el botón físico conectado al ESP32.</p><span class="num">01</span></div>
+      <div class="card"><div class="ico">⚡</div><h3>2. Inicia conteo</h3><p>Temporizador de 5 segundos para responder.</p><span class="num">02</span></div>
+      <div class="card"><div class="ico">📷</div><h3>3. Cámara graba</h3><p>Si no respondes, comienza la grabación.</p><span class="num">03</span></div>
+      <div class="card"><div class="ico">🔊</div><h3>4. Mensaje de voz</h3><p>Reproduce: "No me encuentro en casa".</p><span class="num">04</span></div>
+    </div>
+  </section>
+
+  <!-- PARTS -->
+  <section id="parts" class="section">
+    <div class="section-head">
+      <p class="kicker accent">Hardware</p>
+      <h2>Componentes usados</h2>
+      <p class="muted">Todo lo que necesitas para replicar el proyecto.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><div class="ico">🧠</div><span class="tag">MCU</span><h3>ESP32</h3><p>Microcontrolador con Wi-Fi y Bluetooth. El cerebro del proyecto.</p></div>
+      <div class="card"><div class="ico">🔘</div><span class="tag">Input</span><h3>Botón pulsador</h3><p>Entrada física que dispara el evento del timbre.</p></div>
+      <div class="card"><div class="ico">🧩</div><span class="tag">Base</span><h3>Protoboard</h3><p>Base para montar el circuito sin soldar.</p></div>
+      <div class="card"><div class="ico">🔌</div><span class="tag">Conexión</span><h3>Cables macho/macho</h3><p>Conexiones entre ESP32, botón y protoboard.</p></div>
+      <div class="card"><div class="ico">📷</div><span class="tag">Sensor</span><h3>Cámara</h3><p>Captura el video cuando no hay respuesta.</p></div>
+      <div class="card"><div class="ico">🔊</div><span class="tag">Salida</span><h3>Buzzer / Altavoz</h3><p>Reproduce el mensaje "No me encuentro en casa".</p></div>
+    </div>
+  </section>
+  
+   <!-- GALERÍA -->
+<section class="section">
+    <div class="section-head">
+        <p class="kicker">Galería</p>
+        <h2>Imágenes del proyecto</h2>
+        <p class="muted">
+            Componentes utilizados para la construcción del timbre inteligente SmartBell.
+        </p>
+    </div>
+
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <img src="img/esp32.jpg" alt="ESP32">
+            <h3>ESP32</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/camara.jpg" alt="Cámara">
+            <h3>Cámara</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/buzzer.jpg" alt="Buzzer">
+            <h3>Buzzer</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/protoboard.jpg" alt="Protoboard">
+            <h3>Protoboard</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/cables.jpg" alt="Cables">
+            <h3>Cables de conexión</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img/timbre.jpg" alt="Timbre">
+            <h3>Timbre Inteligente</h3>
+        </div>
+
+    </div>
+</section>
+
+  <!-- STEPS -->
+  <section id="steps" class="section narrow">
+    <div class="section-head center">
+      <p class="kicker">Tutorial</p>
+      <h2>Paso a paso</h2>
+      <p class="muted">Sigue estos pasos para que todo funcione perfecto.</p>
+    </div>
+    <ol class="timeline">
+      <li><span class="step-num">1</span><div class="card"><h3>✓ Prepara el hardware</h3><p>Conecta el ESP32 a la protoboard. Une el botón pulsador a un pin GPIO (ej. GPIO 4) y a GND con cables macho/macho.</p></div></li>
+      <li><span class="step-num">2</span><div class="card"><h3>✓ Conecta cámara y buzzer</h3><p>Si usas ESP32-CAM, déjala lista. Conecta el buzzer o módulo de audio a otro GPIO (ej. GPIO 5).</p></div></li>
+      <li><span class="step-num">3</span><div class="card"><h3>✓ Carga el firmware</h3><p>Desde el Arduino IDE, instala el paquete ESP32 y sube el sketch que detecta el botón e inicia el temporizador.</p></div></li>
+      <li><span class="step-num">4</span><div class="card"><h3>✓ Lógica del conteo</h3><p>Al pulsar, el ESP32 inicia un contador de 5s. Si nadie responde, ejecuta la acción: grabar y reproducir el mensaje.</p></div></li>
+      <li><span class="step-num">5</span><div class="card"><h3>✓ Grabación y mensaje</h3><p>La cámara graba; el altavoz dice "No me encuentro en casa". Opcional: enviar notificación por Wi-Fi.</p></div></li>
+      <li><span class="step-num">6</span><div class="card"><h3>✓ ¡Prueba final!</h3><p>Energiza el ESP32, pulsa el botón y verifica el flujo completo. Documenta el resultado.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- CODE -->
+  <section id="code" class="section narrow">
+    <div class="section-head center">
+      <p class="kicker accent">Firmware</p>
+      <h2>Código base</h2>
+      <p class="muted">Sketch de referencia para Arduino IDE con ESP32.</p>
+    </div>
+    <div class="code-card glass">
+      <div class="code-top">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="mono small">smartbell.ino</span>
+      </div>
+<pre><code>// SmartBell · ESP32
+#define BTN_PIN     4
+#define BUZZER_PIN  5
+#define LED_REC     2
+
+const unsigned long WAIT_MS = 5000;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(BTN_PIN, INPUT_PULLUP);
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(LED_REC, OUTPUT);
+}
+
+void loop() {
+  if (digitalRead(BTN_PIN) == LOW) {
+    Serial.println("Timbre presionado...");
+    unsigned long t0 = millis();
+    bool answered = false;
+
+    while (millis() - t0 < WAIT_MS) {
+      // aquí podrías escuchar un botón de "respuesta"
+      delay(50);
+    }
+
+    if (!answered) {
+      digitalWrite(LED_REC, HIGH);     // inicia "grabación"
+      tone(BUZZER_PIN, 1000, 300);     // aviso
+      delay(500);
+      reproducirMensaje();             // "No me encuentro en casa"
+      digitalWrite(LED_REC, LOW);
+    }
+    delay(1000);
+  }
+}
+
+void reproducirMensaje() {
+  // Activa módulo de audio / DFPlayer / ESP32-CAM
+  Serial.println("Mensaje: No me encuentro en casa");
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="logo"><span>🔔</span> SmartBell · Proyecto Final IoT</div>
+    <span class="mono small">Hecho con ESP32 + ❤</span>
+  </footer>
+
 </body>
 </html>

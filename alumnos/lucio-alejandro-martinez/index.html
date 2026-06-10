@@ -1,79 +1,276 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Lucio Alejandro Martínez</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timbre Arduino — Inicio</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Lucio Alejandro Martínez</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/lucio-alejandro-martinez/
-        </div>
+
+  <!-- ====== NAV ====== -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🔔</div>
+      TIMBRE<span style="color:var(--text-muted);">.ino</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="paginas/desarrollo.html">Desarrollo</a></li>
+      <li><a href="paginas/acerca.html">Acerca de</a></li>
+      <li><a href="paginas/contacto.html">Contacto</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="t-icon t-moon">🌙</span>
+        <span class="t-icon t-sun">☀️</span>
+      </button>
+      <button class="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Inicio</a>
+    <a href="paginas/desarrollo.html">Desarrollo</a>
+    <a href="paginas/acerca.html">Acerca de</a>
+    <a href="paginas/contacto.html">Contacto</a>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="particles"></div>
+
+    <div class="hero-content">
+      <p class="hero-tag">Proyecto Arduino · Emprendimiento e Innovación</p>
+      <h1>
+        Timbre Inteligente
+        <span class="highlight">con Arduino</span>
+      </h1>
+      <p>
+        Un sistema de timbre domótico desarrollado con Arduino UNO, sensor de presencia
+        y alerta sonora personalizada. Conectividad simple, respuesta instantánea.
+      </p>
+      <div class="hero-btns">
+        <a href="paginas/desarrollo.html" class="btn-primary">Ver Desarrollo →</a>
+        <a href="#overview" class="btn-secondary">Conocer más</a>
+      </div>
+<!-- imagenes -->
+
+</div>
+    </div>
+
+    <!-- SVG circuit decoration -->
+    <div class="hero-visual">
+      <svg class="circuit-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="160" y="160" width="180" height="180" rx="8" stroke="#00e5ff" stroke-width="2"/>
+        <rect x="185" y="185" width="130" height="130" rx="4" stroke="#00e5ff" stroke-width="1" stroke-dasharray="6 3"/>
+        <circle cx="250" cy="250" r="30" stroke="#00e5ff" stroke-width="2"/>
+        <circle cx="250" cy="250" r="12" fill="#00e5ff" opacity=".3"/>
+        <!-- lines -->
+        <line x1="250" y1="160" x2="250" y2="80" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="250" y1="80" x2="350" y2="80" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="340" y1="250" x2="420" y2="250" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="420" y1="250" x2="420" y2="150" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="250" y1="340" x2="250" y2="420" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="250" y1="420" x2="130" y2="420" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="160" y1="250" x2="80" y2="250" stroke="#00e5ff" stroke-width="1.5"/>
+        <line x1="80" y1="250" x2="80" y2="350" stroke="#00e5ff" stroke-width="1.5"/>
+        <!-- nodes -->
+        <circle cx="350" cy="80" r="5" fill="#00e5ff"/>
+        <circle cx="420" cy="150" r="5" fill="#ff6b35"/>
+        <circle cx="130" cy="420" r="5" fill="#00e5ff"/>
+        <circle cx="80" cy="350" r="5" fill="#ff6b35"/>
+        <!-- mini chip -->
+        <rect x="330" y="60" width="40" height="20" rx="3" stroke="#00e5ff" stroke-width="1.5"/>
+        <rect x="390" y="130" width="40" height="20" rx="3" stroke="#ff6b35" stroke-width="1.5"/>
+        <rect x="90" y="360" width="40" height="20" rx="3" stroke="#ff6b35" stroke-width="1.5"/>
+        <rect x="100" y="430" width="40" height="20" rx="3" stroke="#00e5ff" stroke-width="1.5"/>
+        <!-- dots grid -->
+        <circle cx="200" cy="200" r="3" fill="#00e5ff" opacity=".4"/>
+        <circle cx="300" cy="200" r="3" fill="#00e5ff" opacity=".4"/>
+        <circle cx="200" cy="300" r="3" fill="#00e5ff" opacity=".4"/>
+        <circle cx="300" cy="300" r="3" fill="#00e5ff" opacity=".4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ====== OVERVIEW ====== -->
+  <section class="section" id="overview">
+    <div class="section-inner">
+      <p class="section-label fade-in">Resumen del proyecto</p>
+      <h2 class="section-title fade-in">¿Qué es y cómo funciona?</h2>
+      <p class="section-desc fade-in">
+        El timbre Arduino es un dispositivo electrónico que detecta la pulsación de un botón
+        y genera una señal sonora, integrando hardware y software en un sistema eficiente.
+      </p>
+
+      <div class="stats-row">
+        <div class="stat fade-in">
+          <span class="stat-num" data-target="5" data-suffix=" V">0 V</span>
+          <span class="stat-label">Voltaje operación</span>
+        </div>
+        <div class="stat fade-in">
+          <span class="stat-num" data-target="8" data-suffix=" Ω">0 Ω</span>
+          <span class="stat-label">Resistencia buzzer</span>
+        </div>
+        <div class="stat fade-in">
+          <span class="stat-num" data-target="16" data-suffix=" MHz">0 MHz</span>
+          <span class="stat-label">Frecuencia Arduino</span>
+        </div>
+        <div class="stat fade-in">
+          <span class="stat-num" data-target="3" data-suffix=" comp.">0 comp.</span>
+          <span class="stat-label">Componentes clave</span>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card fade-in">
+          <span class="card-icon">🎛️</span>
+          <h3>Arduino UNO</h3>
+          <p>Microcontrolador ATmega328P con 14 pines digitales. Procesa la señal del botón y controla el buzzer en tiempo real.</p>
+          <br><span class="badge badge-blue">Controlador</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">🔘</span>
+          <h3>Botón Pulsador</h3>
+          <p>Interruptor momentáneo de 4 pines conectado a un pin digital con resistencia pull-down para lectura limpia.</p>
+          <br><span class="badge badge-green">Entrada</span>
+        </div>
+        <div class="card fade-in">
+          <span class="card-icon">📢</span>
+          <h3>Buzzer Piezoeléctrico</h3>
+          <p>Genera el sonido de timbre mediante señal PWM. Frecuencia ajustable desde el código con la función tone().</p>
+          <br><span class="badge badge-orange">Salida</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- ====== FEATURES ====== -->
+  <section class="section">
+    <div class="section-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+      <div>
+        <p class="section-label fade-in">Características</p>
+        <h2 class="section-title fade-in">¿Qué hace especial<br>este proyecto?</h2>
+        <p class="section-desc fade-in">
+          Diseño simple y expandible. Perfecto como base para proyectos de domótica
+          o electrónica educativa.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item fade-in">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-info">
+              <h4>Respuesta instantánea</h4>
+              <p>Latencia menor a 10 ms desde la pulsación hasta la emisión de sonido.</p>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div class="feature-icon">🔊</div>
+            <div class="feature-info">
+              <h4>Tono personalizable</h4>
+              <p>Cambia frecuencia y duración del sonido editando el código fuente.</p>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div class="feature-icon">🔋</div>
+            <div class="feature-info">
+              <h4>Bajo consumo</h4>
+              <p>Opera con 5 V desde USB o batería 9 V con regulador integrado.</p>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div class="feature-icon">🧩</div>
+            <div class="feature-info">
+              <h4>Expandible</h4>
+              <p>Añade pantalla LCD, módulo Wi-Fi o LEDs indicadores fácilmente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code preview -->
+      <div class="fade-in">
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot-r"></span>
+              <span class="dot-y"></span>
+              <span class="dot-g"></span>
+            </div>
+            <span class="code-title">timbre.ino</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="code-body">
+<pre><span class="c-cm">// Timbre con Arduino UNO</span>
+<span class="c-kw">const int</span> <span class="c-var">pinBoton</span> = <span class="c-num">2</span>;
+<span class="c-kw">const int</span> <span class="c-var">pinBuzzer</span> = <span class="c-num">8</span>;
+
+<span class="c-fn">void</span> <span class="c-fn">setup</span>() {
+  <span class="c-fn">pinMode</span>(<span class="c-var">pinBoton</span>, INPUT);
+  <span class="c-fn">pinMode</span>(<span class="c-var">pinBuzzer</span>, OUTPUT);
+}
+
+<span class="c-fn">void</span> <span class="c-fn">loop</span>() {
+  <span class="c-kw">if</span> (<span class="c-fn">digitalRead</span>(<span class="c-var">pinBoton</span>) == HIGH) {
+    <span class="c-fn">tone</span>(<span class="c-var">pinBuzzer</span>, <span class="c-num">880</span>, <span class="c-num">200</span>);
+    <span class="c-fn">delay</span>(<span class="c-num">250</span>);
+    <span class="c-fn">tone</span>(<span class="c-var">pinBuzzer</span>, <span class="c-num">660</span>, <span class="c-num">400</span>);
+    <span class="c-fn">delay</span>(<span class="c-num">500</span>);
+  }
+}</pre>
+          </div>
+        </div>
+
+        <p style="font-size:.85rem;color:var(--text-muted);text-align:center;margin-top:1rem;font-family:var(--font-mono);">
+          ▲ Código base del proyecto
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="section" style="text-align:center;">
+    <div class="section-inner">
+      <p class="section-label fade-in" style="justify-content:center;">Explorar</p>
+      <h2 class="section-title fade-in">¿Listo para profundizar?</h2>
+      <p class="section-desc fade-in" style="margin:0 auto 2.5rem;">
+        Revisa el proceso de desarrollo completo, los esquemas de conexión y el código fuente documentado.
+      </p>
+      <div class="hero-btns" style="justify-content:center;" class="fade-in">
+        <a href="paginas/desarrollo.html" class="btn-primary">📋 Ver Desarrollo</a>
+        <a href="paginas/acerca.html" class="btn-secondary">👥 El Equipo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">🔔 TIMBRE.ino</div>
+        <p class="footer-sub">Proyecto de electrónica con Arduino UNO · 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="paginas/desarrollo.html">Desarrollo</a>
+        <a href="paginas/acerca.html">Acerca de</a>
+        <a href="paginas/contacto.html">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast & sound button -->
+  <div id="toast"></div>
+  <button id="sound-btn" title="¡Tocar timbre!">🔔</button>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — HeartSense</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="pulse-dot"></span>
+        HEARTSENSE
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">       Inicio</a></li>
+        <li><a href="desarrollo.html">     Desarrollo</a></li>
+        <li><a href="acerca.html">         Acerca de</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" title="Cambiar tema">☀️</button>
+        <button class="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../index.html">       Inicio</a>
+    <a href="desarrollo.html">     Desarrollo</a>
+    <a href="acerca.html">         Acerca de</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTENIDO
+  ════════════════════════════════════════════════════════ -->
+  <main class="page-wrap">
+
+    <!-- ── ENCABEZADO ── -->
+    <header class="page-header">
+      <div class="container page-header-inner">
+        <p class="page-header-tag">✉ Ponte en contacto</p>
+        <h1>Contáctanos</h1>
+        <p>
+          ¿Tienes preguntas sobre el proyecto? ¿Quieres colaborar o dar feedback?
+          Escríbenos y te responderemos pronto.
+        </p>
+      </div>
+    </header>
+
+    <!-- ── GRID DE CONTACTO ── -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Info de contacto -->
+          <div class="contact-info">
+
+            <div class="contact-item">
+              <div class="contact-icon">🏫</div>
+              <div>
+                <h4>Institución</h4>
+                <p>Universidad / Plantel Educativo: Conalep pachuca l <br>Ingeniería en Sistemas / Informática</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <h4>Correo Electrónico</h4>
+                <p>estudiantemoises@correo.edu.mx<br>proyecto.heartsense@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <h4>Ubicación</h4>
+                <p>Pachuca de soto · Modalidad presencial<br>y en línea</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">⏰</div>
+              <div>
+                <h4>Tiempo de Respuesta</h4>
+                <p>Respondemos en menos de<br>24 horas hábiles.</p>
+              </div>
+            </div>
+
+            <!-- Mini monitor en la página de contacto -->
+            <div class="monitor-card" style="max-width:100%; margin-top:8px;">
+              <div class="monitor-header">
+                <span class="monitor-label">Estado del Sistema</span>
+                <span class="status-dot"></span>
+              </div>
+              <div style="text-align:center; padding: 12px 0;">
+                <span style="font-family:var(--font-display); font-size:0.75rem; color:var(--teal); letter-spacing:0.1em;">
+                  ✔ SISTEMA OPERATIVO
+                </span>
+              </div>
+              <svg class="ecg-wave" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true" style="margin-bottom:0;">
+                <path class="ecg-line"
+                  d="M0,35 L40,35 L50,35 L55,10 L60,55 L65,10 L70,35 L80,35
+                     L130,35 L140,35 L145,10 L150,55 L155,10 L160,35 L170,35
+                     L220,35 L230,35 L235,10 L240,55 L245,10 L250,35 L260,35 L300,35" />
+              </svg>
+            </div>
+
+          </div>
+
+          <!-- Formulario -->
+          <div class="contact-form">
+            <h2>📨 Envíanos un mensaje</h2>
+
+            <form id="contact-form" novalidate>
+
+              <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Tu nombre y apellidos"
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="tucorreo@ejemplo.com"
+                  autocomplete="email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="¿De qué trata tu mensaje?"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Escribe aquí tu pregunta, comentario o propuesta…"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+                ✉ Enviar mensaje
+              </button>
+
+              <!-- Mensaje de respuesta -->
+              <div id="form-msg" role="alert"></div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section-sm" style="background: var(--surface); border-top: 1px solid var(--border);">
+      <div class="container">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title mt-4">Preguntas Frecuentes</h2>
+
+        <div class="features-grid mt-8">
+          <div class="feat-card">
+            <span class="feat-icon">🤔</span>
+            <h3 class="feat-title">¿El sensor mide SpO₂?</h3>
+            <p class="feat-text">
+              Sí. El módulo MAX30102 puede medir tanto la frecuencia cardíaca
+              como la saturación de oxígeno en sangre (SpO₂) simultáneamente.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📱</span>
+            <h3 class="feat-title">¿Funciona en móvil?</h3>
+            <p class="feat-text">
+              Completamente. La interfaz es 100% responsive y funciona en
+              smartphones, tablets y computadoras de escritorio.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🔋</span>
+            <h3 class="feat-title">¿Consume mucha batería?</h3>
+            <p class="feat-text">
+              El sensor MAX30102 está optimizado para bajo consumo energético,
+              ideal para dispositivos portátiles con batería limitada.
+            </p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">💻</span>
+            <h3 class="feat-title">¿Puedo ver el código fuente?</h3>
+            <p class="feat-text">
+              El proyecto está desarrollado con HTML, CSS y JavaScript planos,
+              sin frameworks. Puedes inspeccionarlo directamente en el navegador.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">❤ HEARTSENSE</div>
+        <p>Proyecto Escolar — Sensor de Ritmo Cardíaco Inteligente</p>
+        <p>© 2025 · Desarrollado con HTML, CSS y JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

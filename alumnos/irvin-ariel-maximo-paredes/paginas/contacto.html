@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — SmartBell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .page-hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+    .contact-info-item { display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 2rem; }
+    .contact-icon { width: 48px; height: 48px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .contact-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .contact-value { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+    .contact-sub { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* FORM */
+    .contact-form { background: var(--card); border: 1px solid var(--border); padding: 2.5rem; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.6rem; }
+    .form-input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--muted); }
+    textarea.form-input { resize: vertical; min-height: 130px; }
+    .form-select { appearance: none; cursor: pointer; }
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 1rem 2rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.3); }
+    .success-msg { display: none; background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.3); padding: 1rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--green); text-align: center; margin-top: 1rem; }
+    .inner-content { max-width: 1100px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-q { font-weight: 700; color: var(--text); margin-bottom: 0.6rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q:hover { color: var(--accent); }
+    .faq-a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); line-height: 1.8; }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 3rem; } }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../index.html">Smart<span>Bell</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#como-funciona">CÓMO FUNCIONA</a></li>
+    <li><a href="../index.html#caracteristicas">CARACTERÍSTICAS</a></li>
+    <li><a href="../index.html#hardware">HARDWARE</a></li>
+    <li><a href="../index.html#demo">DEMO</a></li>
+    <li><a href="desarrollo.html">DESARROLLO</a></li>
+    <li><a href="acerca-de.html">ACERCA DE</a></li>
+    <li><a href="contacto.html" style="color:var(--accent);">CONTACTO</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    SISTEMA EN LÍNEA
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="hero-badge" style="animation:none;opacity:1;">
+      <div class="status-dot"></div>
+      CONTÁCTANOS
+    </div>
+    <h1 style="font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-0.03em;line-height:1;">
+      <span style="display:block;color:var(--text);">HABLEMOS</span>
+      <span style="display:block;color:var(--accent);">DEL PROYECTO</span>
+    </h1>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section style="padding:4rem 3rem 5rem;">
+  <div class="inner-content">
+    <div class="contact-layout">
+
+      <!-- INFO -->
+      <div class="reveal">
+        <div class="section-label">INFORMACIÓN</div>
+        <h2 class="section-title" style="font-size:2rem;">¿Tienes preguntas?</h2>
+        <p class="section-desc" style="margin-bottom:2.5rem;">Si quieres replicar el proyecto, colaborar o simplemente tienes dudas sobre el hardware o el código, escríbenos. Respondemos en menos de 48 horas.</p>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Correo electrónico</div>
+            <div class="contact-value">smartbell@proyecto.iot</div>
+            <div class="contact-sub">Para consultas técnicas y académicas</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <div class="contact-label">Repositorio</div>
+            <div class="contact-value">github.com/smartbell-iot</div>
+            <div class="contact-sub">Código fuente completo y documentación</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Institución</div>
+            <div class="contact-value">Proyecto Académico IoT</div>
+            <div class="contact-sub">Laboratorio de Electrónica y Sistemas Embebidos</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">⏱️</div>
+          <div>
+            <div class="contact-label">Tiempo de respuesta</div>
+            <div class="contact-value">24 – 48 horas hábiles</div>
+            <div class="contact-sub">De lunes a viernes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form reveal">
+        <div class="section-label" style="margin-bottom:1.5rem;">ENVIAR MENSAJE</div>
+
+        <div class="form-group">
+          <label class="form-label">Nombre completo</label>
+          <input type="text" class="form-input" id="inputName" placeholder="Tu nombre">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-input" id="inputEmail" placeholder="correo@ejemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Categoría</label>
+          <select class="form-input form-select" id="inputCategory">
+            <option value="">— Selecciona una categoría —</option>
+            <option value="hardware">Consulta sobre hardware</option>
+            <option value="firmware">Consulta sobre firmware</option>
+            <option value="web">Consulta sobre la web</option>
+            <option value="colaboracion">Colaboración en el proyecto</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mensaje</label>
+          <textarea class="form-input" id="inputMessage" placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <button class="btn-submit" onclick="submitForm()">ENVIAR MENSAJE →</button>
+        <div class="success-msg" id="successMsg">✓ Mensaje enviado correctamente. Te responderemos pronto.</div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="margin-top:6rem;">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title" style="font-size:2rem;">Preguntas frecuentes</h2>
+      <div style="max-width:800px;margin-top:2rem;">
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Puedo replicar este proyecto en casa? <span>+</span></div>
+          <div class="faq-a">Sí, todo el código está disponible en nuestro repositorio. Necesitarás un ESP32, una protoboard, un botón pulsador y cables jumper. El costo total del hardware es de aproximadamente $5–10 USD.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Funciona sin conexión a internet? <span>+</span></div>
+          <div class="faq-a">En modo local (red LAN) sí, siempre que el teléfono y el ESP32 estén en la misma red WiFi. Para notificaciones push remotas necesitas un broker MQTT con acceso a internet.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Qué cámara usa el sistema? <span>+</span></div>
+          <div class="faq-a">El prototipo actual usa la cámara del navegador web (MediaDevices API) como simulación. Para una implementación real se recomienda el módulo ESP32-CAM que integra cámara OV2640 directamente en el microcontrolador.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿El proyecto está en desarrollo activo? <span>+</span></div>
+          <div class="faq-a">Sí, actualmente estamos trabajando en la integración con ESP32-CAM para video real, detección de movimiento por PIR y una app móvil nativa con React Native.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div>SMARTBELL — PROYECTO IoT © 2025</div>
+    <div>
+      <a href="../index.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Inicio</a>
+      <a href="desarrollo.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Desarrollo</a>
+      <a href="acerca-de.html" style="color:var(--muted);text-decoration:none;">Acerca de</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  function submitForm() {
+    const name = document.getElementById('inputName').value.trim();
+    const email = document.getElementById('inputEmail').value.trim();
+    const msg = document.getElementById('inputMessage').value.trim();
+
+    if (!name || !email || !msg) {
+      alert('Por favor completa todos los campos requeridos.');
+      return;
+    }
+    // Simulated submit
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputEmail').value = '';
+    document.getElementById('inputCategory').value = '';
+    document.getElementById('inputMessage').value = '';
+    setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 5000);
+  }
+</script>
+</body>
+</html>

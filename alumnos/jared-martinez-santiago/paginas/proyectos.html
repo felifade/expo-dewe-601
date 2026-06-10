@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- ================================================================
+     paginas/proyectos.html — Descripción Técnica del Proyecto
+     Autor: Jared Martínez Santiago | Páginas Web · 2026
+     ================================================================ -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Detalles técnicos del Monitor de Ritmo Cardíaco con Arduino MAX30102" />
+  <title>HeartMonitor MAX30102 | Proyecto</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💚</text></svg>" />
+  <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+<body>
+
+<!-- ================================================================
+     BARRA DE NAVEGACIÓN
+     ================================================================ -->
+<nav class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <span class="heart-beat">♥</span> HeartMonitor
+  </a>
+  <button class="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="proyectos.html" class="active">Proyecto</a></li>
+    <li><a href="innovacion.html">Innovación</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="btn-theme" aria-label="Cambiar tema">
+      <span class="theme-icon">☀️</span>
+      <span class="theme-text">Modo Claro</span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ================================================================
+     HERO INTERNO
+     ================================================================ -->
+<section class="monitor-section" style="min-height:38vh; padding-top:80px; padding-bottom:2rem;">
+  <div style="text-align:center; position:relative; z-index:1;">
+    <div class="section-badge">🔬 Detalles Técnicos</div>
+    <h1 style="font-family:var(--font-display); font-size:clamp(1.6rem,4vw,2.6rem); font-weight:700; color:var(--text-primary); margin-top:0.8rem; letter-spacing:0.04em;">
+      El <span style="color:var(--neon-green);">Proyecto</span>
+    </h1>
+    <p style="color:var(--text-secondary); margin-top:0.6rem; font-size:0.97rem; max-width:520px; margin-left:auto; margin-right:auto;">
+      Descripción completa, materiales, conexiones y resultados del Monitor de Ritmo Cardíaco con Arduino y MAX30102.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: DESCRIPCIÓN Y OBJETIVO
+     ================================================================ -->
+<section>
+  <div class="container">
+    <div class="two-col">
+
+      <!-- Texto descriptivo -->
+      <div>
+        <div class="section-header" style="text-align:left; margin-bottom:1.8rem;">
+          <span class="section-badge">📄 Descripción</span>
+          <h2 style="text-align:left;">¿En qué consiste?</h2>
+          <div class="section-line" style="margin-left:0;"></div>
+        </div>
+
+        <p style="color:var(--text-secondary); line-height:1.85; margin-bottom:1rem;">
+          El <strong style="color:var(--text-primary);">Monitor de Ritmo Cardíaco con Arduino</strong> es un dispositivo electrónico que utiliza el sensor <strong style="color:var(--neon-green);">MAX30102</strong> para medir la frecuencia cardíaca (BPM) y la saturación de oxígeno en sangre (SpO₂) de una persona en tiempo real.
+        </p>
+
+        <p style="color:var(--text-secondary); line-height:1.85; margin-bottom:1rem;">
+          El sensor MAX30102 utiliza tecnología <strong style="color:var(--text-primary);">fotopletismografía (PPG)</strong>: emite LEDs rojo e infrarrojo que atraviesan el tejido del dedo, y un fotodetector mide cuánta luz absorbe la sangre con cada latido, permitiendo calcular el ritmo cardíaco con alta precisión.
+        </p>
+
+        <p style="color:var(--text-secondary); line-height:1.85;">
+          Los datos se procesan en la placa Arduino y se muestran en el Monitor Serie del Arduino IDE o en una pantalla LCD/OLED conectada al circuito.
+        </p>
+
+        <!-- Estadísticas clave -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:1.5rem;">
+          <div class="card" style="padding:1rem; text-align:center;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; color:var(--neon-green); text-shadow:var(--glow-green);">I²C</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Protocolo de comunicación</div>
+          </div>
+          <div class="card" style="padding:1rem; text-align:center;">
+            <div style="font-family:var(--font-mono); font-size:1.6rem; color:var(--neon-blue); text-shadow:var(--glow-blue);">50Hz</div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Frecuencia de muestreo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="reveal">
+        <div class="tech-image">
+          <img
+            src="../img/arduino1.jpg"
+            alt="Arduino con sensor MAX30102"
+            onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><span style=\'font-size:2.5rem\'>🔌</span><span>img/arduino1.jpg</span></div><div class=\'tech-image-caption\'>📷 img/arduino1.jpg</div>'"
+          />
+          <div class="tech-image-caption">📷 FIG.1 — Arduino Uno + Sensor MAX30102</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: MATERIALES UTILIZADOS
+     ================================================================ -->
+<section class="section-alt">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-badge">🛠️ Componentes</span>
+      <h2>Materiales <span>Utilizados</span></h2>
+      <div class="section-line"></div>
+      <p>Todos los componentes son accesibles y de bajo costo, disponibles en tiendas de electrónica o en línea.</p>
+    </div>
+
+    <div class="two-col">
+
+      <ul class="materials-list reveal">
+
+        <li>
+          <span class="mat-icon">🔵</span>
+          <div>
+            <strong>Arduino Uno (ATmega328P)</strong><br>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Microcontrolador principal. Procesa las señales del sensor y controla el sistema completo a 5V.</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="mat-icon">❤️</span>
+          <div>
+            <strong>Sensor MAX30102</strong><br>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Sensor óptico de pulso y SpO₂. Se comunica con Arduino mediante protocolo I²C (pines SDA/SCL). Opera a 3.3V.</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="mat-icon">⬜</span>
+          <div>
+            <strong>Protoboard (Breadboard 830 puntos)</strong><br>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Placa de prototipado sin soldadura para conectar todos los componentes de forma temporal.</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="mat-icon">🔗</span>
+          <div>
+            <strong>Cables Jumper (M-M y M-H)</strong><br>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Cables de conexión rápida para unir el sensor con el Arduino a través de la protoboard.</span>
+          </div>
+        </li>
+
+        <li>
+          <span class="mat-icon">💻</span>
+          <div>
+            <strong>Cable USB tipo B + Arduino IDE</strong><br>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Para programar la placa y visualizar los datos en el Monitor Serie. Software gratuito y de código abierto.</span>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Segunda imagen -->
+      <div class="reveal">
+        <div class="tech-image">
+          <img
+            src="../img/arduino2.jpg"
+            alt="Componentes del proyecto"
+            onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><span style=\'font-size:2.5rem\'>🛠️</span><span>img/arduino2.jpg</span></div><div class=\'tech-image-caption\'>📷 img/arduino2.jpg</div>'"
+          />
+          <div class="tech-image-caption">📷 FIG.2 — Componentes del proyecto</div>
+        </div>
+
+        <!-- Chips de especificaciones técnicas del MAX30102 -->
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+          <span class="profile-tag">VDD: 1.8–3.3V</span>
+          <span class="profile-tag">I²C Addr: 0x57</span>
+          <span class="profile-tag">LEDs: 660nm + 880nm</span>
+          <span class="profile-tag">Resolución ADC: 18-bit</span>
+          <span class="profile-tag">Temp. integrada</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: CONEXIONES BÁSICAS
+     ================================================================ -->
+<section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-badge">⚡ Conexiones</span>
+      <h2>Conexiones <span>Básicas</span></h2>
+      <div class="section-line"></div>
+      <p>Diagrama de pines para conectar el sensor MAX30102 al Arduino Uno.</p>
+    </div>
+
+    <!-- Tabla de conexiones estilo terminal -->
+    <div class="reveal" style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:0.85rem;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border-bright);">
+            <th style="padding:0.8rem 1rem; text-align:left; color:var(--neon-green); letter-spacing:0.08em;">MAX30102</th>
+            <th style="padding:0.8rem 1rem; text-align:left; color:var(--neon-green); letter-spacing:0.08em;">Arduino Uno</th>
+            <th style="padding:0.8rem 1rem; text-align:left; color:var(--neon-green); letter-spacing:0.08em;">Función</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.7rem 1rem; color:var(--red-alert);">VIN / VCC</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-secondary);">3.3V</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-muted);">Alimentación del sensor</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border); background:rgba(0,255,136,0.02);">
+            <td style="padding:0.7rem 1rem; color:var(--text-secondary);">GND</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-secondary);">GND</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-muted);">Tierra / Referencia</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.7rem 1rem; color:var(--neon-blue);">SDA</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-secondary);">A4 (SDA)</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-muted);">Datos I²C</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7rem 1rem; color:var(--neon-blue);">SCL</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-secondary);">A5 (SCL)</td>
+            <td style="padding:0.7rem 1rem; color:var(--text-muted);">Reloj I²C</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: FUNCIONAMIENTO PASO A PASO
+     ================================================================ -->
+<section class="section-alt">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-badge">⚙️ Funcionamiento</span>
+      <h2>Paso a <span>Paso</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="steps-list">
+
+      <div class="step-item reveal">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Instalación de la librería MAX30105</h4>
+          <p>En el Arduino IDE, instalar la librería <strong>SparkFun MAX3010x</strong> desde el Gestor de Librerías. Esta librería permite comunicarse fácilmente con el sensor usando I²C.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Conexión del hardware</h4>
+          <p>Conectar el sensor MAX30102 al Arduino según la tabla de conexiones: VIN a 3.3V, GND a GND, SDA al pin A4, y SCL al pin A5. Verificar que no haya cortocircuitos antes de conectar.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Programación del Arduino</h4>
+          <p>Cargar el código al Arduino usando el sketch de ejemplo de la librería MAX30105. El programa inicializa el sensor, configura la frecuencia de muestreo y los LEDs, y entra en un bucle de lectura continua.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Colocación del dedo en el sensor</h4>
+          <p>El usuario coloca el dedo índice sobre los LEDs del MAX30102. Los LEDs emiten luz roja (660nm) e infrarroja (880nm) que penetran el tejido; el fotodetector mide la variación de absorción con cada latido.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Cálculo del BPM y SpO₂</h4>
+          <p>El algoritmo calcula la frecuencia cardíaca detectando los picos de la señal PPG. Comparando la absorción de luz roja e infrarroja calcula la saturación de oxígeno (SpO₂) en tiempo real.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>Visualización de resultados</h4>
+          <p>Los valores de BPM y SpO₂ se envían al Monitor Serie del Arduino IDE donde se pueden leer en tiempo real. Con una pantalla LCD/OLED adicional, el dispositivo funciona de forma completamente autónoma.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SECCIÓN: RESULTADOS + IMAGEN FINAL
+     ================================================================ -->
+<section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-badge">📊 Resultados</span>
+      <h2>Resultados <span>Obtenidos</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="two-col">
+
+      <div>
+        <ul class="materials-list reveal">
+          <li><span class="mat-icon">✅</span><div>Lectura estable de BPM entre 60 y 100 pulsaciones por minuto en condiciones normales de reposo.</div></li>
+          <li><span class="mat-icon">✅</span><div>Saturación de oxígeno medida entre 96% y 99%, dentro del rango saludable esperado.</div></li>
+          <li><span class="mat-icon">✅</span><div>Tiempo de estabilización del sensor inferior a 5 segundos al colocar el dedo.</div></li>
+          <li><span class="mat-icon">✅</span><div>Comunicación I²C estable a 100kHz sin pérdida de datos durante las pruebas.</div></li>
+          <li><span class="mat-icon">✅</span><div>Costo total del proyecto inferior a 280 pesos mexicanos, incluyendo todos los componentes.</div></li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="tech-image">
+          <img
+            src="../img/arduino3.jpg"
+            alt="Resultado del proyecto en funcionamiento"
+            onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><span style=\'font-size:2.5rem\'>📊</span><span>img/arduino3.jpg</span></div><div class=\'tech-image-caption\'>📷 img/arduino3.jpg</div>'"
+          />
+          <div class="tech-image-caption">📷 FIG.3 — Proyecto en funcionamiento</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PIE DE PÁGINA -->
+<footer>
+  <div class="footer-brand">💚 HeartMonitor MAX30102 · Arduino</div>
+  <nav class="footer-links">
+    <a href="../index.html">Inicio</a>
+    <a href="proyectos.html">Proyecto</a>
+    <a href="innovacion.html">Innovación</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <p>Desarrollado por <strong>Jared Martínez Santiago</strong> · Páginas Web &amp; Emprendimiento e Innovación · 2026</p>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

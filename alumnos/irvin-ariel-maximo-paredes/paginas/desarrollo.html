@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desarrollo — SmartBell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .page-hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+    .timeline { max-width: 800px; margin: 4rem auto 0; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(var(--accent), transparent); }
+    .timeline-item { padding: 0 0 3rem 2.5rem; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -4px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+    .timeline-phase { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .timeline-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+    .timeline-desc { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.9;
+      overflow-x: auto;
+    }
+    .code-block .kw { color: var(--accent); }
+    .code-block .str { color: var(--green); }
+    .code-block .cm { color: #4a6a8a; }
+    .inner-content { max-width: 1100px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../index.html">Smart<span>Bell</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#como-funciona">CÓMO FUNCIONA</a></li>
+    <li><a href="../index.html#caracteristicas">CARACTERÍSTICAS</a></li>
+    <li><a href="../index.html#hardware">HARDWARE</a></li>
+    <li><a href="../index.html#demo">DEMO</a></li>
+    <li><a href="desarrollo.html" style="color:var(--accent);">DESARROLLO</a></li>
+    <li><a href="acerca-de.html">ACERCA DE</a></li>
+    <li><a href="contacto.html">CONTACTO</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    SISTEMA EN LÍNEA
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="hero-badge" style="animation:none;opacity:1;">
+      <div class="status-dot"></div>
+      PROCESO DE CONSTRUCCIÓN
+    </div>
+    <h1 style="font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-0.03em;line-height:1;">
+      <span style="display:block;color:var(--text);">DESARROLLO</span>
+      <span style="display:block;color:var(--accent);">DEL PROYECTO</span>
+    </h1>
+  </div>
+</div>
+
+<!-- TIMELINE SECTION -->
+<section style="padding:4rem 3rem 7rem;">
+  <div class="inner-content">
+    <div class="section-label">FASES DEL PROYECTO</div>
+    <h2 class="section-title">Proceso de construcción</h2>
+    <p class="section-desc">Desde la idea inicial hasta el prototipo funcional, documentamos cada etapa del desarrollo del SmartBell.</p>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 01 — Investigación</div>
+        <div class="timeline-title">Definición del problema y arquitectura</div>
+        <div class="timeline-desc">Se analizaron las necesidades de seguridad en el hogar y se definió la arquitectura del sistema. Se eligió el ESP32 por su conectividad WiFi integrada, bajo costo y comunidad activa. Se diseñó el flujo: botón → ESP32 → MQTT → App.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 02 — Hardware</div>
+        <div class="timeline-title">Montaje del circuito en protoboard</div>
+        <div class="timeline-desc">Se montó el ESP32 en la protoboard de 830 puntos. Se conectó el botón pulsador al pin GPIO4 con resistencia pull-up interna activada por software. Se verificaron las conexiones de alimentación (3.3V y GND) antes de cualquier prueba.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 03 — Firmware</div>
+        <div class="timeline-title">Programación del ESP32 con Arduino</div>
+        <div class="timeline-desc">Se desarrolló el firmware en C++ usando el framework Arduino para ESP32. Se implementó la detección del botón con debounce por software, la conexión WiFi, el cliente MQTT y la reproducción del mensaje de audio mediante síntesis TTS.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 04 — Comunicación</div>
+        <div class="timeline-title">Integración con servidor MQTT</div>
+        <div class="timeline-desc">Se configuró un broker MQTT (Mosquitto) para el paso de mensajes entre el ESP32 y la aplicación. Se definieron los topics: <code style="color:var(--accent)">smartbell/ring</code>, <code style="color:var(--accent)">smartbell/status</code> y <code style="color:var(--accent)">smartbell/message</code>.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 05 — Frontend</div>
+        <div class="timeline-title">Desarrollo del panel web de control</div>
+        <div class="timeline-desc">Se construyó la interfaz web con HTML, CSS y JavaScript puro. Se integró la Web Audio API para síntesis de voz, la MediaDevices API para acceso a la cámara, y el sistema de notificaciones push del navegador.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-phase">Fase 06 — Pruebas</div>
+        <div class="timeline-title">Testing y optimización del sistema</div>
+        <div class="timeline-desc">Se realizaron pruebas de latencia (promedio 12ms en red local), pruebas de reconexión WiFi automática, y pruebas de grabación/reproducción de mensajes de voz. Se optimizó el consumo de energía del ESP32 usando deep sleep entre eventos.</div>
+      </div>
+    </div>
+
+    <!-- Code snippet section -->
+    <div style="margin-top:5rem;">
+      <div class="section-label">CÓDIGO DESTACADO</div>
+      <h2 class="section-title" style="font-size:2rem;">Fragmento del firmware ESP32</h2>
+      <div class="code-block reveal">
+<span class="cm">// SmartBell — Firmware Principal (ESP32 Arduino)</span>
+<span class="cm">// Detección de botón con debounce + publicación MQTT</span>
+
+<span class="kw">#include</span> <span class="str">&lt;WiFi.h&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;PubSubClient.h&gt;</span>
+
+<span class="kw">const int</span> BUTTON_PIN = 4;
+<span class="kw">const char*</span> MQTT_TOPIC = <span class="str">"smartbell/ring"</span>;
+<span class="kw">unsigned long</span> lastDebounceTime = 0;
+<span class="kw">const long</span> debounceDelay = 200;
+
+<span class="kw">void</span> loop() {
+  <span class="kw">int</span> reading = digitalRead(BUTTON_PIN);
+
+  <span class="kw">if</span> (reading == LOW) {
+    <span class="kw">unsigned long</span> now = millis();
+    <span class="kw">if</span> ((now - lastDebounceTime) &gt; debounceDelay) {
+      lastDebounceTime = now;
+      client.publish(MQTT_TOPIC, <span class="str">"1"</span>);
+      <span class="cm">// Activa notificación push al propietario</span>
+    }
+  }
+  client.loop();
+}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div>SMARTBELL — PROYECTO IoT © 2025</div>
+    <div>
+      <a href="../index.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Inicio</a>
+      <a href="acerca-de.html" style="color:var(--muted);text-decoration:none;margin-right:1.5rem;">Acerca de</a>
+      <a href="contacto.html" style="color:var(--muted);text-decoration:none;">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
