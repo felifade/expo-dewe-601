@@ -2,181 +2,217 @@
   {
     "nombre": "Galdino Angeles González",
     "ruta": "alumnos/galdino-angeles-gonzalez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Gala Sofía Barrero Landaverde",
     "ruta": "alumnos/gala-sofia-barrero-landaverde/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Axel Daniel Chávez",
     "ruta": "alumnos/axel-daniel-chavez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Maira Alejandra Cruz Morales",
     "ruta": "alumnos/maira-alejandra-cruz-morales/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Nataly Dominguez Cachú",
     "ruta": "alumnos/nataly-dominguez-cachu/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Moises Gonzales Castillo",
     "ruta": "alumnos/moises-gonzales-castillo/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Diana Sarahi Hernández Cruz",
     "ruta": "alumnos/diana-sarahi-hernandez-cruz/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Jesús Alejandro Hernández",
     "ruta": "alumnos/jesus-alejandro-hernandez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Meztli Citlalli Hernández",
     "ruta": "alumnos/meztli-citlalli-hernandez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Uriel Hidalgo Cervantes",
     "ruta": "alumnos/uriel-hidalgo-cervantes/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "María Cristina Islas Mercado",
     "ruta": "alumnos/maria-cristina-islas-mercado/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Santiago Jimenez Sombra",
     "ruta": "alumnos/santiago-jimenez-sombra/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Fabiola Lopez Ceron",
     "ruta": "alumnos/fabiola-lopez-ceron/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Rafael López Sánchez",
     "ruta": "alumnos/rafael-lopez-sanchez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Rubí Esmeralda Lorenzo",
     "ruta": "alumnos/rubi-esmeralda-lorenzo/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Kaila Danahi Loyola Cortés",
     "ruta": "alumnos/kaila-danahi-loyola-cortes/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Oliver Gerardo Maravilla",
     "ruta": "alumnos/oliver-gerardo-maravilla/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Lucio Alejandro Martínez",
     "ruta": "alumnos/lucio-alejandro-martinez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Jared Martinez Santiago",
     "ruta": "alumnos/jared-martinez-santiago/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Irvin Ariel Máximo Paredes",
     "ruta": "alumnos/irvin-ariel-maximo-paredes/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Itzel Guadalupe Montiel",
     "ruta": "alumnos/itzel-guadalupe-montiel/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Michel Guadalupe Rodríguez",
     "ruta": "alumnos/michel-guadalupe-rodriguez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Paola Abigail Trejo Pérez",
     "ruta": "alumnos/paola-abigail-trejo-perez/index.html",
-    "modalidad": "No Dual"
+    "modalidad": "No Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Víctor Manuel Arroyo Chávez",
     "ruta": "alumnos/victor-manuel-arroyo-chavez/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Diana Laura Delgadillo",
     "ruta": "alumnos/diana-laura-delgadillo/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 10
   },
   {
     "nombre": "Enrique Flores Landgrave R.",
     "ruta": "alumnos/enrique-flores-landgrave-r/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Abdiel Fonseca Raymundo",
     "ruta": "alumnos/abdiel-fonseca-raymundo/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Josué Manuel Gómez",
     "ruta": "alumnos/josue-manuel-gomez/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Obed Isai Hernández Morales",
     "ruta": "alumnos/obed-isai-hernandez-morales/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Fabian Adair Hernández Sánchez",
     "ruta": "alumnos/fabian-adair-hernandez-sanchez/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Alexander Lara Lugo",
     "ruta": "alumnos/alexander-lara-lugo/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Ronaldo Axel Lara Lugo",
     "ruta": "alumnos/ronaldo-axel-lara-lugo/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "David Ben Emanuel Mercado",
     "ruta": "alumnos/david-ben-emanuel-mercado/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Alexander Reyes Martínez",
     "ruta": "alumnos/alexander-reyes-martinez/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Yael Adonai Uribe González",
     "ruta": "alumnos/yael-adonai-uribe-gonzalez/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   },
   {
     "nombre": "Carlos Hugo Vargas Sumano",
     "ruta": "alumnos/carlos-hugo-vargas-sumano/index.html",
-    "modalidad": "Dual"
+    "modalidad": "Dual",
+    "calificacion": 0
   }
 ]
