@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // App State
     let projectsData = [];
     let searchQuery = '';
+    let activeModalityFilter = 'all';
+    let activeGradeFilter = 'all';  // 'all', 'entregados' (10), 'pendientes' (0)
+    const projectGrades = new Map();  // Store grades for each project
 
     // DOM Elements
     const projectsContainer = document.getElementById('projects-grid');
     const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
     const themeToggleBtn = document.getElementById('theme-toggle');
     const totalProjectsEl = document.getElementById('stat-total-projects');
     const regularProjectsEl = document.getElementById('stat-regular-projects');
@@ -25,13 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const iframeLoader = document.getElementById('iframe-loader');
 
+    // Search Palette Elements
+    const searchPalette = document.getElementById('search-palette');
+    const paletteSearchInput = document.getElementById('palette-search-input');
+    const paletteResults = document.getElementById('palette-results');
+    let paletteFocusIndex = -1;
+
+    // Showcase Mode Elements
+    const showcaseMode = document.getElementById('showcase-mode');
+    const showcaseBtn = document.getElementById('showcase-btn');
+    const showcaseExit = document.getElementById('showcase-exit');
+    const showcasePrev = document.getElementById('showcase-prev');
+    const showcaseNext = document.getElementById('showcase-next');
+    const showcaseIframe = document.getElementById('showcase-iframe');
+    const showcaseName = document.getElementById('showcase-name');
+    const showcaseMeta = document.getElementById('showcase-meta');
+    const showcaseCurrent = document.getElementById('showcase-current');
+    const showcaseTotal = document.getElementById('showcase-total');
+    let showcaseIndex = 0;
+    let showcaseProjects = [];
+
     // ==========================================================================
     // THEME MANAGEMENT (Light / Dark)
     // ==========================================================================
     
     const initTheme = () => {
         const savedTheme = localStorage.getItem('theme');
-        const theme = savedTheme || 'dark';
+        const theme = savedTheme || 'light';
         document.documentElement.setAttribute('data-theme', theme);
         updateThemeIcon(theme);
     };
@@ -64,6 +88,197 @@ document.addEventListener('DOMContentLoaded', () => {
 
     themeToggleBtn.addEventListener('click', toggleTheme);
     initTheme();
+
+    // ==========================================================================
+    // MODALITY FILTER CONTROL
+    // ==========================================================================
+
+    // Handle modality and grade filters
+    const allFilterButtons = document.querySelectorAll('[data-filter]');
+    allFilterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const filterType = e.currentTarget.getAttribute('data-filter-type');
+            const filter = e.currentTarget.getAttribute('data-filter');
+
+            if (filterType === 'modality') {
+                activeModalityFilter = filter;
+                // Only deactivate other modality buttons
+                allFilterButtons.forEach(b => {
+                    if (b.getAttribute('data-filter-type') === 'modality') {
+                        b.classList.remove('active');
+                    }
+                });
+            } else if (filterType === 'grade') {
+                activeGradeFilter = filter;
+                // Only deactivate other grade buttons
+                allFilterButtons.forEach(b => {
+                    if (b.getAttribute('data-filter-type') === 'grade') {
+                        b.classList.remove('active');
+                    }
+                });
+            }
+
+            e.currentTarget.classList.add('active');
+            renderProjects();
+        });
+    });
+
+    // ==========================================================================
+    // SEARCH PALETTE (Ctrl+K Command Palette)
+    // ==========================================================================
+
+    const openSearchPalette = () => {
+        searchPalette.setAttribute('open', '');
+        paletteSearchInput.focus();
+        paletteFocusIndex = -1;
+        renderPaletteResults('');
+    };
+
+    const closeSearchPalette = () => {
+        searchPalette.removeAttribute('open');
+        paletteSearchInput.value = '';
+        paletteFocusIndex = -1;
+    };
+
+    const renderPaletteResults = (query) => {
+        const filtered = projectsData.filter(p =>
+            query === '' || p.nombre.toLowerCase().includes(query.toLowerCase())
+        );
+
+        paletteResults.innerHTML = '';
+
+        if (filtered.length === 0 && query !== '') {
+            paletteResults.innerHTML = '<div class="palette-no-results">No se encontraron alumnos</div>';
+            return;
+        }
+
+        filtered.slice(0, 10).forEach((project, idx) => {
+            const item = document.createElement('div');
+            item.className = 'palette-result-item';
+            item.innerHTML = `
+                <div class="palette-result-name">${project.nombre}</div>
+                <span class="palette-result-badge">${project.modalidad}</span>
+            `;
+            item.addEventListener('click', () => {
+                openProjectModal(project);
+                closeSearchPalette();
+            });
+            paletteResults.appendChild(item);
+        });
+
+        paletteFocusIndex = -1;
+    };
+
+    paletteSearchInput.addEventListener('input', (e) => {
+        renderPaletteResults(e.target.value);
+    });
+
+    paletteSearchInput.addEventListener('keydown', (e) => {
+        const items = paletteResults.querySelectorAll('.palette-result-item');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            paletteFocusIndex = Math.min(paletteFocusIndex + 1, items.length - 1);
+            updatePaletteFocus(items);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            paletteFocusIndex = Math.max(paletteFocusIndex - 1, -1);
+            updatePaletteFocus(items);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (paletteFocusIndex >= 0 && items[paletteFocusIndex]) {
+                items[paletteFocusIndex].click();
+            }
+        } else if (e.key === 'Escape') {
+            closeSearchPalette();
+        }
+    });
+
+    const updatePaletteFocus = (items) => {
+        items.forEach((item, idx) => {
+            item.classList.toggle('selected', idx === paletteFocusIndex);
+        });
+        if (paletteFocusIndex >= 0 && items[paletteFocusIndex]) {
+            items[paletteFocusIndex].scrollIntoView({ block: 'nearest' });
+        }
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (searchPalette.hasAttribute('open')) {
+                closeSearchPalette();
+            } else {
+                openSearchPalette();
+            }
+        }
+    });
+
+    searchPalette.addEventListener('click', (e) => {
+        if (e.target === searchPalette) {
+            closeSearchPalette();
+        }
+    });
+
+    // ==========================================================================
+    // SHOWCASE MODE (Full-screen presentation)
+    // ==========================================================================
+
+    const enterShowcase = () => {
+        showcaseProjects = projectsData;
+        showcaseIndex = 0;
+        showcaseTotal.textContent = showcaseProjects.length;
+        showShowcaseProject(0);
+        showcaseMode.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const exitShowcase = () => {
+        showcaseMode.classList.remove('active');
+        document.body.style.overflow = '';
+        showcaseIframe.src = 'about:blank';
+    };
+
+    const showShowcaseProject = (index) => {
+        if (index < 0 || index >= showcaseProjects.length) return;
+
+        showcaseIndex = index;
+        const project = showcaseProjects[index];
+
+        showcaseName.textContent = project.nombre;
+        showcaseMeta.textContent = `Grupo 601 • ${project.modalidad}`;
+        showcaseCurrent.textContent = index + 1;
+        showcaseIframe.src = project.ruta;
+    };
+
+    showcaseBtn.addEventListener('click', enterShowcase);
+    showcaseExit.addEventListener('click', exitShowcase);
+
+    showcasePrev.addEventListener('click', () => {
+        if (showcaseIndex > 0) {
+            showShowcaseProject(showcaseIndex - 1);
+        }
+    });
+
+    showcaseNext.addEventListener('click', () => {
+        if (showcaseIndex < showcaseProjects.length - 1) {
+            showShowcaseProject(showcaseIndex + 1);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (showcaseMode.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                exitShowcase();
+            } else if (e.key === 'ArrowLeft') {
+                showcasePrev.click();
+            } else if (e.key === 'ArrowRight') {
+                showcaseNext.click();
+            }
+        } else if (e.key === 's' || e.key === 'S') {
+            enterShowcase();
+        }
+    });
 
     // ==========================================================================
     // DATA FETCHING, FALLBACK & INITIALIZATION
@@ -352,10 +567,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderProjects = () => {
         projectsContainer.innerHTML = '';
 
-        // Filter projects by search query
+        // Filter projects by search query, modality, and grade
         const filtered = projectsData.filter(project => {
             const query = searchQuery.toLowerCase().trim();
-            return query === '' || project.nombre.toLowerCase().includes(query);
+            const matchesSearch = query === '' || project.nombre.toLowerCase().includes(query);
+            const matchesModality = activeModalityFilter === 'all' || project.modalidad === activeModalityFilter;
+
+            // Filter by grade if needed
+            let matchesGrade = true;
+            if (activeGradeFilter === 'entregados') {
+                matchesGrade = projectGrades.get(project.nombre) === 10;
+            } else if (activeGradeFilter === 'pendientes') {
+                matchesGrade = projectGrades.get(project.nombre) === 0;
+            }
+
+            return matchesSearch && matchesModality && matchesGrade;
         });
 
         if (filtered.length === 0) {
@@ -367,6 +593,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const noDualProjects = filtered.filter(p => p.modalidad === 'No Dual');
         const dualProjects = filtered.filter(p => p.modalidad === 'Dual');
 
+        let cardIndex = 0;
+
         // Render "No Dual" Section
         if (noDualProjects.length > 0) {
             const header = document.createElement('h2');
@@ -377,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const subgrid = document.createElement('div');
             subgrid.className = 'projects-subgrid';
             noDualProjects.forEach(project => {
-                const card = createProjectCard(project);
+                const card = createProjectCard(project, cardIndex++);
                 subgrid.appendChild(card);
             });
             projectsContainer.appendChild(subgrid);
@@ -393,21 +621,67 @@ document.addEventListener('DOMContentLoaded', () => {
             const subgrid = document.createElement('div');
             subgrid.className = 'projects-subgrid';
             dualProjects.forEach(project => {
-                const card = createProjectCard(project);
+                const card = createProjectCard(project, cardIndex++);
                 subgrid.appendChild(card);
             });
             projectsContainer.appendChild(subgrid);
         }
     };
 
-    const createProjectCard = (project) => {
+    // Check project completion - simple: 10 (complete) or 0 (not done)
+    const checkProjectCompletion = async (project) => {
+        const folderPath = project.ruta.substring(0, project.ruta.lastIndexOf('/'));
+
+        const checkFile = async (path) => {
+            try {
+                const res = await Promise.race([
+                    fetch(path, { method: 'HEAD' }),
+                    new Promise((_, reject) => setTimeout(() => reject('timeout'), 800))
+                ]);
+                return res.ok;
+            } catch {
+                return false;
+            }
+        };
+
+        try {
+            // Check if has ALL required folders/files (NOT just index)
+            const [hasCss, hasJs, hasPaginas] = await Promise.all([
+                checkFile(folderPath + '/css/'),      // Must have css folder
+                checkFile(folderPath + '/js/'),       // Must have js folder
+                checkFile(folderPath + '/paginas/')   // Must have paginas folder
+            ]);
+
+            // COMPLETE only if has all folders
+            const completo = hasCss && hasJs && hasPaginas;
+
+            return { completo };
+        } catch (error) {
+            return { completo: false };
+        }
+    };
+
+    // Calculate grade: 10 (completo) o 0 (no hizo nada)
+    const calculateGrade = (checks) => {
+        return checks.completo ? 10 : 0;
+    };
+
+    const createProjectCard = (project, index) => {
         const card = document.createElement('article');
         card.className = 'project-card';
 
         // Prepare modality badge classes
         const modClass = project.modalidad === 'Dual' ? 'badge-e-commerce' : 'badge-portafolio';
 
+        // Extract folder path for preview image
+        const folderPath = project.ruta.substring(0, project.ruta.lastIndexOf('/'));
+        const previewImagePath = `${folderPath}/preview.png`;
+
+        // Use index as unique ID (safer than name with spaces)
+        const cardId = `card-${index}`;
+
         card.innerHTML = `
+            <div class="card-grade-badge" id="grade-${cardId}">--</div>
             <div class="card-browser-header">
                 <div class="browser-dots">
                     <span class="dot red"></span>
@@ -416,6 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="browser-category-badge ${modClass}">${project.modalidad}</span>
             </div>
+            <img class="card-preview-image" src="${previewImagePath}" alt="Vista previa del sitio de ${project.nombre}" onerror="this.style.display='none'">
             <div class="card-body">
                 <!-- Name of the student as main Title -->
                 <h3 class="project-title" style="margin-bottom: 12px; min-height: 48px; display: flex; align-items: center;">${project.nombre}</h3>
@@ -432,6 +707,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btn = card.querySelector('.btn-view-project');
         btn.addEventListener('click', () => openProjectModal(project));
+
+        // Calculate and display grade in badge
+        checkProjectCompletion(project).then(checks => {
+            const grade = calculateGrade(checks);
+            const badgeEl = card.querySelector(`#grade-${cardId}`);
+
+            // Store grade for filtering
+            projectGrades.set(project.nombre, grade);
+
+            if (badgeEl) {
+                badgeEl.textContent = grade;
+                badgeEl.className = grade === 10
+                    ? 'card-grade-badge complete'      // Verde para 10
+                    : 'card-grade-badge incomplete';   // Rojo para 0
+                console.log(`${project.nombre}: ${grade}/10`);
+            }
+        }).catch(err => {
+            console.error(`Error loading grade for ${project.nombre}:`, err);
+        });
 
         return card;
     };
@@ -454,11 +748,15 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = `Sitio Web de Alumno`;
         modalAuthor.textContent = `Desarrollador: ${project.nombre} | Grupo 601`;
         modalNewTabBtn.setAttribute('href', project.ruta);
-        
+
         iframeLoader.style.opacity = '1';
         iframeLoader.style.display = 'flex';
-        modalIframe.src = project.ruta;
-        
+
+        // Lazy load: only load iframe when modal is opened
+        if (!modalIframe.src || modalIframe.src === 'about:blank') {
+            modalIframe.src = project.ruta;
+        }
+
         modalIframe.onload = () => {
             iframeLoader.style.opacity = '0';
             setTimeout(() => {
@@ -506,6 +804,95 @@ document.addEventListener('DOMContentLoaded', () => {
             renderProjects();
         }, 150);
     });
+
+    // ==========================================================================
+    // TABS MANAGEMENT
+    // ==========================================================================
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const galleryView = document.getElementById('gallery-view');
+    const gradesView = document.getElementById('grades-view');
+    const galleryControls = document.getElementById('gallery-controls');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.getAttribute('data-tab');
+
+            // Update active tab
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Show/hide views
+            if (tab === 'gallery') {
+                galleryView.style.display = 'block';
+                gradesView.style.display = 'none';
+                galleryControls.style.display = 'block';
+            } else if (tab === 'grades') {
+                galleryView.style.display = 'none';
+                gradesView.style.display = 'block';
+                galleryControls.style.display = 'none';
+                renderGradesTable();
+            }
+        });
+    });
+
+    // Render grades table
+    const renderGradesTable = () => {
+        const tbody = document.getElementById('grades-tbody');
+        tbody.innerHTML = '';
+
+        // Create array of students with grades
+        const studentsWithGrades = projectsData.map(project => ({
+            nombre: project.nombre,
+            modalidad: project.modalidad,
+            grade: projectGrades.get(project.nombre) || 0
+        }));
+
+        // Sort alphabetically by default
+        studentsWithGrades.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+        // Render rows
+        studentsWithGrades.forEach(student => {
+            const row = document.createElement('tr');
+            const gradeClass = student.grade === 10 ? 'complete' : 'incomplete';
+
+            row.innerHTML = `
+                <td><strong>${student.nombre}</strong></td>
+                <td>${student.modalidad}</td>
+                <td class="grade-cell ${gradeClass}">
+                    <span class="grade-badge-small ${gradeClass}">${student.grade}</span>
+                    <span>${student.grade}/10</span>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        // Add sorting functionality
+        const sortHeaders = document.querySelectorAll('.grades-table th.sortable');
+        sortHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const sortBy = header.getAttribute('data-sort');
+                sortGradesTable(sortBy);
+            });
+        });
+    };
+
+    const sortGradesTable = (sortBy) => {
+        const tbody = document.getElementById('grades-tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort((a, b) => {
+            if (sortBy === 'nombre') {
+                return a.cells[0].textContent.localeCompare(b.cells[0].textContent);
+            } else if (sortBy === 'grade') {
+                const gradeA = parseInt(a.cells[2].textContent);
+                const gradeB = parseInt(b.cells[2].textContent);
+                return gradeB - gradeA; // Descendente (10 primero)
+            }
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    };
 
     fetchProjects();
 });

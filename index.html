@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,14 @@
     <!-- Theme Toggler (Absolute position inside hero) -->
     <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema">
         <!-- SVG Icon will be loaded dynamically by app.js -->
+    </button>
+
+    <!-- Showcase Mode Button -->
+    <button id="showcase-btn" class="showcase-btn" aria-label="Entrar en modo presentación (S)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14zm-5.04-6.71l-2.75 3.54h2.79v2.17h-4.58V11h2.79L9.04 7.46h4.58v2.83h-2.79l2.75 3.54z"/>
+        </svg>
+        <span>Presentación</span>
     </button>
 
     <!-- ==========================================================================
@@ -58,17 +66,68 @@
     </header>
 
     <!-- ==========================================================================
+       TABS SECTION (Gallery vs Grades Table)
+       ========================================================================== -->
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="gallery" aria-label="Ver galería de proyectos">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    <span>Galería</span>
+                </button>
+                <button class="tab-btn" data-tab="grades" aria-label="Ver tabla de calificaciones">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M10 10.02h5v2h-5zM19 3h-1V1h-2v2h-4V1h-2v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5h5v2h-5z"/>
+                    </svg>
+                    <span>Calificaciones</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
        STICKY CONTROLS SECTION (Search & Filters)
        ========================================================================== -->
-    <section class="controls-section">
-        <div class="container controls-wrapper" style="justify-content: center;">
+    <section class="controls-section" id="gallery-controls">
+        <div class="container controls-wrapper" style="flex-direction: column; gap: 16px;">
             <!-- Search input with SVG icon -->
-            <div class="search-box-wrapper" style="max-width: 600px; width: 100%;">
+            <div class="search-box-wrapper" style="max-width: 600px; width: 100%; margin: 0 auto;">
                 <input type="text" id="search-input" class="search-input" placeholder="Buscar por nombre del alumno..." aria-label="Buscador de alumnos">
                 <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
+            </div>
+
+            <!-- Filter Buttons by Modality -->
+            <div class="filter-buttons-wrapper">
+                <div class="filter-group">
+                    <span class="filter-label">Modalidad:</span>
+                    <button class="filter-btn filter-btn-all active" data-filter="all" data-filter-type="modality" aria-label="Mostrar todos los proyectos">
+                        <span>Todos</span>
+                    </button>
+                    <button class="filter-btn filter-btn-regular" data-filter="No Dual" data-filter-type="modality" aria-label="Mostrar solo estudiantes regulares">
+                        <span>Regulares</span>
+                    </button>
+                    <button class="filter-btn filter-btn-dual" data-filter="Dual" data-filter-type="modality" aria-label="Mostrar solo estudiantes de formación dual">
+                        <span>Dual</span>
+                    </button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Estado:</span>
+                    <button class="filter-btn filter-btn-all active" data-filter="all" data-filter-type="grade" aria-label="Mostrar todos">
+                        <span>Todos</span>
+                    </button>
+                    <button class="filter-btn filter-btn-entregado" data-filter="entregados" data-filter-type="grade" aria-label="Mostrar solo entregados">
+                        <span>✓ Entregados</span>
+                    </button>
+                    <button class="filter-btn filter-btn-pendiente" data-filter="pendientes" data-filter-type="grade" aria-label="Mostrar solo pendientes">
+                        <span>⏳ Pendientes</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -76,10 +135,42 @@
     <!-- ==========================================================================
        PROJECTS GRID LISTING
        ========================================================================== -->
-    <main class="projects-grid-section">
+    <main class="projects-grid-section" id="gallery-view">
         <div class="container">
             <div id="projects-grid" class="projects-grid">
                 <!-- Projects cards will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+       GRADES TABLE
+       ========================================================================== -->
+    <main class="grades-table-section" id="grades-view" style="display: none;">
+        <div class="container">
+            <div class="grades-table-wrapper">
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="nombre">
+                                Alumno
+                                <svg class="sort-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </th>
+                            <th>Modalidad</th>
+                            <th class="sortable" data-sort="grade">
+                                Calificación
+                                <svg class="sort-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="grades-tbody">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -117,6 +208,61 @@
                 </div>
                 <!-- Live student project rendering -->
                 <iframe id="modal-iframe" class="modal-iframe" title="Visor de proyecto de alumno"></iframe>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ==========================================================================
+       SHOWCASE MODE (Full-screen presentation)
+       ========================================================================== -->
+    <div id="showcase-mode" class="showcase-container">
+        <div class="showcase-content">
+            <div class="showcase-project-info">
+                <h2 id="showcase-name">Nombre del Proyecto</h2>
+                <p id="showcase-meta">Grupo 601 • CONALEP Pachuca II</p>
+            </div>
+            <iframe id="showcase-iframe" class="showcase-iframe" title="Visor de proyecto en modo presentación"></iframe>
+            <div class="showcase-controls">
+                <button id="showcase-prev" class="showcase-nav-btn" aria-label="Proyecto anterior">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+                <div class="showcase-counter">
+                    <span id="showcase-current">1</span> / <span id="showcase-total">36</span>
+                </div>
+                <button id="showcase-next" class="showcase-nav-btn" aria-label="Siguiente proyecto">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+            </div>
+            <button id="showcase-exit" class="showcase-exit-btn" aria-label="Salir del modo presentación (Esc)">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       COMMAND PALETTE / ADVANCED SEARCH (Ctrl+K)
+       ========================================================================== -->
+    <dialog id="search-palette" class="search-palette-backdrop" aria-modal="true">
+        <div class="search-palette-window">
+            <div class="search-palette-input-wrapper">
+                <svg class="palette-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="palette-search-input" class="palette-search-input" placeholder="Buscar alumno o proyecto..." autocomplete="off">
+                <kbd class="palette-kbd">Esc</kbd>
+            </div>
+            <div id="palette-results" class="palette-results">
+                <!-- Results rendered here -->
+            </div>
+            <div class="palette-footer">
+                <span class="palette-hint">↑↓ para navegar • ↵ para seleccionar</span>
             </div>
         </div>
     </dialog>
