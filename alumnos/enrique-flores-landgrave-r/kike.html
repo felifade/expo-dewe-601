@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pumas UNAM – Periodo Dual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       PUMAS UNAM – Periodo Dual
+       style.css — incrustado
+       ============================================ */
+
+    :root {
+      --azul:    #001a3a;
+      --azul-md: #003070;
+      --oro:     #f5a800;
+      --oro-dark:#c07800;
+      --blanco:  #ffffff;
+      --texto:   rgba(255, 255, 255, 0.75);
+      --borde:   rgba(245, 168, 0, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.04);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background-color: var(--azul);
+      color: var(--blanco);
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--azul) 0%, var(--azul-md) 50%, var(--azul) 100%);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--oro);
+    }
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(245,168,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .puma-svg {
+      width: 120px; height: 120px;
+      margin: 0 auto 1rem;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(245,168,0,0.5));
+      animation: flotar 3s ease-in-out infinite;
+    }
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--oro);
+      letter-spacing: 6px;
+      line-height: 1;
+      text-shadow: 0 2px 20px rgba(245,168,0,0.4);
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background-color: var(--oro);
+      color: var(--azul);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      background-color: #001228;
+      border-bottom: 2px solid rgba(245,168,0,0.2);
+      overflow-x: auto;
+    }
+    .tab {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.4);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    }
+    .tab:hover { color: var(--oro); }
+    .tab.active {
+      color: var(--oro);
+      border-bottom-color: var(--oro);
+      background-color: rgba(245,168,0,0.05);
+    }
+
+    /* CONTENIDO */
+    .main-content { max-width: 800px; margin: 0 auto; }
+    .content { display: none; padding: 2rem; animation: fadeIn 0.3s ease; }
+    .content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION TITLE */
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--oro);
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-title::after { content:''; flex:1; height:1px; background-color: rgba(245,168,0,0.3); }
+
+    /* STATS */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background-color: rgba(245,168,0,0.08);
+      border: 1px solid rgba(245,168,0,0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--oro);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* CARDS */
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: rgba(245,168,0,0.5); }
+    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem; }
+    .icon-circle {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background-color: rgba(245,168,0,0.15);
+      border: 1px solid rgba(245,168,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; color: var(--blanco); }
+    .card-sub { font-size: 0.8rem; color: rgba(245,168,0,0.7); letter-spacing: 1px; text-transform: uppercase; }
+    .card p { font-size: 0.95rem; line-height: 1.7; color: var(--texto); }
+    .card p strong { color: var(--oro); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--oro), rgba(245,168,0,0.1));
+    }
+    .tl-item { position: relative; margin-bottom: 1.5rem; }
+    .tl-dot {
+      position: absolute; left: -2rem; top: 4px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background-color: var(--oro);
+      border: 3px solid var(--azul);
+      box-shadow: 0 0 8px rgba(245,168,0,0.5);
+    }
+    .tl-period { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 2px; color: var(--oro); margin-bottom: 0.25rem; }
+    .tl-text { font-size: 0.95rem; color: var(--texto); line-height: 1.6; }
+
+    /* HABILIDADES */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px; margin-top: 1rem;
+    }
+    .skill-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 1rem; text-align: center;
+      transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .skill-item:hover {
+      background-color: rgba(245,168,0,0.08);
+      border-color: rgba(245,168,0,0.5);
+      transform: translateY(-3px);
+    }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .skill-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1px; color: var(--oro); margin-bottom: 0.25rem; }
+    .skill-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(245,168,0,0.15);
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.5rem; }
+      .tab { font-size: 0.85rem; padding: 0.75rem 0.5rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <svg class="puma-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Puma">
+      <circle cx="60" cy="60" r="58" fill="rgba(245,168,0,0.1)" stroke="#f5a800" stroke-width="2"/>
+      <ellipse cx="60" cy="65" rx="28" ry="24" fill="#f5a800"/>
+      <ellipse cx="60" cy="60" rx="22" ry="20" fill="#e09500"/>
+      <polygon points="38,48 30,30 50,40" fill="#f5a800"/>
+      <polygon points="82,48 90,30 70,40" fill="#f5a800"/>
+      <polygon points="40,46 34,33 50,41" fill="#c07800"/>
+      <polygon points="80,46 86,33 70,41" fill="#c07800"/>
+      <ellipse cx="50" cy="58" rx="5" ry="5" fill="#001a3a"/>
+      <ellipse cx="70" cy="58" rx="5" ry="5" fill="#001a3a"/>
+      <circle cx="51" cy="57" r="1.5" fill="#fff"/>
+      <circle cx="71" cy="57" r="1.5" fill="#fff"/>
+      <ellipse cx="60" cy="67" rx="4" ry="3" fill="#001a3a"/>
+      <path d="M56,70 Q60,74 64,70" stroke="#001a3a" stroke-width="1.5" fill="none"/>
+      <line x1="35" y1="66" x2="55" y2="68" stroke="#001a3a" stroke-width="1" opacity="0.6"/>
+      <line x1="35" y1="70" x2="55" y2="70" stroke="#001a3a" stroke-width="1" opacity="0.6"/>
+      <line x1="85" y1="66" x2="65" y2="68" stroke="#001a3a" stroke-width="1" opacity="0.6"/>
+      <line x1="85" y1="70" x2="65" y2="70" stroke="#001a3a" stroke-width="1" opacity="0.6"/>
+    </svg>
+    <h1>PUMAS UNAM</h1>
+    <p class="subtitle">Periodo de Práctica Dual</p>
+    <span class="badge">⚽ Portafolio Profesional</span>
+  </header>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="inicio" role="tab" aria-selected="true">🏠 Inicio</button>
+    <button class="tab" data-tab="experiencia" role="tab" aria-selected="false">📋 Experiencia</button>
+    <button class="tab" data-tab="habilidades" role="tab" aria-selected="false">💡 Habilidades</button>
+    <button class="tab" data-tab="areas" role="tab" aria-selected="false">🏫 Áreas</button>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main class="main-content">
+
+    <!-- INICIO -->
+    <section class="content active" id="tab-inicio" role="tabpanel">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Meses en Cómputo</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Niveles Educativos</div></div>
+        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Habilidades</div></div>
+        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Garra Puma</div></div>
+      </div>
+
+      <h2 class="sec-title">Sobre mí</h2>
+      <div class="card">
+        <p>Estudiante de periodo dual con experiencia en el área de <strong>cómputo y papelería</strong>. Durante mi estancia he apoyado en distintos niveles educativos — primaria, secundaria, preparatoria y universidad — brindando asistencia técnica a maestros y alumnos con sus equipos y proyectos.</p>
+      </div>
+
+      <h2 class="sec-title">Áreas de trabajo</h2>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">🖥️</div>
+          <div>
+            <div class="card-title">Área de Cómputo</div>
+            <div class="card-sub">Soporte técnico y redes</div>
+          </div>
+        </div>
+        <p>Reparación y mantenimiento de equipos de cómputo, configuración y arreglo de redes computacionales, apoyo técnico a toda la comunidad escolar.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">📄</div>
+          <div>
+            <div class="card-title">Área de Papelería</div>
+            <div class="card-sub">Servicios escolares</div>
+          </div>
+        </div>
+        <p>Atención en el área de papelería del plantel, brindando apoyo administrativo y de servicios a docentes y alumnos de todos los niveles educativos.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="content" id="tab-experiencia" role="tabpanel">
+      <h2 class="sec-title">Cronología</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Primeros 4 meses</div>
+          <div class="tl-text">Dedicación principal al área de cómputo: arreglo y configuración de redes computacionales, mantenimiento de equipos y apoyo técnico general al plantel.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Continuación del periodo</div>
+          <div class="tl-text">Combinación de trabajo en cómputo y papelería. Ampliación del apoyo a niveles de primaria, secundaria, preparatoria y universidad, sin descuidar el puesto en papelería.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Apoyo docente y estudiantil</div>
+          <div class="tl-text">Asistencia a maestros y alumnos en sus proyectos escolares y resolución de problemas técnicos en sus equipos de cómputo.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Mantenimiento de impresoras</div>
+          <div class="tl-text">Aprendizaje y aplicación del mantenimiento preventivo y correctivo de impresoras y equipo de cómputo en general.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="content" id="tab-habilidades" role="tabpanel">
+      <h2 class="sec-title">Lo que aprendí</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">Redes</div>
+          <div class="skill-desc">Configuración y mantenimiento de redes computacionales</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">💻</div>
+          <div class="skill-name">Cómputo</div>
+          <div class="skill-desc">Manejo y reparación de equipos de cómputo</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🖨️</div>
+          <div class="skill-name">Impresoras</div>
+          <div class="skill-desc">Mantenimiento preventivo y correctivo</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🖥️</div>
+          <div class="skill-name">Programación</div>
+          <div class="skill-desc">Manejo de páginas y plataformas de programación</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">📋</div>
+          <div class="skill-name">Administración</div>
+          <div class="skill-desc">Apoyo en área de papelería y servicios escolares</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🤝</div>
+          <div class="skill-name">Atención</div>
+          <div class="skill-desc">Servicio a maestros, alumnos y personal del plantel</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREAS -->
+    <section class="content" id="tab-areas" role="tabpanel">
+      <h2 class="sec-title">Niveles donde apoyé</h2>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">🏫</div>
+          <div>
+            <div class="card-title">Primaria</div>
+            <div class="card-sub">Nivel básico</div>
+          </div>
+        </div>
+        <p>Apoyo técnico en el área de cómputo y asistencia en proyectos escolares de los alumnos de nivel primaria.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">📚</div>
+          <div>
+            <div class="card-title">Secundaria</div>
+            <div class="card-sub">Nivel básico</div>
+          </div>
+        </div>
+        <p>Soporte técnico a maestros y alumnos, resolución de problemas en equipos de cómputo y apoyo en actividades escolares.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">🎓</div>
+          <div>
+            <div class="card-title">Preparatoria</div>
+            <div class="card-sub">Nivel medio superior</div>
+          </div>
+        </div>
+        <p>Asistencia en proyectos más avanzados, configuración de equipos y apoyo técnico especializado a la comunidad prepa.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="icon-circle">🏛️</div>
+          <div>
+            <div class="card-title">Universidad</div>
+            <div class="card-sub">Nivel superior</div>
+          </div>
+        </div>
+        <p>Apoyo a nivel universitario en proyectos de mayor complejidad, mantenimiento de redes y equipos de cómputo institucionales.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">⚽ PUMAS UNAM · GOYA · GOYA · CACHÚN CACHÚN RA RA ⚽</footer>
+
+  <script>
+    /* ============================================
+       PUMAS UNAM – Periodo Dual
+       app.js — incrustado
+       ============================================ */
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const tabs     = document.querySelectorAll('.tab');
+      const sections = document.querySelectorAll('.content');
+
+      // Cambio de pestaña
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.tab;
+
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          sections.forEach(s => s.classList.remove('active'));
+
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          const targetSection = document.getElementById('tab-' + target);
+          if (targetSection) targetSection.classList.add('active');
+        });
+      });
+
+      // Animación de números en stats
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const statsRow = document.querySelector('.stats-row');
+      if (statsRow) observer.observe(statsRow);
+
+      function animateStats() {
+        document.querySelectorAll('.stat-num').forEach(el => {
+          const raw = el.textContent.trim();
+          const num = parseInt(raw);
+          if (isNaN(num)) return;
+
+          const duration = 800;
+          const step = (timestamp) => {
+            if (!step.startTime) step.startTime = timestamp;
+            const progress = Math.min((timestamp - step.startTime) / duration, 1);
+            el.textContent = Math.round(progress * num);
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = raw;
+          };
+          requestAnimationFrame(step);
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>

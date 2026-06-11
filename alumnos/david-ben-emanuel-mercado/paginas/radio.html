@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>El Mundo de la Radio · RTH Dual</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+[data-theme="dark"]{
+  --r:#E8002D;--g:#F5C518;--accent:#00CC88;
+  --dk:#080810;--dkr:#040408;--md:#10101C;
+  --pn:#14142A;--br:#222238;--tx:#EEEEF8;--mt:#7070A0;
+  --nav-bg:rgba(8,8,16,.94);--shadow-green:rgba(0,204,136,.15);
+}
+[data-theme="light"]{
+  --r:#C8001F;--g:#C9960A;--accent:#009966;
+  --dk:#F2F2FA;--dkr:#E8E8F5;--md:#DDDDF0;
+  --pn:#FFFFFF;--br:#C8C8E0;--tx:#18183A;--mt:#606088;
+  --nav-bg:rgba(242,242,250,.96);--shadow-green:rgba(0,153,102,.12);
+}
+:root{--fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'Courier Prime',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--tx);font-family:var(--fb);line-height:1.65;overflow-x:hidden;cursor:none;transition:background .5s,color .4s}
+.cur{position:fixed;width:12px;height:12px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(0,204,136,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .25s,height .25s}
+[data-theme="light"] .cur{mix-blend-mode:multiply}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:9999;background:var(--accent);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+#sigbar{position:fixed;top:3px;left:0;width:100%;height:3px;display:flex;z-index:1000}
+#sigbar span{flex:1;background:var(--accent);animation:sig 1.8s ease-in-out infinite}
+#sigbar span:nth-child(2n){animation-delay:.3s}
+#sigbar span:nth-child(3n){animation-delay:.7s}
+@keyframes sig{0%,100%{opacity:.15}50%{opacity:1}}
+.theme-toggle{position:fixed;bottom:2rem;left:2rem;z-index:400;width:52px;height:28px;background:var(--pn);border:1.5px solid var(--br);border-radius:14px;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;display:flex;align-items:center;padding:3px;box-shadow:0 2px 16px var(--shadow-green)}
+.theme-toggle:hover{border-color:var(--accent);box-shadow:0 0 20px var(--shadow-green)}
+.theme-toggle__knob{width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform .3s cubic-bezier(.77,0,.18,1);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+[data-theme="light"] .theme-toggle__knob{transform:translateX(24px)}
+.theme-toggle__icon-moon{display:block}
+.theme-toggle__icon-sun{display:none}
+[data-theme="light"] .theme-toggle__icon-moon{display:none}
+[data-theme="light"] .theme-toggle__icon-sun{display:block}
+nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);transition:box-shadow .3s,background .5s}
+nav.lit{box-shadow:0 2px 32px var(--shadow-green)}
+.nav-i{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem}
+.nav-brand{font-family:var(--fd);font-size:1.5rem;color:var(--accent);letter-spacing:.15em;text-decoration:none}
+.nav-back{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;padding:.4rem .9rem;border:1px solid var(--br);border-radius:2px;transition:all .2s}
+.nav-back:hover{color:var(--tx);border-color:var(--accent)}
+
+/* HERO */
+.hero{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(0,204,136,.1) 0%,transparent 65%),linear-gradient(180deg,var(--dk) 0%,var(--dkr) 100%);overflow:hidden}
+.hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,204,136,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,204,136,.04) 1px,transparent 1px);background-size:72px 72px;animation:gridmove 20s linear infinite}
+@keyframes gridmove{from{transform:translateY(0)}to{transform:translateY(72px)}}
+.badge{font-family:var(--fm);font-size:.65rem;letter-spacing:.3em;color:var(--accent);border:1px solid var(--accent);padding:.35rem 1rem;border-radius:2px;margin-bottom:2rem;position:relative;z-index:1;display:flex;align-items:center;gap:.6rem}
+.badge::before{content:'';width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink .8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-title{font-family:var(--fd);font-size:clamp(4rem,10vw,8rem);line-height:.88;position:relative;z-index:1;animation:fadeup .9s ease both}
+.hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+@keyframes fadeup{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-family:var(--fm);font-size:.82rem;letter-spacing:.22em;color:var(--mt);text-transform:uppercase;margin-top:1.5rem;position:relative;z-index:1;animation:fadeup .9s .2s ease both}
+.hero-intro{max-width:680px;margin:2rem auto 0;font-size:.95rem;color:var(--mt);line-height:1.9;position:relative;z-index:1;animation:fadeup .9s .3s ease both}
+.hero-intro strong{color:var(--tx)}
+
+/* WAVE ANIMATION */
+.wave-container{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:60px;margin:2rem 0;position:relative;z-index:1}
+.wave-bar{width:4px;background:var(--accent);border-radius:2px;animation:wave-anim 1.2s ease-in-out infinite}
+@keyframes wave-anim{0%,100%{height:8px;opacity:.4}50%{height:50px;opacity:1}}
+
+/* MAIN */
+.main-section{max-width:1200px;margin:0 auto;padding:5rem 2rem}
+.section-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);line-height:.9;margin-bottom:3rem;color:var(--tx)}
+
+/* BIG NUMBERS */
+.big-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--br);border:1px solid var(--br);margin-bottom:4rem}
+.big-box{background:var(--pn);padding:2.5rem 1.2rem;text-align:center;transition:background .3s}
+.big-box:hover{background:var(--md)}
+.big-num{font-family:var(--fd);font-size:4.5rem;color:var(--accent);line-height:1}
+.big-unit{font-family:var(--fd);font-size:2rem;color:var(--g)}
+.big-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;color:var(--mt);margin-top:.5rem;text-transform:uppercase;line-height:1.5}
+
+/* CURIOSITIES */
+.curio-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:4rem}
+.curio{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:2rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color .3s,background .3s}
+.curio:hover{border-color:var(--accent);background:var(--md)}
+.curio-num{font-family:var(--fd);font-size:3.5rem;color:var(--accent);line-height:1;opacity:.35;flex-shrink:0;width:60px}
+.curio-body{}
+.curio-title{font-family:var(--fm);font-size:.72rem;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem}
+.curio-text{font-size:.9rem;color:var(--mt);line-height:1.8}
+.curio-text strong{color:var(--tx)}
+
+/* BAND TABLE */
+.band-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:1.5rem}
+.band-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:4rem}
+.band-table th{background:var(--accent);color:#fff;padding:.9rem 1.2rem;text-align:left;font-family:var(--fm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.band-table td{padding:.85rem 1.2rem;border-bottom:1px solid var(--br);color:var(--tx);transition:background .2s}
+.band-table tr:hover td{background:var(--md)}
+.band-table tr.highlight td{background:rgba(0,204,136,.07);border-left:3px solid var(--accent)}
+.band-table td:first-child{font-weight:700;font-family:var(--fd);font-size:1.2rem;color:var(--accent)}
+.band-badge{display:inline-block;padding:.2rem .7rem;border-radius:2px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-family:var(--fm)}
+.b-am{background:rgba(245,197,24,.15);color:var(--g);border:1px solid rgba(245,197,24,.3)}
+.b-fm{background:rgba(0,204,136,.15);color:var(--accent);border:1px solid rgba(0,204,136,.3)}
+.b-dig{background:rgba(0,153,255,.15);color:#0099FF;border:1px solid rgba(0,153,255,.3)}
+.b-sw{background:rgba(232,0,45,.15);color:var(--r);border:1px solid rgba(232,0,45,.3)}
+
+/* HOW RADIO WORKS */
+.how-section{margin-bottom:4rem}
+.how-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:2rem}
+.how-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.how-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--accent),transparent);z-index:0}
+.how-step{text-align:center;padding:1rem .5rem;position:relative;z-index:1}
+.how-step-circle{width:56px;height:56px;border-radius:50%;background:var(--pn);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;transition:background .3s,box-shadow .3s}
+.how-step:hover .how-step-circle{background:rgba(0,204,136,.15);box-shadow:0 0 20px rgba(0,204,136,.3)}
+.how-step-label{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:var(--mt);text-transform:uppercase;line-height:1.5}
+
+/* RADIO HISTORY */
+.history-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:4rem}
+.hist-item{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .3s}
+.hist-item:hover{border-color:rgba(0,204,136,.4)}
+.hist-year{font-family:var(--fd);font-size:2rem;color:var(--accent);line-height:1;flex-shrink:0;width:75px}
+.hist-body{}
+.hist-event{font-size:.9rem;font-weight:600;color:var(--tx);margin-bottom:.3rem}
+.hist-detail{font-size:.82rem;color:var(--mt);line-height:1.7}
+
+/* QUOTE */
+.quote-block{background:var(--pn);border:1px solid var(--br);border-left:4px solid var(--accent);padding:2rem 2.5rem;margin-bottom:4rem;border-radius:4px}
+.quote-block p{font-size:1.05rem;font-style:italic;color:var(--tx);line-height:1.9;margin-bottom:.8rem}
+.quote-block cite{font-family:var(--fm);font-size:.65rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
+
+/* FOOTER */
+footer{background:var(--dkr,#040408);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center}
+.foot-brand{font-family:var(--fd);font-size:2.2rem;color:var(--accent);letter-spacing:.2em}
+.foot-sub{font-family:var(--fm);font-size:.65rem;color:var(--mt);letter-spacing:.15em;margin-top:.4rem}
+.foot-nav{display:flex;justify-content:center;gap:1.5rem;margin:1.2rem 0;flex-wrap:wrap}
+.foot-nav a{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;transition:color .2s}
+.foot-nav a:hover{color:var(--accent)}
+.stt{position:fixed;bottom:2rem;right:2rem;z-index:300;width:42px;height:42px;background:var(--accent);color:#fff;border:none;border-radius:2px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s}
+.stt.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.big-strip{grid-template-columns:1fr 1fr}.curio-grid{grid-template-columns:1fr}.how-steps{grid-template-columns:1fr 1fr;gap:1rem}.how-steps::before{display:none}.history-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="sporeCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:1;width:100%;height:100%"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+<div id="scroll-progress"></div>
+<div id="sigbar"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Cambiar modo">
+  <div class="theme-toggle__knob">
+    <span class="theme-toggle__icon-moon">🌙</span>
+    <span class="theme-toggle__icon-sun">☀️</span>
+  </div>
+</button>
+
+<nav id="mainNav">
+  <div class="nav-i">
+    <a href="index.html" class="nav-brand">RTH · DUAL</a>
+    <a href="../ben.html" class="nav-back">← Volver al reporte</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__grid"></div>
+  <div class="badge">El mundo de la radiodifusión</div>
+  <h1 class="hero-title">EL PODER<br><em>RADIO</em></h1>
+  <p class="hero-sub">Datos, historia y curiosidades</p>
+  <div class="wave-container" id="waveContainer"></div>
+  <p class="hero-intro">
+    La radio es el medio de comunicación <strong>más universal que existe</strong>. Viaja a la velocidad de la luz, no necesita internet, atraviesa montañas y llega a lugares donde ningún otro medio puede. En el mundo hay más de <strong>44,000 estaciones de radio</strong> activas transmitiendo ahora mismo.
+  </p>
+</header>
+
+<main>
+<div class="main-section">
+
+  <!-- BIG NUMBERS -->
+  <div class="section-tag">La radio en cifras globales</div>
+  <h2 class="section-title">EN NÚMEROS</h2>
+  <div class="big-strip">
+    <div class="big-box">
+      <div><span class="big-num" data-t="44">0</span><span class="big-unit">K</span></div>
+      <div class="big-lbl">Estaciones de radio<br>activas en el mundo</div>
+    </div>
+    <div class="big-box">
+      <div><span class="big-num" data-t="3">0</span><span class="big-unit">B+</span></div>
+      <div class="big-lbl">Personas que escuchan<br>radio cada semana</div>
+    </div>
+    <div class="big-box">
+      <div><span class="big-num" data-t="125">0</span><span class="big-unit">+</span></div>
+      <div class="big-lbl">Años desde la primera<br>transmisión de radio</div>
+    </div>
+    <div class="big-box">
+      <div><span class="big-num" data-t="300">0</span><span class="big-unit">M/s</span></div>
+      <div class="big-lbl">Velocidad de viaje<br>de la señal de radio</div>
+    </div>
+  </div>
+
+  <!-- CURIOSITIES -->
+  <div class="section-tag">Datos que quizás no sabías</div>
+  <h2 class="section-title">CURIOSIDADES<br><span style="color:var(--accent)">DE LA RADIO</span></h2>
+  <div class="curio-grid">
+    <div class="curio">
+      <div class="curio-num">01</div>
+      <div class="curio-body">
+        <div class="curio-title">El primer "podcast" de la historia</div>
+        <div class="curio-text">En <strong>1906</strong>, Reginald Fessenden realizó la primera transmisión de voz y música por radio en el mundo. Tocó un violín y leyó un pasaje bíblico al aire. Los marineros en el mar Atlántico escucharon perplejos cómo sus receptores de código Morse comenzaban a "hablar".</div>
+      </div>
+    </div>
+    <div class="curio">
+      <div class="curio-num">02</div>
+      <div class="curio-body">
+        <div class="curio-title">La radio llegó al espacio</div>
+        <div class="curio-text">Los astronautas de la <strong>Estación Espacial Internacional (ISS)</strong> tienen una estación de radioaficionado en órbita. Desde 400 km de altura han conversado con miles de personas en todo el mundo usando frecuencias de radioaficionados. La señal viaja al espacio y de regreso en menos de 3 milisegundos.</div>
+      </div>
+    </div>
+    <div class="curio">
+      <div class="curio-num">03</div>
+      <div class="curio-body">
+        <div class="curio-title">La radio sobrevive sin electricidad</div>
+        <div class="curio-text">Existen radios de <strong>manivela y energía solar</strong> diseñadas para zonas de desastre. En terremotos, huracanes o cortes de luz, la radio AM puede escucharse a cientos de kilómetros con equipos simples de bajo costo, lo que la convierte en el sistema de alerta de emergencia más confiable del planeta.</div>
+      </div>
+    </div>
+    <div class="curio">
+      <div class="curio-num">04</div>
+      <div class="curio-body">
+        <div class="curio-title">FM no es solo música</div>
+        <div class="curio-text">Las señales FM también transportan <strong>datos silenciosos</strong>. El RDS (Radio Data System) permite enviar el nombre de la canción, hora y texto al display de tu radio. Muchos países usan esto para enviar alertas de tráfico y emergencias automáticamente a los vehículos en ruta.</div>
+      </div>
+    </div>
+    <div class="curio">
+      <div class="curio-num">05</div>
+      <div class="curio-body">
+        <div class="curio-title">Hay radio en Marte</div>
+        <div class="curio-text">Los rovers de la NASA como <strong>Perseverance y Curiosity</strong> se comunican con la Tierra usando ondas de radio en frecuencias X-band (~8 GHz) y Ka-band (~32 GHz). La señal tarda entre 3 y 22 minutos en llegar dependiendo de la posición de los planetas. Sin radio, no habría exploración espacial.</div>
+      </div>
+    </div>
+    <div class="curio">
+      <div class="curio-num">06</div>
+      <div class="curio-body">
+        <div class="curio-title">México tiene más de 1,600 estaciones</div>
+        <div class="curio-text">El IFT (Instituto Federal de Telecomunicaciones) tiene concesionadas <strong>más de 1,600 estaciones de radio</strong> en México, entre AM, FM y estaciones digitales. Hidalgo cuenta con varias estaciones, siendo RTH la única de carácter público estatal, con mandato de servicio a la comunidad.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW RADIO WORKS -->
+  <div class="how-section">
+    <div class="section-tag">¿Cómo funciona?</div>
+    <div class="how-title">ASÍ VIAJA<br><span style="color:var(--accent)">TU VOZ AL AIRE</span></div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-circle">🎙️</div>
+        <div class="how-step-label">Micrófono<br>capta la voz</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">🔊</div>
+        <div class="how-step-label">Señal de audio<br>se amplifica</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">📡</div>
+        <div class="how-step-label">Modulador mezcla<br>audio con portadora</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">🗼</div>
+        <div class="how-step-label">Antena irradia<br>la señal al aire</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-circle">📻</div>
+        <div class="how-step-label">Receptor capta<br>y demodula</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAND TABLE -->
+  <div class="band-title">BANDAS DE<br><span style="color:var(--accent)">FRECUENCIA</span></div>
+  <table class="band-table">
+    <thead>
+      <tr><th>Banda</th><th>Rango</th><th>Tipo</th><th>Propagación</th><th>Uso típico</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>AM</td><td>535 – 1605 kHz</td><td><span class="band-badge b-am">AM</span></td><td>Cientos de km, rebota en ionosfera</td><td>Noticias, radio comunitaria, cobertura rural</td></tr>
+      <tr class="highlight"><td>FM</td><td>88 – 108 MHz</td><td><span class="band-badge b-fm">FM</span></td><td>Línea de visión (~80 km desde antena alta)</td><td>Música, entretenimiento, radio urbana</td></tr>
+      <tr><td>SW</td><td>3 – 30 MHz</td><td><span class="band-badge b-sw">Onda Corta</span></td><td>Global (miles de km por ionosfera)</td><td>Radio internacional, emergencias, marina</td></tr>
+      <tr><td>DAB+</td><td>174 – 240 MHz</td><td><span class="band-badge b-dig">Digital</span></td><td>Similar a FM, mayor calidad</td><td>Radio digital en Europa, Australia, México</td></tr>
+      <tr><td>HD Radio</td><td>88 – 108 MHz</td><td><span class="band-badge b-dig">Digital</span></td><td>Coexiste con FM analógica</td><td>Radio digital en EE.UU. (en el mismo canal FM)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- HISTORY -->
+  <div class="section-tag">La historia en hitos</div>
+  <h2 class="section-title">GRANDES<br><span style="color:var(--accent)">MOMENTOS</span></h2>
+  <div class="history-grid">
+    <div class="hist-item">
+      <div class="hist-year">1895</div>
+      <div class="hist-body">
+        <div class="hist-event">Marconi transmite sin cables</div>
+        <div class="hist-detail">Guglielmo Marconi logra la primera transmisión inalámbrica de señales morse a 2.4 km, sentando las bases de toda la radiodifusión moderna.</div>
+      </div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">1906</div>
+      <div class="hist-body">
+        <div class="hist-event">Primera transmisión de voz</div>
+        <div class="hist-detail">Reginald Fessenden transmite música y voz humana por primera vez en el mundo. El mundo deja de ver la radio solo como un telégrafo sin cables.</div>
+      </div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">1920</div>
+      <div class="hist-body">
+        <div class="hist-event">Primera estación comercial: KDKA</div>
+        <div class="hist-detail">En Pittsburgh, EE.UU., KDKA transmite los resultados de las elecciones presidenciales. Nace la radiodifusión comercial tal como la conocemos.</div>
+      </div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">1938</div>
+      <div class="hist-body">
+        <div class="hist-event">La guerra de los mundos</div>
+        <div class="hist-detail">Orson Welles transmite "La guerra de los mundos" como si fuera un noticiero real. Miles de personas creen que es una invasión alienígena. Demuestra el poder enorme de la radio sobre la audiencia.</div>
+      </div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">1960</div>
+      <div class="hist-body">
+        <div class="hist-event">Nace la radio FM estereofónica</div>
+        <div class="hist-detail">Se adopta el estándar FM estéreo en EE.UU. La radio en frecuencia modulada comienza su era dorada, superando a AM en calidad de audio y convirtiéndose en el hogar de la música.</div>
+      </div>
+    </div>
+    <div class="hist-item">
+      <div class="hist-year">2024</div>
+      <div class="hist-body">
+        <div class="hist-event">Radio digital e Internet</div>
+        <div class="hist-detail">La radio convive con el streaming, los podcasts y el DAB+ digital. Sin embargo, sigue siendo el medio más rápido para comunicar emergencias y el único que no depende de internet para llegar a las comunidades más alejadas del planeta.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <p>"La radio tiene la capacidad de crear imágenes en la mente del oyente que ninguna pantalla puede superar. Es el único medio que puede acompañar al ser humano mientras trabaja, conduce, cocina o duerme — sin pedir su atención completa."</p>
+    <cite>— Reflexión sobre el poder de la radio como medio</cite>
+  </div>
+
+</div>
+</main>
+
+<footer>
+
+</footer>
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('a,button,.curio,.hist-item,.how-step,.big-box').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='54px';ring.style.height='54px';});el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='36px';ring.style.height='36px';});});
+
+// THEME TOGGLE — CORREGIDO
+const docEl=document.documentElement;
+const themeBtn=document.getElementById('themeToggle');
+const saved=localStorage.getItem('rth-theme')||'dark';
+docEl.setAttribute('data-theme',saved);
+themeBtn.addEventListener('click',()=>{
+  const current=docEl.getAttribute('data-theme');
+  const next=current==='dark'?'light':'dark';
+  docEl.setAttribute('data-theme',next);
+  localStorage.setItem('rth-theme',next);
+});
+
+// NAV + SCROLL
+const nav=document.getElementById('mainNav'),stt=document.getElementById('stt'),sp=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('lit',window.scrollY>80);
+  stt.classList.toggle('show',window.scrollY>400);
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  if(sp)sp.style.width=pct+'%';
+});
+
+// SIGNAL BARS
+const sb=document.getElementById('sigbar');
+for(let i=0;i<100;i++){const s=document.createElement('span');sb.appendChild(s);}
+
+// WAVE ANIMATION
+const wc=document.getElementById('waveContainer');
+for(let i=0;i<32;i++){const b=document.createElement('div');b.className='wave-bar';b.style.animationDelay=(i*0.07)+'s';b.style.animationDuration=(0.8+Math.random()*0.8)+'s';wc.appendChild(b);}
+
+// COUNTERS
+function count(el,t,dur=1800){let v=0;const step=Math.max(1,Math.ceil(t/(dur/16)));const tm=setInterval(()=>{v+=step;if(v>=t){el.textContent=t;clearInterval(tm);}else el.textContent=v;},16);}
+const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){count(e.target,+e.target.dataset.t);co.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.big-num[data-t]').forEach(el=>co.observe(el));
+
+// SPORES (verde)
+(function(){const canvas=document.getElementById('sporeCanvas');const ctx=canvas.getContext('2d');let W,H;const mouse={x:-9999,y:-9999};const spores=[];const COLORS=['rgba(0,204,136,','rgba(0,255,160,','rgba(0,150,100,'];function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);function makeSpore(){const r=Math.random()*3+1;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r,alpha:Math.random()*.4+.1,color:COLORS[Math.floor(Math.random()*COLORS.length)],pulse:Math.random()*Math.PI*2};}for(let i=0;i<50;i++)spores.push(makeSpore());document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});function draw(){ctx.clearRect(0,0,W,H);spores.forEach(s=>{s.pulse+=.016;const pr=Math.sin(s.pulse)*.3;const dx=mouse.x-s.x,dy=mouse.y-s.y,dist=Math.sqrt(dx*dx+dy*dy),inf=100;if(dist<inf&&dist>0){const force=(inf-dist)/inf;s.vx-=(dx/dist)*force*.25;s.vy-=(dy/dist)*force*.25;}s.vx*=.975;s.vy*=.975;s.x+=s.vx;s.y+=s.vy;if(s.x<-15)s.x=W+15;if(s.x>W+15)s.x=-15;if(s.y<-15)s.y=H+15;if(s.y>H+15)s.y=-15;ctx.beginPath();ctx.arc(s.x,s.y,s.r+pr,0,Math.PI*2);ctx.fillStyle=s.color+(s.alpha+.2)+')';ctx.fill();});requestAnimationFrame(draw);}draw();})();
+</script>
+</body>
+</html>

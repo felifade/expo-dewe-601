@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap');
+body{
+font-family:Arial;
+margin:0;
+background:#F8D7DA;
+color:#333;
+text-align:center;
+transition:0.5s;
+}
+
+header{
+background:#E88AAE;
+color:white;
+padding:20px;
+}
+
+nav{
+background:#C06C84;
+padding:10px;
+}
+
+nav ul{
+list-style:none;
+padding:0;
+}
+
+nav ul li{
+display:inline-block;
+margin:10px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.perfil{
+width:180px;
+border-radius:50%;
+}
+
+.galeria{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.galeria img{
+width:250px;
+height:180px;
+border-radius:10px;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+background:white;
+}
+
+td,th{
+border:1px solid #999;
+padding:10px;
+}
+
+button{
+background:#E88AAE;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* MODO OSCURO MORADO */
+
+.oscuro{
+background:#2D1B4E;
+color:white;
+}
+
+.oscuro header{
+background:#4A2C75;
+}
+
+.oscuro nav{
+background:#1E1033;
+}
+
+.oscuro table{
+background:#3A235F;
+color:white;
+}
+
+.oscuro td,
+.oscuro th{
+border:1px solid #BFA2DB;
+}
+
+.oscuro button{
+background:#8A63D2;
+}
+
+body{
+background:#F8D7DA;
+}
+
+header{
+background:#E88AAE;
+}
+
+nav{
+background:#C06C84;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+}
+
+h1{
+font-family:'Pacifico',cursive;
+font-size:50px;
+}
+
+h2{
+font-family:'Pacifico',cursive;
+font-size:35px;
+}
+
+h3{
+font-family:'Poppins',sans-serif;
+font-weight:600;
+}
+
+.card{
+background:white;
+width:80%;
+margin:20px auto;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,.15);
+}
+
+.oscuro .card{
+background:#4A2C75;
+color:white;
+}
+
+#recomendaciones ul{
+width:70%;
+margin:auto;
+text-align:left;
+}
+
+#ventajas,
+#caracteristicas,
+#recomendaciones{
+padding:20px;
+}
+
+.botones-info{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin:20px;
+}
+
+.botones-info button{
+padding:12px 20px;
+border:none;
+border-radius:15px;
+font-size:16px;
+cursor:pointer;
+}
+
+.info-box{
+width:80%;
+margin:20px auto;
+padding:25px;
+background:white;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,.2);
+text-align:left;
+}
+
+.info-box h3{
+text-align:center;
+}
+
+.info-box ul li{
+margin:12px 0;
+font-size:18px;
+}
+
+.oculto{
+display:none;
+}
+
+.oscuro .info-box{
+background:#4A2C75;
+color:white;
+}
+
+#acerca,
+#desarrollo{
+padding:20px;
+margin-top:20px;
+}
+
+#acerca .info-box,
+#desarrollo .info-box{
+width:80%;
+margin:auto;
+padding:25px;
+border-radius:20px;
+background:white;
+box-shadow:0 0 15px rgba(0,0,0,.15);
+}
+
+.oscuro #acerca .info-box,
+.oscuro #desarrollo .info-box{
+background:#4A2C75;
+color:white;
+}
+
+.contenedor-foto{
+text-align:center;
+margin:20px 0;
+}
+
+.foto-circular{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid white;
+display:block;
+margin:auto;
+}
+
+#contacto{
+padding:20px;
+}
+
+#contacto form{
+width:80%;
+margin:auto;
+}
+
+#contacto label{
+font-weight:bold;
+}
+
+#contacto input{
+width:100%;
+padding:12px;
+margin-top:5px;
+border-radius:10px;
+border:none;
+}
+
+#contacto input[type="submit"],
+#contacto input[type="reset"]{
+width:auto;
+padding:12px 25px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.oscuro #contacto input{
+background:#6B4CA5;
+color:white;
+}

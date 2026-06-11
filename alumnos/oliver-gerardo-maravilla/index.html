@@ -1,79 +1,353 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Oliver Gerardo Maravilla</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inicio - Timbre Inteligente con Arduino</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+/* MODO OSCURO (POR DEFECTO) */
+
+body{
+    background:linear-gradient(135deg,#111827,#1e3a8a);
+    color:white;
+    transition:0.5s;
+}
+
+/* BOTÓN MODO */
+
+#modoBtn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#facc15;
+    color:#111827;
+    z-index:1000;
+    box-shadow:0 0 10px rgba(0,0,0,.3);
+}
+
+/* NAVEGACIÓN */
+
+nav{
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    padding:18px;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#facc15;
+}
+
+/* ENCABEZADO */
+
+header{
+    text-align:center;
+    padding:60px 20px;
+}
+
+header h1{
+    font-size:4rem;
+    color:#facc15;
+}
+
+header h3{
+    margin-top:10px;
+    color:#93c5fd;
+    font-size:1.5rem;
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+/* TARJETAS */
+
+.tarjeta{
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.tarjeta h2{
+    color:#93c5fd;
+    margin-bottom:15px;
+}
+
+.tarjeta p{
+    text-align:justify;
+    line-height:1.8;
+}
+
+.tarjeta ul{
+    margin-left:25px;
+}
+
+.tarjeta li{
+    margin-bottom:10px;
+}
+
+/* EQUIPO */
+
+.equipo{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.integrante{
+    background:rgba(255,255,255,.08);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.integrante h3{
+    color:#facc15;
+}
+
+/* BOTÓN */
+
+.boton{
+    display:inline-block;
+    margin-top:15px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.boton:hover{
+    background:#1d4ed8;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,.35);
+    margin-top:30px;
+}
+
+/* ========================= */
+/* MODO CLARO */
+/* ========================= */
+
+body.claro{
+    background:linear-gradient(135deg,#f8fafc,#dbeafe);
+    color:#111827;
+}
+
+body.claro nav{
+    background:rgba(255,255,255,.85);
+}
+
+body.claro nav a{
+    color:#111827;
+}
+
+body.claro nav a:hover{
+    color:#2563eb;
+}
+
+body.claro header h1{
+    color:#1d4ed8;
+}
+
+body.claro header h3{
+    color:#475569;
+}
+
+body.claro .tarjeta{
+    background:rgba(255,255,255,.95);
+    color:#111827;
+}
+
+body.claro .tarjeta h2{
+    color:#1d4ed8;
+}
+
+body.claro .integrante{
+    background:#e2e8f0;
+}
+
+body.claro .integrante h3{
+    color:#1d4ed8;
+}
+
+body.claro footer{
+    background:rgba(255,255,255,.85);
+    color:#111827;
+}
+
+</style>
+
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Oliver Gerardo Maravilla</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/oliver-gerardo-maravilla/
-        </div>
-    </div>
+
+<button id="modoBtn" onclick="cambiarModo()">
+🌙 Modo Oscuro
+</button>
+
+<nav>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="objetivos.html">🎯 Objetivos</a>
+    <a href="componentes.html">🔧 Componentes</a>
+    <a href="bitacora.html">📖 Bitácora</a>
+    <a href="galeria.html">🖼️ Galería</a>
+    <a href="contacto.html">📩 Contacto</a>
+</nav>
+
+<header>
+    <h1>🔔 Timbre Inteligente con Arduino 🔔</h1>
+    <h3>Proyecto Escolar de Tecnología y Programación</h3>
+</header>
+
+<div class="contenedor">
+
+<div class="tarjeta">
+<h2>📌 Bienvenida</h2>
+
+<p>
+Bienvenido al proyecto "Timbre Inteligente con Arduino". Este trabajo fue desarrollado con el objetivo de aplicar conocimientos de electrónica, programación y automatización para crear un sistema capaz de emitir señales sonoras y visuales al ser activado.
+</p>
+
+<p>
+A través de este proyecto se demuestra cómo la tecnología puede utilizarse para resolver necesidades cotidianas mediante soluciones innovadoras, económicas y eficientes.
+</p>
+</div>
+
+<div class="tarjeta">
+<h2>📖 Descripción del Proyecto</h2>
+
+<p>
+Un timbre inteligente es un dispositivo electrónico capaz de generar alertas mediante sonidos, luces y otros mecanismos automáticos. Utilizando Arduino como controlador principal, es posible programar diferentes funciones para adaptar el sistema a diversas necesidades.
+</p>
+</div>
+
+<div class="tarjeta">
+<h2>🎯 Propósito del Proyecto</h2>
+
+<ul>
+<li>Aprender programación con Arduino.</li>
+<li>Aplicar conocimientos de electrónica.</li>
+<li>Desarrollar habilidades de trabajo en equipo.</li>
+<li>Crear una solución tecnológica funcional.</li>
+<li>Comprender el funcionamiento de sistemas automatizados.</li>
+</ul>
+</div>
+
+<div class="tarjeta">
+<h2>👥 Integrantes del Equipo</h2>
+
+<div class="equipo">
+
+<div class="integrante">
+<h3>Oliver Gerardo Maravilla Zúñiga</h3>
+<p>Estudiante</p>
+</div>
+
+<div class="integrante">
+<h3>Lucio Alejandro Martínez Bautista</h3>
+<p>Estudiante</p>
+</div>
+
+<div class="integrante">
+<h3>Jesús Alejandro Hernández Flores</h3>
+<p>Estudiante</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="tarjeta">
+<h2>🚀 Ventajas del Timbre Inteligente</h2>
+
+<ul>
+<li>🔔 Alertas sonoras automáticas.</li>
+<li>💡 Indicadores visuales mediante LEDs.</li>
+<li>⚡ Bajo consumo de energía.</li>
+<li>💻 Fácil programación y personalización.</li>
+<li>📡 Posibilidad de agregar conexión WiFi.</li>
+<li>🏠 Aplicable en hogares, escuelas y oficinas.</li>
+</ul>
+</div>
+
+<div class="tarjeta">
+<h2>📚 Datos del Proyecto</h2>
+
+<p><strong>Materia:</strong> Diseño de Páginas Web</p>
+<p><strong>Grupo:</strong> 601</p>
+<p><strong>Profesor:</strong> Felipe López Salazar</p>
+<p><strong>Año:</strong> 2026</p>
+
+<a href="objetivos.html" class="boton">
+Ver Objetivos →
+</a>
+
+</div>
+
+</div>
+
+<footer>
+<p>🔔 Proyecto Escolar: Timbre Inteligente con Arduino | Grupo 601</p>
+</footer>
+
+<script>
+
+function cambiarModo(){
+
+    document.body.classList.toggle("claro");
+
+    const boton = document.getElementById("modoBtn");
+
+    if(document.body.classList.contains("claro")){
+        boton.innerHTML = "☀️ Modo Claro";
+    }else{
+        boton.innerHTML = "🌙 Modo Oscuro";
+    }
+
+}
+
+</script>
+
 </body>
 </html>

@@ -1,79 +1,250 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Kaila Danahi Loyola Cortés</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Bell System</title>
+
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Kaila Danahi Loyola Cortés</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/kaila-danahi-loyola-cortes/
-        </div>
-    </div>
+
+<header>
+
+<div class="datos-alumno">
+<h2>Nombre: Kaila Danahi Loyola Cortes</h2>
+<h3>Grupo: 601</h3>
+</div>
+
+<div class="contenedor-foto">
+
+<img src="img/foto-kaila.jpg" alt="Kaila" class="foto-circular">
+</div>
+<h1>🔔 Digital Bell System</h1>
+
+<button id="modo-btn">🌙 Modo Claro</button>
+
+</header>
+
+<nav>
+<li><a href="pag/paginas_tipos.html">🔔 Tipos de Timbres</a></li>
+
+<li><a href="pag/paginas_funcion.html">⚙️ Funcionamiento</a></li>
+
+<li><a href="pag/paginas_materiales.html">🧰 Materiales</a></li>
+
+<nav>
+
+<nav>
+
+<ul>
+
+<li><a href="#inicio">Inicio</a></li>
+
+<li><a href="#galeria">Galería</a></li>
+
+<li><a href="#menu-info">Información del Proyecto</a></li>
+
+<li><a href="#desarrollo">Desarrollo</a></li>
+
+<li><a href="#acerca">Acerca de</a></li>
+
+</nav>
+
+</nav>
+
+</nav>
+
+<section id="inicio">
+
+<h2>Timbres Programados En Digital Bell System </h2>
+
+<p>
+Proyecto de timbre basado en Arduino y ESP32 para automatizar el timbre escolar de forma sencilla y segura
+</p>
+
+</section>
+
+<section id="galeria">
+
+<h2>Galería del Timbre</h2>
+
+<div class="galeria">
+
+<img src="img/01_img.jpg" width="300" alt="Sistema de Timbre Escolar">
+<img src="img/02_img.jpg" width="300" alt="Sistema de Timbre Escolar">
+<img src="img/03_img.jpg" width="300" alt="Sistema de Timbre Escolar">
+<img src="img/04_img.jpg" width="300" alt="Sistema de Timbre Escolar">
+<img src="img/05_img.jpg" width="300" alt="Sistema de Timbre Escolar">
+</div>
+
+<section id="menu-info">
+
+<h2>Información del Proyecto</h2>
+
+<div class="botones-info">
+
+<button onclick="mostrar('carac')">🔔 Características</button>
+
+<button onclick="mostrar('benef')">⭐ Beneficios</button>
+
+<button onclick="mostrar('reco')">📋 Recomendaciones</button>
+
+<button onclick="mostrar('datos')">👤 Datos del Proyecto</button>
+
+</div>
+
+<div id="carac" class="info-box">
+
+<h3>🔔 Características</h3>
+
+<ul>
+<li>Activación automática.</li>
+<li>Programación flexible.</li>
+<li>Compatible con Arduino y ESP32.</li>
+<li>Bajo consumo energético.</li>
+<li>Fácil mantenimiento.</li>
+</ul>
+
+</div>
+
+<div id="benef" class="info-box oculto">
+
+<h3>⭐ Beneficios</h3>
+
+<ul>
+<li>Mayor puntualidad.</li>
+<li>Reduce errores humanos.</li>
+<li>Organiza actividades escolares.</li>
+<li>Automatiza horarios.</li>
+<li>Bajo costo de implementación.</li>
+</ul>
+
+</div>
+
+<div id="reco" class="info-box oculto">
+
+<h3>📋 Recomendaciones</h3>
+
+<ul>
+<li>Revisar horarios periódicamente.</li>
+<li>Proteger el equipo de la humedad.</li>
+<li>Verificar conexiones eléctricas.</li>
+<li>Realizar pruebas semanales.</li>
+<li>Mantener respaldo de la programación.</li>
+</ul>
+
+</div>
+
+<div id="datos" class="info-box oculto">
+
+<h3>👤 Datos del Proyecto</h3>
+
+<ul>
+<li><strong>Nombre:</strong> Kaila Danahi Loyola Cortes</li>
+<li><strong>Grupo:</strong> 601</li>
+<li><strong>Proyecto:</strong> Digital Bell System</li>
+<li><strong>Costo Aproximado:</strong> $600 MXN</li>
+<li><strong>Correo:</strong> digitalbellsystem601@gmail.com</li>
+</ul>
+
+</div>
+
+</section>
+<section id="acerca">
+
+<h2>📖 Acerca de Digital Bell System</h2>
+
+<div class="info-box">
+
+<p>
+Digital Bell System es un proyecto tecnológico diseñado para automatizar el control de horarios escolares mediante el uso de componentes electrónicos como Arduino y ESP32.
+</p>
+
+<p>
+Su principal objetivo es mejorar la organización dentro de las instituciones educativas, permitiendo que los timbres se activen automáticamente en horarios específicos para entradas, salidas, recreos y eventos especiales.
+</p>
+
+<p>
+Este sistema busca reducir errores humanos, mejorar la puntualidad y facilitar la administración de los tiempos escolares.
+</p>
+
+</div>
+
+</section>
+
+<section id="desarrollo">
+
+<h2>🛠️ Desarrollo del Proyecto</h2>
+
+<div class="info-box">
+
+<p>
+El desarrollo de Digital Bell System comenzó con la investigación de sistemas automatizados aplicados al entorno escolar.
+</p>
+
+<p>
+Posteriormente se seleccionaron componentes como Arduino UNO, ESP32, cables de conexión, botón pulsador y una caja de protección para construir el prototipo.
+</p>
+
+<p>
+Se programaron horarios automáticos para el funcionamiento del timbre y se realizaron pruebas para verificar la correcta ejecución de cada evento programado.
+</p>
+
+<p>
+Como mejora futura, el proyecto podría incorporar conexión WiFi, administración remota desde dispositivos móviles y almacenamiento de horarios en línea.
+</p>
+
+</div>
+
+</section>
+
+</section>
+<footer>
+
+<section id="contacto">
+
+<h2>📞 Datos del Usuario</h2>
+
+<div class="info-box">
+
+<form>
+
+<label>Nombre:</label><br>
+<input type="text" required><br><br>
+
+<label>Compra:</label><br>
+<input type="text" required><br><br>
+
+<label>Precio:</label><br>
+<input type="number" required><br><br>
+
+<label>Correo Electrónico:</label><br>
+<input type="email" required><br><br>
+
+<label>Número en caso de fallas:</label><br>
+<input type="tel" required><br><br>
+
+<input type="submit" value="Enviar">
+
+<input type="reset" value="Limpiar">
+
+</form>
+
+</div>
+
+</section>
+</footer>
+
+<p>
+Digital Bell System 
+Orgullosamente Conalep Pachuca II
+</p>
+
+
+<script src="js/script.js"></script>
+
 </body>
 </html>

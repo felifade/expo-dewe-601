@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Materiales</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h1>Materiales Utilizados</h1>
+
+<table>
+
+<tr>
+<th>Material</th>
+<th>Precio Aproximado</th>
+</tr>
+
+<tr>
+<td>Arduino UNO</td>
+<td>$250 MXN</td>
+</tr>
+
+<tr>
+<td>ESP32</td>
+<td>$180 MXN</td>
+</tr>
+
+<tr>
+<td>Caja Plástica Negra</td>
+<td>$80 MXN</td>
+</tr>
+
+<tr>
+<td>Botón Pulsador</td>
+<td>$15 MXN</td>
+</tr>
+
+<tr>
+<td>Cables Macho-Hembra</td>
+<td>$50 MXN</td>
+</tr>
+
+<tr>
+<td>Buzzer</td>
+<td>$25 MXN</td>
+</tr>
+
+</table>
+
+<a href="../index.html">Volver</a>
+
+</body>
+</html>

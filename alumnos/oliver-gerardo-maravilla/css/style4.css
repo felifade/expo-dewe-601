@@ -1,0 +1,67 @@
+/* Botón */
+
+.tema-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#facc15;
+    color:#000;
+    border:none;
+    padding:12px 20px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    transition:.3s;
+    z-index:1000;
+}
+
+.tema-btn:hover{
+    transform:scale(1.05);
+}
+
+/* Modo claro */
+
+.light-mode{
+    background:linear-gradient(135deg,#ffffff,#cbd5e1);
+    color:#111827;
+}
+
+.light-mode nav{
+    background:rgba(255,255,255,.9);
+}
+
+.light-mode nav a{
+    color:#111827;
+}
+
+.light-mode nav a:hover{
+    color:#2563eb;
+}
+
+.light-mode header h1{
+    color:#2563eb;
+}
+
+.light-mode header h3{
+    color:#334155;
+}
+
+.light-mode .tarjeta{
+    background:rgba(255,255,255,.85);
+    color:#111827;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.light-mode .tarjeta h2{
+    color:#2563eb;
+}
+
+.light-mode .integrante{
+    background:#e2e8f0;
+}
+
+.light-mode footer{
+    background:rgba(255,255,255,.9);
+    color:#111827;
+}

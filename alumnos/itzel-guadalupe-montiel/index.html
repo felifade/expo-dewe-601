@@ -1,79 +1,211 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Itzel Guadalupe Montiel</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<title>Digital Bell System</title>
+
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Itzel Guadalupe Montiel</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/itzel-guadalupe-montiel/
-        </div>
-    </div>
+
+<!-- DATOS DEL ALUMNO -->
+<header>
+
+<div class="datos perfil">
+
+<img src="img/itzel.jpg" alt="Foto de Itzel" class="foto-perfil">
+
+<div>
+<h2>Itzel Guadalupe Montiel Castro</h2>
+<h3>Informática</h3>
+<h3>601</h3>
+</div>
+
+</div>
+
+<section id="inicio">
+
+<h1>Digital Bell System</h1>
+
+<p>Sistema Inteligente de Timbres Digitales</p>
+
+<button id="modo-btn">
+🌙 Modo Oscuro
+</button>
+
+<hr>
+
+</section>
+
+</header>
+
+<!-- MENÚ -->
+<nav>
+<ul>
+
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="paginas/modelos.html">Modelos</a></li>
+<li><a href="paginas/datos.html">Datos</a></li>
+<li><a href="paginas/pedidos.html">Pedidos</a></li>
+
+</ul>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main>
+
+<!-- QUÉ ES -->
+<section id="informacion">
+
+<h2>¿Qué es Digital Bell System?</h2>
+
+<div class="tarjeta">
+
+<p>
+Digital Bell System es un timbre digital inteligente diseñado para instituciones educativas. Su principal función es automatizar los horarios escolares para anunciar de manera puntual la entrada, salida, recreos y cambios de clase.
+</p>
+
+<p>
+Este sistema ayuda a mejorar la organización dentro de la escuela, evitando retrasos y permitiendo que las actividades académicas se desarrollen de forma ordenada y eficiente.
+</p>
+
+</div>
+
+<div style="text-align:center; margin:30px 0;">
+
+<a href="#inicio"
+style="
+background:#00B7F5;
+color:white;
+padding:12px 25px;
+text-decoration:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+display:inline-block;
+box-shadow:0 4px 10px rgba(0,183,245,.4);
+">
+⬆ Regresar al Inicio
+</a>
+
+</div>
+
+<hr>
+
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="funcionamiento">
+
+<h2>¿Cómo Funciona?</h2>
+
+<div class="tarjeta">
+
+<p>
+El sistema funciona mediante una programación previamente establecida dentro del controlador principal. Los horarios de entrada, salida, recreo y cambios de clase son configurados para que el timbre se active automáticamente.
+</p>
+
+<p>
+Cuando llega la hora programada, la bocina emite el sonido correspondiente sin necesidad de que una persona lo active manualmente.
+</p>
+
+<p>
+Además, la pantalla LCD muestra información útil sobre el funcionamiento del sistema, permitiendo una supervisión rápida y sencilla.
+</p>
+
+</div>
+
+<div style="text-align:center; margin:30px 0;">
+
+<a href="#inicio"
+style="
+background:#00B7F5;
+color:white;
+padding:12px 25px;
+text-decoration:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+display:inline-block;
+box-shadow:0 4px 10px rgba(0,183,245,.4);
+">
+⬆ Regresar al Inicio
+</a>
+
+</div>
+
+<hr>
+
+</section>
+
+<!-- COMPONENTES -->
+<section id="componentes">
+
+<h2>¿De Qué Está Formado?</h2>
+
+<div class="tarjeta">
+
+<ul>
+
+<li>✔ Arduino.</li>
+<li>✔ ESP32.</li>
+<li>✔ Pantalla LCD.</li>
+<li>✔ Bocina para emitir el sonido del timbre.</li>
+<li>✔ Botón de control.</li>
+<li>✔ Cables macho-hembra.</li>
+<li>✔ Cable de alimentación.</li>
+<li>✔ Caja protectora para los componentes.</li>
+<li>✔ Código de programación que controla el sistema.</li>
+
+</ul>
+
+</div>
+
+<div style="text-align:center; margin:30px 0;">
+
+<a href="#inicio"
+style="
+background:#00B7F5;
+color:white;
+padding:12px 25px;
+text-decoration:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+display:inline-block;
+box-shadow:0 4px 10px rgba(0,183,245,.4);
+">
+⬆ Regresar al Inicio
+</a>
+
+</div>
+
+<hr>
+
+</section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+<p>
+Digital Bell System | Proyecto HTML, CSS y JavaScript
+</p>
+
+<p>
+© 2026 Itzel Guadalupe Montiel Castro
+</p>
+
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería del Proyecto</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#111827,#1e3a8a);
+    color:white;
+}
+
+/* Barra de navegación */
+
+nav{
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    padding:18px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#facc15;
+}
+
+/* Contenedor */
+
+.contenedor{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#facc15;
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+/* Tarjetas */
+
+.tarjeta{
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.tarjeta h2{
+    color:#93c5fd;
+    margin-bottom:15px;
+}
+
+.tarjeta p{
+    text-align:justify;
+    line-height:1.8;
+}
+
+/* Galería */
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.imagen{
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    transition:.4s;
+}
+
+.imagen:hover{
+    transform:scale(1.05);
+}
+
+.imagen img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.imagen p{
+    padding:15px;
+    text-align:center;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,.35);
+    margin-top:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="objetivos.html">🎯 Objetivos</a>
+    <a href="componentes.html">🔧 Componentes</a>
+    <a href="bitacora.html">📖 Bitácora</a>
+    <a href="galeria.html">🖼️ Galería</a>
+    <a href="contacto.html">📩 Contacto</a>
+</nav>
+
+<div class="contenedor">
+
+<h1>🖼️ Galería del Proyecto</h1>
+
+<div class="tarjeta">
+
+<h2>Descripción de la Galería</h2>
+
+<p>
+En esta sección se muestran algunas imágenes relacionadas con el desarrollo
+del proyecto "Timbre Inteligente con Arduino". Las fotografías permiten
+observar los componentes utilizados, el proceso de construcción y el
+resultado final del sistema.
+</p>
+
+</div>
+
+<div class="galeria">
+
+<div class="imagen">
+    <img src="img/arduino1.jpg" alt="Arduino Uno">
+    <p>
+        🔌 Arduino Uno utilizado como controlador principal del proyecto.
+    </p>
+</div>
+
+<div class="imagen">
+    <img src="img/arduino3.jpg" alt="Circuito del Timbre">
+    <p>
+        🔧 Montaje del circuito electrónico en la protoboard.
+    </p>
+</div>
+
+<div class="imagen">
+    <img src="img/armado.jpg" alt="Armado del Proyecto">
+    <p>
+        📸 Proceso de conexión de componentes electrónicos.
+    </p>
+</div>
+
+<div class="imagen">
+    <img src="img/codigo.jpg" alt="Programación Arduino">
+    <p>
+        💻 Desarrollo y carga del código en Arduino IDE.
+    </p>
+</div>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>Importancia de la Documentación Fotográfica</h2>
+
+<p>
+Las imágenes permiten evidenciar el trabajo realizado durante el desarrollo
+del proyecto. Además, facilitan la explicación de los procedimientos
+realizados y sirven como respaldo del proceso de construcción.
+</p>
+
+<p>
+La documentación visual también ayuda a identificar errores, compartir
+conocimientos y presentar de manera más profesional los resultados obtenidos.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+    <p>🔔 Proyecto Escolar: Timbre Inteligente con Arduino | Grupo 601</p>
+</footer>
+
+</body>
+</html>

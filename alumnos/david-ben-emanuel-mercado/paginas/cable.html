@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cables CAT6 · RTH Dual</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+[data-theme="dark"]{
+  --r:#E8002D;--rd:#9A001E;--g:#F5C518;--accent:#0099FF;
+  --dk:#080810;--dkr:#040408;--md:#10101C;
+  --pn:#14142A;--br:#222238;--tx:#EEEEF8;--mt:#7070A0;
+  --nav-bg:rgba(8,8,16,.94);--shadow-red:rgba(232,0,45,.18);
+}
+[data-theme="light"]{
+  --r:#C8001F;--rd:#8A0015;--g:#C9960A;--accent:#0077DD;
+  --dk:#F2F2FA;--dkr:#E8E8F5;--md:#DDDDF0;
+  --pn:#FFFFFF;--br:#C8C8E0;--tx:#18183A;--mt:#606088;
+  --nav-bg:rgba(242,242,250,.96);--shadow-red:rgba(200,0,31,.15);
+}
+:root{--fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'Courier Prime',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--tx);font-family:var(--fb);line-height:1.65;overflow-x:hidden;cursor:none;transition:background .5s,color .4s}
+.cur{position:fixed;width:12px;height:12px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(0,153,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .25s,height .25s}
+[data-theme="light"] .cur{mix-blend-mode:multiply}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:9999;background:var(--accent);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+#sigbar{position:fixed;top:3px;left:0;width:100%;height:3px;display:flex;z-index:1000}
+#sigbar span{flex:1;background:var(--accent);animation:sig 1.8s ease-in-out infinite}
+#sigbar span:nth-child(2n){animation-delay:.3s}
+#sigbar span:nth-child(3n){animation-delay:.7s}
+@keyframes sig{0%,100%{opacity:.15}50%{opacity:1}}
+.theme-toggle{position:fixed;bottom:2rem;left:2rem;z-index:400;width:52px;height:28px;background:var(--pn);border:1.5px solid var(--br);border-radius:14px;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;display:flex;align-items:center;padding:3px;box-shadow:0 2px 16px var(--shadow-red)}
+.theme-toggle:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(0,153,255,.25)}
+.theme-toggle__knob{width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform .3s cubic-bezier(.77,0,.18,1);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+[data-theme="light"] .theme-toggle__knob{transform:translateX(24px)}
+.theme-toggle__icon-moon{display:block}
+.theme-toggle__icon-sun{display:none}
+[data-theme="light"] .theme-toggle__icon-moon{display:none}
+[data-theme="light"] .theme-toggle__icon-sun{display:block}
+nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);transition:box-shadow .3s,background .5s}
+nav.lit{box-shadow:0 2px 32px rgba(0,153,255,.15)}
+.nav-i{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem}
+.nav-brand{font-family:var(--fd);font-size:1.5rem;color:var(--accent);letter-spacing:.15em;text-decoration:none}
+.nav-back{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;padding:.4rem .9rem;border:1px solid var(--br);border-radius:2px;transition:all .2s}
+.nav-back:hover{color:var(--tx);border-color:var(--accent)}
+
+/* HERO */
+.hero{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(0,153,255,.12) 0%,transparent 65%),linear-gradient(180deg,var(--dk) 0%,var(--dkr) 100%);overflow:hidden}
+.hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,153,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,153,255,.04) 1px,transparent 1px);background-size:72px 72px;animation:gridmove 20s linear infinite}
+@keyframes gridmove{from{transform:translateY(0)}to{transform:translateY(72px)}}
+.badge{font-family:var(--fm);font-size:.65rem;letter-spacing:.3em;color:var(--accent);border:1px solid var(--accent);padding:.35rem 1rem;border-radius:2px;margin-bottom:2rem;position:relative;z-index:1;display:flex;align-items:center;gap:.6rem}
+.badge::before{content:'';width:7px;height:7px;background:var(--accent);border-radius:50%;animation:blink .8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-title{font-family:var(--fd);font-size:clamp(4rem,10vw,8rem);line-height:.88;position:relative;z-index:1;animation:fadeup .9s ease both}
+.hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+@keyframes fadeup{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-family:var(--fm);font-size:.82rem;letter-spacing:.22em;color:var(--mt);text-transform:uppercase;margin-top:1.5rem;position:relative;z-index:1;animation:fadeup .9s .2s ease both}
+.hero-intro{max-width:680px;margin:2rem auto 0;font-size:.95rem;color:var(--mt);line-height:1.9;position:relative;z-index:1;animation:fadeup .9s .3s ease both}
+.hero-intro strong{color:var(--tx)}
+
+/* CABLE DIAGRAM */
+.cable-section{max-width:1200px;margin:0 auto;padding:5rem 2rem}
+.section-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);line-height:.9;margin-bottom:3rem;color:var(--tx)}
+
+/* CABLE VISUAL */
+.cable-diagram{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:2.5rem;margin-bottom:4rem;position:relative;overflow:hidden}
+.cable-diagram::before{content:'CAT6 · 8P8C · T568B';position:absolute;top:1rem;right:1.5rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;color:var(--accent);opacity:.7}
+.cable-label{font-family:var(--fm);font-size:.7rem;letter-spacing:.18em;color:var(--mt);text-transform:uppercase;margin-bottom:1.5rem}
+.cable-pairs{display:flex;flex-direction:column;gap:.6rem}
+.pair-row{display:flex;align-items:center;gap:.8rem}
+.pair-label{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:var(--mt);width:80px;text-align:right}
+.pair-bar{flex:1;display:flex;gap:2px}
+.wire{flex:1;height:32px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:.58rem;letter-spacing:.08em;color:#fff;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.5);transition:transform .2s,box-shadow .2s;cursor:default}
+.wire:hover{transform:scaleY(1.15);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.wire.w-striped{background:repeating-linear-gradient(45deg,var(--wc) 0px,var(--wc) 4px,#fff 4px,#fff 8px)}
+.w-blueW{--wc:#1177DD;background:repeating-linear-gradient(45deg,#1177DD 0,#1177DD 4px,#fff 4px,#fff 8px);color:#1177DD}
+.w-blue{background:#1177DD}
+.w-orangeW{--wc:#FF8800;background:repeating-linear-gradient(45deg,#FF8800 0,#FF8800 4px,#fff 4px,#fff 8px);color:#FF8800}
+.w-orange{background:#FF8800}
+.w-greenW{--wc:#00AA44;background:repeating-linear-gradient(45deg,#00AA44 0,#00AA44 4px,#fff 4px,#fff 8px);color:#00AA44}
+.w-green{background:#00AA44}
+.w-brownW{--wc:#8B4513;background:repeating-linear-gradient(45deg,#8B4513 0,#8B4513 4px,#fff 4px,#fff 8px);color:#8B4513}
+.w-brown{background:#8B4513}
+.wire-pin{font-family:var(--fm);font-size:.55rem;color:var(--mt);width:20px;text-align:center}
+.pair-function{font-family:var(--fm);font-size:.62rem;color:var(--mt);width:120px;letter-spacing:.06em}
+
+/* SPECS GRID */
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--br);border:1px solid var(--br);margin-bottom:4rem}
+.spec-box{background:var(--pn);padding:2rem 1.2rem;text-align:center;transition:background .3s}
+.spec-box:hover{background:var(--md)}
+.spec-val{font-family:var(--fd);font-size:3rem;color:var(--accent);line-height:1}
+.spec-unit{font-family:var(--fd);font-size:1.5rem;color:var(--g)}
+.spec-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;color:var(--mt);margin-top:.5rem;text-transform:uppercase;line-height:1.5}
+
+/* COMPARISON TABLE */
+.comp-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:1.5rem}
+.comp-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:4rem}
+.comp-table th{background:var(--accent);color:#fff;padding:.9rem 1.2rem;text-align:left;font-family:var(--fm);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase}
+.comp-table td{padding:.85rem 1.2rem;border-bottom:1px solid var(--br);color:var(--tx);transition:background .2s}
+.comp-table tr:hover td{background:var(--md)}
+.comp-table tr.highlight td{background:rgba(0,153,255,.08);border-left:3px solid var(--accent)}
+.comp-table td:first-child{font-weight:700;font-family:var(--fm);letter-spacing:.06em}
+.check{color:#00CC88;font-size:1rem}
+.cross{color:#E8002D;font-size:1rem}
+
+/* USES CARDS */
+.uses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:4rem}
+.use-card{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:1.8rem;position:relative;transition:border-color .3s,background .3s}
+.use-card:hover{border-color:var(--accent);background:var(--md)}
+.use-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.use-card:hover::after{transform:scaleX(1)}
+.use-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+.use-title{font-family:var(--fm);font-size:.72rem;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:.6rem}
+.use-desc{font-size:.88rem;color:var(--mt);line-height:1.8}
+
+/* PINOUT DETAIL */
+.pinout-section{margin-bottom:4rem}
+.pinout-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:1.5rem}
+.pinout-table{width:100%;border-collapse:collapse;font-family:var(--fm);font-size:.75rem}
+.pinout-table th{background:var(--md);color:var(--mt);padding:.75rem 1rem;text-align:left;letter-spacing:.1em;font-size:.6rem;text-transform:uppercase;border-bottom:2px solid var(--accent)}
+.pinout-table td{padding:.75rem 1rem;border-bottom:1px solid var(--br);transition:background .2s}
+.pinout-table tr:hover td{background:var(--md)}
+.pin-num{font-family:var(--fd);font-size:1.4rem;color:var(--accent);line-height:1}
+.color-dot{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:middle;margin-right:.4rem;border:1px solid rgba(255,255,255,.2)}
+
+/* FOOTER */
+footer{background:var(--dkr,#040408);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center}
+.foot-brand{font-family:var(--fd);font-size:2.2rem;color:var(--accent);letter-spacing:.2em}
+.foot-sub{font-family:var(--fm);font-size:.65rem;color:var(--mt);letter-spacing:.15em;margin-top:.4rem}
+.foot-nav{display:flex;justify-content:center;gap:1.5rem;margin:1.2rem 0;flex-wrap:wrap}
+.foot-nav a{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;transition:color .2s}
+.foot-nav a:hover{color:var(--accent)}
+.stt{position:fixed;bottom:2rem;right:2rem;z-index:300;width:42px;height:42px;background:var(--accent);color:#fff;border:none;border-radius:2px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s}
+.stt.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.specs-grid{grid-template-columns:1fr 1fr}.uses-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.specs-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<canvas id="sporeCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:1;width:100%;height:100%"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+<div id="scroll-progress"></div>
+<div id="sigbar"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Cambiar modo">
+  <div class="theme-toggle__knob">
+    <span class="theme-toggle__icon-moon">🌙</span>
+    <span class="theme-toggle__icon-sun">☀️</span>
+  </div>
+</button>
+
+<nav id="mainNav">
+  <div class="nav-i">
+    <a href="index.html" class="nav-brand">RTH · DUAL</a>
+    <a href="../ben.html" class="nav-back">← Volver al reporte</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__grid"></div>
+  <div class="badge">Infraestructura · Telecomunicaciones</div>
+  <h1 class="hero-title">CABLE<br><em>CAT6</em></h1>
+  <p class="hero-sub">El cable con el que cableamos RTH</p>
+  <p class="hero-intro">
+    El <strong>Cable de Categoría 6 (CAT6)</strong> fue el estándar utilizado en todo el proyecto de cableado estructurado de Radio y Televisión de Hidalgo. Es el cable de red más usado en infraestructuras profesionales, capaz de soportar <strong>velocidades de hasta 10 Gbps</strong> en distancias de hasta 55 metros.
+  </p>
+</header>
+
+<main>
+<div class="cable-section">
+
+  <!-- SPECS -->
+  <div class="section-tag">Especificaciones técnicas</div>
+  <h2 class="section-title">EN NÚMEROS</h2>
+  <div class="specs-grid">
+    <div class="spec-box">
+      <div><span class="spec-val">10</span><span class="spec-unit">Gbps</span></div>
+      <div class="spec-lbl">Velocidad máx.<br>de transmisión</div>
+    </div>
+    <div class="spec-box">
+      <div><span class="spec-val">250</span><span class="spec-unit">MHz</span></div>
+      <div class="spec-lbl">Ancho de banda<br>garantizado</div>
+    </div>
+    <div class="spec-box">
+      <div><span class="spec-val">100</span><span class="spec-unit">m</span></div>
+      <div class="spec-lbl">Distancia máx.<br>a 1 Gbps</div>
+    </div>
+    <div class="spec-box">
+      <div><span class="spec-val">8</span><span class="spec-unit">hilos</span></div>
+      <div class="spec-lbl">Conductores<br>de cobre (pares)</div>
+    </div>
+  </div>
+
+  <!-- CABLE DIAGRAM -->
+  <div class="section-tag">Estándar T568B · Distribución de pines</div>
+  <h2 class="section-title">DIAGRAMA<br><span style="color:var(--accent)">INTERNO</span></h2>
+  <div class="cable-diagram">
+    <div class="cable-label">Orden de pines — Estándar T568B (utilizado en RTH)</div>
+    <div class="cable-pairs">
+      <div class="pair-row">
+        <div class="pair-label">Par 2</div>
+        <div class="wire-pin">Pin 1</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-orangeW">BL/N</div></div>
+        <div class="pair-function">TX+ (transmisión +)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 3</div>
+        <div class="wire-pin">Pin 2</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-green">Verde</div></div>
+        <div class="pair-function">RX+ (recepción +)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 2</div>
+        <div class="wire-pin">Pin 3</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-orange">Naranja</div></div>
+        <div class="pair-function">TX− (transmisión −)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 1</div>
+        <div class="wire-pin">Pin 4</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-blue">Azul</div></div>
+        <div class="pair-function">No usado (PoE)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 1</div>
+        <div class="wire-pin">Pin 5</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-blueW">BL/Az</div></div>
+        <div class="pair-function">No usado (PoE)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 3</div>
+        <div class="wire-pin">Pin 6</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-greenW">BL/V</div></div>
+        <div class="pair-function">RX− (recepción −)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 4</div>
+        <div class="wire-pin">Pin 7</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-brownW">BL/Café</div></div>
+        <div class="pair-function">No usado (PoE)</div>
+      </div>
+      <div class="pair-row">
+        <div class="pair-label">Par 4</div>
+        <div class="wire-pin">Pin 8</div>
+        <div class="pair-bar" style="flex:0 0 80px"><div class="wire w-brown">Café</div></div>
+        <div class="pair-function">No usado (PoE)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PINOUT TABLE -->
+  <div class="pinout-section">
+    <div class="pinout-title">PINOUT<br><span style="color:var(--accent)">COMPLETO T568B</span></div>
+    <table class="pinout-table">
+      <thead>
+        <tr><th>Pin</th><th>Color</th><th>Par</th><th>Función</th><th>Señal</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="pin-num">1</span></td><td><span class="color-dot" style="background:#FF8800;border-color:#FF8800"></span>Blanco/Naranja</td><td>Par 2</td><td>TX+</td><td>Transmisión positivo</td></tr>
+        <tr><td><span class="pin-num">2</span></td><td><span class="color-dot" style="background:#00AA44;border-color:#00AA44"></span>Verde</td><td>Par 3</td><td>RX+</td><td>Recepción positivo</td></tr>
+        <tr><td><span class="pin-num">3</span></td><td><span class="color-dot" style="background:#FF8800;border-color:#FF8800;opacity:.6"></span>Naranja</td><td>Par 2</td><td>TX−</td><td>Transmisión negativo</td></tr>
+        <tr><td><span class="pin-num">4</span></td><td><span class="color-dot" style="background:#1177DD;border-color:#1177DD"></span>Azul</td><td>Par 1</td><td>—</td><td>Reservado / PoE DC+</td></tr>
+        <tr><td><span class="pin-num">5</span></td><td><span class="color-dot" style="background:#1177DD;border-color:#1177DD;opacity:.5"></span>Blanco/Azul</td><td>Par 1</td><td>—</td><td>Reservado / PoE DC−</td></tr>
+        <tr><td><span class="pin-num">6</span></td><td><span class="color-dot" style="background:#00AA44;border-color:#00AA44;opacity:.5"></span>Blanco/Verde</td><td>Par 3</td><td>RX−</td><td>Recepción negativo</td></tr>
+        <tr><td><span class="pin-num">7</span></td><td><span class="color-dot" style="background:#8B4513;border-color:#8B4513;opacity:.5"></span>Blanco/Café</td><td>Par 4</td><td>—</td><td>Reservado / PoE</td></tr>
+        <tr><td><span class="pin-num">8</span></td><td><span class="color-dot" style="background:#8B4513;border-color:#8B4513"></span>Café</td><td>Par 4</td><td>—</td><td>Reservado / PoE</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comp-title">CAT5e vs <span style="color:var(--accent)">CAT6</span> vs CAT6A</div>
+  <table class="comp-table">
+    <thead>
+      <tr><th>Característica</th><th>CAT5e</th><th>CAT6 ← usado en RTH</th><th>CAT6A</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Velocidad máxima</td><td>1 Gbps</td><td>10 Gbps (55m)</td><td>10 Gbps (100m)</td></tr>
+      <tr class="highlight"><td>Ancho de banda</td><td>100 MHz</td><td>250 MHz</td><td>500 MHz</td></tr>
+      <tr><td>Distancia a 1 Gbps</td><td>100 m</td><td>100 m</td><td>100 m</td></tr>
+      <tr><td>Separador interno</td><td><span class="cross">✗</span> No</td><td><span class="check">✔</span> Sí (spline)</td><td><span class="check">✔</span> Sí (mayor)</td></tr>
+      <tr class="highlight"><td>Diámetro del cable</td><td>~5.8 mm</td><td>~6.2 mm</td><td>~8.2 mm</td></tr>
+      <tr><td>Soporte PoE</td><td><span class="check">✔</span> Sí</td><td><span class="check">✔</span> Sí</td><td><span class="check">✔</span> Sí</td></tr>
+      <tr><td>Costo relativo</td><td>💲 Bajo</td><td>💲💲 Medio</td><td>💲💲💲 Alto</td></tr>
+      <tr><td>Ideal para</td><td>Oficinas básicas</td><td>Redes profesionales</td><td>Centros de datos</td></tr>
+    </tbody>
+  </table>
+
+  <!-- USES CARDS -->
+  <div class="section-tag">Aplicaciones en RTH</div>
+  <h2 class="section-title">PARA QUÉ SE<br><span style="color:var(--accent)">USA EN RTH</span></h2>
+  <div class="uses-grid">
+    <div class="use-card">
+      <span class="use-icon">📞</span>
+      <div class="use-title">Telefonía IP</div>
+      <div class="use-desc">Los teléfonos IP de RTH usan CAT6 para conectarse al switch central. La tecnología VoIP convierte la voz en paquetes de datos que viajan por el mismo cable de red. PoE alimenta los teléfonos sin necesidad de cable de corriente adicional.</div>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">🖥️</span>
+      <div class="use-title">Red LAN de Oficinas</div>
+      <div class="use-desc">Cada punto de red en las oficinas administrativas, estudios y pasillos de RTH está cableado con CAT6, garantizando 1 Gbps a todos los equipos. El cableado fue el trabajo principal realizado durante la estancia dual.</div>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">📡</span>
+      <div class="use-title">Señal de Video IP</div>
+      <div class="use-desc">Los sistemas de producción de televisión usan redes IP para transportar señal de video en alta definición entre cámaras, servidores y emisión. CAT6 permite el transporte de video HD con baja latencia entre estudios.</div>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">🔌</span>
+      <div class="use-title">Switch Principal</div>
+      <div class="use-desc">Todos los cables CAT6 terminan en el switch central de RTH a través del panel de parcheo (patch panel). Desde ahí se distribuye la red hacia todos los departamentos, usando conectores RJ45 crimpados con estándar T568B.</div>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">📹</span>
+      <div class="use-title">Cámaras IP</div>
+      <div class="use-desc">Las cámaras de vigilancia y monitoreo del edificio de RTH se conectan mediante CAT6, recibiendo energía y transmitiendo video simultáneamente gracias a PoE (Power over Ethernet) sin necesidad de fuente de poder separada.</div>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">📶</span>
+      <div class="use-title">Puntos de Acceso WiFi</div>
+      <div class="use-desc">Los access points (AP) de la red inalámbrica de RTH se instalan con cable CAT6. Reciben tanto datos como energía eléctrica por el mismo cable mediante PoE+ (802.3at), simplificando su instalación en zonas de difícil acceso.</div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  
+  </nav>
+</footer>
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('a,button,.use-card,.spec-box,.dc').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='54px';ring.style.height='54px';});el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='36px';ring.style.height='36px';});});
+
+// THEME TOGGLE — CORREGIDO
+const docEl=document.documentElement;
+const themeBtn=document.getElementById('themeToggle');
+const saved=localStorage.getItem('rth-theme')||'dark';
+docEl.setAttribute('data-theme',saved);
+themeBtn.addEventListener('click',()=>{
+  const current=docEl.getAttribute('data-theme');
+  const next=current==='dark'?'light':'dark';
+  docEl.setAttribute('data-theme',next);
+  localStorage.setItem('rth-theme',next);
+});
+
+// NAV + SCROLL
+const nav=document.getElementById('mainNav'),stt=document.getElementById('stt'),sp=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('lit',window.scrollY>80);
+  stt.classList.toggle('show',window.scrollY>400);
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  if(sp)sp.style.width=pct+'%';
+});
+
+// SIGNAL BARS
+const sb=document.getElementById('sigbar');
+for(let i=0;i<100;i++){const s=document.createElement('span');sb.appendChild(s);}
+
+// SPORES (azul)
+(function(){const canvas=document.getElementById('sporeCanvas');const ctx=canvas.getContext('2d');let W,H;const mouse={x:-9999,y:-9999};const spores=[];const COLORS=['rgba(0,153,255,','rgba(0,200,255,','rgba(0,100,200,'];function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);function makeSpore(){const r=Math.random()*3+1;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r,alpha:Math.random()*.4+.1,color:COLORS[Math.floor(Math.random()*COLORS.length)],pulse:Math.random()*Math.PI*2};}for(let i=0;i<50;i++)spores.push(makeSpore());document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});function draw(){ctx.clearRect(0,0,W,H);spores.forEach(s=>{s.pulse+=.016;const pr=Math.sin(s.pulse)*.3;const dx=mouse.x-s.x,dy=mouse.y-s.y,dist=Math.sqrt(dx*dx+dy*dy),inf=100;if(dist<inf&&dist>0){const force=(inf-dist)/inf;s.vx-=(dx/dist)*force*.25;s.vy-=(dy/dist)*force*.25;}s.vx*=.975;s.vy*=.975;s.x+=s.vx;s.y+=s.vy;if(s.x<-15)s.x=W+15;if(s.x>W+15)s.x=-15;if(s.y<-15)s.y=H+15;if(s.y>H+15)s.y=-15;ctx.beginPath();ctx.arc(s.x,s.y,s.r+pr,0,Math.PI*2);ctx.fillStyle=s.color+(s.alpha+.2)+')';ctx.fill();});requestAnimationFrame(draw);}draw();})();
+</script>
+</body>
+</html>

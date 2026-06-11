@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estadía Profesional — CCEH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style1.css">
+</head>
+<body class="intro-active">
+
+<!-- BG fijo para toda la página -->
+<div class="bg-fixed"></div>
+
+<!-- Intro desbloqueo — Dark Side style -->
+<div id="hero-intro">
+  <div id="hero-intro-particles"></div>
+  <div class="hero-intro-copy">
+    <div class="hero-intro-small">Mi estadía profesional</div>
+    <div class="hero-intro-title section-title">Conalep Plantel Pachuca II</div>
+    <div class="hero-intro-group section-title">Grupo: 601</div>
+  </div>
+  <div id="hero-intro-mask">
+    <svg viewBox="0 0 100 50" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <mask id="introTextMask" maskUnits="userSpaceOnUse">
+          <rect width="100%" height="100%" fill="black" />
+          <text x="50" y="32" text-anchor="middle" class="hero-mask-text">MI ESTADÍA PROFESIONAL</text>
+        </mask>
+      </defs>
+      <rect width="100%" height="100%" fill="rgba(0,0,0,0.94)" mask="url(#introTextMask)" />
+    </svg>
+  </div>
+</div>
+
+<!-- Partículas fijas en toda la página -->
+<div id="particles"></div>
+
+<!-- Progress bar -->
+<div id="progress"></div>
+
+<!-- Nav (se hace visible via JS cuando el hero sale) -->
+<nav id="siteNav">
+  <div class="nav-logo">CCEH // ESTADÍA</div>
+  <ul class="nav-links">
+    <li><a href="#estudiante">Estudiante</a></li>
+    <li><a href="#empresa">Empresa</a></li>
+    <li><a href="paginas/actividades.html#actividades">Actividades</a></li>
+    <li><a href="paginas/soporteapoyo.html#apoyo">Apoyo y Tecnología</a></li>
+    <li><a href="paginas/resumen.html#resumen">Resumen</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════
+     CONTENIDO PRINCIPAL
+══════════════════════════════════════ -->
+<main>
+
+<div class="page-panel page-1 active" data-page="1">
+
+<!-- ══ SEC 1 — DATOS ESTUDIANTE ══ -->
+<div class="saber-divider reveal"><div class="saber-r"></div><div class="saber-clash"></div><div class="saber-c"></div></div>
+<section id="estudiante">
+  <div class="container">
+    <div class="section-label label-cyan reveal">// 01 — Identificación</div>
+    <h2 class="section-title reveal" style="color:#fff;">DATOS DEL<br><span style="color:var(--cyan);text-shadow:0 0 30px rgba(0,229,255,0.4);">ESTUDIANTE</span></h2>
+
+    <!-- GTA VI STYLE STUDENT CARD -->
+    <div class="gta-student-card reveal">
+
+      <!-- FOTO — estilo GTA VI: personaje de lado, fondo oscuro -->
+      <div class="gta-photo-col">
+        <div class="gta-photo-wrap">
+          <img id="studentPhoto" class="gta-photo-img" src="img/yo.png" alt="Foto estudiante">
+          <!-- Marco decorativo esquinas -->
+          <div class="gta-corner gta-corner-tl"></div>
+          <div class="gta-corner gta-corner-tr"></div>
+          <div class="gta-corner gta-corner-bl"></div>
+          <div class="gta-corner gta-corner-br"></div>
+          <!-- Botón cambiar foto -->
+          <div class="gta-photo-change" data-file-trigger="photoFileInput"></div>
+          <input type="file" id="photoFileInput" accept="image/*" hidden>
+        </div>
+        <!-- Nombre estilo GTA VI debajo de la foto -->
+        <div class="gta-name-block">
+          <div class="gta-name-line">RONALDO AXEL</div>
+          <div class="gta-name-line gta-name-accent">LARA LUGO</div>
+          <div class="gta-name-tagline">La estadía es el inicio.</div>
+        </div>
+      </div>
+
+      <!-- DATOS -->
+      <div class="gta-data-col">
+        <div class="gta-data-inner">
+          <div class="data-row"><span class="data-label">Nombre completo</span><span class="data-value highlight">[ Ronaldo Axel Lara Lugo ]</span></div>
+          <div class="data-row"><span class="data-label">Matricula</span><span class="data-value">[ 2328800013-7 ]</span></div>
+          <div class="data-row"><span class="data-label">Carrera</span><span class="data-value">[ Informática ]</span></div>
+          <div class="data-row"><span class="data-label">Semestre / Grado</span><span class="data-value">[ 601 ]</span></div>
+          <div class="data-row"><span class="data-label">Institución educativa</span><span class="data-value">[ Conalep Plantel Pachuca II ]</span></div>
+          <div class="data-row"><span class="data-label">Periodo de estadía</span><span class="data-value">[ 25 de Agosto ] — [ 30 de abril ]</span></div>
+          <div class="data-row"><span class="data-label">Docente</span><span class="data-value">[ Felipe López Salazar ]</span></div>
+          <div class="data-row"><span class="data-label">Áreas de desempeño</span>
+            <div class="tag-row"><span class="tag">Diseño</span><span class="tag">Sistemas</span><span class="tag">Comunicación</span><span class="tag">Soporte</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /gta-student-card -->
+
+
+  </div>
+</section>
+
+<!-- ══ SEC 2 — DATOS EMPRESA ══ -->
+<div class="saber-divider reveal"><div class="saber-r"></div><div class="saber-clash"></div><div class="saber-c"></div></div>
+<section id="empresa">
+  <div class="container">
+    <!-- Título + círculo logo lado a lado -->
+    <div class="emp-title-row reveal">
+      <div>
+        <div class="section-label label-red">// 02 — Organización</div>
+        <h2 class="section-title" style="color:#fff;margin-bottom:0;">DATOS DE LA<br><span style="color:var(--red);text-shadow:0 0 30px rgba(232,64,64,0.4);">EMPRESA</span></h2>
+      </div>
+
+      <!-- Círculo logo empresa -->
+      <div class="emp-logo-circle" data-file-trigger="empLogoInput" title="Clic para subir logo">
+      <img id="empLogoImg" src="img/cceh2.jpg" alt="Logo empresa" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">  
+          <div id="empLogoPlaceholder" class="emp-logo-ph" style="display:none;">
+          <i class="ti ti-building" style="font-size:28px;color:rgba(232,64,64,0.5);"></i>
+        </div>
+        <div class="emp-logo-ring"></div>
+        <div class="emp-logo-name">CCEH</div>
+        <div class="emp-logo-hover"></div>
+        <input type="file" id="empLogoInput" accept="image/*" style="display:none;">
+      </div>
+    </div>
+
+    <div class="gta-empresa-card reveal">
+
+      <!-- ── FOTO EMPRESA ── -->
+      <div class="gta-empresa-photo-col">
+        <div class="gta-empresa-photo-wrap" data-file-trigger="empresaFileInput" title="Clic para agregar foto">
+          <!-- Imagen empresa (vacía por defecto, se sube con clic) -->
+          <img id="empresaPhoto" class="gta-empresa-img" src="img/cceh1.jpg" alt="Foto empresa">
+
+          <!-- Placeholder cuando no hay imagen -->
+          <div class="gta-empresa-placeholder" id="empresaPlaceholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(232,64,64,0.45)" stroke-width="1">
+              <rect x="2" y="7" width="20" height="15" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              <circle cx="12" cy="14" r="3"/>
+            </svg>
+          </div>
+
+          <!-- Gradiente sobre la imagen -->
+          <div class="gta-empresa-gradient"></div>
+
+          <!-- Nombre empresa superpuesto (abajo) -->
+          <div class="gta-empresa-name-block">
+            <div class="gta-emp-name-line">CCEH</div>
+            <div class="gta-emp-name-sub">Consejo Coordinador<br>Empesarial de Hidalgo</div>
+            <div class="gta-emp-tagline">Gobierno · Tecnología · Hidalgo</div>
+          </div>
+
+          <!-- Esquinas decorativas rojas -->
+          <div class="gta-emp-corner gta-emp-tl"></div>
+          <div class="gta-emp-corner gta-emp-tr"></div>
+          <div class="gta-emp-corner gta-emp-bl"></div>
+          <div class="gta-emp-corner gta-emp-br"></div>
+
+          <!-- Hover cambiar -->
+          <div class="gta-emp-change"></div>
+          <input type="file" id="empresaFileInput" accept="image/*" style="display:none;">
+        </div>
+      </div>
+
+      <!-- ── DATOS ── -->
+      <div class="gta-empresa-data-col">
+        <div class="gta-emp-data-inner">
+          <div class="data-row"><span class="data-label">Nombre de la empresa</span><span class="data-value highlight" style="color:var(--red);text-shadow:0 0 20px rgba(232,64,64,0.5);">CCEH</span></div>
+          <div class="data-row"><span class="data-label">Nombre completo</span><span class="data-value">Consejo Coordinador Empresarial de Hidalgo</span></div>
+          <div class="data-row"><span class="data-label">Obejetivo</span><span class="data-value">Su objetivo principal es articular, defender y fortalecer a más de 25 cámaras y asociaciones empresariales de todos los sectores económicos.</span></div>
+          <div class="data-row"><span class="data-label">Domicilio</span><span class="data-value">[ Constructores Hidalguenses 104, Venta Prieta, 42083 Pachuca de Soto, Hgo. ]</span></div>
+          <div class="data-row"><span class="data-label">Asesor externo</span><span class="data-value">[ Lic. Leticia ]</span></div>
+          <div class="data-row"><span class="data-label">Departamento asignado</span><span class="data-value">[ IEEES ]</span></div>
+        </div>
+      </div>
+
+      <!-- ── STATS ── -->
+      <div class="gta-empresa-stats-col">
+        <div class="company-stat"><div class="stat-num">1001</div><div class="stat-desc">Horas de estadía</div></div>
+        <div class="company-stat"><div class="stat-num">4</div><div class="stat-desc">Actividades principales</div></div>
+        <div class="company-stat"><div class="stat-num">2025</div><div class="stat-desc">Periodo de realización</div></div>
+        <div class="company-stat"><div class="stat-num">HGO</div><div class="stat-desc">Estado — Hidalgo, México</div></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+</div>
+
+</main>
+
+<!-- DARK / LIGHT MODE TOGGLE -->
+<button id="theme-btn" title="Cambiar tema" aria-label="Cambiar entre modo oscuro y claro">
+  <span id="theme-icon">☀️</span>
+  <span id="theme-label">MODO CLARO</span>
+</button>
+
+
+<script src="js/script2.js"></script>
+</body>
+</html>

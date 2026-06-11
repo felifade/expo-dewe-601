@@ -15,7 +15,7 @@
     "nombre": "Axel Daniel Chávez",
     "ruta": "alumnos/axel-daniel-chavez/index.html",
     "modalidad": "No Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Maira Alejandra Cruz Morales",
@@ -63,7 +63,7 @@
     "nombre": "María Cristina Islas Mercado",
     "ruta": "alumnos/maria-cristina-islas-mercado/index.html",
     "modalidad": "No Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Santiago Jimenez Sombra",
@@ -93,13 +93,13 @@
     "nombre": "Kaila Danahi Loyola Cortés",
     "ruta": "alumnos/kaila-danahi-loyola-cortes/index.html",
     "modalidad": "No Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Oliver Gerardo Maravilla",
     "ruta": "alumnos/oliver-gerardo-maravilla/index.html",
     "modalidad": "No Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Lucio Alejandro Martínez",
@@ -123,7 +123,7 @@
     "nombre": "Itzel Guadalupe Montiel",
     "ruta": "alumnos/itzel-guadalupe-montiel/index.html",
     "modalidad": "No Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Michel Guadalupe Rodríguez",
@@ -189,13 +189,13 @@
     "nombre": "Ronaldo Axel Lara Lugo",
     "ruta": "alumnos/ronaldo-axel-lara-lugo/index.html",
     "modalidad": "Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "David Ben Emanuel Mercado",
     "ruta": "alumnos/david-ben-emanuel-mercado/index.html",
     "modalidad": "Dual",
-    "calificacion": 0
+    "calificacion": 10
   },
   {
     "nombre": "Alexander Reyes Martínez",

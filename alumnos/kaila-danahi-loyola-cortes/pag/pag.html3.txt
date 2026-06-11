@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Desarrollo</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h1>Desarrollo del Proyecto</h1>
+
+<p>
+Se utilizó Arduino para controlar los horarios y ESP32 para futuras funciones inalámbricas.
+</p>
+
+<a href="../index.html">Volver</a>
+
+</body>
+</html>

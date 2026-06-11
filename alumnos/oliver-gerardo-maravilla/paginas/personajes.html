@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Código Arduino</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>💻 Código Arduino</h1>
+
+<pre>
+const int boton = 2;
+const int buzzer = 8;
+const int led = 13;
+
+void setup() {
+  pinMode(boton, INPUT_PULLUP);
+  pinMode(buzzer, OUTPUT);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  if(digitalRead(boton) == LOW){
+    digitalWrite(led, HIGH);
+    tone(buzzer, 1000);
+    delay(1000);
+    noTone(buzzer);
+    digitalWrite(led, LOW);
+  }
+}
+</pre>
+
+<a href="index.html">⬅ Volver al inicio</a>
+
+</body>
+</html>

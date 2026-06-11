@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Componentes del Proyecto</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#111827,#1e3a8a);
+    color:white;
+}
+
+/* Barra de navegación */
+
+nav{
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    padding:18px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#facc15;
+}
+
+/* Contenedor */
+
+.contenedor{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    color:#facc15;
+    margin-bottom:30px;
+}
+
+/* Tarjetas */
+
+.tarjeta{
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.tarjeta h2{
+    color:#93c5fd;
+    margin-bottom:15px;
+}
+
+.tarjeta p{
+    text-align:justify;
+    line-height:1.8;
+}
+
+.tarjeta ul{
+    margin-left:25px;
+}
+
+.tarjeta li{
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,.35);
+    margin-top:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="objetivos.html">🎯 Objetivos</a>
+    <a href="componentes.html">🔧 Componentes</a>
+    <a href="bitacora.html">📖 Bitácora</a>
+    <a href="galeria.html">🖼️ Galería</a>
+    <a href="contacto.html">📩 Contacto</a>
+</nav>
+
+<div class="contenedor">
+
+<h1>🔧 Componentes Utilizados</h1>
+
+<div class="tarjeta">
+
+<h2>Descripción General</h2>
+
+<p>
+Para la construcción del timbre inteligente con Arduino se utilizaron diversos
+componentes electrónicos que permiten detectar la pulsación de un botón y generar
+una respuesta sonora y visual. Cada elemento cumple una función específica dentro
+del sistema y es fundamental para el correcto funcionamiento del proyecto.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>Lista de Componentes</h2>
+
+<ul>
+    <li>🖥️ Arduino Uno</li>
+    <li>🔊 Buzzer</li>
+    <li>🔘 Pulsador</li>
+    <li>💡 LED</li>
+    <li>🔌 Protoboard</li>
+    <li>🔗 Cables Dupont</li>
+    <li>⚡ Cable USB o Fuente de Alimentación</li>
+</ul>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🖥️ Arduino Uno</h2>
+
+<p>
+Es la placa principal del proyecto y funciona como el cerebro del sistema.
+Recibe la señal del pulsador y ejecuta las instrucciones programadas para
+activar el buzzer y el LED.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🔊 Buzzer</h2>
+
+<p>
+El buzzer es un pequeño dispositivo electrónico encargado de emitir sonidos.
+Cuando el usuario presiona el botón del timbre, Arduino activa el buzzer para
+producir la alerta sonora.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🔘 Pulsador</h2>
+
+<p>
+Es el elemento que permite al usuario interactuar con el sistema. Al presionarlo,
+envía una señal eléctrica al Arduino para iniciar la secuencia programada.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>💡 LED</h2>
+
+<p>
+El LED funciona como indicador visual. Se enciende cuando el timbre es activado,
+permitiendo observar fácilmente que el sistema está funcionando correctamente.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🔌 Protoboard</h2>
+
+<p>
+La protoboard permite construir circuitos electrónicos de manera temporal sin
+necesidad de soldar componentes. Facilita las pruebas y modificaciones durante
+el desarrollo del proyecto.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>🔗 Cables Dupont</h2>
+
+<p>
+Los cables Dupont son utilizados para realizar las conexiones entre el Arduino,
+la protoboard y los demás componentes electrónicos.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>⚡ Fuente de Alimentación</h2>
+
+<p>
+Proporciona la energía necesaria para que el sistema funcione. Generalmente se
+utiliza un cable USB conectado a una computadora o una batería externa.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>Importancia de los Componentes</h2>
+
+<p>
+Todos los componentes trabajan en conjunto para crear un sistema inteligente y
+funcional. El Arduino procesa la información, el pulsador detecta la acción del
+usuario, el buzzer emite el sonido y el LED proporciona una señal visual.
+</p>
+
+<p>
+La correcta conexión y programación de estos elementos garantiza el éxito del
+proyecto y permite comprender mejor los principios básicos de la electrónica y
+la automatización.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>Aprendizajes Obtenidos</h2>
+
+<ul>
+    <li>✅ Identificación de componentes electrónicos.</li>
+    <li>✅ Construcción de circuitos básicos.</li>
+    <li>✅ Programación de Arduino.</li>
+    <li>✅ Uso de entradas y salidas digitales.</li>
+    <li>✅ Trabajo colaborativo y resolución de problemas.</li>
+    <li>✅ Aplicación práctica de conocimientos tecnológicos.</li>
+</ul>
+
+</div>
+
+</div>
+
+<footer>
+    <p>🔔 Proyecto Escolar: Timbre Inteligente con Arduino | Grupo 601</p>
+</footer>
+
+</body>
+</html>

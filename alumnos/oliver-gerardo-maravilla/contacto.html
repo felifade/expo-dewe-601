@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto del Equipo</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#111827,#1e3a8a);
+    color:white;
+}
+
+/* Navegación */
+
+nav{
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    padding:18px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#facc15;
+}
+
+/* Contenedor */
+
+.contenedor{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#facc15;
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+.tarjeta{
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.tarjeta h2{
+    color:#93c5fd;
+    margin-bottom:15px;
+}
+
+.tarjeta p{
+    line-height:1.8;
+}
+
+/* Foto del grupo */
+
+.foto-grupo{
+    text-align:center;
+}
+
+.foto-grupo img{
+    width:350px;
+    max-width:100%;
+    border-radius:20px;
+    border:4px solid #facc15;
+    box-shadow:0 0 20px rgba(250,204,21,.5);
+}
+
+/* Formulario */
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+input, textarea{
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,.35);
+    margin-top:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="objetivos.html">🎯 Objetivos</a>
+    <a href="componentes.html">🔧 Componentes</a>
+    <a href="bitacora.html">📖 Bitácora</a>
+    <a href="galeria.html">🖼️ Galería</a>
+    <a href="contacto.html">📩 Contacto</a>
+</nav>
+
+<div class="contenedor">
+
+<h1>📩 Contacto del Equipo</h1>
+
+<div class="tarjeta foto-grupo">
+
+<h2>👨‍💻 Foto</h2>
+
+<img src="img/foto.jpg" alt="Foto del Grupo">
+
+<p>
+Integrantes del proyecto "Timbre Inteligente con Arduino".
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>👥 Integrantes</h2>
+
+<p>🔹 Oliver Gerardo Maravilla Zúñiga</p>
+<p>🔹 Lucio Alejandro Martínez Bautista</p>
+<p>🔹 Jesús Alejandro Hernández Flores</p>
+
+<p><strong>Grupo:</strong> 601</p>
+<p><strong>Materia:</strong> Diseño de Páginas Web</p>
+<p><strong>Profesor:</strong> Felipe López Salazar</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>✉️ Envíanos un Mensaje</h2>
+
+<form>
+
+<label>Nombre:</label> <input type="text" placeholder="Escribe tu nombre">
+
+<label>Correo Electrónico:</label> <input type="email" placeholder="correo@ejemplo.com">
+
+<label>Mensaje:</label>
+
+<textarea rows="5" placeholder="Escribe tu mensaje aquí"></textarea>
+
+<button type="submit">📨 Enviar Mensaje</button>
+
+</form>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>📌 Información del Proyecto</h2>
+
+<p>
+Este proyecto fue desarrollado con fines educativos para demostrar la aplicación
+de la electrónica y la programación mediante Arduino en la construcción de un
+timbre inteligente.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+<p>🔔 Proyecto Escolar: Timbre Inteligente con Arduino | Grupo 601</p>
+</footer>
+
+</body>
+</html>

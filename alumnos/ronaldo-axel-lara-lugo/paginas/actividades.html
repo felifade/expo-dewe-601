@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividades — Estadía Profesional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style1.css">
+</head>
+<body>
+<div class="bg-fixed"></div>
+<div id="particles"></div>
+<div id="progress"></div>
+<nav id="siteNav" class="visible">
+  <div class="nav-logo">CCEH // ESTADÍA</div>
+  <ul class="nav-links">
+    <li><a href="../miestadia.html#estudiante">Estudiante</a></li>
+    <li><a href="../miestadia.html#empresa">Empresa</a></li>
+    <li><a href="actividades.html#actividades">Actividades</a></li>
+    <li><a href="soporteapoyo.html#apoyo">Apoyo y Tecnología</a></li>
+    <li><a href="resumen.html#resumen">Resumen</a></li>
+  </ul>
+</nav>
+<main>
+
+<div class="saber-divider reveal"><div class="saber-r"></div><div class="saber-clash"></div><div class="saber-c"></div></div>
+<section id="actividades" class="ev-section">
+  <div class="container">
+    <div class="section-label label-cyan reveal">// 03 — Actividad Principal</div>
+    <div class="ev-layout reveal">
+      <div class="ev-info">
+        <div class="ev-act-label" style="color:var(--cyan);">DISEÑO DE INFOGRAFÍAS</div>
+        <h3 class="ev-title" style="color:#fff;">Transformando datos<br><span style="color:var(--cyan);">en visuales claros</span></h3>
+        <p class="ev-body">Una de las tareas más constantes fue la <strong style="color:#fff;">elaboración de infografías</strong> basadas en datos del <strong style="color:var(--cyan);">INEGI</strong>. Estas piezas transformaban información compleja —cifras de población, economía, empleo y demografía de Hidalgo— en materiales comprensibles para el público general.</p>
+        <p class="ev-body" style="margin-top:12px;">El proceso implicaba seleccionar los datos más relevantes, diseñar la estructura visual, elegir paletas institucionales y redactar textos que contextualizaran las cifras.</p>
+        <div class="ev-tags">
+          <span class="act-tag tag-c">Diseño Visual</span>
+          <span class="act-tag tag-c">Datos INEGI</span>
+          <span class="act-tag tag-c">Comunicación</span>
+          <span class="act-tag tag-c">Estadística</span>
+        </div>
+      </div>
+      <div class="ev-panel ev-panel-cyan">
+        <div class="ev-panel-header">
+          <span class="ev-panel-dot" style="background:#e84040;"></span>
+          <span class="ev-panel-dot" style="background:#f0a500;"></span>
+          <span class="ev-panel-dot" style="background:#00e5ff;"></span>
+          <span class="ev-panel-title">EVIDENCIA FOTOGRÁFICA</span>
+        </div>
+        <div style="padding:12px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:160px 160px;gap:8px;">
+          <div class="ev3-slot" style="grid-column:1;grid-row:1/3;" id="slot1" onclick="document.getElementById('inp1').click()">
+            <div class="ev3-ph" id="ph1">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,255,0.35)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="ev3-num" style="color:rgba(0,229,255,0.4);">01</span>
+            </div>
+            <img id="img1" src="../img/1.png" style="display:block;width:100%;height:100%;object-fit:cover;">
+            <div class="ev3-hover"></div>
+            <input type="file" id="inp1" accept="image/*" style="display:none;" onchange="loadSlot(this,'img1','ph1')">
+          </div>
+          <div class="ev3-slot" style="grid-column:2;grid-row:1;" id="slot2" onclick="document.getElementById('inp2').click()">
+            <div class="ev3-ph" id="ph2">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,255,0.35)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="ev3-num" style="color:rgba(0,229,255,0.4);">02</span>
+            </div>
+            <img id="img2" src="../img/2.png" style="display:block;width:100%;height:100%;object-fit:cover;">
+            <div class="ev3-hover"></div>
+            <input type="file" id="inp2" accept="image/*" style="display:none;" onchange="loadSlot(this,'img2','ph2')">
+          </div>
+          <div class="ev3-slot" style="grid-column:2;grid-row:2;" id="slot3" onclick="document.getElementById('inp3').click()">
+            <div class="ev3-ph" id="ph3">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,229,255,0.35)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="ev3-num" style="color:rgba(0,229,255,0.4);">03</span>
+            </div>
+            <img id="img3" src="../img/3.png" style="display:block;width:100%;height:100%;object-fit:cover;">
+            <div class="ev3-hover"></div>
+            <input type="file" id="inp3" accept="image/*" style="display:none;" onchange="loadSlot(this,'img3','ph3')">
+          </div>
+        </div>
+        <div class="ev-panel-footer">
+          <span class="ev-footer-label">Clic en cada espacio<br>para subir tu foto</span>
+          <div style="display:flex;gap:6px;">
+            <button type="button" id="openGalleryBtn" class="ev-upload-btn ev-btn-cyan">🔍 Ver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="saber-divider reveal"><div class="saber-r"></div><div class="saber-clash"></div><div class="saber-c"></div></div>
+<section id="noticias">
+  <div class="container">
+    <div class="section-label label-red reveal">// 04 — Actividad</div>
+    <h2 class="section-title reveal" style="color:#fff;">SÍNTESIS DE<br><span style="color:var(--red);text-shadow:0 0 30px rgba(232,64,64,0.4);">NOTICIAS</span></h2>
+    <div class="act-grid">
+      <div class="act-card red-hover reveal-left" style="transition-delay:0.1s;">
+        <div class="act-number">01</div>
+        <div class="act-icon icon-red">📰</div>
+        <div class="act-title tr">Monitoreo<br>Informativo</div>
+        <p class="act-body">Seguimiento periódico de los principales medios de Hidalgo y a nivel nacional, identificando noticias relevantes de tecnología, gobierno y desarrollo social.</p>
+        <span class="act-tag tag-r">Hidalgo & Nacional</span>
+      </div>
+      <div class="act-card cyan-hover reveal-right" style="transition-delay:0.2s;">
+        <div class="act-number">02</div>
+        <div class="act-icon icon-cyan">✍️</div>
+        <div class="act-title tc">Redacción<br>y Síntesis</div>
+        <p class="act-body">Elaboración de síntesis concisas y objetivas de cada nota informativa, condensando lo más importante en formatos breves para el equipo del CCEH.</p>
+        <span class="act-tag tag-c">Redacción · Resumen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="ev-lightbox" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.94);align-items:center;justify-content:center;backdrop-filter:blur(8px);">
+  <button type="button" id="ev-lb-close-top" style="position:absolute;top:20px;right:28px;background:none;border:none;color:#fff;font-size:2.2rem;cursor:pointer;opacity:0.6;line-height:1;z-index:2;">&times;</button>
+  <img id="ev-lb-img" src="" style="max-width:80vw;max-height:82vh;object-fit:contain;box-shadow:0 0 80px rgba(0,229,255,0.12);z-index:1;">
+  <button type="button" id="ev-lb-prev" style="display:none;position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:1px solid rgba(0,229,255,0.35);color:var(--cyan,#00e5ff);width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;align-items:center;justify-content:center;z-index:2;transition:background 0.2s;">&#8592;</button>
+  <button type="button" id="ev-lb-next" style="display:none;position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:1px solid rgba(0,229,255,0.35);color:var(--cyan,#00e5ff);width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;align-items:center;justify-content:center;z-index:2;transition:background 0.2s;">&#8594;</button>
+  <div id="ev-lb-counter" style="position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:'Orbitron',sans-serif;font-size:0.6rem;letter-spacing:4px;color:rgba(221,228,240,0.45);z-index:2;"></div>
+  <button type="button" id="ev-lb-close" style="position:absolute;bottom:20px;right:28px;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;opacity:0.6;line-height:1;z-index:2;">✕</button>
+</div>
+
+</main>
+
+<button id="theme-btn" title="Cambiar tema" aria-label="Cambiar entre modo oscuro y claro">
+  <span id="theme-icon">☀️</span>
+  <span id="theme-label">MODO CLARO</span>
+</button>
+
+<script src="../js/script2.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style3.css">
+  <title>Digital Bell System</title>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+        <section id="inicio">
+        <section id="¿Cómo Funciona el Sistema?">
+
+    <h1>¿Cómo Funciona el Sistema?</h1>
+    <p>Fan page creada en HTML puro</p>
+    <hr>
+  </header>
+
+  <!-- MENÚ -->
+  <nav>
+    <ul>
+      <li><a href="../paginas/sistema.html">Componentes del Sistema</a></li>
+      <li><a href="../paginas/funcionamiento.html">¿Cómo Funciona el Sistema?</a></li>
+      <li><a href="../paginas/horarios.html">Horarios del Timbre</a></li>
+      <li><a href="../paginas/proceso.html">Proceso del Proyecto</a></li>
+      <li><a href="../paginas/bitacora.html">Bitácora del Proyecto</a></li>
+        <a href="../index.html">inicio</a>
+    </ul>
+    <hr>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+
+
+  <!-- FUNCIONAMIENTO DEL SISTEMA -->
+  <section id="funcionamiento">
+    <h2>¿Cómo Funciona el Sistema?</h2>
+
+    <table border="1">
+
+      <tr>
+        <th>Paso</th>
+        <th>Proceso</th>
+        <th>Descripción</th>
+        <th>Imagen</th>
+      </tr>
+
+      <tr>
+        <td>1</td>
+        <td>Lectura de Hora</td>
+        <td>
+          El Arduino consulta continuamente la fecha y hora actual para
+          verificar los horarios programados.
+        </td>
+
+        <td>
+          <img src="../img/08_img.jpg" width="150" alt="Reloj del Sistema">
+        </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>Comparación de Horarios</td>
+        <td>
+          El programa compara la hora actual con los horarios almacenados
+          para determinar si debe activarse el timbre.
+        </td>
+
+        <td>
+          <img src="../img/09_img.jpg" width="150" alt="Programación">
+        </td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>Activación del Buzzer</td>
+        <td>
+          Cuando la hora coincide con un horario establecido, el buzzer
+          emite una señal sonora indicando un cambio de actividad.
+        </td>
+
+        <td>
+          <img src="../img/14_img.jpg" width="150" alt="Buzzer">
+        </td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Visualización de Datos</td>
+        <td>
+          La pantalla LCD muestra la fecha, la hora y mensajes relacionados
+          con el estado del sistema.
+        </td>
+
+        <td>
+          <img src="../img/12_img.jpg" width="150" alt="Pantalla LCD">
+        </td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>Mensajes del Sistema</td>
+        <td>
+          Una caja de texto programada muestra información importante y el
+          estado actual del sistema.
+        </td>
+
+        <td>
+          <img src="../img/13_img.jpg" width="150" alt="Caja de Texto">
+        </td>
+      </tr>
+
+    </table>
+
+    <hr>
+
+    <h3>Descripción General</h3>
+
+    <p>
+      El sistema de timbre escolar programado funciona mediante la lectura
+      constante de la hora actual. Cuando el reloj alcanza alguno de los
+      horarios previamente configurados, el Arduino activa automáticamente
+      el buzzer para indicar entradas, cambios de clase, recreos o salidas.
+    </p>
+
+    <p>
+      La pantalla LCD permite visualizar información en tiempo real, mientras
+      que el pulsador facilita la realización de pruebas y ajustes del sistema.
+      Gracias a esta automatización, se mejora la organización y puntualidad
+      dentro de la institución educativa.
+    </p>
+
+    <hr>
+
+  </section>
+
+  <a href="../index.html">Regresar al inicio</a>
+
+</main>
+
+  <hr>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>Fan Page de Digital Bell System - Proyecto HTML</p>
+  </footer>
+
+</body>
+</html>

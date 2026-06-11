@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Datos Interesantes · RTH</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+[data-theme="dark"]{
+  --r:#E8002D;--rd:#9A001E;--g:#F5C518;
+  --dk:#080810;--dkr:#040408;--md:#10101C;
+  --pn:#14142A;--br:#222238;--tx:#EEEEF8;
+  --mt:#7070A0;--card-bg:#14142A;
+  --nav-bg:rgba(8,8,16,.94);--shadow-red:rgba(232,0,45,.18);
+}
+[data-theme="light"]{
+  --r:#C8001F;--rd:#8A0015;--g:#C9960A;
+  --dk:#F2F2FA;--dkr:#E8E8F5;--md:#DDDDF0;
+  --pn:#FFFFFF;--br:#C8C8E0;--tx:#18183A;
+  --mt:#606088;--card-bg:#FFFFFF;
+  --nav-bg:rgba(242,242,250,.96);--shadow-red:rgba(200,0,31,.15);
+}
+:root{--fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'Courier Prime',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--dk);color:var(--tx);font-family:var(--fb);line-height:1.65;overflow-x:hidden;cursor:none;transition:background 0.5s,color .4s}
+
+/* CURSOR */
+.cur{position:fixed;width:12px;height:12px;background:var(--r);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,0,45,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .25s,height .25s}
+[data-theme="light"] .cur{mix-blend-mode:multiply}
+
+/* NOISE */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px}
+
+/* SCROLL PROGRESS */
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:9999;background:var(--r);box-shadow:0 0 10px var(--r);transition:width .08s linear}
+
+/* SIGNAL BAR */
+#sigbar{position:fixed;top:3px;left:0;width:100%;height:3px;display:flex;z-index:1000}
+#sigbar span{flex:1;background:var(--r);animation:sig 1.8s ease-in-out infinite}
+#sigbar span:nth-child(2n){animation-delay:.3s;background:#ff3355}
+#sigbar span:nth-child(3n){animation-delay:.7s}
+@keyframes sig{0%,100%{opacity:.15}50%{opacity:1}}
+
+/* THEME TOGGLE */
+.theme-toggle{position:fixed;bottom:2rem;left:2rem;z-index:400;width:52px;height:28px;background:var(--pn);border:1.5px solid var(--br);border-radius:14px;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;display:flex;align-items:center;padding:3px;box-shadow:0 2px 16px var(--shadow-red)}
+.theme-toggle:hover{border-color:var(--r);box-shadow:0 0 20px var(--shadow-red)}
+.theme-toggle__knob{width:20px;height:20px;border-radius:50%;background:var(--r);transition:transform .3s cubic-bezier(.77,0,.18,1);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+[data-theme="light"] .theme-toggle__knob{transform:translateX(24px)}
+.theme-toggle__icon-moon{display:block}
+.theme-toggle__icon-sun{display:none}
+[data-theme="light"] .theme-toggle__icon-moon{display:none}
+[data-theme="light"] .theme-toggle__icon-sun{display:block}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);transition:box-shadow .3s,background .5s}
+nav.lit{box-shadow:0 2px 32px var(--shadow-red)}
+.nav-i{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;gap:2rem}
+.nav-brand{font-family:var(--fd);font-size:1.5rem;color:var(--r);letter-spacing:.15em;text-decoration:none}
+.nav-back{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;padding:.4rem .9rem;border:1px solid var(--br);border-radius:2px;transition:all .2s}
+.nav-back:hover{color:var(--tx);border-color:var(--r)}
+
+/* HERO */
+.hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(232,0,45,.15) 0%,transparent 65%),linear-gradient(180deg,var(--dk) 0%,var(--dkr) 100%);overflow:hidden}
+.hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(232,0,45,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(232,0,45,.035) 1px,transparent 1px);background-size:72px 72px;animation:gridmove 20s linear infinite}
+@keyframes gridmove{from{transform:translateY(0)}to{transform:translateY(72px)}}
+.badge{font-family:var(--fm);font-size:.65rem;letter-spacing:.3em;color:var(--r);border:1px solid var(--r);padding:.35rem 1rem;border-radius:2px;margin-bottom:2rem;position:relative;z-index:1;display:flex;align-items:center;gap:.6rem}
+.badge::before{content:'';width:7px;height:7px;background:var(--r);border-radius:50%;animation:blink .8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-title{font-family:var(--fd);font-size:clamp(4rem,10vw,8rem);line-height:.88;position:relative;z-index:1;animation:fadeup .9s ease both}
+.hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--r)}
+@keyframes fadeup{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-family:var(--fm);font-size:.82rem;letter-spacing:.22em;color:var(--mt);text-transform:uppercase;margin-top:1.5rem;position:relative;z-index:1;animation:fadeup .9s .2s ease both}
+
+/* SECTION INTRO */
+.sec-intro{max-width:780px;margin:4rem auto 0;padding:0 2rem;text-align:center;font-size:1rem;color:var(--mt);line-height:1.9;animation:fadeup .9s .3s ease both;position:relative;z-index:1}
+.sec-intro strong{color:var(--tx)}
+
+/* CARDS GRID */
+.cards-section{max-width:1200px;margin:0 auto;padding:5rem 2rem 7rem}
+.section-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--r);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);line-height:.9;margin-bottom:3rem;color:var(--tx)}
+
+/* BIG FACT STRIP */
+.fact-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--br);margin-bottom:4rem;border:1px solid var(--br)}
+.fact-box{background:var(--pn);padding:2.5rem 1.5rem;text-align:center;transition:background .3s}
+.fact-box:hover{background:var(--md)}
+.fact-num{font-family:var(--fd);font-size:4.5rem;color:var(--r);line-height:1}
+.fact-unit{font-family:var(--fd);font-size:2rem;color:var(--g)}
+.fact-lbl{font-family:var(--fm);font-size:.62rem;letter-spacing:.18em;color:var(--mt);margin-top:.6rem;text-transform:uppercase;line-height:1.5}
+
+/* DATA CARDS */
+.data-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+.dc{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,background .3s;cursor:default}
+.dc:hover{border-color:rgba(232,0,45,.4);background:var(--md)}
+.dc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.77,0,.18,1)}
+.dc:hover::before{transform:scaleX(1)}
+.dc-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.dc-num{font-family:var(--fd);font-size:3rem;color:var(--r);line-height:1;margin-bottom:.3rem}
+.dc-title{font-family:var(--fm);font-size:.72rem;letter-spacing:.15em;color:var(--r);text-transform:uppercase;margin-bottom:.8rem}
+.dc-desc{font-size:.9rem;color:var(--mt);line-height:1.8}
+.dc-tag{position:absolute;top:1rem;right:1rem;font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;color:var(--mt);border:1px solid var(--br);padding:.2rem .6rem;border-radius:2px;text-transform:uppercase}
+
+/* TIMELINE */
+.timeline{margin-bottom:4rem}
+.tl-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:2.5rem}
+.tl-list{position:relative;padding-left:2rem}
+.tl-list::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--r),transparent)}
+.tl-item{position:relative;padding:.6rem 0 1.8rem 2rem;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
+.tl-item.vis{opacity:1;transform:translateX(0)}
+.tl-item::before{content:'';position:absolute;left:-5px;top:.9rem;width:11px;height:11px;border-radius:50%;background:var(--r);box-shadow:0 0 12px rgba(232,0,45,.5)}
+.tl-year{font-family:var(--fd);font-size:1.8rem;color:var(--r);line-height:1}
+.tl-event{font-size:.95rem;color:var(--tx);margin:.3rem 0 .2rem;font-weight:600}
+.tl-detail{font-size:.87rem;color:var(--mt);line-height:1.7}
+
+/* FREQ TABLE */
+.freq-section{margin-bottom:4rem}
+.freq-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx);margin-bottom:2rem}
+.freq-table{width:100%;border-collapse:collapse;font-family:var(--fm);font-size:.78rem}
+.freq-table th{background:var(--r);color:#fff;padding:.9rem 1.2rem;text-align:left;letter-spacing:.12em;font-size:.65rem;text-transform:uppercase}
+.freq-table td{padding:.85rem 1.2rem;border-bottom:1px solid var(--br);color:var(--tx);transition:background .2s}
+.freq-table tr:hover td{background:var(--md)}
+.freq-table td:first-child{font-weight:700;color:var(--r)}
+.freq-badge{display:inline-block;padding:.2rem .7rem;border-radius:2px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.freq-badge.am{background:rgba(245,197,24,.15);color:var(--g);border:1px solid rgba(245,197,24,.3)}
+.freq-badge.tv{background:rgba(232,0,45,.15);color:var(--r);border:1px solid rgba(232,0,45,.3)}
+.freq-badge.dig{background:rgba(0,200,136,.15);color:#00C888;border:1px solid rgba(0,200,136,.3)}
+
+/* QUOTE */
+.quote-block{background:var(--pn);border:1px solid var(--br);border-left:4px solid var(--r);padding:2rem 2.5rem;margin-bottom:4rem;border-radius:4px}
+.quote-block p{font-size:1.05rem;font-style:italic;color:var(--tx);line-height:1.9;margin-bottom:.8rem}
+.quote-block cite{font-family:var(--fm);font-size:.65rem;letter-spacing:.18em;color:var(--r);text-transform:uppercase}
+
+/* SCROLL TO TOP */
+.stt{position:fixed;bottom:2rem;right:2rem;z-index:300;width:42px;height:42px;background:var(--r);color:#fff;border:none;border-radius:2px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 20px rgba(232,0,45,.4)}
+.stt.show{opacity:1;transform:translateY(0)}
+.stt:hover{background:var(--rd)}
+
+/* FOOTER */
+footer{background:var(--dkr,#040408);border-top:1px solid var(--br);padding:3rem 2rem;text-align:center}
+.foot-brand{font-family:var(--fd);font-size:2.2rem;color:var(--r);letter-spacing:.2em}
+.foot-sub{font-family:var(--fm);font-size:.65rem;color:var(--mt);letter-spacing:.15em;margin-top:.4rem}
+.foot-nav{display:flex;justify-content:center;gap:1.5rem;margin:1.2rem 0;flex-wrap:wrap}
+.foot-nav a{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;transition:color .2s}
+.foot-nav a:hover{color:var(--r)}
+
+@media(max-width:900px){
+  .fact-strip{grid-template-columns:1fr 1fr}
+  .data-cards{grid-template-columns:1fr}
+}
+@media(max-width:520px){.fact-strip{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<canvas id="sporeCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:1;width:100%;height:100%"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+<div id="scroll-progress"></div>
+<div id="sigbar"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Cambiar modo">
+  <div class="theme-toggle__knob">
+    <span class="theme-toggle__icon-moon">🌙</span>
+    <span class="theme-toggle__icon-sun">☀️</span>
+  </div>
+</button>
+
+<nav id="mainNav">
+  <div class="nav-i">
+    <a href="index.html" class="nav-brand">RTH · DUAL</a>
+    <a href="../ben.html" class="nav-back">← Volver al reporte</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__grid"></div>
+  <div class="badge">Datos · Radio y Televisión de Hidalgo</div>
+  <h1 class="hero-title">DATOS<br><em>RTH</em></h1>
+  <p class="hero-sub">Hechos y cifras sobre la emisora</p>
+  <p class="sec-intro">
+    <strong>Radio y Televisión de Hidalgo</strong> es el organismo público de comunicación del estado. Con décadas de historia, lleva información, cultura y entretenimiento a más de <strong>3 millones de hidalguenses</strong> a través de múltiples plataformas.
+  </p>
+</header>
+
+<main>
+<div class="cards-section">
+
+  <!-- BIG NUMBERS -->
+  <div class="section-tag">Cifras clave</div>
+  <h2 class="section-title">EN NÚMEROS</h2>
+  <div class="fact-strip">
+    <div class="fact-box">
+      <div><span class="fact-num" data-t="1979">0</span></div>
+      <div class="fact-lbl">Año de fundación<br>del organismo</div>
+    </div>
+    <div class="fact-box">
+      <div><span class="fact-num" data-t="3">0</span><span class="fact-unit">M+</span></div>
+      <div class="fact-lbl">Hidalguenses<br>como audiencia</div>
+    </div>
+    <div class="fact-box">
+      <div><span class="fact-num" data-t="24">0</span><span class="fact-unit">h</span></div>
+      <div class="fact-lbl">Transmisión<br>continua al día</div>
+    </div>
+    <div class="fact-box">
+      <div><span class="fact-num" data-t="84">0</span><span class="fact-unit">%</span></div>
+      <div class="fact-lbl">Cobertura<br>estatal en señal</div>
+    </div>
+  </div>
+
+  <!-- DATA CARDS -->
+  <div class="data-cards">
+    <div class="dc">
+      <span class="dc-tag">TV</span>
+      <span class="dc-icon">📺</span>
+      <div class="dc-num">Ch.9</div>
+      <div class="dc-title">Canal de televisión</div>
+      <div class="dc-desc">RTH transmite en el canal 9 de la señal abierta en UHF digital, disponible en toda la zona metropolitana de Pachuca y municipios aledaños con cobertura terrestre.</div>
+    </div>
+    <div class="dc">
+      <span class="dc-tag">Radio</span>
+      <span class="dc-icon">📻</span>
+      <div class="dc-num">100.3</div>
+      <div class="dc-title">FM principal (MHz)</div>
+      <div class="dc-desc">La señal de radio FM cubre ampliamente el Valle del Mezquital, Sierra Otomí-Tepehua y Pachuca. Es la señal insignia del organismo con programación informativa y cultural.</div>
+    </div>
+    <div class="dc">
+      <span class="dc-tag">AM</span>
+      <span class="dc-icon">🎙️</span>
+      <div class="dc-num">1490</div>
+      <div class="dc-title">Frecuencia AM (kHz)</div>
+      <div class="dc-desc">La transmisión en AM permite alcanzar zonas rurales de difícil acceso donde la señal FM no llega con claridad, garantizando el derecho a la información en todo Hidalgo.</div>
+    </div>
+    <div class="dc">
+      <span class="dc-tag">Estudio</span>
+      <span class="dc-icon">🎬</span>
+      <div class="dc-num">3</div>
+      <div class="dc-title">Estudios de grabación</div>
+      <div class="dc-desc">Las instalaciones cuentan con tres estudios especializados: uno para noticiarios de TV, uno para producción de radio en vivo y un set multipropósito para programas especiales y coberturas.</div>
+    </div>
+    <div class="dc">
+      <span class="dc-tag">Personal</span>
+      <span class="dc-icon">👥</span>
+      <div class="dc-num">200+</div>
+      <div class="dc-title">Colaboradores activos</div>
+      <div class="dc-desc">El organismo emplea a periodistas, técnicos en telecomunicaciones, productores, camarógrafos, editores y personal administrativo que mantienen la operación diaria.</div>
+    </div>
+    <div class="dc">
+      <span class="dc-tag">Digital</span>
+      <span class="dc-icon">🌐</span>
+      <div class="dc-num">DTH</div>
+      <div class="dc-title">Señal digital terrestre</div>
+      <div class="dc-desc">RTH opera bajo el estándar ATSC (Advanced Television Systems Committee) de la Televisión Digital Terrestre, transmitiendo en alta definición 1080i para los usuarios del estado.</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="tl-title">HISTORIA<br><span style="color:var(--r)">BREVÍSIMA</span></div>
+    <div class="tl-list">
+      <div class="tl-item">
+        <div class="tl-year">1979</div>
+        <div class="tl-event">Nacimiento del organismo</div>
+        <div class="tl-detail">El gobierno del estado crea la primera estación de radio pública en Hidalgo, con el objetivo de informar y culturizar a la población del estado.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1990</div>
+        <div class="tl-event">Primera señal de televisión</div>
+        <div class="tl-detail">RTH inaugura su canal de televisión, convirtiéndose en el primer canal de TV pública estatal de la región, transmitiendo contenidos culturales y noticiarios locales.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2004</div>
+        <div class="tl-event">Expansión a radio AM</div>
+        <div class="tl-detail">Se suma la frecuencia de Amplitud Modulada para ampliar la cobertura a zonas rurales remotas del estado que no reciben señal FM ni televisión abierta.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2015</div>
+        <div class="tl-event">Transición a la era digital</div>
+        <div class="tl-detail">RTH completa la migración a la Televisión Digital Terrestre (TDT) bajo el apagón analógico nacional, transmitiendo en alta definición y mejorando notablemente la calidad de imagen.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020</div>
+        <div class="tl-event">Transmisión en línea y streaming</div>
+        <div class="tl-detail">Ante la pandemia, RTH acelera su transformación digital lanzando transmisiones en vivo por internet y redes sociales, alcanzando audiencias fuera del estado.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026</div>
+        <div class="tl-event">Programa Dual CONALEP</div>
+        <div class="tl-detail">RTH se convierte en centro dual del programa CONALEP, recibiendo alumnos de telecomunicaciones para fortalecer su infraestructura de red y sistemas de comunicación interna.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FREQ TABLE -->
+  <div class="freq-section">
+    <div class="freq-title">SEÑALES &<br><span style="color:var(--r)">FRECUENCIAS</span></div>
+    <table class="freq-table">
+      <thead>
+        <tr>
+          <th>Señal</th>
+          <th>Tipo</th>
+          <th>Frecuencia</th>
+          <th>Cobertura</th>
+          <th>Potencia</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>XHPH-FM</td>
+          <td><span class="freq-badge tv">FM</span></td>
+          <td>100.3 MHz</td>
+          <td>Pachuca y zona metropolitana</td>
+          <td>25 kW</td>
+          <td>✅ Activa</td>
+        </tr>
+        <tr>
+          <td>XEPH-AM</td>
+          <td><span class="freq-badge am">AM</span></td>
+          <td>1490 kHz</td>
+          <td>Estado de Hidalgo completo</td>
+          <td>5 kW</td>
+          <td>✅ Activa</td>
+        </tr>
+        <tr>
+          <td>Canal 9 UHF</td>
+          <td><span class="freq-badge tv">TV</span></td>
+          <td>Canal RF 28</td>
+          <td>Pachuca y 12 municipios</td>
+          <td>30 kW</td>
+          <td>✅ Activa</td>
+        </tr>
+        <tr>
+          <td>RTH Digital</td>
+          <td><span class="freq-badge dig">Stream</span></td>
+          <td>Internet / IP</td>
+          <td>Nacional e internacional</td>
+          <td>100 Mbps</td>
+          <td>✅ En línea</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <p>"Radio y Televisión de Hidalgo es más que un medio: es el puente entre el gobierno y los más de tres millones de habitantes que conforman el estado. Su misión es informar con veracidad, preservar la cultura y garantizar el derecho a la comunicación en cada rincón de Hidalgo."</p>
+    <cite>— Misión institucional RTH</cite>
+  </div>
+
+</div>
+</main>
+
+<footer>
+
+</footer>
+
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('a,button,.dc,.fact-box').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='54px';ring.style.height='54px';});el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='36px';ring.style.height='36px';});});
+
+// THEME TOGGLE — CORREGIDO
+const docEl=document.documentElement;
+const themeBtn=document.getElementById('themeToggle');
+const saved=localStorage.getItem('rth-theme')||'dark';
+docEl.setAttribute('data-theme',saved);
+themeBtn.addEventListener('click',()=>{
+  const current=docEl.getAttribute('data-theme');
+  const next=current==='dark'?'light':'dark';
+  docEl.setAttribute('data-theme',next);
+  localStorage.setItem('rth-theme',next);
+});
+
+// NAV
+const nav=document.getElementById('mainNav'),stt=document.getElementById('stt'),sp=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('lit',window.scrollY>80);
+  stt.classList.toggle('show',window.scrollY>400);
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  if(sp)sp.style.width=pct+'%';
+});
+
+// SIGNAL BARS
+const sb=document.getElementById('sigbar');
+for(let i=0;i<100;i++){const s=document.createElement('span');sb.appendChild(s);}
+
+// COUNTERS
+function count(el,t,dur=1800){let v=0;const step=Math.max(1,Math.ceil(t/(dur/16)));const tm=setInterval(()=>{v+=step;if(v>=t){el.textContent=t;clearInterval(tm);}else el.textContent=v;},16);}
+const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){count(e.target,+e.target.dataset.t);co.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.fact-num[data-t]').forEach(el=>co.observe(el));
+
+// TIMELINE REVEAL
+const tlObs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*120);tlObs.unobserve(e.target);}});},{threshold:.2});
+document.querySelectorAll('.tl-item').forEach(el=>tlObs.observe(el));
+
+// SPORES
+(function(){const canvas=document.getElementById('sporeCanvas');const ctx=canvas.getContext('2d');let W,H;const mouse={x:-9999,y:-9999};const spores=[];const COLORS=['rgba(232,0,45,','rgba(245,197,24,','rgba(255,80,100,'];function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);function makeSpore(){const r=Math.random()*3+1;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r,base_r:r,alpha:Math.random()*.4+.1,color:COLORS[Math.floor(Math.random()*COLORS.length)],trail:[],pulse:Math.random()*Math.PI*2};}for(let i=0;i<50;i++)spores.push(makeSpore());document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});function draw(){ctx.clearRect(0,0,W,H);spores.forEach(s=>{s.pulse+=.016;const pr=Math.sin(s.pulse)*.3;const dx=mouse.x-s.x,dy=mouse.y-s.y,dist=Math.sqrt(dx*dx+dy*dy),inf=100;if(dist<inf&&dist>0){const force=(inf-dist)/inf;s.vx-=(dx/dist)*force*.25;s.vy-=(dy/dist)*force*.25;}s.vx*=.975;s.vy*=.975;s.x+=s.vx;s.y+=s.vy;if(s.x<-15)s.x=W+15;if(s.x>W+15)s.x=-15;if(s.y<-15)s.y=H+15;if(s.y>H+15)s.y=-15;ctx.beginPath();ctx.arc(s.x,s.y,s.r+pr,0,Math.PI*2);ctx.fillStyle=s.color+(s.alpha+.2)+')';ctx.fill();});requestAnimationFrame(draw);}draw();})();
+</script>
+</body>
+</html>

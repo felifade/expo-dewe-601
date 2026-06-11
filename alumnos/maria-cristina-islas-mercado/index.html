@@ -1,79 +1,276 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - María Cristina Islas Mercado</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style3.css">
+  <title>Digital Bell System</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>María Cristina Islas Mercado</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/maria-cristina-islas-mercado/
+
+  <!-- ENCABEZADO -->
+  <header>
+    <section id="inicio">
+
+      <h1>Digital Bell System</h1>
+      <p>Sistema automatizado de control de horarios escolares</p>
+      <hr>
+
+    </section>
+  </header>
+
+  <!-- MENÚ -->
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sistema">Sistema del Timbre</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#bitacora">Bitácora</a></li>
+    </ul>
+    <hr>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+  <!-- SISTEMA -->
+  <section id="sistema">
+    <h2>Componentes del Sistema</h2>
+
+    <article>
+     <h3>Arduino Uno</h3>
+     <p>Microcontrolador principal encargado de ejecutar la programación y controlar todos los dispositivos del sistema.</p>
+    </article>
+
+    <article>
+     <h3>Pantalla LCD 16x2</h3>
+     <p>Muestra la fecha, hora y el estado actual del sistema de timbre escolar programado.</p>
+    </article>
+
+    <article>
+     <h3>Pulsador (Botón)</h3>
+     <p>Permite realizar acciones manuales como configuración, pruebas o ajustes del sistema.</p>
+    </article>
+
+    <article>
+     <h3>Resistencia</h3>
+     <p>Se utiliza para proteger los componentes electrónicos y garantizar el correcto funcionamiento del pulsador.</p>
+    </article>
+
+    <article>
+     <h3>Buzzer</h3>
+     <p>Genera el sonido del timbre cuando la hora actual coincide con un horario programado.</p>
+    </article>
+
+    <article>
+     <h3>Caja de Texto Programada</h3>
+     <p>Elemento implementado mediante código para mostrar mensajes informativos, horarios y estados del sistema dentro de la interfaz.</p>
+    </article>
+
+    <article>
+     <h3>Cableado de Conexión</h3>
+     <p>Permite la comunicación entre el Arduino, la pantalla LCD, el buzzer y el pulsador.</p>
+    </article>
+
+    <img src="img/01_img_prototipo.jpg" width="300" alt="Sistema de Timbre Escolar">
+
+    <br><br>
+
+    <a href="#inicio">Regresar al inicio</a>
+
+<p>
+
+  <a href="paginas/sistema.html">Sistemas del Timbre</a>
+
+</p>
+
+  <hr>
+</section>
+
+
+    <!-- FUNCIONAMIENTO -->
+    <section id="funcionamiento">
+      <h2>¿Cómo Funciona el Sistema?</h2>
+
+      <p>
+        El sistema de timbre escolar programado funciona mediante la lectura
+        del tiempo en tiempo real. Cuando la hora actual coincide con un horario
+        establecido, se activa automáticamente un buzzer o campana que indica
+        el cambio de clase, el recreo o el inicio y finalización de actividades
+        escolares.
+      </p>
+
+      <p>
+        Gracias a la automatización, se evita la activación manual del timbre,
+        mejorando la puntualidad y organización dentro de la institución.
+      </p>
+
+<p>
+
+  <a href="paginas/funcionamiento.html">¿Cómo Funciona el Sistema?</a>
+
+</p>
+
+      <hr>
+    </section>
+
+    <!-- HORARIOS -->
+    <section id="horarios">
+      <h2>Horarios del Timbre</h2>
+
+      <ul>
+        <li>07:00 AM → Entrada</li>
+        <li>08:00 AM → Primera Clase</li>
+        <li>10:00 AM → Recreo</li>
+        <li>10:30 AM → Fin del Recreo</li>
+        <li>01:00 PM → Salida</li>
+      </ul>
+
+      <a href="#inicio">Regresar al inicio</a>
+
+<p>
+
+  <a href="paginas/horarios.html">Horarios del Timbre</a>
+
+</p>
+
+      <hr>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso">
+      <h2>Proceso del Proyecto</h2>
+
+      <table border="1">
+
+        <tr>
+          <th>Etapa</th>
+          <th>Descripción</th>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>Investigación del sistema</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Diseño del circuito electrónico</td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Programación del timbre</td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>Pruebas del sistema</td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td>Implementación final</td>
+        </tr>
+
+      </table>
+
+<p>
+
+  <a href="paginas/proceso.html">Proceso del Proyecto</a>
+
+</p>
+
+      <hr>
+    </section>
+
+    <!-- BITÁCORA -->
+    <section id="bitacora">
+      <h2>Bitácora del Proyecto</h2>
+
+      <p>
+        Durante el desarrollo del Timbre Escolar Programado se realizaron diversas
+        actividades para garantizar el correcto funcionamiento del sistema.
+      </p>
+
+      <ul>
+        <li>Montaje del circuito utilizando Arduino Uno.</li>
+        <li>Conexión y configuración de la pantalla LCD 16x2.</li>
+        <li>Instalación del buzzer para la emisión del timbre escolar.</li>
+        <li>Implementación del pulsador y resistencia para el control del sistema.</li>
+        <li>Programación de la fecha y hora mostradas en la pantalla.</li>
+        <li>Desarrollo de una caja de texto programada para mostrar mensajes y estados del sistema.</li>
+        <li>Realización de pruebas de funcionamiento y corrección de errores.</li>
+        <li>Validación final de los horarios automáticos del timbre escolar.</li>
+      </ul>
+
+      <p>
+        Como resultado, se obtuvo un sistema capaz de mostrar la fecha y hora en tiempo
+        real y activar automáticamente el timbre de acuerdo con los horarios establecidos.
+      </p>
+
+<p>
+
+  <a href="paginas/bitacora.html">Bitácora del Proyecto</a>
+
+</p>
+
+     <hr>
+   </section>
+
+
+    <!-- ESTUDIANTE -->
+    <section id="Datos">
+      <h2>Datos del Estudiante</h2>
+
+      <div class="controles">
+         <button id="btn-alarma">🌞 Activar Modo Claro</button>
+         <button id="btn-calma">🌙 Activar Modo Oscuro</button>
+         <div id="estado">Estado: 🌙 Modo Oscuro</div>
+      </div>
+
+      <br>
+
+      <form>
+
+        <div class="dato">
+           <label>Nombre del Estudiante:</label>
+           <li>Maria Cristina Islas Mercado</li>
         </div>
-    </div>
+
+        <div class="dato">
+           <label>Grupo:</label>
+           <li>601</li>
+        </div>
+
+        <div class="dato">
+           <label>Materia:</label>
+           <li>DEWE</li>
+        </div>
+
+        <div class="dato">
+           <label>Profesor:</label>
+           <li>Felipe Lopez Salazar</li>
+        </div>
+
+      <img src="img/15_img.jpg" width="300" alt="Imagen del Estudiante">
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <hr>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>Timbre Escolar Programado | Proyecto de Automatización Escolar</p>
+  </footer>
+
+
 </body>
+<script src="js/script1.js"></script>
 </html>

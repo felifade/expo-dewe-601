@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desarrollo | Timbre Automático</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <script src="../js/nav-template.js"></script>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="breadcrumb"><a href="../index.html">Inicio</a> / Desarrollo</p>
+        <span class="section-label">Proceso de construcción</span>
+        <h1>Desarrollo del Proyecto</h1>
+        <p>Documentación completa del proceso de diseño, construcción y programación del timbre automático.</p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <section>
+      <div class="container">
+
+        <div class="tabs-container">
+          <button class="active" data-tab="hardware">Hardware</button>
+          <button data-tab="software">Software</button>
+          <button data-tab="pruebas">Pruebas</button>
+        </div>
+
+        <!-- HARDWARE -->
+        <div data-panel="hardware" class="active">
+          <h2 style="margin-bottom: 2rem;">Construcción del Circuito</h2>
+
+          <div class="timeline">
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 1 · Semana 1</p>
+              <p class="tl-title">Selección de Componentes</p>
+              <p class="tl-desc">
+                Se definieron los componentes necesarios: Arduino UNO como microcontrolador, 
+                dos botones pulsadores de 2 terminales, un buzzer activo de 5V, cables jumper 
+                macho-hembra.
+              </p>
+              <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <span class="chip">Arduino UNO</span>
+                <span class="chip">Botón 1</span>
+                <span class="chip">Botón 2</span>
+                <span class="chip">Buzzer</span>
+                <span class="chip">Protoboard</span>
+              </div>
+              <div class="tl-img">
+                <img src="../img/componentes.jpg" alt="Timbre Automático">
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 2 · Semana 1</p>
+              <p class="tl-title">Diseño del Circuito</p>
+              <p class="tl-desc">
+                Se diseñó el diagrama de conexiones. Los botones se conectan a los pines digitales 2 y 3 
+                del Arduino. El buzzer se conecta al pin 4 con alimentación 
+                de 5V a través del Arduino.
+              </p>
+              <div class="code-block"><pre>CONEXIONES:
+Pin 2 (Arduino)  ← Botón 1
+Pin 3 (Arduino)  ← Botón 2
+Pin 4 (Arduino)  → Buzzer (+)
+GND (Arduino)    → Buzzer (-) y Botones (GND)</pre></div>
+              <div class="tl-img">
+              <img src="../img/diagrama.jpg" alt="Diagrama">
+
+              </div>
+            </div>
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 3 · Semana 2</p>
+              <p class="tl-title">Montaje del proyecto</p>
+              <p class="tl-desc">
+                Se realizó el montaje del circuito siguiendo el diagrama diseñado. 
+                Se verificaron todas las conexiones antes de conectar la alimentación y cargar el código.
+              </p>
+              <div class="tl-img">
+                <img src="../img/protoboard.jpg" alt="Placa Arduino"> 
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TABLA DE MATERIALES -->
+          <hr class="divider" style="margin: 3rem 0;" />
+
+          <h3 style="margin-bottom: 1.5rem;">Lista de Materiales</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+            <thead>
+              <tr style="background: var(--bg-alt); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem; text-align: left; font-weight: 600;">#</th>
+                <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Componente</th>
+                <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Cantidad</th>
+                <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Función</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">1</td><td style="padding: 0.75rem;">Arduino UNO R3</td><td style="padding: 0.75rem;">1</td><td style="padding: 0.75rem;">Microcontrolador</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">2</td><td style="padding: 0.75rem;">Botón pulsador 2 terminales</td><td style="padding: 0.75rem;">2</td><td style="padding: 0.75rem;">Entrada de datos</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">3</td><td style="padding: 0.75rem;">Buzzer activo 5V</td><td style="padding: 0.75rem;">1</td><td style="padding: 0.75rem;">Salida sonora</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">5</td><td style="padding: 0.75rem;">Cable jumper macho-hembra</td><td style="padding: 0.75rem;">8</td><td style="padding: 0.75rem;">Conexiones</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem;">6</td><td style="padding: 0.75rem;">Cable USB tipo B</td><td style="padding: 0.75rem;">1</td><td style="padding: 0.75rem;">Programación y energía</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <!-- SOFTWARE -->
+        <div data-panel="software">
+          <h2 style="margin-bottom: 2rem;">Programación</h2>
+
+          <div class="timeline">
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 4 · Semana 2–3</p>
+              <p class="tl-title">Desarrollo del Código</p>
+              <p class="tl-desc">
+                Se programó el Arduino con el IDE oficial. El código detecta cuando se presiona 
+                cualquiera de los dos botones y activa el buzzer con una duración configurable.
+              </p>
+
+              <div class="code-block"><pre><span style="color: #c9d1d9;">// Timbre Automático - Código Principal</span>
+<span style="color: #ff7b72;">const int</span> BTN1 = <span style="color: #f8a765;">2</span>;
+<span style="color: #ff7b72;">const int</span> BTN2 = <span style="color: #f8a765;">3</span>;
+<span style="color: #ff7b72;">const int</span> BUZZER = <span style="color: #f8a765;">8</span>;
+
+<span style="color: #ff7b72;">void</span> <span style="color: #d2a8ff;">setup</span>() {
+  <span style="color: #d2a8ff;">pinMode</span>(BTN1, INPUT);
+  <span style="color: #d2a8ff;">pinMode</span>(BTN2, INPUT);
+  <span style="color: #d2a8ff;">pinMode</span>(BUZZER, OUTPUT);
+}
+
+<span style="color: #ff7b72;">void</span> <span style="color: #d2a8ff;">loop</span>() {
+  <span style="color: #ff7b72;">if</span> (<span style="color: #d2a8ff;">digitalRead</span>(BTN1) == HIGH || <span style="color: #d2a8ff;">digitalRead</span>(BTN2) == HIGH) {
+    <span style="color: #d2a8ff;">tone</span>(BUZZER, <span style="color: #f8a765;">1000</span>, <span style="color: #f8a765;">500</span>);
+    <span style="color: #d2a8ff;">delay</span>(<span style="color: #f8a765;">1000</span>);
+  }
+  <span style="color: #d2a8ff;">delay</span>(<span style="color: #f8a765;">50</span>);
+}</pre></div>
+            </div>
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 5 · Semana 3</p>
+              <p class="tl-title">Pruebas e Iteraciones</p>
+              <p class="tl-desc">
+                Se probó el código en el Arduino y se ajustaron los parámetros de frecuencia, 
+                duración y comportamiento. Se realizaron varias iteraciones para optimizar la respuesta.
+              </p>
+              <div class="tl-img">
+              <img src="../img/ide-arduino.jpg" alt="VS">  
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PRUEBAS -->
+        <div data-panel="pruebas">
+          <h2 style="margin-bottom: 2rem;">Pruebas y Resultados</h2>
+
+          <div class="timeline">
+
+            <div class="tl-item reveal">
+              <p class="tl-date">Fase 6 · Semana 4</p>
+              <p class="tl-title">Pruebas con VS y Phyton para la pagina del timbre</p>
+              <p class="tl-desc">
+                Se realizaron pruebas con el VS y Arduino vinculandose entre si para poder sincronizar y guardar con milisegundos para tener mayor presición.
+                Hubo muchas fallas más que nada con las librerias y la ruta del sitio para ejecutarlo.
+              </p>
+              <div style="margin-top: 1rem; padding: 1.25rem; background: var(--bg-alt); border-radius: 12px; border: 1px solid var(--border);">
+                <p><strong>Resultados:</strong></p>
+                <ul style="margin-top: 0.75rem; color: var(--text-muted);">
+                  <li>✓ Botón 1: 20/20 activaciones exitosas</li>
+                  <li>✓ Botón 2: 20/20 activaciones exitosas</li>
+                  <li>✓ Tiempo de respuesta: &lt;50ms</li>
+                  <li>✓ Durabilidad: 100+ ciclos sin fallos</li>
+                </ul>
+              </div>
+              <div class="tl-img">
+               <img src="../img/prueba-final.jpg" alt="VS">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-brand">🔔 Timbre Automático</span>
+      <ul class="footer-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="acerca.html">Acerca de</a></li>
+      </ul>
+      <span class="footer-copy">Emprendimiento e Innovación y Desarrollo de Paginas Web 2025–2026</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

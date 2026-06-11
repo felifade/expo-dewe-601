@@ -1,0 +1,84 @@
+/* css Practica 01 */
+
+body {
+       background-color: #00913F;
+       color: white;
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+     }
+
+h1 {
+      color: #e53e3e;
+      font-size: 2rem;
+   }
+
+p {
+      line-height: 1.6;
+  }
+
+
+/* Imágenes estilizadas */
+
+img {
+   max-width: 280px;
+   display: block;
+   border-radius: 8px;
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+   transition: transform 0.3s ease;  
+}
+
+
+img:hover {
+  transform: scale(1.05);
+          }
+
+
+/* Centrar el contenido principal */
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+
+/* Galería flexible */
+
+galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+
+/* Agrega mejoras en navegación */
+
+nav {
+       background-color: #1a0000;
+       display: flex;
+       gap: 8px;
+       padding: 12px 24px;
+    }
+
+nav a {
+       color: #ffffff;
+       text-decoration: none;
+       padding: 8px 16px;
+       border-radius: 4px;
+       transition: background-color 0.2s ease;
+      }
+
+
+nav a:hover {
+             background-color: #8b0000;
+             color: #ffffff;
+            }
+
+
+nav a.action {
+               background-color: #8b0000;
+               color: #ffffff;
+               font-weight: bold;
+             }

@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    transition:.5s;
+}
+
+/* ENCABEZADOS */
+
+.datos,
+header,
+footer{
+    text-align:center;
+}
+
+.datos{
+    background:#000;
+    color:#00B7F5;
+    padding:15px;
+}
+
+h1{
+    color:#00B7F5;
+    font-size:50px;
+    text-shadow:0 0 15px #00B7F5;
+}
+
+h2{
+    color:#00B7F5;
+}
+
+h3{
+    color:white;
+}
+
+/* FOTO DE PERFIL */
+
+.perfil{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.foto-perfil{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #00B7F5;
+    box-shadow:0 0 10px #00B7F5;
+}
+
+/* MENÚ */
+
+nav{
+    background:#000;
+    padding:15px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    padding:0;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    background:linear-gradient(135deg,#00B7F5,#0077ff);
+    padding:12px 24px;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#2563eb;
+    transform:translateY(-3px);
+}
+
+/* TARJETAS */
+
+.tarjeta{
+    background:#111827;
+    width:90%;
+    margin:20px auto;
+    padding:30px;
+    border-radius:30px;
+    box-shadow:0 0 15px #00B7F5;
+}
+
+.tarjeta:hover{
+    transform:scale(1.02);
+}
+
+/* FORMULARIOS */
+
+input,
+textarea{
+    width:90%;
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    margin-top:5px;
+    font-family:'Poppins',sans-serif;
+}
+
+input[type="submit"],
+input[type="reset"],
+button{
+    background:#00B7F5;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:20px;
+    cursor:pointer;
+    margin:5px;
+    transition:.3s;
+    font-weight:600;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover{
+    background:#2563eb;
+}
+
+/* CONTENEDOR DE MODELOS */
+
+.contenedor-paquetes{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+    padding:20px;
+}
+
+/* TARJETAS DE MODELOS */
+
+.modelo{
+    width:1200px;
+    max-width:95%;
+    text-align:center;
+}
+
+/* IMÁGENES DE MODELOS */
+
+.imagenes-modelo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    margin:25px 0;
+    flex-wrap:nowrap;
+}
+
+.imagenes-modelo img{
+    width:300px;
+    height:200px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 10px #00B7F5;
+    transition:.3s;
+}
+
+.imagenes-modelo img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00B7F5;
+}
+
+/* PAQUETES */
+
+.paquete{
+    width:1200px;
+    max-width:95%;
+    text-align:center;
+}
+
+.paquete img{
+    width:350px;
+    border-radius:20px;
+    margin-bottom:15px;
+    box-shadow:0 0 10px #00B7F5;
+}
+
+/* BOTÓN MODO OSCURO */
+
+#modo-btn{
+    background:#00B7F5;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+#modo-btn:hover{
+    background:#2563eb;
+}
+
+/* RESULTADOS */
+
+#resultado{
+    text-align:center;
+    margin:20px;
+}
+
+/* BOTÓN REGRESAR */
+
+.volver{
+    display:block;
+    width:220px;
+    margin:20px auto;
+    text-align:center;
+    text-decoration:none;
+    background:#00B7F5;
+    color:white;
+    padding:12px;
+    border-radius:25px;
+    transition:.3s;
+    font-weight:600;
+}
+
+.volver:hover{
+    background:#2563eb;
+}
+
+/* MODO CLARO */
+
+.claro{
+    background:#f4f4f4;
+    color:black;
+}
+
+.claro .tarjeta{
+    background:white;
+    color:black;
+}
+
+.claro h3{
+    color:black;
+}
+
+/* PIE DE PÁGINA */
+
+footer{
+    background:#000;
+    color:#00B7F5;
+    padding:20px;
+    margin-top:30px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Acerca de</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h1>Acerca del Proyecto</h1>
+
+<p>
+Digital Bell System es un sistema que automatiza los horarios escolares mediante un Arduino y un ESP32.
+</p>
+
+<a href="../index.html">Volver</a>
+
+</body>
+</html>

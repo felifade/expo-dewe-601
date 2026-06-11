@@ -1,79 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Axel Daniel Chávez</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Timbre Automático - Proyecto Arduino con botones y buzzer" />
+  <title>Timbre Automático | Proyecto Arduino</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Axel Daniel Chávez</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/axel-daniel-chavez/
+
+  <script src="js/nav-template.js"></script>
+
+  <main>
+
+    <!-- ======== HERO ======== -->
+    <section class="container hero">
+      <div>
+        <div class="hero-tag">
+          ⚡ Proyecto Arduino · Emprendimiento e Innovación
         </div>
+        <h1 class="hero-title">
+          Timbre<br><em>Automático</em>
+        </h1>
+        <p class="hero-desc">
+          Un sistema de timbre interactivo con Arduino que integra botones 
+          para activar una alarma sonora. Proyecto desarrollado como parte 
+          del curso de Emprendimiento e Innovación.
+        </p>
+        <div class="hero-btns">
+          <a href="paginas/desarrollo.html" class="btn btn-primary">Ver Desarrollo →</a>
+          <a href="paginas/galeria.html" class="btn btn-secondary">Ver Galería</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <div class="hero-img-frame">
+            <img src="img/proyecto-principal.jpg" alt="Timbre Automático">
+            <span class="hero-img-icon"></span>
+
+          </div>
+          <div class="hero-badge">Arduino UNO</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== ESTADÍSTICAS ======== -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 data-count="2">2</h3>
+          <p class="stat-label">Botones de Control</p>
+        </div>
+        <div class="stat-item">
+          <h3 data-count="1">1</h3>
+          <p class="stat-label">Buzzer Activo</p>
+        </div>
+        <div class="stat-item">
+          <h3 data-count="5">5V</h3>
+          <p class="stat-label">Voltaje de Operación</p>
+        </div>
+        <div class="stat-item">
+          <h3 data-count="4">4</h3>
+          <p class="stat-label">Semanas de Desarrollo</p>
+        </div>
+      </div>
     </div>
+
+    <!-- ======== DESCRIPCIÓN ======== -->
+    <section>
+      <div class="container">
+        <span class="section-label">Descripción</span>
+        <h2>¿Cómo funciona?</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem;">
+          <div>
+            <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              El <strong>Timbre Automático</strong> es un dispositivo controlado por Arduino que utiliza 
+              dos botones pulsadores de 2 terminales para activar un buzzer activo. Al presionar uno de 
+              de los botones, el Arduino envía una señal que activa el buzzer emitiendo un sonido de timbre.
+            </p>
+            <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              El sistema está programado en Phyton usando el IDE de Arduino y permite múltiples configuraciones 
+              como ajuste de alarmas, habilitar/desabilitar y eventos programables.
+            </p>
+            <div class="chips">
+              <span class="chip">Arduino UNO</span>
+              <span class="chip">2 Botones</span>
+              <span class="chip">Buzzer 5V</span>
+              <span class="chip">Cables</span>
+              <span class="chip">C/C++</span>
+            </div>
+          </div>
+
+          <div>
+            <div style="width: 100%; height: 280px; border: 2px dashed var(--border); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--text-muted); font-size: 0.85rem; background: var(--bg-alt);">
+                 <img src="./img/circuito.jpg" alt="Circuito">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== TARJETAS DE SECCIONES ======== -->
+    <section style="padding: 0 0 6rem;">
+      <div class="container">
+        <span class="section-label">Contenido</span>
+        <h2>Secciones del Sitio</h2>
+
+        <div class="cards-grid">
+
+          <div class="card reveal">
+            <div class="card-img">
+              <!-- <img src="img/desarrollo-card.jpg" alt="Desarrollo"> -->
+              <span style="font-size: 2.5rem; opacity: 0.4;">⚙️</span>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">Proceso</span>
+              <h3>Desarrollo</h3>
+              <p>Documentación paso a paso del proceso de construcción, programación y pruebas del proyecto.</p>
+              <a href="paginas/desarrollo.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.2rem; margin-top: 0.5rem;">Leer más →</a>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-img">
+              <!-- <img src="img/galeria-card.jpg" alt="Galería"> -->
+              <span style="font-size: 2.5rem; opacity: 0.4;">🖼️</span>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">Fotos</span>
+              <h3>Galería</h3>
+              <p>Fotografías del proceso de construcción, el circuito terminado y pruebas de funcionamiento.</p>
+              <a href="paginas/galeria.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.2rem; margin-top: 0.5rem;">Ver Galería →</a>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-img">
+              <!-- <img src="img/acerca-card.jpg" alt="Acerca de"> -->
+              <span style="font-size: 2.5rem; opacity: 0.4;">👤</span>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">Estudiante</span>
+              <h3>Acerca de</h3>
+              <p>Información sobre el estudiante responsable del proyecto y sus motivaciones.</p>
+              <a href="paginas/acerca.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.2rem; margin-top: 0.5rem;">Mi Perfil →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-brand">🔔 Timbre Automático</span>
+      <ul class="footer-links">
+        <li><a href="paginas/desarrollo.html">Desarrollo</a></li>
+        <li><a href="paginas/galeria.html">Galería</a></li>
+        <li><a href="paginas/acerca.html">Acerca de</a></li>
+      </ul>
+      <span class="footer-copy">Emprendimiento e Innovación y Desarrollo de Paginas Web 2024–2026</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
