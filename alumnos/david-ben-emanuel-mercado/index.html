@@ -1,79 +1,699 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - David Ben Emanuel Mercado</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(217, 119, 6, 0.15);
-            color: #f59e0b;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(217, 119, 6, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reporte de Actividades | RTH Dual</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+[data-theme="dark"] {
+  --r:#E8002D; --rd:#9A001E; --g:#f5f518;
+  --dk:#080810; --dkr:#040408; --md:#10101C;
+  --pn:#14142A; --br:#222238; --tx:#EEEEF8;
+  --mt:#7070A0; --card-bg:#14142A; --input-bg:#10101C;
+  --hero-from:#200008; --intro-bg:#14142A;
+  --nav-bg:rgba(8,8,16,.94); --stats-bg:#040408;
+  --quote-bg:#14142A; --skills-bg:#040408;
+  --foot-bg:#040408; --section-border:#222238;
+  --shadow-red:rgba(232,0,45,.18); --overlay:rgba(8,8,16,.94);
+}
+[data-theme="light"] {
+  --r:#C8001F; --rd:#8A0015; --g:#C9960A;
+  --dk:#F2F2FA; --dkr:#E8E8F5; --md:#DDDDF0;
+  --pn:#FFFFFF; --br:#C8C8E0; --tx:#18183A;
+  --mt:#6060AA; --card-bg:#FFFFFF; --input-bg:#EEEEf8;
+  --hero-from:#FFE0E6; --intro-bg:#FFFFFF;
+  --nav-bg:rgba(242,242,250,.96); --stats-bg:#E8E8F5;
+  --quote-bg:#FFFFFF; --skills-bg:#E8E8F5;
+  --foot-bg:#E8E8F5; --section-border:#C8C8E0;
+  --shadow-red:rgba(200,0,31,.15); --overlay:rgba(242,242,250,.96);
+}
+:root{--fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;--fm:'Courier Prime',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--dk);color:var(--tx);font-family:var(--fb);line-height:1.65;overflow-x:hidden;cursor:none;transition:background .4s,color .4s}
+.cur{position:fixed;width:12px;height:12px;background:var(--r);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s;mix-blend-mode:screen}
+.cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(232,0,45,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .25s,height .25s,opacity .25s}
+[data-theme="light"] .cur{mix-blend-mode:multiply}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
+#sigbar{position:fixed;top:0;left:0;width:100%;height:3px;display:flex;z-index:1000}
+#sigbar span{flex:1;background:var(--r);animation:sig 1.8s ease-in-out infinite}
+#sigbar span:nth-child(2n){animation-delay:.3s;background:#ff3355}
+#sigbar span:nth-child(3n){animation-delay:.7s}
+@keyframes sig{0%,100%{opacity:.15}50%{opacity:1}}
+.photo-hint{display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.7rem 1.4rem;border:2px dashed var(--r);border-radius:4px;background:rgba(232,0,45,.07);animation:hint-pulse 2s ease-in-out infinite;margin:.5rem 0;cursor:pointer;}
+@keyframes hint-pulse{0%,100%{border-color:rgba(232,0,45,.35);background:rgba(232,0,45,.04)}50%{border-color:var(--r);background:rgba(232,0,45,.13)}}
+.photo-hint-icon{font-size:1.5rem}
+.photo-hint-label{font-family:var(--fm);font-size:.72rem;letter-spacing:.25em;color:var(--r);text-transform:uppercase;font-weight:700;text-align:center;}
+.photo-hint-sub{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--mt);text-align:center}
+.photo-arrow{font-size:1.3rem;color:var(--r);animation:arrow-bounce .85s ease-in-out infinite;display:block;text-align:center;margin-top:.2rem;}
+@keyframes arrow-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.theme-toggle{position:fixed;bottom:2rem;left:2rem;z-index:400;width:52px;height:28px;background:var(--pn);border:1.5px solid var(--br);border-radius:14px;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;display:flex;align-items:center;padding:3px;box-shadow:0 2px 16px var(--shadow-red)}
+.theme-toggle:hover{border-color:var(--r);box-shadow:0 0 20px var(--shadow-red)}
+.theme-toggle__knob{width:20px;height:20px;border-radius:50%;background:var(--r);transition:transform .3s cubic-bezier(.77,0,.18,1);display:flex;align-items:center;justify-content:center;font-size:.7rem}
+[data-theme="light"] .theme-toggle__knob{transform:translateX(24px)}
+.theme-toggle__icon-moon{display:block}
+.theme-toggle__icon-sun{display:none}
+[data-theme="light"] .theme-toggle__icon-moon{display:none}
+[data-theme="light"] .theme-toggle__icon-sun{display:block}
+.glow-toggle{position:fixed;bottom:5.5rem;left:2rem;z-index:400;width:52px;height:28px;background:var(--pn);border:1.5px solid var(--br);border-radius:14px;cursor:pointer;transition:background .3s,border-color .3s,box-shadow .3s;display:flex;align-items:center;padding:3px;box-shadow:0 2px 16px var(--shadow-red)}
+.glow-toggle:hover{border-color:var(--r);box-shadow:0 0 20px var(--shadow-red)}
+.glow-toggle__knob{width:20px;height:20px;border-radius:50%;background:var(--r);transition:transform .3s cubic-bezier(.77,0,.18,1);display:flex;align-items:center;justify-content:center;font-size:.72rem}
+body.glow-off .glow-toggle__knob{transform:translateX(24px);background:var(--br)}
+.glow-toggle-label{position:fixed;bottom:5.6rem;left:5.8rem;z-index:400;font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;color:var(--mt);text-transform:uppercase;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+.glow-toggle:hover ~ .glow-toggle-label{opacity:1}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 5rem;position:relative;background:radial-gradient(ellipse 90% 70% at 50% -10%, var(--hero-from) 0%,transparent 65%),linear-gradient(180deg,var(--dk) 0%,var(--dkr) 100%);overflow:hidden;transition:background .4s}
+.hero__grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(232,0,45,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(232,0,45,.035) 1px,transparent 1px);background-size:72px 72px;animation:gridmove 20s linear infinite}
+[data-theme="light"] .hero__grid{opacity:.5}
+@keyframes gridmove{from{transform:translateY(0)}to{transform:translateY(72px)}}
+.hero__scanline{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.05) 3px,rgba(0,0,0,.05) 4px)}
+.badge{font-family:var(--fm);font-size:.65rem;letter-spacing:.3em;color:var(--r);border:1px solid var(--r);padding:.35rem 1rem;border-radius:2px;animation:blink 1s step-end infinite;margin-bottom:2.5rem;position:relative;z-index:1;display:flex;align-items:center;gap:.6rem}
+.badge::before{content:'';width:7px;height:7px;background:var(--r);border-radius:50%;animation:blink .8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.logo{display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem;position:relative;z-index:1;padding:1.1rem 2.2rem;border:1px solid var(--br);background:rgba(255,255,255,.018);backdrop-filter:blur(8px);transition:border-color .3s}
+.logo-rth{font-family:var(--fd);font-size:4rem;color:var(--r);line-height:1;letter-spacing:.05em}
+.logo-sep{width:1px;height:48px;background:var(--br)}
+.logo-txt{display:flex;flex-direction:column;gap:.15rem;text-align:left}
+.logo-txt span{font-family:var(--fm);font-size:.62rem;color:var(--mt);letter-spacing:.12em}
+.logo-txt strong{font-family:var(--fm);font-size:.7rem;color:var(--tx);letter-spacing:.1em}
+.hero-title{font-family:var(--fd);font-size:clamp(5rem,14vw,11rem);line-height:.85;letter-spacing:.025em;position:relative;z-index:1;animation:fadeup .9s ease both}
+.hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--r)}
+@keyframes fadeup{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.hero-sub{font-family:var(--fm);font-size:.82rem;letter-spacing:.22em;color:var(--mt);text-transform:uppercase;margin-top:1.75rem;position:relative;z-index:1;animation:fadeup .9s .2s ease both}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;width:100%;max-width:900px;margin-top:3.5rem;border:1px solid var(--br);position:relative;z-index:1;animation:fadeup .9s .35s ease both}
+.meta-c{background:var(--pn);padding:1.2rem 1.4rem;text-align:left;transition:background .3s}
+.meta-c:hover{background:var(--md)}
+.meta-lbl{font-family:var(--fm);font-size:.58rem;color:var(--r);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.3rem}
+.meta-v{font-size:.9rem;font-weight:600;color:var(--tx);line-height:1.3}
+.scroll-cta{margin-top:4rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.68rem;color:var(--mt);letter-spacing:.18em;position:relative;z-index:1;animation:fadeup .9s .5s ease both}
+.scroll-arr{font-size:1.3rem;color:var(--r);animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);transition:box-shadow .3s,background .4s}
+nav.lit{box-shadow:0 2px 32px var(--shadow-red)}
+.nav-i{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;gap:2rem}
+.nav-brand{font-family:var(--fd);font-size:1.5rem;color:var(--r);letter-spacing:.15em}
+.nav-links{display:flex;list-style:none;gap:.1rem}
+.nav-links a{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;padding:.4rem .9rem;border:1px solid transparent;border-radius:2px;transition:all .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--r);transition:width .3s,left .3s}
+.nav-links a:hover::after,.nav-links a.on::after{width:80%;left:10%}
+.nav-links a:hover,.nav-links a.on{color:var(--tx);border-color:var(--br);background:var(--pn)}
+.nav-links a.on{color:var(--r)}
+.nav-links a.nav-extra{color:var(--r);border-color:rgba(232,0,45,.25)}
+.nav-links a.nav-extra:hover{background:rgba(232,0,45,.08)}
+.nav-ham{display:none;background:none;border:1px solid var(--br);color:var(--tx);font-size:1.1rem;padding:.35rem .65rem;cursor:pointer;border-radius:2px}
+.drawer{position:fixed;inset:0;z-index:500;background:var(--dkr);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateX(110%);transition:transform .35s cubic-bezier(.77,0,.18,1)}
+.drawer.on{transform:translateX(0)}
+.drawer-x{position:absolute;top:1.5rem;right:1.8rem;background:none;border:none;color:var(--tx);font-size:1.6rem;cursor:pointer}
+.drawer ul{list-style:none;text-align:center}
+.drawer ul li{margin:.7rem 0}
+.drawer ul a{font-family:var(--fd);font-size:2.6rem;color:var(--tx);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.drawer ul a:hover{color:var(--r)}
+.intro{background:var(--intro-bg);border-bottom:1px solid var(--br);transition:background .4s}
+.intro-i{max-width:860px;margin:0 auto;padding:3rem 2rem;text-align:center;font-size:1rem;color:var(--mt);line-height:1.85}
+.intro-i strong{color:var(--tx);font-weight:600}
+.section-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--r);text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:clamp(3rem,7vw,5.5rem);line-height:.9;color:var(--tx)}
+.student-section{background:var(--dkr);padding:7rem 2rem;border-bottom:1px solid var(--br);transition:background .4s}
+.student-section__inner{max-width:1100px;margin:0 auto}
+.student-section__header{text-align:center;margin-bottom:4rem}
+.student-card{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start;background:var(--pn);border:1px solid var(--br);padding:2.5rem;border-radius:4px;margin-bottom:4rem;transition:background .3s,border-color .3s}
+.student-card:hover{border-color:rgba(232,0,45,.3)}
+.profile-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.profile-frame{width:220px;height:220px;border-radius:50%;position:relative;cursor:pointer;flex-shrink:0}
+.profile-frame::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(var(--r) 0deg,#ff4466 60deg,transparent 120deg,var(--r) 180deg,#ff4466 240deg,transparent 300deg,var(--r) 360deg);animation:spin-glow 3s linear infinite;z-index:0;filter:blur(4px)}
+.profile-frame::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(var(--r),#ff4466,var(--r));animation:spin-glow 3s linear infinite;z-index:1}
+@keyframes spin-glow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.profile-inner{width:220px;height:220px;border-radius:50%;overflow:hidden;background:var(--md);border:3px solid var(--dk);position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
+.profile-inner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.profile-ph{display:flex;flex-direction:column;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.65rem;color:var(--mt);letter-spacing:.08em;text-align:center}
+.profile-ph .ph-icon{font-size:2rem;opacity:.5}
+.profile-upload-btn{font-family:var(--fm);font-size:.65rem;letter-spacing:.15em;color:var(--tx);background:var(--md);border:1px solid var(--br);padding:.45rem 1.2rem;border-radius:2px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.profile-upload-btn:hover{border-color:var(--r);color:var(--r)}
+.profile-name-badge{font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;color:var(--r);border:1px solid var(--r);padding:.3rem .9rem;border-radius:2px;text-align:center}
+.student-info{display:flex;flex-direction:column;gap:1.2rem}
+.info-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);color:var(--tx);line-height:.9;margin-bottom:.5rem}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.info-row{background:var(--md);border:1px solid var(--br);padding:.9rem 1.1rem;border-radius:2px;transition:border-color .2s}
+.info-row:hover{border-color:rgba(232,0,45,.3)}
+.info-lbl{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;color:var(--r);text-transform:uppercase;margin-bottom:.2rem}
+.info-val{font-size:.9rem;font-weight:600;color:var(--tx)}
+.info-bio{background:var(--md);border:1px solid var(--br);border-left:3px solid var(--r);padding:1rem 1.2rem;font-size:.9rem;color:var(--mt);line-height:1.8;border-radius:2px}
+.info-skills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+.info-skills span{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:var(--mt);background:var(--dk);border:1px solid var(--br);padding:.25rem .75rem;border-radius:2px;transition:all .2s}
+.info-skills span:hover{color:var(--r);border-color:rgba(232,0,45,.4)}
+.activity-photos{margin-top:1rem}
+.ap-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.ap-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);color:var(--tx)}
+.ap-line{flex:1;height:1px;background:var(--br)}
+.ap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.ap-cell{position:relative;border-radius:4px;overflow:visible;cursor:pointer}
+.ap-cell-frame{position:relative;border-radius:4px;overflow:hidden;border:2px solid var(--br);transition:border-color .3s;height:200px}
+.ap-cell-frame::after{content:'';position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,transparent 60%,rgba(8,8,16,.7) 100%);pointer-events:none}
+.ap-cell:hover .ap-cell-frame{border-color:var(--r);box-shadow:0 0 24px rgba(232,0,45,.35),0 0 60px rgba(232,0,45,.12)}
+.ap-cell-inner{padding:1.8rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;background:var(--md);height:100%;justify-content:center;position:relative;z-index:1}
+.ap-cell img.act-photo{width:100%;height:100%;object-fit:cover;object-position:center;display:block;position:absolute;top:0;left:0;z-index:1}
+.ap-cell-label{position:absolute;bottom:0;left:0;right:0;z-index:4;padding:.5rem .8rem;background:linear-gradient(0deg,rgba(8,8,16,.85),transparent);font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;color:var(--tx);}
+.ap-cell-num{position:absolute;top:.5rem;left:.6rem;z-index:4;font-family:var(--fd);font-size:1.2rem;color:var(--r);line-height:1;opacity:.8}
+.ap-ph-icon{font-size:1.6rem;opacity:.5}
+.ap-ph-text{font-family:var(--fm);font-size:.65rem;color:var(--mt);letter-spacing:.06em;line-height:1.5}
+.ap-ph-btn{font-family:var(--fm);font-size:.65rem;letter-spacing:.15em;color:var(--tx);background:var(--dk);border:1px solid var(--br);padding:.4rem 1rem;border-radius:2px;cursor:pointer;transition:all .2s;text-transform:uppercase;position:relative;z-index:5}
+.ap-ph-btn:hover{border-color:var(--r);color:var(--r)}
+#broadcast-frame{position:fixed;inset:0;z-index:150;pointer-events:none;}
+.bc-corner{position:absolute;width:38px;height:38px;border-color:var(--r);border-style:solid;border-width:0;}
+.bc-corner.tl{top:14px;left:14px;border-top-width:3px;border-left-width:3px}
+.bc-corner.tr{top:14px;right:14px;border-top-width:3px;border-right-width:3px}
+.bc-corner.bl{bottom:14px;left:14px;border-bottom-width:3px;border-left-width:3px}
+.bc-corner.br{bottom:14px;right:14px;border-bottom-width:3px;border-right-width:3px}
+.bc-edge{position:absolute;background:rgba(232,0,45,.18)}
+.bc-edge.top{top:14px;left:52px;right:52px;height:1px}
+.bc-edge.bot{bottom:14px;left:52px;right:52px;height:1px}
+.bc-edge.left{left:14px;top:52px;bottom:52px;width:1px}
+.bc-edge.right{right:14px;top:52px;bottom:52px;width:1px}
+.bc-scan{position:absolute;left:0;right:0;height:2px;top:-4px;background:linear-gradient(90deg,transparent,rgba(232,0,45,.35),transparent);animation:bc-scan-move 6s linear infinite;pointer-events:none;}
+@keyframes bc-scan-move{0%{top:-4px;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100vh;opacity:0}}
+.bc-hud-tl{position:absolute;top:22px;left:60px;display:flex;align-items:center;gap:.7rem;font-family:var(--fm);font-size:.62rem;letter-spacing:.18em;color:rgba(232,0,45,.85);text-transform:uppercase;}
+.bc-dot{width:8px;height:8px;border-radius:50%;background:var(--r);box-shadow:0 0 8px var(--r);animation:bc-blink 1s step-end infinite;}
+@keyframes bc-blink{0%,100%{opacity:1}50%{opacity:0}}
+.bc-hud-tr{position:absolute;top:22px;right:60px;font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;color:rgba(232,0,45,.7);}
+.bc-hud-bl{position:absolute;bottom:22px;left:60px;font-family:var(--fm);font-size:.58rem;letter-spacing:.14em;color:rgba(255,255,255,.3);}
+.bc-hud-br{position:absolute;bottom:22px;right:60px;font-family:var(--fm);font-size:.58rem;letter-spacing:.14em;color:rgba(255,255,255,.25);}
+#broadcast-vignette{position:fixed;inset:0;z-index:149;pointer-events:none;background:radial-gradient(ellipse 90% 85% at 50% 50%,transparent 60%,rgba(0,0,0,.55) 100%);}
+#nf-intro{position:fixed;inset:0;z-index:9000;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:all;}
+#nf-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(232,0,45,.55) 0%,transparent 70%);opacity:0;filter:blur(40px);animation:nf-glow-in .6s 1.2s ease forwards;}
+@keyframes nf-glow-in{to{opacity:1}}
+#nf-logo{position:relative;z-index:2;display:flex;align-items:flex-end;gap:0;transform:scale(.55);animation:nf-logo-pop 1s .3s cubic-bezier(.16,1,.3,1) forwards;}
+@keyframes nf-logo-pop{to{transform:scale(1)}}
+.nf-bar{width:clamp(52px,10vw,90px);background:var(--r);border-radius:3px 3px 0 0;position:relative;overflow:hidden;transform-origin:bottom center;transform:scaleY(0);}
+.nf-bar:nth-child(1){height:clamp(160px,28vw,240px);animation:nf-bar-up .5s .4s cubic-bezier(.77,0,.18,1) forwards;}
+.nf-bar:nth-child(2){height:clamp(200px,34vw,300px);animation:nf-bar-up .5s .5s cubic-bezier(.77,0,.18,1) forwards;margin:0 clamp(6px,1.2vw,10px);box-shadow:0 0 60px rgba(232,0,45,.7),0 0 120px rgba(232,0,45,.3);}
+.nf-bar:nth-child(3){height:clamp(160px,28vw,240px);animation:nf-bar-up .5s .6s cubic-bezier(.77,0,.18,1) forwards;}
+@keyframes nf-bar-up{to{transform:scaleY(1)}}
+.nf-bar-letter{position:absolute;bottom:clamp(10px,2vw,18px);left:50%;transform:translateX(-50%);font-family:var(--fd);font-size:clamp(2.2rem,5vw,4.5rem);color:#fff;letter-spacing:.05em;opacity:0;animation:nf-letter-in .35s ease forwards;}
+.nf-bar:nth-child(1) .nf-bar-letter{animation-delay:.75s}
+.nf-bar:nth-child(2) .nf-bar-letter{animation-delay:.85s}
+.nf-bar:nth-child(3) .nf-bar-letter{animation-delay:.95s}
+@keyframes nf-letter-in{to{opacity:1}}
+#nf-base{position:absolute;bottom:calc(50% - clamp(82px,14vw,122px));left:50%;transform:translateX(-50%);width:0;height:3px;background:linear-gradient(90deg,transparent,var(--r),#ff4466,var(--r),transparent);border-radius:2px;animation:nf-base-grow .6s 1s cubic-bezier(.77,0,.18,1) forwards;z-index:3;}
+@keyframes nf-base-grow{to{width:clamp(180px,36vw,310px)}}
+#nf-sub{position:absolute;bottom:calc(50% - clamp(100px,17vw,148px));left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:clamp(.55rem,.9vw,.78rem);letter-spacing:clamp(.25em,.5vw,.5em);color:rgba(255,255,255,.55);text-transform:uppercase;white-space:nowrap;opacity:0;animation:nf-sub-in .5s 1.3s ease forwards;z-index:3;}
+@keyframes nf-sub-in{to{opacity:1}}
+#nf-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:10;animation:nf-flash-anim .25s 1.9s ease forwards;}
+@keyframes nf-flash-anim{0%{opacity:0}30%{opacity:.55}100%{opacity:0}}
+#nf-intro.exit{animation:nf-exit .5s 2.05s cubic-bezier(.77,0,.18,1) forwards;}
+@keyframes nf-exit{to{opacity:0;pointer-events:none}}
+body.splash-active{overflow:hidden}
+body.splash-active > *:not(#nf-intro):not(#sporeCanvas){opacity:0}
+body:not(.splash-active) > *:not(#nf-intro){animation:page-in .7s ease forwards}
+@keyframes page-in{from{opacity:0}to{opacity:1}}
+.act{max-width:1200px;margin:0 auto;padding:7rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;border-bottom:1px solid var(--br);opacity:0;transform:translateY(40px);transition:opacity .75s ease,transform .75s ease}
+.act.vis{opacity:1;transform:translateY(0)}
+.act.rev{direction:rtl}
+.act.rev>*{direction:ltr}
+.act-content{position:relative;display:flex;flex-direction:column;gap:.6rem}
+.act-num{font-family:var(--fd);font-size:clamp(8rem,14vw,16rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(232,0,45,.13);user-select:none;pointer-events:none;position:absolute;top:-3.5rem;left:-1rem;z-index:0}
+body:not(.glow-off) .act-num{-webkit-text-stroke:1px rgba(232,0,45,.35);text-shadow:0 0 20px rgba(232,0,45,.6),0 0 60px rgba(232,0,45,.35),0 0 120px rgba(232,0,45,.18)}
+.act-content > *:not(.act-num){position:relative;z-index:1}
+.act-tag{font-family:var(--fm);font-size:.62rem;letter-spacing:.28em;color:var(--r);text-transform:uppercase;padding-top:5rem}
+.act-title{font-family:var(--fd);font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:.9;color:var(--tx);margin-bottom:.6rem}
+.act-desc{font-size:.95rem;color:var(--mt);line-height:1.85;margin-bottom:1.6rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.chips span{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:var(--mt);background:var(--md);border:1px solid var(--br);padding:.3rem .9rem;border-radius:2px;transition:color .2s,border-color .2s}
+.chips span:hover{color:var(--r);border-color:rgba(232,0,45,.4)}
+.img-panel{position:relative}
+.img-frame{border:1px solid var(--br);border-radius:4px;overflow:hidden;background:var(--pn);position:relative;transition:border-color .3s,box-shadow .3s}
+.img-frame:hover{border-color:rgba(232,0,45,.4);box-shadow:0 0 40px rgba(232,0,45,.06)}
+.img-frame-top{display:flex;align-items:center;justify-content:space-between;padding:.65rem 1rem;border-bottom:1px solid var(--br);font-family:var(--fm);font-size:.6rem;color:var(--mt);letter-spacing:.12em}
+.img-frame-dots{display:flex;gap:.4rem}
+.img-frame-dots span{width:8px;height:8px;border-radius:50%;background:var(--br)}
+.img-frame-dots span:nth-child(1){background:#ff5f57}
+.img-frame-dots span:nth-child(2){background:#febc2e}
+.img-frame-dots span:nth-child(3){background:#28c840}
+.ph{padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:.8rem;text-align:center;cursor:pointer;transition:background .3s}
+.ph:hover{background:rgba(232,0,45,.03)}
+.ph-icon{font-size:2.5rem;opacity:.4}
+.ph-txt{font-family:var(--fm);font-size:.72rem;color:var(--mt);letter-spacing:.08em;line-height:1.6}
+.ph-btn{font-family:var(--fm);font-size:.68rem;letter-spacing:.18em;color:var(--tx);background:var(--md);border:1px solid var(--br);padding:.6rem 1.5rem;border-radius:2px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.ph-btn:hover{background:var(--br);border-color:var(--r);color:var(--r)}
+.ph-btn input{display:none}
+/* ── CORRECCIÓN IMÁGENES ── */
+.act-img{width:100%;height:360px;display:block;object-fit:cover;object-position:center}
+/* ────────────────────────── */
+.hidden{display:none!important}
+.img-panel::before{content:'';position:absolute;top:-8px;right:-8px;width:40px;height:40px;border-top:2px solid var(--r);border-right:2px solid var(--r);pointer-events:none;transition:width .3s,height .3s}
+.img-panel:hover::before{width:60px;height:60px}
+.img-panel::after{content:'';position:absolute;bottom:-8px;left:-8px;width:40px;height:40px;border-bottom:2px solid rgba(232,0,45,.3);border-left:2px solid rgba(232,0,45,.3);pointer-events:none}
+.stats{background:var(--stats-bg);padding:7rem 2rem;position:relative;overflow:hidden;transition:background .4s}
+.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(232,0,45,.04) 0%,transparent 70%)}
+.stats-i{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.stats-label{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--r);text-align:center;text-transform:uppercase;margin-bottom:1rem}
+.stats-title{font-family:var(--fd);font-size:clamp(3rem,7vw,6rem);text-align:center;line-height:.9;margin-bottom:5rem}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--br)}
+.stat{background:var(--pn);padding:3rem 1.5rem;text-align:center;transition:background .3s}
+.stat:hover{background:var(--md)}
+.stat-n{font-family:var(--fd);font-size:5rem;color:var(--r);display:inline;line-height:1}
+.stat-u{font-family:var(--fd);font-size:2.5rem;color:var(--g);display:inline}
+.stat-l{font-family:var(--fm);font-size:.65rem;letter-spacing:.15em;color:var(--mt);margin-top:.75rem;text-transform:uppercase}
+.progress-section{max-width:700px;margin:4rem auto 0;display:flex;flex-direction:column;gap:1.4rem}
+.pb-row{display:flex;flex-direction:column;gap:.5rem}
+.pb-hd{display:flex;justify-content:space-between;font-family:var(--fm);font-size:.68rem;color:var(--mt);letter-spacing:.1em}
+.pb-hd span:last-child{color:var(--r)}
+.pb-track{height:3px;background:var(--br);border-radius:2px;overflow:hidden}
+.pb-fill{height:100%;background:linear-gradient(90deg,var(--r),#ff4466);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.77,0,.18,1)}
+.quote-section{background:var(--quote-bg);border-top:1px solid var(--br);border-bottom:1px solid var(--br);padding:6rem 2rem;transition:background .4s}
+.quote-i{max-width:800px;margin:0 auto;text-align:center}
+.quote-mark{font-family:var(--fd);font-size:8rem;color:var(--r);line-height:.5;opacity:.2;display:block;margin-bottom:1.5rem}
+.quote-txt{font-size:1.2rem;font-weight:300;font-style:italic;line-height:1.9;color:var(--tx);margin-bottom:2rem}
+.quote-author{font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;color:var(--r);text-transform:uppercase}
+.skills{background:var(--skills-bg);padding:5rem 2rem;transition:background .4s}
+.skills-i{max-width:900px;margin:0 auto}
+.skills-lbl{font-family:var(--fm);font-size:.68rem;letter-spacing:.28em;color:var(--r);margin-bottom:2.5rem;text-transform:uppercase}
+.skills-grid{display:flex;flex-wrap:wrap;gap:.6rem}
+.sk{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;color:var(--mt);border:1px solid var(--br);padding:.45rem 1.1rem;border-radius:2px;background:var(--pn);cursor:default;transition:all .25s}
+.sk:hover{color:var(--r);border-color:rgba(232,0,45,.5);background:rgba(232,0,45,.04);transform:translateY(-2px)}
+.extra-pages{background:var(--dkr);padding:7rem 2rem;border-top:1px solid var(--br);border-bottom:1px solid var(--br);}
+.extra-pages__inner{max-width:1100px;margin:0 auto}
+.extra-pages__header{text-align:center;margin-bottom:4rem}
+.extra-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.extra-card{background:var(--pn);border:1px solid var(--br);border-radius:4px;padding:2.2rem 2rem;display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden;text-decoration:none;transition:border-color .3s,background .3s,transform .3s;cursor:pointer}
+.extra-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--extra-c,var(--r));transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.77,0,.18,1)}
+.extra-card:hover::before{transform:scaleX(1)}
+.extra-card:hover{border-color:var(--extra-c,var(--r));background:var(--md);transform:translateY(-4px)}
+.extra-card--green{--extra-c:#00CC88}
+.extra-card--red{--extra-c:#E8002D}
+.extra-card--blue{--extra-c:#0099FF}
+.extra-icon{font-size:2.4rem;display:block;margin-bottom:.3rem}
+.extra-num{font-family:var(--fd);font-size:3.5rem;color:var(--extra-c,var(--r));line-height:1;opacity:.25;position:absolute;top:1rem;right:1.2rem}
+.extra-tag{font-family:var(--fm);font-size:.6rem;letter-spacing:.22em;color:var(--extra-c,var(--r));text-transform:uppercase;margin-bottom:.2rem}
+.extra-title{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--tx);line-height:.95}
+.extra-desc{font-size:.88rem;color:var(--mt);line-height:1.75}
+.extra-cta{font-family:var(--fm);font-size:.65rem;letter-spacing:.18em;color:var(--extra-c,var(--r));text-transform:uppercase;margin-top:auto;display:flex;align-items:center;gap:.5rem;transition:gap .2s}
+.extra-card:hover .extra-cta{gap:.9rem}
+footer{background:var(--foot-bg);border-top:1px solid var(--br);padding:4rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem;transition:background .4s}
+.foot-brand{font-family:var(--fd);font-size:2.8rem;color:var(--r);letter-spacing:.2em}
+.foot-name{font-size:1rem;font-weight:600;color:var(--tx)}
+.foot-sub{font-family:var(--fm);font-size:.68rem;color:var(--mt);letter-spacing:.15em}
+.foot-nav-extra{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:.8rem}
+.foot-nav-extra a{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;color:var(--mt);text-decoration:none;padding:.35rem .85rem;border:1px solid var(--br);border-radius:2px;transition:all .2s}
+.foot-nav-extra a:hover{color:var(--tx);border-color:var(--r)}
+.foot-copy{font-size:.7rem;color:var(--br);margin-top:.3rem}
+.stt{position:fixed;bottom:2rem;right:2rem;z-index:300;width:42px;height:42px;background:var(--r);color:#fff;border:none;border-radius:2px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 20px rgba(232,0,45,.4)}
+.stt.show{opacity:1;transform:translateY(0)}
+.stt:hover{background:var(--rd)}
+.hero-title:hover{animation:glitch .3s linear}
+@keyframes glitch{0%{text-shadow:none}20%{text-shadow:-2px 0 var(--r),2px 0 #00cfff}40%{text-shadow:2px 0 var(--r),-2px 0 #00cfff}60%{text-shadow:-2px 0 #00cfff,2px 0 var(--r)}80%{text-shadow:none}100%{text-shadow:none}}
+#sporeCanvas{position:fixed;inset:0;pointer-events:none;z-index:1;width:100%;height:100%}
+@media(max-width:900px){
+  .act{grid-template-columns:1fr;gap:2.5rem;padding:5rem 2rem}.act.rev{direction:ltr}
+  .meta{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}.nav-ham{display:block}
+  .student-card{grid-template-columns:1fr;gap:2rem}
+  .profile-frame,.profile-inner{width:160px;height:160px}
+  .ap-grid{grid-template-columns:1fr 1fr}.info-grid{grid-template-columns:1fr}
+  .act-num{font-size:clamp(5rem,22vw,9rem);top:-2rem;left:-.5rem}.act-tag{padding-top:4rem}
+  .extra-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){.meta{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:1fr 1fr}.ap-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Formación Dual</div>
-        <h1>David Ben Emanuel Mercado</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/david-ben-emanuel-mercado/
-        </div>
+
+<canvas id="sporeCanvas"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+<div id="sigbar"></div>
+
+<div id="nf-intro">
+  <div id="nf-glow"></div>
+  <div id="nf-logo">
+    <div class="nf-bar"><span class="nf-bar-letter">R</span></div>
+    <div class="nf-bar"><span class="nf-bar-letter">T</span></div>
+    <div class="nf-bar"><span class="nf-bar-letter">H</span></div>
+  </div>
+  <div id="nf-base"></div>
+  <div id="nf-sub">Radio y Televisión de Hidalgo · Dual 2026</div>
+  <div id="nf-flash"></div>
+</div>
+
+<div id="broadcast-vignette"></div>
+<div id="broadcast-frame">
+  <div class="bc-corner tl"></div><div class="bc-corner tr"></div>
+  <div class="bc-corner bl"></div><div class="bc-corner br"></div>
+  <div class="bc-edge top"></div><div class="bc-edge bot"></div>
+  <div class="bc-edge left"></div><div class="bc-edge right"></div>
+  <div class="bc-scan"></div>
+  <div class="bc-hud-tl"><div class="bc-dot"></div><span>● REC · EN VIVO</span></div>
+  <div class="bc-hud-tr" id="bcTimecode">00:00:00:00</div>
+  <div class="bc-hud-bl">RTH DUAL 2026 · CAM-01 · 1080p</div>
+  <div class="bc-hud-br">GRUPO 601 · DAVID BEN MERCADO</div>
+</div>
+
+<button class="glow-toggle" id="glowToggle" title="Efecto de brillo"><div class="glow-toggle__knob">💡</div></button>
+<span class="glow-toggle-label">Brillo</span>
+<button class="theme-toggle" id="themeToggle" title="Cambiar modo claro/oscuro">
+  <div class="theme-toggle__knob">
+    <span class="theme-toggle__icon-moon">🌙</span>
+    <span class="theme-toggle__icon-sun">☀️</span>
+  </div>
+</button>
+
+<header class="hero">
+  <div class="hero__grid"></div>
+  <div class="hero__scanline"></div>
+  <div class="badge" id="liveBadge">EN VIVO · TRANSMISIÓN</div>
+  <div class="logo">
+    <span class="logo-rth">RTH</span>
+    <div class="logo-sep"></div>
+    <div class="logo-txt">
+      <span>Radio y Televisión</span>
+      <strong>de Hidalgo</strong>
     </div>
+  </div>
+  <h1 class="hero-title">REPORTE<br><em>DUAL</em></h1>
+  <p class="hero-sub">Actividades realizadas durante la estancia dual</p>
+  <div class="meta">
+    <div class="meta-c"><div class="meta-lbl">Alumno</div><div class="meta-v">David Ben Emanuel<br>Mercado Muñoz</div></div>
+    <div class="meta-c"><div class="meta-lbl">Grupo</div><div class="meta-v">601</div></div>
+    <div class="meta-c"><div class="meta-lbl">Fecha</div><div class="meta-v">1 de junio de 2026</div></div>
+    <div class="meta-c"><div class="meta-lbl">Centro dual</div><div class="meta-v">Radio y Televisión<br>de Hidalgo</div></div>
+  </div>
+  <div class="scroll-cta"><span>Ver actividades</span><div class="scroll-arr">↓</div></div>
+</header>
+
+<nav id="mainNav">
+  <div class="nav-i">
+    <span class="nav-brand">RTH · DUAL</span>
+    <ul class="nav-links">
+      <li><a href="#student">Estudiante</a></li>
+      <li><a href="#act1">01 · Cableado</a></li>
+      <li><a href="#act2">02 · Pruebas</a></li>
+      <li><a href="#act3">03 · Web</a></li>
+      <li><a href="#act4">04 · Red</a></li>
+      <li><a href="#act5">05 · Reportes</a></li>
+      <li><a href="#act6">06 · Soporte</a></li>
+      <li><a href="#extra-pages" class="nav-extra">+ Info</a></li>
+    </ul>
+    <button class="nav-ham" id="ham">☰</button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-x" id="drawerX">✕</button>
+  <ul>
+    <li><a href="#student" class="dlink">Datos del Estudiante</a></li>
+    <li><a href="#act1" class="dlink">Cableado Telefónico</a></li>
+    <li><a href="#act2" class="dlink">Prueba de Líneas</a></li>
+    <li><a href="#act3" class="dlink">Programación Web</a></li>
+    <li><a href="#act4" class="dlink">Revisión de Red</a></li>
+    <li><a href="#act5" class="dlink">Registro de Reportes</a></li>
+    <li><a href="#act6" class="dlink">Soporte General</a></li>
+    <li><a href="#extra-pages" class="dlink">Páginas Adicionales</a></li>
+  </ul>
+</div>
+
+<main>
+
+<div class="intro">
+  <div class="intro-i">Durante la estancia dual en <strong>Radio y Televisión de Hidalgo</strong>, se llevaron a cabo seis actividades técnicas que abarcaron infraestructura de telecomunicaciones, diagnóstico de redes, desarrollo web y soporte al equipo técnico. Cada actividad fortaleció competencias reales en un entorno profesional de comunicaciones.</div>
+</div>
+
+<section class="student-section" id="student">
+  <div class="student-section__inner">
+    <div class="student-section__header">
+      <div class="section-tag">Identificación · Perfil</div>
+      <h2 class="section-title">DATOS DEL<br><span style="color:var(--r)">ESTUDIANTE</span></h2>
+    </div>
+    <div class="student-card">
+      <div class="profile-photo-wrap">
+          <div class="profile-inner" id="profileInner">
+            <div class="profile-ph" id="profilePh">
+           
+              <div class="photo-hint" style="margin:.4rem 0;padding:.5rem 1rem">
+            
+                <div class="photo-hint-label"><img src="img/yo.jpeg" alt="">
+               
+              </div>
+              <div class="photo-arrow">↓</div>
+            </div>
+            <img id="profileImg" class="hidden" alt="Foto del estudiante" style="width:100%;height:100%;object-fit:cover;object-position:center"/>
+          </div>
+        </div>
+        <input type="file" id="profileInput" accept="image/*" style="display:none"/>
+        <div class="profile-name-badge">GRUPO 601 · RTH</div>
+      </div>
+      <div class="student-info">
+        <h3 class="info-title">DAVID BEN<br>MERCADO</h3>
+        <div class="info-grid">
+          <div class="info-row"><div class="info-lbl">Nombre completo</div><div class="info-val">David Ben Emanuel Mercado Muñoz</div></div>
+          <div class="info-row"><div class="info-lbl">Grupo</div><div class="info-val">601</div></div>
+          <div class="info-row"><div class="info-lbl">Centro dual</div><div class="info-val">Radio y Televisión de Hidalgo</div></div>
+          <div class="info-row"><div class="info-lbl">Fecha del reporte</div><div class="info-val">1 de junio de 2026</div></div>
+        </div>
+        <div class="info-bio">Estudiante del programa dual realizando estancia en Radio y Televisión de Hidalgo. Durante la jornada se trabajó en infraestructura de red, telecomunicaciones, desarrollo web y soporte técnico general.</div>
+        <div>
+          <div class="info-lbl" style="margin-bottom:.6rem">Competencias en desarrollo</div>
+          <div class="info-skills">
+            <span>Redes LAN</span><span>Cableado estructurado</span><span>HTML/CSS</span><span>Soporte TI</span><span>Telecomunicaciones</span><span>Documentación técnica</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-photos">
+      <div class="ap-header">
+        <h3 class="ap-title">FOTOS DE MIS ACTIVIDADES</h3>
+        <div class="ap-line"></div>
+        <div class="section-tag" style="margin:0">6 actividades</div>
+      </div>
+    
+  </div>
+</section>
+
+<section class="act" id="act1">
+  <div class="act-content">
+    <div class="act-num">01</div>
+    <div class="act-tag">Infraestructura · Telecomunicaciones</div>
+    <h2 class="act-title">Cambio de Cableado Telefónico</h2>
+    <p class="act-desc">Se trabajó en la sustitución de varios cables telefónicos dentro de las instalaciones de Radio y Televisión de Hidalgo. El objetivo era asegurarse de que todos quedaran correctamente conectados al switch principal, garantizando el funcionamiento estable de las comunicaciones internas sin fallas en la señal.</p>
+    <div class="chips"><span>Cables UTP</span><span>Switch principal</span><span>Crimpadora</span><span>Panel de parcheo</span><span>Herramienta 110</span></div>
+  </div>
+  <div class="img-panel">
+    <div class="img-frame">
+      <div class="img-frame-top"><div class="img-frame-dots"><span></span><span></span><span></span></div><span>EVIDENCIA FOTOGRÁFICA</span></div>
+      <div class="ph" id="ph1" onclick="document.getElementById('fi1').click()">
+        <div class="ph-icon">📡</div>
+<div class="photo-hint-label"><img src="img/cableado telefonico.jpeg" alt="">        
+        <div class="ph-txt">Agrega una foto de esta actividad</div>
+      </div>
+      <img id="img1" class="act-img hidden" alt="Cableado telefónico"/>
+    </div>
+  </div>
+</section>
+
+<section class="act rev" id="act2">
+  <div class="img-panel">
+    <div class="img-frame">
+      <div class="img-frame-top"><div class="img-frame-dots"><span></span><span></span><span></span></div><span>EVIDENCIA FOTOGRÁFICA</span></div>
+      <div class="ph" id="ph2" onclick="document.getElementById('fi2').click()">
+  
+<div class="photo-hint-label"><img src="img/prueva de lineas.jpeg" alt="">        <div class="photo-arrow">↓</div>
+      
+      </div>
+      <img id="img2" class="act-img hidden" alt="Prueba de líneas"/>
+    </div>
+  </div>
+  <div class="act-content">
+    <div class="act-num">02</div>
+    <div class="act-tag">Diagnóstico · Verificación</div>
+    <h2 class="act-title">Prueba de Líneas Telefónicas</h2>
+    <p class="act-desc">Una vez instalado el cableado nuevo, se procedió a verificar el correcto funcionamiento de todas las líneas. Se recorrió departamento por departamento comprobando que la comunicación estuviera estable y sin interrupciones.</p>
+    <div class="chips"><span>Teléfonos IP</span><span>Verificación departamental</span><span>Checklist</span><span>Registros de prueba</span></div>
+  </div>
+</section>
+
+<section class="act" id="act3">
+  <div class="act-content">
+    <div class="act-num">03</div>
+    <div class="act-tag">Programación · Desarrollo Web</div>
+    <h2 class="act-title">Ajustes de Programación Web</h2>
+    <p class="act-desc">Se brindó apoyo en correcciones dentro del portal web institucional. Las tareas incluyeron la reparación de enlaces rotos y mejoras en la presentación visual de páginas internas para que el contenido luciera más ordenado y profesional.</p>
+    <div class="chips"><span>HTML</span><span>CSS</span><span>Editor de código</span><span>Corrección de enlaces</span><span>UX</span></div>
+  </div>
+  <div class="img-panel">
+    <div class="img-frame">
+      <div class="img-frame-top"><div class="img-frame-dots"><span></span><span></span><span></span></div><span>EVIDENCIA FOTOGRÁFICA</span></div>
+      <div class="ph" id="ph3" onclick="document.getElementById('fi3').click()">
+<div class="photo-hint-label"><img src="img/programacion web.jpeg" alt="">        <div class="photo-arrow">↓</div>
+      </div>
+      <img id="img3" class="act-img hidden" alt="Programación web"/>
+    </div>
+  </div>
+</section>
+
+<section class="act rev" id="act4">
+ 
+      </div>
+      <img id="img4" class="act-img hidden" alt="Revisión de red"/>
+    </div>
+  </div>
+  <div class="act-content">
+    <div class="act-num">04</div>
+    <div class="act-tag">Redes · Organización Física</div>
+    <h2 class="act-title">Revisión General de Cableado</h2>
+    <p class="act-desc">Se realizó un recorrido técnico por pasillos y oficinas para revisar el estado del cableado existente. Se organizaron cables sueltos, se fijaron correctamente y se evitaron cruces que pudieran generar interferencias.</p>
+    <div class="chips"><span>Canaletas</span><span>Bridas</span><span>Multímetro</span><span>Etiquetado</span><span>Rack de red</span></div>
+  </div>
+</section>
+
+<section class="act" id="act5">
+  <div class="act-content">
+    <div class="act-num">05</div>
+    <div class="act-tag">Documentación · Seguimiento</div>
+    <h2 class="act-title">Registro de Incidencias Telefónicas</h2>
+    <p class="act-desc">Se identificaron y documentaron los problemas detectados en las líneas telefónicas durante la jornada. Cada incidencia fue registrada con detalle y se elaboraron reportes formales para darles seguimiento.</p>
+    <div class="chips"><span>Reportes técnicos</span><span>Excel</span><span>Bitácora</span><span>Seguimiento</span><span>Diagnóstico</span></div>
+  </div>
+  <div class="img-panel">
+    <div class="img-frame">
+      <div class="img-frame-top"><div class="img-frame-dots"><span></span><span></span><span></span></div><span>EVIDENCIA FOTOGRÁFICA</span></div>
+      <div class="ph" id="ph5" onclick="document.getElementById('fi5').click()">
+<div class="photo-hint-label"><img src="img/revicion de red.jpeg" alt="">        <div class="photo-arrow">↓</div>
+        <div class="ph-txt">Agrega captura del reporte de incidencias</div>
+      </div>
+      <img id="img5" class="act-img hidden" alt="Registro incidencias"/>
+    </div>
+  </div>
+</section>
+
+<section class="act rev" id="act6">
+  <div class="img-panel">
+    <div class="img-frame">
+      <div class="img-frame-top"><div class="img-frame-dots"><span></span><span></span><span></span></div><span>EVIDENCIA FOTOGRÁFICA</span></div>
+      <div class="ph" id="ph6" onclick="document.getElementById('fi6').click()">
+<div class="photo-hint-label"><img src="img/apoyo en equipo.jpeg" alt="">        <div class="photo-arrow">↓</div>
+
+      </div>
+      <img id="img6" class="act-img hidden" alt="Soporte técnico"/>
+    </div>
+  </div>
+  <div class="act-content">
+    <div class="act-num">06</div>
+    <div class="act-tag">Soporte · Trabajo en Equipo</div>
+    <h2 class="act-title">Apoyo al Equipo Técnico</h2>
+    <p class="act-desc">Como actividad de cierre, se brindó soporte en correcciones menores de red y se colaboró activamente con el equipo técnico de RTH, fortaleciendo las habilidades de trabajo colaborativo y la capacidad de adaptación técnica.</p>
+    <div class="chips"><span>Trabajo en equipo</span><span>Red LAN</span><span>Soporte TI</span><span>Comunicación técnica</span></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-i">
+    <div class="stats-label">Resumen de la jornada</div>
+    <h2 class="stats-title">Lo que<br>se logró</h2>
+    <div class="stats-grid">
+      <div class="stat"><div><span class="stat-n" data-t="6">0</span><span class="stat-u"> act</span></div><div class="stat-l">Completadas</div></div>
+      <div class="stat"><div><span class="stat-n" data-t="100">0</span><span class="stat-u">%</span></div><div class="stat-l">Líneas operativas</div></div>
+      <div class="stat"><div><span class="stat-n" data-t="3">0</span><span class="stat-u">+</span></div><div class="stat-l">Páginas corregidas</div></div>
+      <div class="stat"><div><span class="stat-n" data-t="1001">0</span><span class="stat-u"> hrs</span></div><div class="stat-l">Jornada dual</div></div>
+    </div>
+    <div class="progress-section">
+      <div class="pb-row"><div class="pb-hd"><span>Infraestructura de red</span><span>95%</span></div><div class="pb-track"><div class="pb-fill" data-w="95"></div></div></div>
+      <div class="pb-row"><div class="pb-hd"><span>Diagnóstico telefónico</span><span>100%</span></div><div class="pb-track"><div class="pb-fill" data-w="100"></div></div></div>
+      <div class="pb-row"><div class="pb-hd"><span>Programación web</span><span>80%</span></div><div class="pb-track"><div class="pb-fill" data-w="80"></div></div></div>
+      <div class="pb-row"><div class="pb-hd"><span>Documentación técnica</span><span>90%</span></div><div class="pb-track"><div class="pb-fill" data-w="90"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-section">
+  <div class="quote-i">
+    <span class="quote-mark">"</span>
+    <p class="quote-txt">La experiencia en Radio y Televisión de Hidalgo permitió aplicar conocimientos técnicos reales en infraestructura, redes y desarrollo web dentro de un entorno profesional de comunicaciones, consolidando las competencias del programa dual.</p>
+    <div class="quote-author">David Ben Emanuel Mercado Muñoz · Grupo 601</div>
+  </div>
+</div>
+
+<div class="skills">
+  <div class="skills-i">
+    <div class="skills-lbl">Habilidades desarrolladas</div>
+    <div class="skills-grid">
+      <span class="sk">Cableado estructurado</span><span class="sk">Infraestructura TI</span><span class="sk">Diagnóstico de redes</span>
+      <span class="sk">HTML</span><span class="sk">CSS</span><span class="sk">Programación web</span>
+      <span class="sk">Documentación técnica</span><span class="sk">Soporte TI</span><span class="sk">Trabajo en equipo</span>
+      <span class="sk">Telecomunicaciones</span><span class="sk">Elaboración de reportes</span><span class="sk">Gestión de incidencias</span>
+    </div>
+  </div>
+</div>
+
+<section class="extra-pages" id="extra-pages">
+  <div class="extra-pages__inner">
+    <div class="extra-pages__header">
+      <div class="section-tag">Información complementaria</div>
+      <h2 class="section-title">EXPLORA<br><span style="color:var(--r)">MÁS</span></h2>
+    </div>
+    <div class="extra-grid">
+      <a class="extra-card extra-card--green" href="paginas/radio.html">
+        <span class="extra-num">01</span>
+        <span class="extra-icon">📻</span>
+        <div class="extra-tag">Radiodifusión · Global</div>
+        <div class="extra-title">El Mundo de la Radio</div>
+        <div class="extra-desc">Datos, historia y curiosidades sobre el medio de comunicación más universal del planeta. Cifras globales, bandas de frecuencia, hitos históricos y cómo funciona la transmisión de radio.</div>
+        <div class="extra-cta">Ver página <span>→</span></div>
+      </a>
+      <a class="extra-card extra-card--red" href="paginas/datos rth.html">
+        <span class="extra-num">02</span>
+        <span class="extra-icon">🏛️</span>
+        <div class="extra-tag">Institución · Hidalgo</div>
+        <div class="extra-title">Datos RTH</div>
+        <div class="extra-desc">Hechos y cifras sobre Radio y Televisión de Hidalgo: año de fundación, señales activas, frecuencias, historia del organismo que fue el centro dual de esta experiencia.</div>
+        <div class="extra-cta">Ver página <span>→</span></div>
+      </a>
+      <a class="extra-card extra-card--blue" href="paginas/cable.html">
+        <span class="extra-num">03</span>
+        <span class="extra-icon">🔌</span>
+        <div class="extra-tag">Infraestructura · Red</div>
+        <div class="extra-title">Cable CAT6</div>
+        <div class="extra-desc">Todo sobre el cable de Categoría 6 utilizado en el cableado de RTH: especificaciones técnicas, diagrama T568B, comparativa con otros estándares y aplicaciones reales.</div>
+        <div class="extra-cta">Ver página <span>→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-brand">RTH · DUAL</div>
+  <div class="foot-name">David Ben Emanuel Mercado Muñoz</div>
+  <div class="foot-sub">Radio y Televisión de Hidalgo · Programa Dual CONALEP 2026 · Grupo 601</div>
+  <div class="foot-nav-extra">
+    <a href="paginas/radio.html">📻 El Mundo de la Radio</a>
+    <a href="paginas/datos rth.html">🏢 Datos RTH</a>
+    <a href="paginas/cable.html">🔌 Cable CAT6</a>
+  </div>
+  <div class="foot-copy">© 2026 RTH Dual · Todos los derechos reservados</div>
+</footer>
+
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){const tc=document.getElementById('bcTimecode');let f=0,s=0,m=0,h=0;setInterval(()=>{f++;if(f>=25){f=0;s++;}if(s>=60){s=0;m++;}if(m>=60){m=0;h++;}const p=n=>String(n).padStart(2,'0');tc.textContent=`${p(h)}:${p(m)}:${p(s)}:${p(f)}`;},40);})();
+(function(){const cv=document.getElementById('sporeCanvas'),ctx=cv.getContext('2d');let W,H;const mo={x:-9999,y:-9999},sp=[],C=['rgba(232,0,45,','rgba(245,197,24,','rgba(255,80,100,','rgba(180,0,30,','rgba(255,120,60,'];function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;}rs();addEventListener('resize',rs);function mk(){const r=Math.random()*4+1.5;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,r,br:r,al:Math.random()*.45+.15,c:C[~~(Math.random()*C.length)],tr:[],p:Math.random()*Math.PI*2};}for(let i=0;i<70;i++)sp.push(mk());document.addEventListener('mousemove',e=>{mo.x=e.clientX;mo.y=e.clientY;});document.addEventListener('mouseleave',()=>{mo.x=-9999;mo.y=-9999;});function dr(){ctx.clearRect(0,0,W,H);sp.forEach(s=>{s.p+=.016;const pr=Math.sin(s.p)*.35,dx=mo.x-s.x,dy=mo.y-s.y,d=Math.sqrt(dx*dx+dy*dy),inf=120;if(d<inf&&d>0){const f=(inf-d)/inf;s.vx-=(dx/d)*f*.28;s.vy-=(dy/d)*f*.28;s.r=s.br+f*5;}else{s.r+=(s.br-s.r)*.08;}s.vx*=.975;s.vy*=.975;s.x+=s.vx;s.y+=s.vy;if(s.x<-15)s.x=W+15;if(s.x>W+15)s.x=-15;if(s.y<-15)s.y=H+15;if(s.y>H+15)s.y=-15;s.tr.unshift({x:s.x,y:s.y});if(s.tr.length>14)s.tr.pop();for(let i=1;i<s.tr.length;i++){ctx.beginPath();ctx.arc(s.tr[i].x,s.tr[i].y,s.r*(1-i/s.tr.length)*.55,0,Math.PI*2);ctx.fillStyle=s.c+(s.al*(1-i/s.tr.length)*.4)+')';ctx.fill();}const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*3.2);g.addColorStop(0,s.c+(s.al+pr)+')');g.addColorStop(.5,s.c+(s.al*.35)+')');g.addColorStop(1,s.c+'0)');ctx.beginPath();ctx.arc(s.x,s.y,s.r*3.2,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.beginPath();ctx.arc(s.x,s.y,s.r+pr,0,Math.PI*2);ctx.fillStyle=s.c+(s.al+.25)+')';ctx.fill();});for(let i=0;i<sp.length;i++)for(let j=i+1;j<sp.length;j++){const a=sp[i],b=sp[j],d=Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2);if(d<80){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(232,0,45,${.07*(1-d/80)})`;ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(dr);}dr();})();
+(function(){document.body.classList.add('splash-active');const i=document.getElementById('nf-intro');setTimeout(()=>{i.classList.add('exit');document.body.classList.remove('splash-active');setTimeout(()=>{i.style.display='none';},600);},2600);setTimeout(()=>{document.body.classList.remove('splash-active');if(i)i.style.display='none';},4000);})();
+const sb=document.getElementById('sigbar');for(let i=0;i<100;i++){const s=document.createElement('span');sb.appendChild(s);}
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('a,button,.ph,.ap-cell,.sk,.meta-c,.stat,.profile-frame,.extra-card').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='54px';ring.style.height='54px';});el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='36px';ring.style.height='36px';});});
+const html=document.documentElement,thB=document.getElementById('themeToggle'),sv=localStorage.getItem('rth-theme')||'dark';html.setAttribute('data-theme',sv);thB.addEventListener('click',()=>{const c=html.getAttribute('data-theme'),n=c==='dark'?'light':'dark';html.setAttribute('data-theme',n);localStorage.setItem('rth-theme',n);});
+const gB=document.getElementById('glowToggle');if(localStorage.getItem('rth-glow')==='off')document.body.classList.add('glow-off');gB.addEventListener('click',()=>{document.body.classList.toggle('glow-off');localStorage.setItem('rth-glow',document.body.classList.contains('glow-off')?'off':'on');});
+const nav=document.getElementById('mainNav'),stt=document.getElementById('stt');window.addEventListener('scroll',()=>{nav.classList.toggle('lit',scrollY>80);stt.classList.toggle('show',scrollY>500);});
+const badge=document.getElementById('liveBadge'),cyc=['EN VIVO · TRANSMISIÓN','DUAL RTH · 2026','REPORTE · ACTIVO','EN VIVO · TRANSMISIÓN'];let bi=0;setInterval(()=>{bi=(bi+1)%cyc.length;badge.textContent=cyc[bi];},2800);
+const ham=document.getElementById('ham'),drawer=document.getElementById('drawer'),dX=document.getElementById('drawerX');ham.addEventListener('click',()=>{drawer.classList.add('on');document.body.style.overflow='hidden';});dX.addEventListener('click',()=>{drawer.classList.remove('on');document.body.style.overflow='';});document.querySelectorAll('.dlink').forEach(l=>l.addEventListener('click',()=>{drawer.classList.remove('on');document.body.style.overflow='';}));
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');ro.unobserve(x.target);}});},{threshold:.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.act').forEach(el=>ro.observe(el));
+const ao=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;document.querySelectorAll('.nav-links a').forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+id));}});},{threshold:.4});document.querySelectorAll('section[id]').forEach(s=>ao.observe(s));
+function cnt(el,t,d=1500){let v=0;const step=Math.max(1,Math.ceil(t/(d/16))),tm=setInterval(()=>{v+=step;if(v>=t){el.textContent=t;clearInterval(tm);}else el.textContent=v;},16);}
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){cnt(x.target,+x.target.dataset.t);co.unobserve(x.target);}});},{threshold:.5});document.querySelectorAll('.stat-n[data-t]').forEach(el=>co.observe(el));
+const po=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.style.width=x.target.dataset.w+'%';po.unobserve(x.target);}});},{threshold:.3});document.querySelectorAll('.pb-fill[data-w]').forEach(el=>po.observe(el));
+[1,2,3,4,5,6].forEach(n=>{document.getElementById('fi'+n).addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('img'+n).src=ev.target.result;document.getElementById('img'+n).classList.remove('hidden');document.getElementById('ph'+n).style.display='none';};r.readAsDataURL(f);});});
+document.getElementById('profileInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('profileImg').src=ev.target.result;document.getElementById('profileImg').classList.remove('hidden');document.getElementById('profilePh').style.display='none';};r.readAsDataURL(f);});
+const al=['Cableado Telefónico','Prueba de Líneas','Programación Web','Revisión de Red','Registro de Incidencias','Apoyo al Equipo'];
+[1,2,3,4,5,6].forEach(n=>{document.getElementById('api'+n).addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=document.getElementById('apimg'+n),ph=document.getElementById('aph'+n),lb=document.getElementById('aplbl'+n);img.src=ev.target.result;img.classList.remove('hidden');ph.style.display='none';if(lb){lb.style.display='block';lb.textContent=al[n-1];}};r.readAsDataURL(f);});document.getElementById('apimg'+n).addEventListener('click',()=>document.getElementById('api'+n).click());});
+</script>
 </body>
 </html>

@@ -1,79 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Alexander Lara Lugo</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(217, 119, 6, 0.15);
-            color: #f59e0b;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(217, 119, 6, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Alexander Lara Lugo | Portafolio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff3c6e'/><text y='.9em' font-size='70' font-family='sans-serif' font-weight='bold' fill='white' x='15'>A</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Formación Dual</div>
-        <h1>Alexander Lara Lugo</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/alexander-lara-lugo/
-        </div>
+
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen">
+    <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+    <div id="intro-ring" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center;margin-bottom:2.5rem;">
+      <div class="xbox-ring r1"></div>
+      <div class="xbox-ring r2"></div>
+      <div class="xbox-ring r3"></div>
+      <div class="xbox-logo">A</div>
     </div>
+    <div id="intro-name" style="font-family:'Syne',sans-serif;font-size:clamp(1.5rem,4vw,3rem);font-weight:800;letter-spacing:0.08em;color:#fff;position:relative;z-index:2;opacity:0;transform:translateY(20px);transition:opacity 0.8s,transform 0.8s;">ALEXANDER LARA LUGO</div>
+    <div id="intro-sub" style="font-family:'Space Mono',monospace;font-size:0.75rem;color:#ff3c6e;letter-spacing:0.25em;text-transform:uppercase;position:relative;z-index:2;margin-top:0.6rem;opacity:0;transition:opacity 0.8s 0.4s;">Técnico en Informática · CCEH</div>
+    <div id="intro-bar-wrap" style="position:relative;z-index:2;margin-top:3rem;width:200px;height:2px;background:rgba(255,255,255,0.1);opacity:0;transition:opacity 0.5s 1s;">
+      <div id="intro-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#7b61ff,#ff3c6e);transition:width 2s cubic-bezier(0.4,0,0.2,1);"></div>
+    </div>
+    <button id="intro-skip">Saltar intro ›</button>
+    <div id="intro-wipe" style="position:absolute;inset:0;z-index:10;background:#ff3c6e;transform:scaleX(0);transform-origin:left;"></div>
+  </div>
+
+  <!-- PAGE TRANSITION -->
+  <div id="page-transition">
+    <div class="wipe-panel" style="background:#ff3c6e;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.05s;"></div>
+    <div class="wipe-panel" style="background:#00e5c0;transition-delay:0.1s;"></div>
+    <div class="wipe-panel" style="background:#ff3c6e;transition-delay:0.15s;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.2s;"></div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-top" title="Volver arriba">↑</button>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">A<span>.</span>Lara</a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#skills">Habilidades</a></li>
+      <li><a href="#cceh">CCEH</a></li>
+      <li><a href="pages/galeria.html" data-page>Galería</a></li>
+      <li><a href="pages/evidencias.html" data-page>Evidencias</a></li>
+      <li><a href="pages/herramientas.html" data-page>Herramientas</a></li>
+      <li>
+        <button class="theme-toggle" id="theme-toggle" title="Cambiar tema" aria-label="Cambiar tema"><span class="toggle-icon toggle-moon">🌙</span><span class="toggle-icon toggle-sun">☀️</span></button>
+      </li>
+    </ul>
+    <div class="nav-burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content hero-content--split">
+      <div class="hero-text">
+        <div class="hero-tag">Sistema Dual · Técnico en Informática</div>
+        <h1>
+          Alexander
+          <span class="line2">Lara Lugo</span>
+          <span class="line3" style="font-size:0.45em;font-weight:600;letter-spacing:0.04em;" id="typewriter">Técnico en Informática</span>
+        </h1>
+        <p class="hero-sub">Practicante en el <strong style="color:var(--text)">Consejo Coordinador Empresarial de Hidalgo (CCEH)</strong> con experiencia en infografías, síntesis de datos y soporte técnico audiovisual.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">Ver Proyectos</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring"></div>
+        <div class="hero-photo-ring hero-photo-ring--2"></div>
+        <img src="img/alexander.jpg" alt="Alexander Lara Lugo" class="hero-photo"/>
+
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding:7rem 3rem;max-width:1200px;margin:0 auto;">
+    <div class="section-label">// 01 — Sobre mí</div>
+    <div class="section-title reveal">Quién soy</div>
+    <div class="section-divider reveal"></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Soy estudiante del programa de <strong>Técnico en Informática</strong> en modalidad de sistema dual, lo que me ha permitido combinar el aprendizaje académico con experiencia real en el <strong>Consejo Coordinador Empresarial de Hidalgo (CCEH)</strong>.</p>
+        <p>Durante mis semanas en la empresa he desarrollado habilidades en <strong>comunicación visual</strong>, generando síntesis informativas e infografías publicadas vía Canva. También participé en <strong>soporte técnico</strong>: conexión de pantallas, configuración de micrófonos y acondicionamiento de espacios.</p>
+        <p>Me apasiona la tecnología y el diseño de soluciones que faciliten la comunicación clara de información compleja.</p>
+        <div style="margin-top:1.5rem;">
+          <a href="pages/herramientas.html" class="btn-secondary" data-page style="font-size:0.75rem;">Ver mis herramientas →</a>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num" data-count="60">60</div>
+          <div class="stat-label">Infografías creadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="35">35</div>
+          <div class="stat-label">Síntesis publicadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="208">208</div>
+          <div class="stat-label">Días en el CCEH</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" data-count="100">100</div>
+          <div class="stat-label">% Compromiso</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding:7rem 3rem;max-width:1200px;margin:0 auto;">
+    <div class="section-label">// 02 — Habilidades</div>
+    <div class="section-title reveal">Lo que sé hacer</div>
+    <div class="section-divider reveal"></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎨</span>
+        <div class="skill-name">Diseño con Canva</div>
+        <div class="skill-desc">Creación de infografías y síntesis visuales para comunicar datos estadísticos e información relevante de forma atractiva.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" data-width="85"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📊</span>
+        <div class="skill-name">Síntesis de información</div>
+        <div class="skill-desc">Elaboración de síntesis semanales a partir de fuentes oficiales como INEGI, publicadas en canales digitales del equipo.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" data-width="80"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🖥️</span>
+        <div class="skill-name">Conexión de pantallas</div>
+        <div class="skill-desc">Instalación, conexión y configuración de pantallas de presentación para espacios de trabajo y eventos corporativos.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎙️</span>
+        <div class="skill-name">Configuración de micrófonos</div>
+        <div class="skill-desc">Configuración y prueba de equipos de audio para eventos y reuniones, asegurando la correcta transmisión del sonido.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🤝</span>
+        <div class="skill-name">Trabajo en equipo</div>
+        <div class="skill-desc">Apoyo en logística de eventos, acomodación de espacios y colaboración en ambiente profesional real dentro del CCEH.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" data-width="90"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CCEH -->
+  <section id="cceh" style="padding:7rem 3rem;max-width:1200px;margin:0 auto;">
+    <div class="section-label">// 03 — La empresa</div>
+    <div class="section-title reveal">¿Qué es el CCEH?</div>
+    <div class="section-divider reveal"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="reveal">
+      <div>
+        <p style="color:var(--muted);line-height:1.85;font-size:1.05rem;margin-bottom:1.2rem;">
+          El <strong style="color:var(--text);">Consejo Coordinador Empresarial de Hidalgo (CCEH)</strong> es el organismo cúpula del sector empresarial del estado de Hidalgo. Representa, coordina y defiende los intereses de los empresarios hidalguenses ante los distintos órdenes de gobierno y organismos nacionales e internacionales.
+        </p>
+        <p style="color:var(--muted);line-height:1.85;font-size:1.05rem;margin-bottom:1.2rem;">
+          Dentro del CCEH opera el <strong style="color:var(--text);">Instituto de Estudios Económicos Empresariales (IES)</strong>, área responsable de analizar, procesar y difundir información estadística y económica relevante para el sector empresarial de la región, utilizando fuentes oficiales como el INEGI.
+        </p>
+        <p style="color:var(--muted);line-height:1.85;font-size:1.05rem;">
+          Es en este instituto donde realicé mi sistema dual, contribuyendo con la elaboración de <strong style="color:var(--text);">infografías, síntesis informativas y soporte técnico</strong> para la difusión de datos económicos entre los socios y aliados del consejo.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="pages/evidencias.html" class="btn-primary" data-page>Ver mis evidencias →</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="stat-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🏛️</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;">Organismo cúpula</div>
+          <div style="font-size:0.8rem;color:var(--muted);">del sector empresarial de Hidalgo</div>
+        </div>
+        <div class="stat-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📊</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;">Instituto IES</div>
+          <div style="font-size:0.8rem;color:var(--muted);">análisis y difusión de datos económicos</div>
+        </div>
+        <div class="stat-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🤝</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;">Representación</div>
+          <div style="font-size:0.8rem;color:var(--muted);">de empresarios ante gobierno y organismos</div>
+        </div>
+        <div class="stat-card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📍</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;">Pachuca, Hidalgo</div>
+          <div style="font-size:0.8rem;color:var(--muted);">sede central del consejo empresarial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Alexander Lara Lugo</span>
+    <span>Técnico en Informática · <a href="https://ccehidalgo.org" target="_blank">CCEH</a> · Sistema Dual · 2025</span>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

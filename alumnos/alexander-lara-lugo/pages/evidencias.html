@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Evidencias | Alexander Lara Lugo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff3c6e'/><text y='.9em' font-size='70' font-family='sans-serif' font-weight='bold' fill='white' x='15'>A</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <style>
+
+    /* ── EVIDENCIA CARD ─────────────────────── */
+    .ev-section { margin-bottom: 6rem; }
+
+    .ev-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ev-icon { font-size: 2rem; }
+    .ev-tag {
+      font-family:'Space Mono',monospace; font-size:0.6rem;
+      letter-spacing:0.12em; padding:0.2rem 0.7rem; border-radius:100px;
+    }
+    .tag-infografia { background:rgba(123,97,255,0.15); color:#a99fff; border:1px solid rgba(123,97,255,0.35); }
+    .tag-sintesis   { background:rgba(0,229,192,0.12);  color:#00e5c0; border:1px solid rgba(0,229,192,0.3);  }
+    .tag-tecnico    { background:rgba(255,60,110,0.12);  color:#ff7ca3; border:1px solid rgba(255,60,110,0.3);  }
+    .ev-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1.4rem; }
+    .ev-desc  { font-size:0.95rem; color:var(--muted); line-height:1.75; max-width:700px; margin-bottom:2rem; }
+
+    /* ── IMAGE GRID ─────────────────────────── */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* Image slot — replace src with your real image path */
+    .img-slot {
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: 2px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: none;
+    }
+    .img-slot:hover { border-color: var(--accent2); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(123,97,255,0.18); }
+
+    /* When an actual image is inside */
+    .img-slot img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .img-slot:hover img { transform: scale(1.04); }
+
+    /* Overlay label on real images */
+    .img-slot .img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .img-slot:hover .img-overlay { opacity: 1; }
+    .img-overlay-label {
+      font-family:'Space Mono',monospace; font-size:0.65rem;
+      color:#fff; letter-spacing:0.08em;
+    }
+
+    /* Placeholder (no image yet) */
+    .img-placeholder-icon { font-size: 2.5rem; margin-bottom: 0.6rem; opacity: 0.35; }
+    .img-placeholder-text {
+      font-family:'Space Mono',monospace; font-size:0.65rem;
+      color: var(--muted); letter-spacing:0.1em; text-align:center;
+      line-height:1.6; padding:0 1rem;
+    }
+    .img-placeholder-hint {
+      font-size:0.6rem; color:var(--accent2); margin-top:0.4rem;
+      letter-spacing:0.08em;
+    }
+
+    /* Tools row */
+    .ev-tools { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.5rem; }
+
+    /* How to add images notice */
+    .how-to {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1.5rem 2rem; margin-bottom: 4rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+    }
+    .how-to-icon { font-size:1.5rem; flex-shrink:0; margin-top:0.1rem; }
+    .how-to h3 { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.4rem; }
+    .how-to p  { font-size:0.85rem; color:var(--muted); line-height:1.65; }
+    .how-to code {
+      font-family:'Space Mono',monospace; font-size:0.75rem;
+      background:var(--surface2); padding:0.1rem 0.4rem;
+      border:1px solid var(--border); color:var(--accent3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE TRANSITION -->
+  <div id="page-transition">
+    <div class="wipe-panel" style="background:#ff3c6e;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.05s;"></div>
+    <div class="wipe-panel" style="background:#00e5c0;transition-delay:0.1s;"></div>
+    <div class="wipe-panel" style="background:#ff3c6e;transition-delay:0.15s;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.2s;"></div>
+  </div>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <button id="back-top" title="Volver arriba">↑</button>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo" data-page>A<span>.</span>Lara</a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-page>Inicio</a></li>
+      <li><a href="../index.html#about" data-page>Sobre mí</a></li>
+      <li><a href="galeria.html" data-page>Galería</a></li>
+      <li><a href="herramientas.html" data-page>Herramientas</a></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="toggle-icon toggle-moon">🌙</span>
+        <span class="toggle-icon toggle-sun">☀️</span>
+      </button></li>
+    </ul>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="../index.html" data-page>Inicio</a> / Evidencias de trabajo</div>
+    <div class="section-label">// Evidencias</div>
+    <h1 class="section-title" style="opacity:1;animation:none;">Evidencias de<br><span style="color:var(--accent);">Trabajo</span></h1>
+    <p style="color:var(--muted);margin-top:1rem;max-width:550px;line-height:1.7;">
+      Registro fotográfico y visual de todas las actividades realizadas durante mi sistema dual en el
+      <strong style="color:var(--text);">Consejo Coordinador Empresarial de Hidalgo (CCEH)</strong>.
+    </p>
+  </div>
+
+  <!-- MAIN -->
+  <main style="padding:0 3rem 7rem;max-width:1200px;margin:0 auto;">
+
+    <!-- Título profesional -->
+    <div class="reveal" style="margin-bottom:3rem;">
+      <div class="section-label">// Producción visual · CCEH · 2025</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;">
+        Infografías Realizadas<br>
+        <span style="color:var(--accent2);">Durante el Sistema Dual</span>
+      </h2>
+      <p style="color:var(--muted);font-size:1rem;max-width:620px;line-height:1.75;">
+        Colección de piezas gráficas desarrolladas para el
+        <strong style="color:var(--text);">Instituto de Estudios Económicos Empresariales (IES)</strong>
+        del CCEH, basadas en fuentes estadísticas oficiales del INEGI. Cada infografía fue diseñada en Canva
+        con el objetivo de comunicar datos complejos de forma clara, visual y accesible.
+      </p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1.5rem;">
+        <span class="tool-pill">Canva</span>
+        <span class="tool-pill">INEGI</span>
+        <span class="tool-pill">Google Docs</span>
+        <span class="tool-pill">Diseño visual</span>
+        <span class="tool-pill">IES · CCEH</span>
+      </div>
+    </div>
+
+    <!-- Grid de imágenes -->
+    <div class="img-grid reveal">
+
+      <div class="img-slot">
+        <img src="../img/infografia-1.png" alt="ETUP — Transporte Urbano de Pasajeros"/>
+        <div class="img-overlay"><span class="img-overlay-label">ETUP — Transporte Urbano de Pasajeros</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-2.png" alt="RAIAVL — Industria Automotriz de Vehículos Ligeros"/>
+        <div class="img-overlay"><span class="img-overlay-label">RAIAVL — Industria Automotriz</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-3.png" alt="IMMEX — Industria Manufacturera y Exportación"/>
+        <div class="img-overlay"><span class="img-overlay-label">IMMEX — Industria Manufacturera</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-4.png" alt="UMA — Unidad de Medida y Actualización"/>
+        <div class="img-overlay"><span class="img-overlay-label">UMA — Unidad de Medida y Actualización</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-5.png" alt="IMMEX — Indicadores de Establecimientos"/>
+        <div class="img-overlay"><span class="img-overlay-label">IMMEX — Indicadores de Establecimientos</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-6.png" alt="RAIAVP — Industria Automotriz Vehículos Pesados"/>
+        <div class="img-overlay"><span class="img-overlay-label">RAIAVP — Vehículos Pesados</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-7.png" alt="CJM — Centros de Justicia para las Mujeres"/>
+        <div class="img-overlay"><span class="img-overlay-label">CJM — Centros de Justicia para las Mujeres</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-8.png" alt="EMIM — Encuesta Mensual Industria Manufacturera"/>
+        <div class="img-overlay"><span class="img-overlay-label">EMIM — Industria Manufacturera</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-9.png" alt="SIC — Sistema de Indicadores Cíclicos"/>
+        <div class="img-overlay"><span class="img-overlay-label">SIC — Indicadores Cíclicos</span></div>
+      </div>
+
+      <div class="img-slot">
+        <img src="../img/infografia-10.png" alt="MEITEF — Mediciones Economía Informal"/>
+        <div class="img-overlay"><span class="img-overlay-label">MEITEF — Economía Informal Trimestral</span></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Alexander Lara Lugo</span>
+    <span>Técnico en Informática · CCEH · Sistema Dual · 2025</span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

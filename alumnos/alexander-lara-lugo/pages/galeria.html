@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Galería | Alexander Lara Lugo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff3c6e'/><text y='.9em' font-size='70' font-family='sans-serif' font-weight='bold' fill='white' x='15'>A</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <style>
+    /* FILTER TABS */
+    .filter-tabs { display:flex; gap:0.8rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .filter-btn {
+      font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.1em;
+      text-transform:uppercase; padding:0.5rem 1.2rem;
+      background:transparent; border:1px solid var(--border); color:var(--muted);
+      cursor:none; transition:all 0.2s; border-radius:100px;
+    }
+    .filter-btn:hover, .filter-btn.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+    /* GALLERY GRID */
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+    .gallery-item {
+      background:var(--surface); border:1px solid var(--border);
+      overflow:hidden; position:relative;
+      transition:transform 0.4s, box-shadow 0.4s, opacity 0.4s;
+      cursor:none;
+    }
+    .gallery-item.hidden { opacity:0; pointer-events:none; transform:scale(0.95); }
+    .gallery-item:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+    .gallery-thumb {
+      height:220px; display:flex; align-items:center; justify-content:center;
+      font-size:4rem; position:relative; overflow:hidden;
+    }
+    .gallery-thumb-bg { position:absolute;inset:0; transition:transform 0.5s; }
+    .gallery-item:hover .gallery-thumb-bg { transform:scale(1.08); }
+    .gallery-thumb-icon { position:relative;z-index:1; }
+    .gallery-body { padding:1.5rem; }
+    .gallery-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.4rem; }
+    .gallery-date { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--accent3); letter-spacing:0.1em; margin-bottom:0.6rem; }
+    .gallery-desc { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+    .gallery-cat {
+      position:absolute; top:1rem; left:1rem; z-index:2;
+      font-family:'Space Mono',monospace; font-size:0.58rem;
+      letter-spacing:0.1em; padding:0.2rem 0.6rem; border-radius:100px;
+    }
+    .cat-infografia { background:rgba(123,97,255,0.2); color:#a99fff; border:1px solid rgba(123,97,255,0.4); }
+    .cat-sintesis   { background:rgba(0,229,192,0.15); color:#00e5c0; border:1px solid rgba(0,229,192,0.3); }
+    .cat-tecnico    { background:rgba(255,60,110,0.15); color:#ff3c6e; border:1px solid rgba(255,60,110,0.3); }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position:fixed;inset:0;z-index:7000;
+      background:rgba(0,0,0,0.92);
+      display:none; align-items:center; justify-content:center;
+      padding:2rem;
+    }
+    #lightbox.open { display:flex; }
+    .lb-inner { max-width:700px; width:100%; background:var(--surface); border:1px solid var(--border); padding:2.5rem; position:relative; }
+    .lb-icon { font-size:5rem; margin-bottom:1.5rem; display:block; }
+    .lb-title { font-family:'Syne',sans-serif; font-weight:800; font-size:1.8rem; margin-bottom:0.5rem; }
+    .lb-date  { font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--accent3); letter-spacing:0.1em; margin-bottom:1.2rem; }
+    .lb-desc  { color:var(--muted); line-height:1.8; font-size:1rem; }
+    .lb-tags  { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1.5rem; }
+    .lb-close {
+      position:absolute; top:1rem; right:1rem;
+      background:transparent; border:1px solid var(--border); color:var(--muted);
+      width:36px; height:36px; border-radius:50%; cursor:none; font-size:1rem;
+      display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+    }
+    .lb-close:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
+  </style>
+</head>
+<body>
+
+  <div id="page-transition">
+    <div class="wipe-panel" style="background:#ff3c6e;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.05s;"></div>
+    <div class="wipe-panel" style="background:#00e5c0;transition-delay:0.1s;"></div>
+    <div class="wipe-panel" style="background:#ff3c6e;transition-delay:0.15s;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.2s;"></div>
+  </div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <button id="back-top" title="Volver arriba">↑</button>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo" data-page>A<span>.</span>Lara</a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-page>Inicio</a></li>
+      <li><a href="../index.html#projects" data-page>Proyectos</a></li>
+      <li><a href="evidencias.html" data-page>Evidencias</a></li>
+      <li><a href="herramientas.html" data-page>Herramientas</a></li>
+      
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema"></button></li>
+    </ul>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="../index.html" data-page>Inicio</a> / Galería</div>
+    <div class="section-label">// Galería</div>
+    <h1 class="section-title" style="opacity:1;animation:none;">Evidencias<br><span style="color:var(--accent);">Visuales</span></h1>
+    <p style="color:var(--muted);margin-top:1rem;max-width:500px;line-height:1.7;">Todas las infografías, síntesis y trabajos técnicos realizados durante mi sistema dual en el CCEH.</p>
+  </div>
+
+  <!-- MAIN -->
+  <main style="padding:0 3rem 7rem;max-width:1200px;margin:0 auto;">
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="infografia">Infografías</button>
+    </div>
+
+    <div class="gallery-grid" id="gallery">
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="ETUP — Transporte Urbano de Pasajeros"
+           data-date="2025"
+           data-desc="Infografía sobre la Estadística de Transporte Urbano de Pasajeros (ETUP). Comunicación visual de datos sobre movilidad urbana en México, elaborada con fuentes del INEGI para el IES-CCEH."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-1.png" alt="ETUP" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">ETUP — Transporte Urbano</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Estadística de Transporte Urbano de Pasajeros.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="RAIAVL — Industria Automotriz de Vehículos Ligeros"
+           data-date="2025"
+           data-desc="Infografía sobre el Registro Administrativo de la Industria Automotriz de Vehículos Ligeros (RAIAVL). Datos del sector automotriz mexicano visualizados para el IES-CCEH."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-2.png" alt="RAIAVL" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">RAIAVL — Vehículos Ligeros</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Registro Administrativo Industria Automotriz.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="IMMEX — Industria Manufacturera y Exportación"
+           data-date="2025"
+           data-desc="Infografía sobre el Programa de la Industria Manufacturera, Maquiladora y de Servicios de Exportación (IMMEX), con indicadores de establecimientos con programa IMMEX."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-3.png" alt="IMMEX" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">IMMEX — Maquiladora y Exportación</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Programa Industria Manufacturera y Exportación.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="UMA — Unidad de Medida y Actualización"
+           data-date="2026"
+           data-desc="Infografía sobre la Unidad de Medida y Actualización (UMA), referencia económica utilizada en México para el cálculo de obligaciones fiscales y de seguridad social."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-4.png" alt="UMA" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">UMA — Unidad de Medida</div>
+          <div class="gallery-date">2026 · IES CCEH</div>
+          <div class="gallery-desc">Unidad de Medida y Actualización.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="IMMEX — Indicadores de Establecimientos"
+           data-date="2025"
+           data-desc="Segunda infografía sobre el programa IMMEX, enfocada en los indicadores de establecimientos con programa IMMEX activo, diseñada para el Instituto IES del CCEH."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-5.png" alt="IMMEX Establecimientos" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">IMMEX — Establecimientos</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Indicadores de Establecimientos con Programa IMMEX.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="RAIAVP — Vehículos Pesados"
+           data-date="2025"
+           data-desc="Infografía sobre el Reporte de Resultados del Registro Administrativo de la Industria Automotriz de Vehículos Pesados (RAIAVP), con datos del sector de transporte de carga."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-6.png" alt="RAIAVP" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">RAIAVP — Vehículos Pesados</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Industria Automotriz de Vehículos Pesados.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="CJM — Centros de Justicia para las Mujeres"
+           data-date="2025"
+           data-desc="Infografía sobre los Centros de Justicia para las Mujeres (CJM), elaborada con datos del INEGI 2025 para informar sobre el acceso a la justicia y apoyo a mujeres en situación de vulnerabilidad."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-7.png" alt="CJM" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">CJM — Justicia para las Mujeres</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Centros de Justicia para las Mujeres.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="EMIM — Encuesta Mensual de la Industria Manufacturera"
+           data-date="2026"
+           data-desc="Infografía sobre la Encuesta Mensual de la Industria Manufacturera (EMIM) 2026, con datos del INEGI sobre producción, empleo y remuneraciones del sector manufacturero en México."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-8.png" alt="EMIM" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">EMIM — Industria Manufacturera</div>
+          <div class="gallery-date">2026 · IES CCEH</div>
+          <div class="gallery-desc">Encuesta Mensual de la Industria Manufacturera.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="SIC — Sistema de Indicadores Cíclicos"
+           data-date="2025"
+           data-desc="Infografía sobre el Sistema de Indicadores Cíclicos (SIC) del INEGI, herramienta que permite dar seguimiento al comportamiento de la economía mexicana y anticipar sus puntos de inflexión."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-9.png" alt="SIC" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">SIC — Indicadores Cíclicos</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Sistema de Indicadores Cíclicos.</div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="infografia"
+           data-title="MEITEF — Economía Informal Trimestral"
+           data-date="2025"
+           data-desc="Infografía sobre las Mediciones de la Economía Informal Trimestral por Entidad Federativa (MEITEF), con datos del Sistema de Cuentas Nacionales de México del INEGI."
+           data-tags="Canva,INEGI,IES,Diseño visual">
+        <span class="gallery-cat cat-infografia">INFOGRAFÍA</span>
+        <div class="gallery-thumb" style="background:none;">
+          <img src="../img/infografia-10.png" alt="MEITEF" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-title">MEITEF — Economía Informal</div>
+          <div class="gallery-date">2025 · IES CCEH</div>
+          <div class="gallery-desc">Mediciones de la Economía Informal por Entidad.</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <div class="lb-inner">
+      <button class="lb-close" id="lb-close">✕</button>
+      <span class="lb-icon" id="lb-icon"></span>
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-date"  id="lb-date"></div>
+      <div class="lb-desc"  id="lb-desc"></div>
+      <div class="lb-tags"  id="lb-tags"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Alexander Lara Lugo</span>
+    <span>Técnico en Informática · CCEH · Sistema Dual · 2025</span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Gallery filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          item.classList.toggle('hidden', f !== 'all' && item.dataset.category !== f);
+        });
+      });
+    });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const icons = {'infografia':'📈','sintesis':'📰','tecnico':'🔌'};
+    const iconMap = {
+      'ENOE':'📈','EVI':'✈️','09/11':'📰','16/11':'📋','23/11':'🗞️','Config':'🔌'
+    };
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.getElementById('lb-title').textContent = item.dataset.title;
+        document.getElementById('lb-date').textContent  = item.dataset.date;
+        document.getElementById('lb-desc').textContent  = item.dataset.desc;
+        const imgEl = item.querySelector('.gallery-thumb img');
+        const iconEl = document.getElementById('lb-icon');
+        if (imgEl) {
+          iconEl.innerHTML = `<img src="${imgEl.src}" alt="${item.dataset.title}" style="width:100%;max-height:300px;object-fit:contain;border-radius:2px;margin-bottom:1rem;"/>`;
+          iconEl.style.fontSize = '0';
+        } else {
+          iconEl.innerHTML = item.querySelector('.gallery-thumb-icon') ? item.querySelector('.gallery-thumb-icon').textContent : '🖼️';
+          iconEl.style.fontSize = '5rem';
+        }
+        const tagsEl = document.getElementById('lb-tags');
+        tagsEl.innerHTML = '';
+        item.dataset.tags.split(',').forEach(t => {
+          const pill = document.createElement('span');
+          pill.className = 'tool-pill';
+          pill.textContent = t.trim();
+          tagsEl.appendChild(pill);
+        });
+        lb.classList.add('open');
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', () => lb.classList.remove('open'));
+    lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
+  </script>
+</body>
+</html>

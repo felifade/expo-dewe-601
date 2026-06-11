@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Herramientas | Alexander Lara Lugo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff3c6e'/><text y='.9em' font-size='70' font-family='sans-serif' font-weight='bold' fill='white' x='15'>A</text></svg>"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <style>
+    .tools-section { margin-bottom:5rem; }
+    .tools-category {
+      font-family:'Syne',sans-serif; font-weight:700; font-size:1.4rem;
+      margin-bottom:1.5rem; padding-bottom:0.8rem;
+      border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.8rem;
+    }
+    .tools-category span { font-size:1.6rem; }
+
+    .tools-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1.2rem; }
+    .tool-card {
+      background:var(--surface); border:1px solid var(--border);
+      padding:1.8rem 1.5rem; text-align:center;
+      transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position:relative; overflow:hidden; cursor:none;
+    }
+    .tool-card::after {
+      content:''; position:absolute; bottom:0; left:0; right:0;
+      height:2px; background:var(--accent2);
+      transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+    }
+    .tool-card:hover { transform:translateY(-5px); border-color:var(--accent2); box-shadow:0 12px 40px rgba(123,97,255,0.2); }
+    .tool-card:hover::after { transform:scaleX(1); }
+    .tool-card-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
+    .tool-card-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.4rem; }
+    .tool-card-desc { font-size:0.8rem; color:var(--muted); line-height:1.5; }
+    .tool-level {
+      display:inline-block; margin-top:0.8rem;
+      font-family:'Space Mono',monospace; font-size:0.6rem;
+      letter-spacing:0.1em; padding:0.2rem 0.6rem; border-radius:100px;
+    }
+    .level-alto     { background:rgba(0,229,192,0.15); color:#00e5c0; border:1px solid rgba(0,229,192,0.3); }
+    .level-medio    { background:rgba(123,97,255,0.15); color:#a99fff; border:1px solid rgba(123,97,255,0.3); }
+    .level-basico   { background:rgba(255,60,110,0.12); color:#ff7ca3; border:1px solid rgba(255,60,110,0.25); }
+
+    /* Progress rings */
+    .progress-section { margin-bottom:5rem; }
+    .progress-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:2rem; }
+    .progress-item { text-align:center; }
+    .progress-ring-wrap { position:relative; width:100px; height:100px; margin:0 auto 1rem; }
+    .progress-ring-bg { fill:none; stroke:var(--surface2); stroke-width:8; }
+    .progress-ring-fill {
+      fill:none; stroke-width:8; stroke-linecap:round;
+      transform:rotate(-90deg); transform-origin:50% 50%;
+      stroke-dasharray:283; stroke-dashoffset:283;
+      transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .progress-ring-text { font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; fill:var(--text); }
+    .progress-label { font-size:0.85rem; color:var(--muted); line-height:1.4; }
+  </style>
+</head>
+<body>
+
+  <div id="page-transition">
+    <div class="wipe-panel" style="background:#ff3c6e;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.05s;"></div>
+    <div class="wipe-panel" style="background:#00e5c0;transition-delay:0.1s;"></div>
+    <div class="wipe-panel" style="background:#ff3c6e;transition-delay:0.15s;"></div>
+    <div class="wipe-panel" style="background:#7b61ff;transition-delay:0.2s;"></div>
+  </div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <button id="back-top" title="Volver arriba">↑</button>
+
+  <nav>
+    <a href="../index.html" class="nav-logo" data-page>A<span>.</span>Lara</a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-page>Inicio</a></li>
+      <li><a href="galeria.html" data-page>Galería</a></li>
+      <li><a href="evidencias.html" data-page>Evidencias</a></li>
+      
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema"></button></li>
+    </ul>
+    <div class="nav-burger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="../index.html" data-page>Inicio</a> / Herramientas</div>
+    <div class="section-label">// Herramientas</div>
+    <h1 class="section-title" style="opacity:1;animation:none;">Stack de<br><span style="color:var(--accent2);">Trabajo</span></h1>
+    <p style="color:var(--muted);margin-top:1rem;max-width:500px;line-height:1.7;">Las herramientas y tecnologías que utilizo en mi día a día como practicante en el CCEH y estudiante de Técnico en Informática.</p>
+  </div>
+
+  <main style="padding:0 3rem 7rem;max-width:1200px;margin:0 auto;">
+
+    <!-- Nivel de dominio (rings) -->
+    <div class="progress-section reveal">
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;">Nivel de dominio</h2>
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:2.5rem;">Autoevaluación de mis habilidades principales</p>
+      <div class="progress-grid" id="progress-grid">
+        <div class="progress-item" data-pct="85">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#7b61ff"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">85%</text>
+            </svg>
+          </div>
+          <div class="progress-label">Canva</div>
+        </div>
+        <div class="progress-item" data-pct="80">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#00e5c0"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">80%</text>
+            </svg>
+          </div>
+          <div class="progress-label">Google Docs</div>
+        </div>
+        <div class="progress-item" data-pct="75">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#ff3c6e"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">75%</text>
+            </svg>
+          </div>
+          <div class="progress-label">Microsoft Office</div>
+        </div>
+        <div class="progress-item" data-pct="70">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#7b61ff"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">70%</text>
+            </svg>
+          </div>
+          <div class="progress-label">Soporte AV</div>
+        </div>
+        <div class="progress-item" data-pct="65">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#00e5c0"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">65%</text>
+            </svg>
+          </div>
+          <div class="progress-label">HTML & CSS</div>
+        </div>
+        <div class="progress-item" data-pct="90">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+              <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+              <circle class="progress-ring-fill" cx="50" cy="50" r="45" stroke="#ff3c6e"/>
+              <text class="progress-ring-text" x="50" y="55" text-anchor="middle">90%</text>
+            </svg>
+          </div>
+          <div class="progress-label">Trabajo en equipo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diseño -->
+    <div class="tools-section reveal">
+      <div class="tools-category"><span>🎨</span> Diseño y comunicación visual</div>
+      <div class="tools-grid">
+        <div class="tool-card"><span class="tool-card-icon">🎨</span><div class="tool-card-name">Canva</div><div class="tool-card-desc">Diseño de infografías y síntesis visuales para comunicar datos estadísticos.</div><span class="tool-level level-alto">ALTO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">🖼️</span><div class="tool-card-name">Google Slides</div><div class="tool-card-desc">Presentaciones y materiales visuales para reuniones y eventos.</div><span class="tool-level level-medio">MEDIO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">📐</span><div class="tool-card-name">PowerPoint</div><div class="tool-card-desc">Presentaciones formales para el equipo y clientes del CCEH.</div><span class="tool-level level-medio">MEDIO</span></div>
+      </div>
+    </div>
+
+    <!-- Productividad -->
+    <div class="tools-section reveal">
+      <div class="tools-category"><span>📁</span> Productividad y documentación</div>
+      <div class="tools-grid">
+        <div class="tool-card"><span class="tool-card-icon">📄</span><div class="tool-card-name">Google Docs</div><div class="tool-card-desc">Redacción de fichas, síntesis y documentos colaborativos en la nube.</div><span class="tool-level level-alto">ALTO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">📊</span><div class="tool-card-name">Google Sheets</div><div class="tool-card-desc">Organización de datos y seguimiento de actividades del equipo.</div><span class="tool-level level-medio">MEDIO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">📝</span><div class="tool-card-name">Word</div><div class="tool-card-desc">Redacción de documentos formales y reportes de actividades.</div><span class="tool-level level-medio">MEDIO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">📮</span><div class="tool-card-name">WhatsApp Business</div><div class="tool-card-desc">Canal principal para la distribución de síntesis semanales al equipo.</div><span class="tool-level level-alto">ALTO</span></div>
+      </div>
+    </div>
+
+    <!-- Técnico -->
+    <div class="tools-section reveal">
+      <div class="tools-category"><span>🔧</span> Soporte técnico</div>
+      <div class="tools-grid">
+        <div class="tool-card"><span class="tool-card-icon">🖥️</span><div class="tool-card-name">Pantallas HDMI/VGA</div><div class="tool-card-desc">Conexión y configuración de pantallas de proyección para eventos y reuniones.</div><span class="tool-level level-medio">MEDIO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">🎙️</span><div class="tool-card-name">Micrófonos inalámbricos</div><div class="tool-card-desc">Configuración y prueba de equipos de audio para conferencias y eventos.</div><span class="tool-level level-medio">MEDIO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">🔌</span><div class="tool-card-name">Instalación de equipos</div><div class="tool-card-desc">Montaje y acomodación de equipos tecnológicos para espacios de trabajo.</div><span class="tool-level level-medio">MEDIO</span></div>
+      </div>
+    </div>
+
+    <!-- Fuentes de datos -->
+    <div class="tools-section reveal">
+      <div class="tools-category"><span>📊</span> Fuentes de información</div>
+      <div class="tools-grid">
+        <div class="tool-card"><span class="tool-card-icon">🏛️</span><div class="tool-card-name">INEGI</div><div class="tool-card-desc">Principal fuente de datos estadísticos para las infografías del CCEH.</div><span class="tool-level level-alto">ALTO</span></div>
+        <div class="tool-card"><span class="tool-card-icon">🔍</span><div class="tool-card-name">Google Scholar</div><div class="tool-card-desc">Búsqueda de fuentes confiables para síntesis informativas.</div><span class="tool-level level-basico">BÁSICO</span></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Alexander Lara Lugo</span>
+    <span>Técnico en Informática · CCEH · Sistema Dual · 2025</span>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Animate progress rings on scroll
+    const ringObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('.progress-item').forEach((item, i) => {
+          const pct = parseInt(item.dataset.pct);
+          const fill = item.querySelector('.progress-ring-fill');
+          const circumference = 2 * Math.PI * 45;
+          setTimeout(() => {
+            fill.style.strokeDashoffset = circumference - (pct / 100) * circumference;
+          }, i * 120);
+        });
+        ringObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.progress-grid').forEach(g => ringObs.observe(g.parentElement));
+  </script>
+</body>
+</html>
