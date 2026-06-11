@@ -519,7 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsData = projectsData.map(p => ({
             nombre: p.nombre || 'Estudiante Anónimo',
             ruta: p.ruta || '#',
-            modalidad: p.modalidad || 'No Dual'
+            modalidad: p.modalidad || 'No Dual',
+            calificacion: p.calificacion !== undefined ? p.calificacion : 0
         }));
 
         initStats();
