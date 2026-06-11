@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchQuery = '';
     let activeModalityFilter = 'all';
     let activeGradeFilter = 'all';  // 'all', 'entregados' (10), 'pendientes' (0)
+    let currentDensity = localStorage.getItem('expoDensity') || 'comoda';  // 'comoda', 'compacta', 'lista'
     const projectGrades = new Map();  // Store grades for each project
 
     // DOM Elements
@@ -118,6 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
+            e.currentTarget.classList.add('active');
+            renderProjects();
+        });
+    });
+
+    // ==========================================================================
+    // DENSITY SELECTOR (Cómoda / Compacta / Lista)
+    // ==========================================================================
+
+    const densityButtons = document.querySelectorAll('[data-density]');
+    densityButtons.forEach(btn => {
+        if (btn.getAttribute('data-density') === currentDensity) {
+            densityButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        btn.addEventListener('click', (e) => {
+            currentDensity = e.currentTarget.getAttribute('data-density');
+            localStorage.setItem('expoDensity', currentDensity);
+            densityButtons.forEach(b => b.classList.remove('active'));
             e.currentTarget.classList.add('active');
             renderProjects();
         });
@@ -604,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projectsContainer.appendChild(header);
 
             const subgrid = document.createElement('div');
-            subgrid.className = 'projects-subgrid';
+            subgrid.className = `projects-subgrid density-${currentDensity}`;
             noDualProjects.forEach(project => {
                 const card = createProjectCard(project, cardIndex++);
                 subgrid.appendChild(card);
@@ -620,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
             projectsContainer.appendChild(header);
 
             const subgrid = document.createElement('div');
-            subgrid.className = 'projects-subgrid';
+            subgrid.className = `projects-subgrid density-${currentDensity}`;
             dualProjects.forEach(project => {
                 const card = createProjectCard(project, cardIndex++);
                 subgrid.appendChild(card);
@@ -636,9 +656,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const createProjectCard = (project, index) => {
-        const card = document.createElement('article');
-        card.className = 'project-card';
-
         // Prepare modality badge classes
         const modClass = project.modalidad === 'Dual' ? 'badge-e-commerce' : 'badge-portafolio';
 
@@ -646,13 +663,49 @@ document.addEventListener('DOMContentLoaded', () => {
         const folderPath = project.ruta.substring(0, project.ruta.lastIndexOf('/'));
         const previewImagePath = `${folderPath}/preview.png`;
 
-        // Use index as unique ID (safer than name with spaces)
-        const cardId = `card-${index}`;
-
         const grade = getProjectGrade(project);
         projectGrades.set(project.nombre, grade);
         const pillClass = grade === 10 ? 'complete' : 'incomplete';
         const pillText = grade === 10 ? 'Entregado' : 'Pendiente';
+
+        if (currentDensity === 'lista') {
+            const row = document.createElement('article');
+            row.className = 'project-row';
+            row.setAttribute('role', 'button');
+            row.setAttribute('aria-label', `Abrir sitio de ${project.nombre}`);
+            row.innerHTML = `
+                <img class="row-thumb" src="${previewImagePath}" alt="" onerror="this.style.visibility='hidden'">
+                <span class="row-name">${project.nombre}</span>
+                <span class="row-modality">${project.modalidad}</span>
+                <span class="row-status-dot ${pillClass}"></span>
+                <span class="row-grade ${pillClass}">${grade}/10</span>
+                <span class="row-open">Ver →</span>
+            `;
+            row.addEventListener('click', () => openProjectModal(project));
+            return row;
+        }
+
+        if (currentDensity === 'compacta') {
+            const card = document.createElement('article');
+            card.className = 'project-card project-card-compact';
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Abrir sitio de ${project.nombre}`);
+            card.innerHTML = `
+                <img class="compact-preview" src="${previewImagePath}" alt="Vista previa de ${project.nombre}" onerror="this.style.visibility='hidden'">
+                <div class="compact-body">
+                    <span class="compact-name" title="${project.nombre}">${project.nombre}</span>
+                    <div class="compact-meta">
+                        <span class="row-status-dot ${pillClass}"></span>
+                        <span class="row-grade ${pillClass}">${grade}</span>
+                    </div>
+                </div>
+            `;
+            card.addEventListener('click', () => openProjectModal(project));
+            return card;
+        }
+
+        const card = document.createElement('article');
+        card.className = 'project-card';
 
         card.innerHTML = `
             <div class="card-browser-header">
