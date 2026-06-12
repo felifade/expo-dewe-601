@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desarrollo — Portfolio Dual</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div id="cursor"></div>
+  <nav>
+    <div class="nav-logo">SISTEMA<span>DUAL</span></div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="../index.html#etapas">Experiencia</a></li>
+      <li><a href="../index.html#stats">Logros</a></li>
+      <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+    </ul>
+    <button id="toggle-theme" onclick="toggleTheme()">🌙</button>
+    <button class="nav-menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div id="mobile-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="../index.html#etapas">Experiencia</a>
+    <a href="../index.html#stats">Logros</a>
+    <a href="desarrollo.html">Desarrollo</a>
+    <a href="acerca.html">Acerca de</a>
+  </div>
+
+  <div class="page-hero">
+    <p class="hero-tag">// Segunda Fase — Proyecto Principal</p>
+    <h1 class="hero-name">APLICACIÓN DE <span class="accent">EXPEDIENTES</span></h1>
+    <p class="hero-sub">Sistema de gestión para préstamo de expedientes clínicos</p>
+  </div>
+
+  <div class="page-content">
+    <div class="bitacora-card reveal">
+      <h3>📌 Resumen del Proyecto</h3>
+      <p>Durante la segunda fase (meses 05-10) se desarrolló una <strong>aplicación funcional de préstamo de expedientes clínicos</strong> como respuesta a una necesidad real del departamento: reducir errores de seguimiento y mejorar tiempos de respuesta.</p>
+    </div>
+
+    <h2>📸 Capturas del Proyecto</h2>
+    <div class="img-gallery">
+      <div class="img-placeholder"><img src="../img/img2.jpg" style="width:88%;height:88%;object-fit:cover"></div> 
+      <div class="img-placeholder"><img src="../img/img5.jpg" style="width:88%;height:88%;object-fit:cover"></div>
+      <div class="img-placeholder"><img src="../img/img6.jpg" style="width:88%;height:88%;object-fit:cover"></div>
+      <div class="img-placeholder"><img src="../img/img7.jpg" style="width:88%;height:88%;object-fit:cover"></div>
+    </div>
+ 
+
+   
+    <div class="badge-list" style="margin-bottom:1.5rem">
+      <span class="badge">Aplicacion de archivos</span>
+      <span class="badge">Mantenimiento del Área</span>
+      <span class="badge">Área de trabajo</span>
+      <span class="badge">Mantenimiento de equipos</span>
+    </div>
+
+    <h2>📅 Etapas de Desarrollo</h2>
+    <div class="timeline" style="margin-top:1rem">
+      <div class="phase-block reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-header"><div class="phase-num">01</div><div class="phase-title">Análisis de Requerimientos</div></div>
+        <p style="color:var(--text-muted);font-size:.9rem">Identificación de necesidades del departamento clínico. Faltaba una forma de darle mas movilidad al prestamo y devoluciones.</p>
+      </div>
+      <div class="phase-block reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-header"><div class="phase-num">02</div><div class="phase-title">Diseño de Flujo de Datos</div></div>
+        <p style="color:var(--text-muted);font-size:.9rem">Elaboración de diagramas de flujo y diseño de la estructura de base de datos para almacenar registros de expedientes, préstamos y usuarios autorizados.</p>
+      </div>
+      <div class="phase-block reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-header"><div class="phase-num">03</div><div class="phase-title">Desarrollo e Implementación</div></div>
+        <p style="color:var(--text-muted);font-size:.9rem">Construcción de la aplicación, pruebas funcionales y despliegue dentro del entorno clínico. Capacitación al personal sobre el uso del sistema.</p>
+      </div>
+    </div>
+
+    <h2>✅ Resultados Obtenidos</h2>
+    <ul>
+      <li>Reducción de errores en el prestamo de los expedientes clinicos</li>
+      <li>Mejora en los tiempos de respuesta para localizar expedientes</li>
+      <li>Facilidad de consultar información sobre los pacientes</li>
+      <li>Historial digital de movimientos por expediente</li>
+    </ul>
+
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="../index.html" class="btn-outline">← Volver al inicio</a>
+      <a href="acerca.html" class="btn-primary">Acerca de mí →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">SISTEMA<span>DUAL</span></div>
+    <p>PRÁCTICA DUAL &nbsp;·&nbsp; EXPERIENCIA PROFESIONAL &nbsp;·&nbsp; 10 MESES</p>
+    <div class="footer-links">
+      <a href="desarrollo.html">Desarrollo</a>
+      <a href="acerca.html">Acerca de MI</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', e => {
+      const c = document.getElementById('cursor');
+      c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+    });
+    function toggleTheme() {
+      const html = document.documentElement, btn = document.getElementById('toggle-theme');
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      btn.textContent = html.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+    }
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+    new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1})
+      .observe && document.querySelectorAll('.reveal').forEach(el =>
+        new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1}).observe(el));
+  </script>
+</body>
+</html>

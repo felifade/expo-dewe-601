@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acerca de — SISTEMA DUAL</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .profile-card { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 2.5rem; }
+    .profile-photo { width: 140px; height: 140px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; overflow: hidden; }
+    .profile-photo small { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-top: .4rem; display: block; }
+    .profile-info h2 { font-size: 1.8rem !important; font-weight: 900; color: var(--text) !important; margin-top: 0 !important; }
+    .profile-role { color: var(--accent); font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; margin: .3rem 0 1rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
+    .skill-bar-wrap { margin-bottom: 1.25rem; }
+    .skill-bar-label { display: flex; justify-content: space-between; font-size: .8rem; margin-bottom: .4rem; color: var(--text-muted); }
+    .skill-bar-track { height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0; transition: width 1.2s ease; }
+    @media (max-width: 600px) { .profile-card { grid-template-columns: 1fr; } .profile-photo { margin: 0 auto; } .info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="cursor"></div>
+  <nav>
+    <div class="nav-logo">SISTEMA<span>DUAL</span></div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="../index.html#etapas">Experiencia</a></li>
+      <li><a href="../index.html#stats">Logros</a></li>
+      <li><a href="desarrollo.html">Desarrollo</a></li>
+      <li><a href="acerca.html" class="active">Acerca de</a></li>
+    </ul>
+    <button id="toggle-theme" onclick="toggleTheme()">🌙</button>
+    <button class="nav-menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div id="mobile-menu">
+    <a href="../index.html">Inicio</a>
+    <a href="../index.html#etapas">Experiencia</a>
+    <a href="../index.html#stats">Logros</a>
+    <a href="desarrollo.html">Desarrollo</a>
+    <a href="acerca.html">Acerca de</a>
+  </div>
+
+  <div class="page-hero">
+    <p class="hero-tag">// 02 — Perfil</p>
+    <h1 class="hero-name">ACERCA <span class="accent">DE MÍ</span></h1>
+    <p class="hero-sub">Estudiante de Tecnología e Informática — Práctica Dual</p>
+  </div>
+
+  <div class="page-content">
+    <div class="profile-card reveal">
+      <div class="profile-photo">
+       
+      <img src="../img/img11.jpg" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="profile-info">
+        <h2>CARLOS HUGO VARGAS SUMANO</h2>  <!-- ✏️ CAMBIA -->
+        <p class="profile-role">TECNICO PROFESIONAL EN INFORMATICA</p>
+        <div class="info-grid">
+          <div class="dato-item"><span class="dato-label">Grupo</span><span class="dato-value"> 601 </span></div>  <!-- ✏️ CAMBIA -->
+          <div class="dato-item"><span class="dato-label">Plantel</span><span class="dato-value"> CONALEP PACHUCA 2</span></div>  <!-- ✏️ CAMBIA -->
+          <div class="dato-item"><span class="dato-label">Modalidad</span><span class="dato-value">Bachillerato Dual</span></div>
+          <div class="dato-item"><span class="dato-label">Período</span><span class="dato-value">11 MESES DE PRACTICAS </span></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>👤 Mi Perfil</h2>
+    <div class="bitacora-card reveal">
+      <p>Soy estudiante de Informática con 11 meses de práctica dual en un entorno profesional real. Desarrollé habilidades en <strong>gestión de bases de datos, soporte técnico, redes y desarrollo de software</strong>.</p>
+      <p>Mi proyecto más destacado fue el desarrollo de una aplicación de gestión para el préstamo de expedientes clínicos, con impacto directo en la operación del departamento.</p>
+    </div>
+
+    <h2>⚡ Habilidades Técnicas</h2>
+    <div class="reveal" style="margin-bottom:2rem">
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>BASES DE DATOS</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>DESARROLLO DE SOFTWARE</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>SOPORTE</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>REDES</span><span>70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>GESTION DE ARCHIVOS</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
+    </div>
+
+    <h2>🏆 Logros Destacados</h2>
+    <ul>
+      <li>Completé <strong>11 meses</strong> de práctica profesional en CENTRO  UNIVERSITARIO METROPOLITANO HIDALGO</li>
+      <li>Desarrollé una <strong>aplicación funcional</strong> implementada en producción</li>
+      <li>Participé en la gestión de <strong>bases de datos clínicas</strong></li>
+      <li>Coordiné apoyo técnico en eventos institucionales</li>
+      <li>Mantuve equipos de cómputo y redes activos</li>
+    </ul>
+
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="../index.html" class="btn-outline">← Volver al inicio</a>
+      <a href="desarrollo.html" class="btn-primary">Ver mi proyecto →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">PORT<span>FOLIO</span></div>
+    <p>PRÁCTICA DUAL &nbsp;·&nbsp; EXPERIENCIA PROFESIONAL &nbsp;·&nbsp; 11 MESES</p>
+    <div class="footer-links">
+      <a href="desarrollo.html">Desarrollo</a>
+      <a href="acerca.html">Acerca de</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', e => {
+      const c = document.getElementById('cursor');
+      c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+    });
+    function toggleTheme() {
+      const html = document.documentElement, btn = document.getElementById('toggle-theme');
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      btn.textContent = html.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+    }
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          e.target.querySelectorAll('.skill-bar-fill').forEach(b => b.style.width = b.dataset.width + '%');
+        }
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  </script>
+</body>
+</html>

@@ -1,79 +1,172 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Carlos Hugo Vargas Sumano</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(217, 119, 6, 0.15);
-            color: #f59e0b;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(217, 119, 6, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SISTEMA DUAL — Experiencia Profesional</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Formación Dual</div>
-        <h1>Carlos Hugo Vargas Sumano</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/carlos-hugo-vargas-sumano/
-        </div>
+
+  <div id="cursor"></div>
+
+  <div id="loader">
+    <div id="loader-logo">SISTEMA<span>DUAL</span></div>
+    <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+    <div id="loader-text">INICIANDO...</div>
+  </div>
+
+  <nav>
+    <div class="nav-logo">SISTEMA<span>DUAL</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="#etapas">Experiencia</a></li>
+      <li><a href="#stats">Logros</a></li>
+      <li><a href="paginas/desarrollo.html">Desarrollo</a></li>
+      <li><a href="paginas/acerca.html">Acerca de</a></li>
+    </ul>
+    <button id="toggle-theme" onclick="toggleTheme()">🌙</button>
+    <button class="nav-menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div id="mobile-menu">
+    <a href="index.html">Inicio</a>
+    <a href="#etapas">Experiencia</a>
+    <a href="#stats">Logros</a>
+    <a href="paginas/desarrollo.html">Desarrollo</a>
+    <a href="paginas/acerca.html">Acerca de</a>
+  </div>
+
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <p class="hero-tag">// Práctica Dual — Experiencia Profesional</p>
+      <h1 class="hero-name">EXPERIENCIA <span class="accent">DUAL</span></h1>
+      <p class="hero-sub">11 meses de práctica profesional &nbsp;·&nbsp; Tecnología e Informática &nbsp;·&nbsp; Gestión &amp; Desarrollo</p>
+      <div class="hero-cta">
+        <a href="#etapas" class="btn-primary">Ver Experiencia</a>
+        <a href="#stats" class="btn-outline">Mis Logros</a>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-card"><div class="hero-img-placeholder"><span>📋</span><p>Gestión</p></div></div>
+        <div class="hero-img-card"><div class="hero-img-placeholder"><span>💻</span><p>Desarrollo</p></div></div>
+        <div class="hero-img-card"><div class="hero-img-placeholder"><span>🗄️</span><p>Bases de Datos</p></div></div>
+      </div>
     </div>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section id="etapas">
+    <div class="section-label">// 01 — Trayectoria</div>
+    <h2 class="section-title reveal">MIS <span>ETAPAS</span></h2>
+    <div class="timeline">
+
+      <div class="phase-block reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-header">
+          <div class="phase-num">01</div>
+          <div class="phase-title">Primera Fase</div>
+          <div class="phase-duration">MESES 01 — 04</div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-chip"><span class="skill-icon">📋</span> Inscripciones</div>
+          <div class="skill-chip"><span class="skill-icon">🗄️</span> Manejo de Base de Datos</div>
+          <div class="skill-chip"><span class="skill-icon">🌐</span> Conexión de Internet</div>
+          <div class="skill-chip"><span class="skill-icon">🎪</span> Apoyo en Eventos</div>
+          <div class="skill-chip"><span class="skill-icon">📸</span> Fotografía</div>
+          <div class="skill-chip"><span class="skill-icon">🗺️</span> Apoyo en Recorridos</div>
+          <div class="skill-chip"><span class="skill-icon">🔄</span> Mantenimiento de BD</div>
+          <div class="skill-chip"><span class="skill-icon">📢</span> Páginas de Publicidad</div>
+          <div class="skill-chip"><span class="skill-icon">📞</span> Call Center</div>
+          <div class="skill-chip"><span class="skill-icon">🔧</span> Mantenimiento de Equipos</div>
+        </div>
+      </div>
+
+      <div class="phase-block reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-header">
+          <div class="phase-num">02</div>
+          <div class="phase-title">Segunda Fase</div>
+          <div class="phase-duration">MESES 05 — 11</div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-chip"><span class="skill-icon">🗄️</span> Manejo de Base de Datos</div>
+          <div class="skill-chip"><span class="skill-icon">📁</span> Gestión de Archivos Clínicos</div>
+        </div>
+        <div class="highlight-card reveal">
+          <h3>🛠️ Aplicación de Préstamo de Expedientes</h3>
+          <p>Creación de una <strong>aplicación funcional</strong> diseñada para mejorar la <strong>capacidad y calidad del préstamo de expedientes clínicos</strong>. Implicó análisis de requerimientos, diseño de flujo de datos, desarrollo e implementación dentro del entorno clínico.</p>
+          <a href="paginas/desarrollo.html" class="btn-primary" style="display:inline-block;margin-top:1rem;font-size:.85rem;">Ver proyecto completo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num" data-target="11">0</div><div class="stat-label">Meses de Práctica</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="2">0</div><div class="stat-label">ÁREAS DE TRABAJO</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="12">0</div><div class="stat-label">Habilidades Desarrolladas</div></div>
+      <div class="stat-item"><div class="stat-num" data-target="1">0</div><div class="stat-label">Aplicación Desarrollada</div></div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="section-label">// 02 — Perfil</div>
+    <h2 class="section-title reveal">SOBRE <span>MÍ</span></h2>
+    <div class="sobre-inner">
+      <div class="sobre-text reveal">
+        <p>Durante mi práctica dual desarrollé habilidades transversales en <strong>tecnología, atención al usuario y gestión de información</strong>.</p>
+        <p>En la segunda fase profundicé en el área de <strong>sistemas clínicos</strong>, culminando con el desarrollo de una aplicación propia.</p>
+        <p>Esta experiencia consolidó mi perfil técnico y me preparó para enfrentar retos reales en entornos profesionales exigentes.</p>
+        <div class="badge-list">
+          <span class="badge">Bases de Datos</span>
+          <span class="badge">Desarrollo de Software</span>
+          <span class="badge">Redes</span>
+          <span class="badge">Soporte Técnico</span>
+          <span class="badge">Gestión Documental</span>
+          <span class="badge">Atención al Cliente</span>
+        </div>
+        <a href="paginas/acerca.html" class="btn-outline" style="display:inline-block;margin-top:1.5rem;">Mi perfil completo →</a>
+      </div>
+      <div class="sobre-visual">
+        <div class="hex-frame">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="100,10 190,55 190,145 100,190 10,145 10,55" fill="none" stroke="rgba(230,0,0,0.25)" stroke-width="1" stroke-dasharray="8 4"/>
+            <polygon points="100,25 175,65 175,135 100,175 25,135 25,65" fill="none" stroke="rgba(230,0,0,0.5)" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner">INF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">SISTEMA<span>DUAL</span></div>
+    <p>PRÁCTICA DUAL &nbsp;·&nbsp; EXPERIENCIA PROFESIONAL &nbsp;·&nbsp; 11 MESES</p>
+    <div class="footer-links">
+      <a href="paginas/desarrollo.html">Desarrollo</a>
+      <a href="paginas/acerca.html">Acerca de</a>
+    </div>
+  </footer>
+
+  <script src="js/anima.js"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn  = document.getElementById('toggle-theme');
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      btn.textContent = html.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+    }
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
