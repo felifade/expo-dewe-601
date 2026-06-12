@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+
+```
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+    .galeria {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .galeria img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: transform .3s ease;
+    }
+
+    .galeria img:hover {
+        transform: scale(1.05);
+    }
+
+    .titulo-galeria {
+        text-align: center;
+        margin-top: 30px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+    <div class="logo">Radio y Televisión de Hidalgo</div>
+
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="introduccion.html">Introducción</a></li>
+        <li><a href="institucion.html">Institución</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="conclusion.html">Conclusión</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Galería de Imágenes</h1>
+    <p>Evidencias de las actividades realizadas</p>
+</header>
+
+<main>
+
+    <section class="titulo-galeria">
+        <h2>Registro Fotográfico</h2>
+        <p>
+            A continuación se muestran algunas imágenes relacionadas con
+            las actividades desarrolladas durante la estadía profesional.
+        </p>
+    </section>
+
+    <div class="galeria">
+
+        <img src="img/1.jpg" alt="Imagen 1">
+	<img src="img/2.jpg" alt="Imagen 2">
+	<img src="img/3.jpg" alt="Imagen 3">
+	<img src="img/4.jpg" alt="Imagen 4">
+	<img src="img/5.jpg" alt="Imagen 5">
+	<img src="img/6.jpg" alt="Imagen 6">
+	<img src="img/7.jpg" alt="Imagen 7">
+	<img src="img/8.jpg" alt="Imagen 8">
+
+
+    </div>
+
+</main>
+
+<!<!-- Botón de cambio de tema -->
+<button id="theme-toggle">🌙</button>
+
+<style>
+:root{
+    --bg-color:#ffffff;
+    --text-color:#222222;
+    --card-color:#f4f4f4;
+    --accent:#2563eb;
+}
+
+body{
+    background:var(--bg-color);
+    color:var(--text-color);
+    transition:0.4s ease;
+}
+
+.card{
+    background:var(--card-color);
+    padding:20px;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+/* Modo oscuro */
+.dark-mode{
+    --bg-color:#0f172a;
+    --text-color:#ffffff;
+    --card-color:#1e293b;
+    --accent:#38bdf8;
+}
+
+#theme-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.3rem;
+    background:var(--accent);
+    color:white;
+}
+</style>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Cargar tema guardado
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        toggleBtn.textContent = "☀️";
+    }else{
+        localStorage.setItem("theme","light");
+        toggleBtn.textContent = "🌙";
+    }
+
+});
+</script>
+</body>
+</html>

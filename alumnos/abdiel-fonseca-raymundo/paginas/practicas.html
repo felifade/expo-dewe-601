@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prácticas Profesionales - Caso de Éxito</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    .practices-header { margin-bottom: 40px; text-align: center; }
+    .practices-header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #ffffff; margin-bottom: 15px; }
+    .practices-header p { color: #a0a0a0; max-width: 800px; margin: 0 auto; font-size: 1rem; }
+    .phase-number { color: #c9a45c; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; display: block; }
+    
+    /* Estilos dinámicos para optimizar el comportamiento visual de la galería */
+    .gallery-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item-box {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 260px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #1a1a1a;
+    }
+    .gallery-item-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: all 0.4s ease;
+    }
+    .gallery-item-box:hover img {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 25px 20px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-art-background">
+    <img src="../img/art2.jpg" class="art-float art-right" alt="Arte Prácticas">
+  </div>
+
+  <div class="glass-container">
+    
+    <nav class="premium-nav">
+      <ul>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="practicas.html" class="active">prácticas duales</a></li>
+        <li><a href="proyectos.html">proyectos ti</a></li>
+        <li><a href="contacto.html">contacto</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-btn">Modo Claro</button>
+    </nav>
+
+    <header class="practices-header">
+      <h1>Transformación Digital y Soporte Operativo</h1>
+      <p>Durante mi formación dual, lideré la modernización del despacho contable eliminando la dependencia de procesos manuales. Mi rol abarcó desde el desarrollo de software a medida (ERP corporativo) hasta la gestión de infraestructura, redes y soporte técnico integral.</p>
+    </header>
+
+    <section class="skills-section">
+      <h2 class="section-title">Desarrollo de Software Corporativo</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="phase-number">Fase 01 • Cloud Scripting</span>
+          <h3>Rastreo Confidencial</h3>
+          <p>Desarrollo de un script invisible en <strong>Google Cloud</strong> para la dirección. Generación de enlaces rastreables en Word/PDF que notifican fecha y hora de apertura mediante alertas automatizadas a Gmail, con redirección transparente al portal del SAT.</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Fase 02 • Front-End Seguro</span>
+          <h3>ERP Corporativo (React)</h3>
+          <p>Creación de una plataforma web centralizada con <strong>Sistema de Jerarquías (RBAC)</strong>. Accesos blindados donde contadores y pasantes operan bajo un <em>Buzón de Tareas</em> y herramientas como una Calculadora Fiscal interactiva (IVA, RESICO).</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Fase 03 • Data Engineering</span>
+          <h3>Pipeline ETL (Python)</h3>
+          <p>Diseño y despliegue de un pipeline <strong>ETL (Extract, Transform, Load)</strong> automatizado en Python para la limpieza, transformación y unificación de datos financieros masivos. El sistema procesa múltiples archivos Excel, purga anomalías en los encabezados y unifica la información en un Reporte Maestro Consolidado, reduciendo el error humano a cero.</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Fase 04 • Innovación (I+D)</span>
+          <h3>Prueba de Concepto: IA 3D</h3>
+          <p>Desarrollo y presentation de una <strong>Prueba de Concepto (PoC)</strong> orientada a modernizar el soporte técnico interno. Diseñé la arquitectura de un asistente virtual inteligente, integrando modelos 3D (.vrm) con un framework nativo en Python, proyectado para automatizar la resolución de consultas técnicas corporativas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" style="margin-top: 60px;">
+      <h2 class="section-title">Infraestructura, Soporte e IA</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="phase-number">Helpdesk Corporativo</span>
+          <h3>Soporte IT Integral</h3>
+          <p>Resolución ágil de incidencias técnicas en el entorno laboral. Ejecución de mantenimientos preventivos y correctivos a equipos de cómputo para garantizar el <em>uptime</em> y la productividad continua del personal administrativo.</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Hardware & Networking</span>
+          <h3>Redes LAN y Energía (UPS)</h3>
+          <p>Instalación, cableado y configuración de redes locales. Mantenimiento especializado a sistemas de energía ininterrumpida (<strong>APC UPS</strong>) para blindar los servidores físicos contra cortes eléctricos y variaciones de voltaje.</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Administración de Sistemas</span>
+          <h3>Seguridad Endpoint y Licencias</h3>
+          <p>Configuración de políticas de restricción de accesos corporativos (bloqueo de máquinas a perfiles específicos) y gestión integral de despliegue de licenciamiento <strong>Microsoft Office 365 Professional</strong>.</p>
+        </div>
+        <div class="skill-card">
+          <span class="phase-number">Innovación Tecnológica</span>
+          <h3>Integración de I.A.</h3>
+          <p>Diseño e implementación de asistentes basados en <strong>Inteligencia Artificial</strong> adaptados a las necesidades operativas de los clientes, automatizando respuestas y optimizando la carga de trabajo diaria.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" style="padding: 50px 0; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span style="color: #c9a45c; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px;">Laboratorios y Campo</span>
+        <h2 style="color: #ffffff; font-size: 2.5rem; font-family: 'Playfair Display', serif; margin-top: 10px; text-transform: uppercase;">Evidencia Práctica</h2>
+        <p style="color: #a0a0a0; max-width: 600px; margin: 15px auto; line-height: 1.6;">Documentación visual de implementaciones técnicas, configuración de infraestructura y desarrollo de software.</p>
+      </div>
+
+      <div class="gallery-grid-container">
+
+        <div class="gallery-item-box">
+          <img src="../img/evidencia-redes.jpg" alt="Cableado Estructurado" onerror="this.style.display='none'">
+          <div class="gallery-caption">
+            <h4 style="color: #ffffff; margin: 0; font-size: 1.1rem; font-weight: 500;">Cableado Estructurado</h4>
+            <p style="color: #c9a45c; margin: 5px 0 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Topología e Infraestructura</p>
+          </div>
+        </div>
+
+        <div class="gallery-item-box">
+          <img src="../img/evidencia-codigo.jpg" alt="Desarrollo de Software" onerror="this.style.display='none'">
+          <div class="gallery-caption">
+            <h4 style="color: #ffffff; margin: 0; font-size: 1.1rem; font-weight: 500;">Desarrollo Back-end</h4>
+            <p style="color: #c9a45c; margin: 5px 0 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Algoritmos en Python</p>
+          </div>
+        </div>
+
+        <div class="gallery-item-box">
+          <img src="../img/evidencia-lab.jpg" alt="Laboratorios" onerror="this.style.display='none'">
+          <div class="gallery-caption">
+            <h4 style="color: #ffffff; margin: 0; font-size: 1.1rem; font-weight: 500;">Prácticas de Campo</h4>
+            <p style="color: #c9a45c; margin: 5px 0 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Entorno de pruebas</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="premium-footer">
+    <p>Thank you for watching &copy; 2026 Abdiel Fonseca</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

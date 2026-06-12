@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusión</title>
+
+```
+<link rel="stylesheet" href="css/style.css">
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+    <div class="logo">Radio y Televisión de Hidalgo</div>
+
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="introduccion.html">Introducción</a></li>
+        <li><a href="institucion.html">Institución</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="conclusion.html">Conclusión</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Conclusión</h1>
+    <p>Resultados y experiencia adquirida durante la estadía profesional</p>
+</header>
+
+<main>
+
+    <section>
+        <h2>Conclusión General</h2>
+
+        <p>
+            La realización de las actividades en el área de Telecomunicaciones,
+            Redes y Desarrollo Web de Radio y Televisión de Hidalgo permitió
+            aplicar de manera práctica los conocimientos adquiridos durante la
+            formación académica, enfrentando situaciones reales relacionadas
+            con el mantenimiento de infraestructura tecnológica y sistemas de
+            comunicación.
+        </p>
+
+        <p>
+            Durante este periodo se participó en tareas de soporte técnico,
+            verificación de líneas telefónicas, organización de cableado,
+            registro de incidencias y apoyo en proyectos de desarrollo web.
+            Estas actividades contribuyeron al fortalecimiento de habilidades
+            técnicas y al desarrollo de una mayor comprensión sobre el
+            funcionamiento de los sistemas de telecomunicaciones dentro de una
+            institución pública.
+        </p>
+
+        <p>
+            Asimismo, la experiencia permitió desarrollar competencias
+            profesionales como el trabajo en equipo, la responsabilidad,
+            la comunicación efectiva, la capacidad de adaptación y la
+            resolución de problemas, habilidades fundamentales para el
+            desempeño en el ámbito laboral.
+        </p>
+
+        <p>
+            La estadía representó una oportunidad valiosa para complementar la
+            formación profesional, adquirir experiencia práctica y conocer los
+            procesos tecnológicos que hacen posible el funcionamiento eficiente
+            de los servicios de comunicación de Radio y Televisión de Hidalgo.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Conocimientos Adquiridos</h2>
+
+        <ul>
+            <li>Mantenimiento básico de infraestructura de telecomunicaciones.</li>
+            <li>Identificación y solución de fallas en líneas telefónicas.</li>
+            <li>Organización y administración de cableado estructurado.</li>
+            <li>Soporte técnico a usuarios y equipos de cómputo.</li>
+            <li>Actualización y mantenimiento de páginas web institucionales.</li>
+            <li>Documentación y seguimiento de incidencias técnicas.</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Competencias Profesionales Desarrolladas</h2>
+
+        <ul>
+            <li>Trabajo colaborativo.</li>
+            <li>Responsabilidad profesional.</li>
+            <li>Pensamiento analítico.</li>
+            <li>Resolución de problemas.</li>
+            <li>Comunicación efectiva.</li>
+            <li>Organización y planificación de actividades.</li>
+            <li>Adaptación a entornos laborales reales.</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Aportaciones a la Institución</h2>
+
+        <p>
+            Las actividades realizadas contribuyeron al mantenimiento y mejora
+            de los sistemas de comunicación interna, apoyando en la detección
+            de fallas, organización de infraestructura tecnológica y actualización
+            de recursos digitales utilizados por la institución.
+        </p>
+
+        <p>
+            Estas acciones permitieron fortalecer la operatividad de los servicios
+            tecnológicos y facilitar futuras tareas de mantenimiento dentro del
+            área de Telecomunicaciones, Redes y Desarrollo Web.
+        </p>
+    </section>
+
+    <section>
+        <h2>Reflexión Final</h2>
+
+        <p>
+            La experiencia obtenida durante la estadía profesional en Radio y
+            Televisión de Hidalgo constituyó una etapa importante para el
+            crecimiento académico y profesional, permitiendo poner en práctica
+            conocimientos técnicos, adquirir nuevas habilidades y comprender la
+            importancia de la tecnología en los procesos de comunicación y
+            difusión de información dentro de una institución pública.
+        </p>
+    </section>
+
+</main>
+
+<!<!-- Botón de cambio de tema -->
+<button id="theme-toggle">🌙</button>
+
+<style>
+:root{
+    --bg-color:#ffffff;
+    --text-color:#222222;
+    --card-color:#f4f4f4;
+    --accent:#2563eb;
+}
+
+body{
+    background:var(--bg-color);
+    color:var(--text-color);
+    transition:0.4s ease;
+}
+
+.card{
+    background:var(--card-color);
+    padding:20px;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+/* Modo oscuro */
+.dark-mode{
+    --bg-color:#0f172a;
+    --text-color:#ffffff;
+    --card-color:#1e293b;
+    --accent:#38bdf8;
+}
+
+#theme-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.3rem;
+    background:var(--accent);
+    color:white;
+}
+</style>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Cargar tema guardado
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        toggleBtn.textContent = "☀️";
+    }else{
+        localStorage.setItem("theme","light");
+        toggleBtn.textContent = "🌙";
+    }
+
+});
+</script>
+
+</body>
+</html>

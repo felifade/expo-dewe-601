@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</h1>
+    </header>
+ <!-- Barra de Navegación -->
+        <nav>
+            <ul>
+		<li><a href="index.html">Inicio</a></li>
+	  	<li><a href="introduccion.html">Introducción</a></li>
+		<li><a href="institucion.html">Institución</a></li>
+		<li><a href="actividades.html">Actividades</a></li>
+		<li><a href="resultados.html">Resultados</a></li>
+		<li><a href="conclusiones.html">Conclusiones</a></li>
+		<li><a href="galeria.html">Galería de Imágenes</a></li>
+		<li><a href="contacto.html">Contacto</a></li>
+		
+            </ul>
+        </nav>
+	
+	<button id="modoBtn">🌙 Modo Oscuro</button>
+
+<main>
+
+<section id="actividades">
+    <h2>Actividades Realizadas</h2>
+
+    <article>
+        <h3>Participación en el Tianguis de Pueblos Mágicos</h3>
+        <p>
+            Se colaboró en las actividades relacionadas con la participación de la
+            Secretaría de Turismo en el Tianguis de Pueblos Mágicos, apoyando en la
+            organización de información, logística y seguimiento de las actividades
+            desarrolladas durante este importante evento de promoción turística.
+        </p>
+    </article>
+
+    <article>
+        <h3>Organización, Administración y Gestión de Datos</h3>
+        <p>
+            Se realizó la captura, organización y actualización de información mediante
+            hojas de cálculo en Microsoft Excel, contribuyendo al control eficiente de
+            datos y al seguimiento de actividades internas de la dependencia.
+        </p>
+    </article>
+
+    <article>
+        <h3>Optimización de Equipos de Cómputo</h3>
+        <p>
+            Se brindó apoyo en la revisión y optimización de equipos de cómputo,
+            efectuando tareas básicas de mantenimiento y organización de archivos para
+            mejorar el rendimiento y funcionamiento de los recursos tecnológicos
+            utilizados por el personal.
+        </p>
+    </article>
+
+    <article>
+        <h3>Elaboración de Fichas Técnicas</h3>
+        <p>
+            Se participó en la creación, actualización y organización de fichas técnicas
+            utilizadas para la exposición del Tenango más grande del mundo, recopilando
+            información relevante y asegurando la correcta presentación de los datos
+            relacionados con este importante evento cultural.
+        </p>
+    </article>
+
+    <article>
+        <h3>Recopilación de Evidencias en Redes Sociales</h3>
+        <p>
+            Se llevó a cabo la búsqueda, recopilación y organización de evidencias
+            fotográficas y publicaciones difundidas a través de redes sociales,
+            permitiendo documentar actividades, eventos y acciones promovidas por la
+            Secretaría de Turismo.
+        </p>
+    </article>
+
+    <article>
+        <h3>Entrega y Distribución de Oficios</h3>
+        <p>
+            Se apoyó en la entrega, recepción y distribución de oficios y documentación
+            oficial entre distintas áreas e instituciones, contribuyendo al adecuado
+            flujo de información administrativa.
+        </p>
+    </article>
+
+    <article>
+        <h3>Recopilación de Información Institucional</h3>
+        <p>
+            Se colaboró en la búsqueda y recopilación de información relacionada con las
+            actividades, proyectos y acciones realizadas por la Secretaria de Turismo,
+            Lic. Elizabeth Quintanar Gómez, con la finalidad de integrar reportes,
+            evidencias y documentación de apoyo para diversas actividades institucionales.
+        </p>
+    </article>
+</section>
+</main>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Proyecto Académico - Secretaría de Turismo del Estado de Hidalgo. </p>
+    </footer>
+
+<script>
+
+const botonModo = document.getElementById("modoBtn");
+
+if(localStorage.getItem("tema") === "oscuro"){
+    document.body.classList.add("dark-mode");
+    botonModo.textContent = "☀️ Modo Claro";
+}
+
+botonModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        botonModo.textContent = "☀️ Modo Claro";
+        localStorage.setItem("tema", "oscuro");
+    }else{
+        botonModo.textContent = "🌙 Modo Oscuro";
+        localStorage.setItem("tema", "claro");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

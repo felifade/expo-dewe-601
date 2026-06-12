@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Abdiel Fonseca</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    .contact-wrapper { display: flex; flex-wrap: wrap; gap: 50px; margin-top: 20px; }
+    .contact-info { flex: 1; min-width: 300px; }
+    .contact-info h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--title-color); margin-bottom: 20px; line-height: 1.1; transition: color 0.5s ease; }
+    .contact-info p { color: var(--text-color); margin-bottom: 40px; font-size: 1.05rem; transition: color 0.5s ease; }
+    .info-item { margin-bottom: 25px; }
+    .info-item h4 { color: var(--accent); font-family: 'Montserrat', sans-serif; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; transition: color 0.5s ease; }
+    .info-item p { color: var(--text-color); margin-bottom: 5px; font-size: 1rem; transition: color 0.5s ease; }
+    .info-item a { color: var(--text-color); text-decoration: none; transition: color 0.3s ease; }
+    .info-item a:hover { color: var(--accent); }
+    .contact-form { flex: 1; min-width: 300px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--glass-border); transition: all 0.5s ease; }
+    .form-group { margin-bottom: 25px; }
+    .form-group label { display: block; color: var(--text-color); font-size: 0.85rem; margin-bottom: 8px; letter-spacing: 1px; transition: color 0.5s ease; }
+    .form-group input, .form-group textarea { width: 100%; background: rgba(0, 0, 0, 0.1); border: 1px solid var(--glass-border); border-radius: 8px; padding: 15px; color: var(--text-color); font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: all 0.3s ease; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); background: rgba(0, 0, 0, 0.2); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .btn-submit { width: 100%; text-align: center; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; margin-top: 10px; }
+    @media (max-width: 768px) { .contact-wrapper { flex-direction: column; } .contact-info h1 { font-size: 2.8rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="floating-art-background">
+    <img src="../img/art4.jpg" class="art-float art-right" alt="Arte Contacto">
+  </div>
+
+  <div class="glass-container">
+    
+    <nav class="premium-nav">
+      <ul>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="practicas.html">prácticas duales</a></li>
+        <li><a href="proyectos.html">proyectos ti</a></li>
+        <li><a href="contacto.html" class="active">contacto</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-btn">Modo Claro</button>
+    </nav>
+
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h1>Iniciemos un<br>Proyecto Juntos.</h1>
+        <p>¿Buscas modernizar tu empresa, blindar tu red corporativa o desarrollar software a la medida? Estoy listo para aportar soluciones tecnológicas de alto impacto.</p>
+        
+        <div class="info-item">
+          <h4>Ubicación</h4>
+          <p>Pachuca, Hidalgo, México.</p>
+        </div>
+        <div class="info-item">
+          <h4>Contacto Directo</h4>
+          <p>📞 <a href="tel:+527711213476">+52 771 121 34 76</a></p>
+          <p>✉️ <a href="mailto:de12fonsecaraymundoa@gmail.com">de12fonsecaraymundoa@gmail.com</a></p>
+        </div>
+        <div class="info-item">
+          <h4>Redes Sociales</h4>
+          <p>Instagram: <a href="https://www.instagram.com/abdi_fr.ans?igsh=MTFheTFvaWpkdGxuOQ==" target="_blank">@abdi_fr.ans</a></p>
+          <p>Instagram: <a href="https://www.instagram.com/abdiel_fnsc?igsh=MWhrYjQ4cGRjdml3Nw==" target="_blank">@abdiel_fnsc</a></p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xgobzzrg" method="POST">
+          
+          <input type="hidden" name="_next" value="https://tu-dominio-aqui.netlify.app/index.html">
+
+          <div class="form-group">
+            <label for="nombre">Nombre Completo o Empresa</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Corporativo Empresarial S.A." required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" placeholder="correo@empresa.com" required>
+          </div>
+          <div class="form-group">
+            <label for="asunto">Asunto / Servicio de Interés</label>
+            <input type="text" id="asunto" name="asunto" placeholder="Ej. Desarrollo de ERP, Soporte IT..." required>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Detalles del Proyecto</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntame brevemente qué necesitas resolver o automatizar..." required></textarea>
+          </div>
+          <button type="submit" class="btn-gold btn-submit">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="premium-footer">
+    <p>Thank you for watching &copy; 2026 Abdiel Fonseca</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

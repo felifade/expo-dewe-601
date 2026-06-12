@@ -1,79 +1,254 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Santiago Jimenez Sombra</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <!-- ============================================================
+       index.html — Página Principal
+       Sistema de Monitoreo Cardíaco con Arduino
+       Estudiante: Santiago Jiménez Sombra | Año: 2026
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de Monitoreo de Frecuencia Cardíaca con Arduino y sensor MAX30102. Proyecto escolar de Santiago Jiménez Sombra.">
+  <title>Monitor Cardíaco Arduino | Santiago Jiménez Sombra</title>
+
+  <!-- Fuentes de Google: Share Tech Mono (datos) + Inter (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Santiago Jimenez Sombra</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/santiago-jimenez-sombra/
-        </div>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+       ══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+
+    <!-- Logo / nombre del proyecto -->
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">💓</span>
+      ArduinoHR
+    </a>
+
+    <!-- Menú de páginas -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="paginas/proyectos.html">Proyecto</a></li>
+      <li><a href="paginas/innovacion.html">Innovación</a></li>
+      <li><a href="paginas/contacto.html">Contacto</a></li>
+    </ul>
+
+    <!-- Controles: tema + menú hamburguesa -->
+    <div class="nav-controls">
+      <button class="btn-theme" onclick="toggleTheme()" title="Modo claro">☀️</button>
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menú">☰</button>
     </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO — MONITOR CARDÍACO DIGITAL
+       ══════════════════════════════════════════ -->
+  <section class="hero" aria-label="Monitor cardíaco interactivo">
+
+    <!-- Panel del monitor médico -->
+    <div class="monitor-panel">
+
+      <!-- Barra de estado superior -->
+      <div class="monitor-topbar">
+        <span class="monitor-title">MAX30102 • PATIENT MONITOR</span>
+        <div class="monitor-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          SEÑAL ACTIVA
+        </div>
+      </div>
+
+      <!-- Valor de BPM principal -->
+      <div class="bpm-display" aria-live="polite" aria-label="Frecuencia cardíaca">
+        <span class="bpm-value" id="bpmValue">75</span>
+        <span class="bpm-unit">BPM</span>
+      </div>
+
+      <!-- Etiqueta del indicador -->
+      <p class="heart-rate-label">FRECUENCIA CARDÍACA</p>
+
+      <!-- Canvas de la onda ECG (animado por JavaScript) -->
+      <div class="ecg-container" role="img" aria-label="Onda ECG animada">
+        <canvas id="ecgCanvas" height="120"></canvas>
+      </div>
+
+      <!-- Estado del ritmo -->
+      <div class="rhythm-status">
+        <span class="heart-icon" aria-hidden="true">♥</span>
+        <span id="rhythmText">Ritmo Sinusal Normal</span>
+      </div>
+
+      <!-- Métricas secundarias -->
+      <div class="monitor-metrics">
+        <!-- SpO2 — saturación de oxígeno -->
+        <div class="metric-card">
+          <span class="metric-label">SpO₂</span>
+          <span class="metric-value" id="spo2Value">98%</span>
+        </div>
+        <!-- Temperatura corporal simulada -->
+        <div class="metric-card">
+          <span class="metric-label">TEMP</span>
+          <span class="metric-value" id="tempValue">36.7°C</span>
+        </div>
+        <!-- Tiempo activo de sesión -->
+        <div class="metric-card">
+          <span class="metric-label">SENSOR</span>
+          <span class="metric-value text-cyan">MAX</span>
+        </div>
+      </div>
+
+      <!-- Botón de iniciar monitoreo -->
+      <button class="btn-monitor" id="btnMonitor" onclick="toggleMonitoring()" aria-pressed="false">
+        <span>▶ INICIAR MONITOREO</span>
+      </button>
+    </div><!-- /monitor-panel -->
+
+    <!-- Titular principal bajo el monitor -->
+    <div class="hero-heading">
+      <span class="sensor-badge">🔬 Sensor MAX30102 — Fotopletismografía</span>
+      <h1>Sistema de Monitoreo<br>Cardíaco con Arduino</h1>
+      <p>Proyecto de electrónica aplicada a la salud: medición de pulsaciones en tiempo real mediante Arduino Uno y sensor óptico MAX30102.</p>
+    </div>
+
+  </section><!-- /hero -->
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN: INTRODUCCIÓN AL PROYECTO
+       ══════════════════════════════════════════ -->
+  <section class="content-section" aria-labelledby="intro-title">
+    <span class="section-label">Introducción</span>
+    <h2 class="section-title" id="intro-title">¿En qué consiste este proyecto?</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <p class="prose">
+      Este proyecto escolar, desarrollado en la materia de <strong>Emprendimiento e Innovación</strong>, consiste en construir un sistema capaz de medir la frecuencia cardíaca de una persona utilizando componentes electrónicos accesibles. El corazón del sistema es un <strong>Arduino Uno</strong> combinado con el sensor óptico <strong>MAX30102</strong>, que emite luz infrarroja sobre la piel y detecta los cambios en el volumen sanguíneo producidos por cada latido.
+    </p>
+    <p class="prose">
+      El objetivo principal es demostrar cómo la tecnología open-source puede servir para construir soluciones reales orientadas al bienestar y la salud, acercando la electrónica y la programación a contextos cotidianos y educativos.
+    </p>
+
+    <!-- Tarjetas informativas -->
+    <div class="info-grid">
+
+      <!-- Qué es Arduino -->
+      <div class="info-card accent-cyan">
+        <div class="card-icon">🔧</div>
+        <h3 class="card-title">Arduino Uno</h3>
+        <p class="card-text">
+          Plataforma de hardware libre basada en un microcontrolador ATmega328P. Permite leer sensores, controlar actuadores y programar lógica mediante el IDE de Arduino con lenguaje C/C++ simplificado.
+        </p>
+      </div>
+
+      <!-- Qué es el MAX30102 -->
+      <div class="info-card accent-green">
+        <div class="card-icon">🩸</div>
+        <h3 class="card-title">Sensor MAX30102</h3>
+        <p class="card-text">
+          Módulo de oximetría de pulso y frecuencia cardíaca de Maxim Integrated. Utiliza LEDs rojo e infrarrojo para realizar fotopletismografía (PPG) y medir las variaciones de absorción de luz en el tejido vivo.
+        </p>
+      </div>
+
+      <!-- Importancia del monitoreo -->
+      <div class="info-card accent-purple">
+        <div class="card-icon">💊</div>
+        <h3 class="card-title">Monitoreo Cardíaco</h3>
+        <p class="card-text">
+          La frecuencia cardíaca es un indicador vital fundamental. Un adulto en reposo presenta entre 60 y 100 BPM. El monitoreo continuo permite detectar arritmias, medir el esfuerzo físico y evaluar el estado de salud general.
+        </p>
+      </div>
+
+    </div><!-- /info-grid -->
+  </section>
+
+  <hr class="section-sep" aria-hidden="true">
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN: OBJETIVOS
+       ══════════════════════════════════════════ -->
+  <section class="content-section" aria-labelledby="obj-title">
+    <span class="section-label">Objetivos</span>
+    <h2 class="section-title" id="obj-title">¿Qué buscamos lograr?</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <ul class="objectives-list" role="list">
+      <li>
+        <span class="obj-num" aria-hidden="true">1</span>
+        <span class="obj-text"><strong>Construir</strong> un prototipo funcional de monitor de frecuencia cardíaca utilizando Arduino Uno y el sensor MAX30102.</span>
+      </li>
+      <li>
+        <span class="obj-num" aria-hidden="true">2</span>
+        <span class="obj-text"><strong>Comprender</strong> el principio de fotopletismografía y cómo los sensores ópticos detectan el pulso sanguíneo.</span>
+      </li>
+      <li>
+        <span class="obj-num" aria-hidden="true">3</span>
+        <span class="obj-text"><strong>Desarrollar</strong> habilidades prácticas en electrónica, programación y diseño de circuitos sobre protoboard.</span>
+      </li>
+      <li>
+        <span class="obj-num" aria-hidden="true">4</span>
+        <span class="obj-text"><strong>Vincular</strong> la tecnología de bajo costo con aplicaciones reales en salud y bienestar personal.</span>
+      </li>
+      <li>
+        <span class="obj-num" aria-hidden="true">5</span>
+        <span class="obj-text"><strong>Presentar</strong> el proyecto mediante esta página web, integrando conocimientos de Páginas Web y Emprendimiento e Innovación.</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-sep" aria-hidden="true">
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN: IMPORTANCIA DEL MONITOREO
+       ══════════════════════════════════════════ -->
+  <section class="content-section" aria-labelledby="imp-title">
+    <span class="section-label">Relevancia</span>
+    <h2 class="section-title" id="imp-title">Importancia del Monitoreo Cardíaco</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="card-icon">🏥</div>
+        <h3 class="card-title">Prevención Médica</h3>
+        <p class="card-text">El monitoreo constante puede alertar sobre taquicardias, bradicardias o arritmias antes de que se conviertan en emergencias. Los dispositivos wearables modernos tienen esta función como núcleo.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="card-icon">🏃</div>
+        <h3 class="card-title">Rendimiento Físico</h3>
+        <p class="card-text">Los atletas utilizan monitores de frecuencia cardíaca para optimizar la intensidad del entrenamiento, mantenerse en zonas de esfuerzo específicas y acelerar la recuperación muscular.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="card-icon">📱</div>
+        <h3 class="card-title">Tecnología Accesible</h3>
+        <p class="card-text">Con Arduino y componentes de bajo costo, es posible construir dispositivos de monitoreo funcionales. Esto democratiza el acceso a herramientas de salud en comunidades con recursos limitados.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PIE DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-logo">💓 ArduinoHR — Monitor Cardíaco</p>
+      <p class="footer-text">Proyecto desarrollado por <strong>Santiago Jiménez Sombra</strong> para las materias de Páginas Web y Emprendimiento e Innovación.</p>
+      <p class="footer-year">© 2026 — Uso educativo</p>
+    </div>
+  </footer>
+
+  <!-- Notificación tipo toast (se controla desde script.js) -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Script principal -->
+  <script src="js/script.js"></script>
+
 </body>
 </html>

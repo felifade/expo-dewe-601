@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</h1>
+    </header>
+ <!-- Barra de Navegación -->
+        <nav>
+            <ul>
+		<li><a href="index.html">Inicio</a></li>
+	  	<li><a href="introduccion.html">Introducción</a></li>
+		<li><a href="institucion.html">Institución</a></li>
+		<li><a href="actividades.html">Actividades</a></li>
+		<li><a href="resultados.html">Resultados</a></li>
+		<li><a href="conclusiones.html">Conclusiones</a></li>
+		<li><a href="galeria.html">Galería de Imágenes</a></li>
+		<li><a href="contacto.html">Contacto</a></li>
+		
+            </ul>
+        </nav>
+	
+	<button id="modoBtn">🌙 Modo Oscuro</button>
+
+    <!-- Introducción -->
+    <section id="introduccion">
+        <h2>Introducción</h2>
+        <p>
+            La Secretaría de Turismo del Estado de Hidalgo es una dependencia encargada
+            de promover el desarrollo turístico de la entidad mediante estrategias,
+            programas y acciones orientadas al fortalecimiento de los destinos turísticos,
+            impulsando la economía local y fomentando la conservación del patrimonio
+            cultural y natural del estado.
+        </p>
+    </section>
+
+    <!-- Objetivo -->
+    <section id="objetivo">
+        <h2>Objetivo</h2>
+        <p>
+            El objetivo principal de la Secretaría de Turismo es incrementar la afluencia
+            de visitantes nacionales e internacionales, promoviendo los atractivos
+            turísticos de Hidalgo y contribuyendo al desarrollo económico de las
+            comunidades mediante actividades turísticas sustentables.
+        </p>
+    </section>
+
+
+    <!-- Importancia del Turismo -->
+    <section id="importancia">
+        <h2>Importancia del Turismo en Hidalgo</h2>
+        <p>
+            El turismo representa una actividad económica fundamental para Hidalgo,
+            ya que genera empleos, impulsa el comercio local y contribuye a la
+            preservación de tradiciones, costumbres y recursos naturales.
+        </p>
+
+        <p>
+            Gracias a sus atractivos culturales, históricos y naturales, el estado
+            recibe visitantes durante todo el año, fortaleciendo el desarrollo
+            regional y mejorando la calidad de vida de las comunidades.
+        </p>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Proyecto Académico - Secretaría de Turismo del Estado de Hidalgo. </p>
+    </footer>
+
+<script>
+
+const botonModo = document.getElementById("modoBtn");
+
+if(localStorage.getItem("tema") === "oscuro"){
+    document.body.classList.add("dark-mode");
+    botonModo.textContent = "☀️ Modo Claro";
+}
+
+botonModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        botonModo.textContent = "☀️ Modo Claro";
+        localStorage.setItem("tema", "oscuro");
+    }else{
+        botonModo.textContent = "🌙 Modo Oscuro";
+        localStorage.setItem("tema", "claro");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

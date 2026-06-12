@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</h1>
+    </header>
+ <!-- Barra de Navegación -->
+        <nav>
+            <ul>
+		<li><a href="index.html">Inicio</a></li>
+	  	<li><a href="introduccion.html">Introducción</a></li>
+		<li><a href="institucion.html">Institución</a></li>
+		<li><a href="actividades.html">Actividades</a></li>
+		<li><a href="resultados.html">Resultados</a></li>
+		<li><a href="conclusiones.html">Conclusiones</a></li>
+		<li><a href="galeria.html">Galería de Imágenes</a></li>
+		<li><a href="contacto.html">Contacto</a></li>
+		
+            </ul>
+        </nav>
+	
+	<button id="modoBtn">🌙 Modo Oscuro</button>
+<main>
+
+<section id="conclusiones">
+    <h2>Conclusiones</h2>
+
+    <p>
+        La estancia académica realizada en la Secretaría de Turismo del Estado de Hidalgo
+        representó una valiosa oportunidad para aplicar y fortalecer los conocimientos
+        adquiridos durante la formación académica en un entorno laboral real. A través
+        de las diversas actividades desarrolladas, fue posible comprender la importancia
+        de la organización, administración y gestión de la información para el adecuado
+        funcionamiento de una institución gubernamental.
+    </p>
+
+    <p>
+        La participación en proyectos como el Tianguis de Pueblos Mágicos, la elaboración
+        de fichas técnicas para la exposición del Tenango más grande del mundo, la
+        recopilación de evidencias en redes sociales y el apoyo en tareas administrativas
+        permitió desarrollar habilidades de responsabilidad, trabajo en equipo, análisis
+        de información y atención al detalle. Asimismo, las actividades relacionadas con
+        la optimización de equipos de cómputo y el manejo de herramientas como Microsoft
+        Excel contribuyeron al fortalecimiento de competencias técnicas importantes para
+        el ámbito profesional.
+    </p>
+
+    <p>
+        Finalmente, esta experiencia permitió conocer de manera más cercana la labor que
+        realiza la Secretaría de Turismo en la promoción y fortalecimiento del turismo en
+        el Estado de Hidalgo, así como la relevancia de cada una de las actividades que
+        contribuyen al cumplimiento de sus objetivos institucionales. Los conocimientos y
+        experiencias obtenidos durante este periodo representan una base sólida para el
+        desarrollo profesional y personal futuro.
+    </p>
+</section>
+
+</main>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Proyecto Académico - Secretaría de Turismo del Estado de Hidalgo. </p>
+    </footer>
+
+<script>
+
+const botonModo = document.getElementById("modoBtn");
+
+if(localStorage.getItem("tema") === "oscuro"){
+    document.body.classList.add("dark-mode");
+    botonModo.textContent = "☀️ Modo Claro";
+}
+
+botonModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        botonModo.textContent = "☀️ Modo Claro";
+        localStorage.setItem("tema", "oscuro");
+    }else{
+        botonModo.textContent = "🌙 Modo Oscuro";
+        localStorage.setItem("tema", "claro");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

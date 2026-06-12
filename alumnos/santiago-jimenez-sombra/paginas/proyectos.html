@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================
+       proyectos.html — Descripción del Proyecto
+       Sistema de Monitoreo Cardíaco con Arduino
+       Estudiante: Santiago Jiménez Sombra | Año: 2026
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Materiales, proceso de construcción y resultados del sistema de monitoreo cardíaco con Arduino MAX30102.">
+  <title>El Proyecto | Monitor Cardíaco Arduino</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Ruta relativa a la hoja de estilos desde /paginas/ -->
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+       ══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">💓</span>
+      ArduinoHR
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="proyectos.html" class="active">Proyecto</a></li>
+      <li><a href="innovacion.html">Innovación</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="btn-theme" onclick="toggleTheme()" title="Modo claro">☀️</button>
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menú">☰</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       ENCABEZADO DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-tag">Documentación Técnica</span>
+      <h1 class="page-title">El Proyecto</h1>
+      <p class="page-subtitle">Materiales, circuito, proceso de construcción y resultados obtenidos con Arduino y el sensor MAX30102.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+       ══════════════════════════════════════════ -->
+  <main class="page-content" id="main-content">
+
+    <!-- ─── Descripción General ─── -->
+    <section aria-labelledby="desc-title">
+      <span class="section-label">Descripción</span>
+      <h2 class="section-title" id="desc-title">Sistema de Monitoreo de Frecuencia Cardíaca</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <p class="prose">
+        El sistema consiste en un <strong>Arduino Uno</strong> conectado al módulo sensor <strong>MAX30102</strong> mediante el protocolo de comunicación I²C. El sensor coloca su ventana óptica sobre la yema del dedo del usuario y emite pulsos de luz roja (660 nm) e infrarroja (880 nm). El tejido vivo absorbe estas longitudes de onda de manera diferente según el volumen de sangre presente en cada latido; esta variación es captada por el fotodetector del MAX30102 y enviada al microcontrolador como señal analógica digitalizada.
+      </p>
+      <p class="prose">
+        El sketch de Arduino procesa esta señal mediante un algoritmo de detección de picos y calcula los <strong>latidos por minuto (BPM)</strong>, que se visualizan en el monitor serial del IDE. El prototipo demuestra el principio de <em>fotopletismografía</em> (PPG) utilizado en los oxímetros de pulso comerciales.
+      </p>
+    </section>
+
+    <hr class="section-sep" aria-hidden="true">
+
+    <!-- ─── Materiales Utilizados ─── -->
+    <section class="mt-3" aria-labelledby="mat-title">
+      <span class="section-label">Hardware</span>
+      <h2 class="section-title" id="mat-title">Materiales Utilizados</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <!-- Cuadrícula de componentes -->
+      <div class="materials-grid" role="list">
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">🔌</div>
+          <p class="material-name">Arduino Uno</p>
+          <p class="material-desc">Microcontrolador ATmega328P, plataforma principal de control y procesamiento.</p>
+        </div>
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">🩸</div>
+          <p class="material-name">Sensor MAX30102</p>
+          <p class="material-desc">Módulo de oximetría y pulso. Comunicación I²C, 3.3 V de alimentación.</p>
+        </div>
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">🧩</div>
+          <p class="material-name">Protoboard</p>
+          <p class="material-desc">Placa de pruebas sin soldadura de 830 puntos para el montaje del circuito.</p>
+        </div>
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">🔗</div>
+          <p class="material-name">Cables Jumper</p>
+          <p class="material-desc">Macho-macho y macho-hembra para interconectar Arduino, sensor y protoboard.</p>
+        </div>
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">💻</div>
+          <p class="material-name">IDE de Arduino</p>
+          <p class="material-desc">Software gratuito para programar, cargar el sketch y visualizar datos en el monitor serial.</p>
+        </div>
+
+        <div class="material-item" role="listitem">
+          <div class="material-icon">🔋</div>
+          <p class="material-name">Cable USB</p>
+          <p class="material-desc">Alimentación del Arduino desde la computadora y transmisión del sketch.</p>
+        </div>
+
+      </div><!-- /materials-grid -->
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Proceso de Construcción ─── -->
+    <section class="mt-3" aria-labelledby="proc-title">
+      <span class="section-label">Paso a paso</span>
+      <h2 class="section-title" id="proc-title">Proceso de Construcción</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="steps-list" role="list">
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">01</div>
+          <div class="step-body">
+            <h3 class="step-title">Identificar los pines del MAX30102</h3>
+            <p class="step-desc">El módulo expone cuatro pines principales: <strong>VIN</strong> (3.3 V o 5 V), <strong>GND</strong>, <strong>SDA</strong> (datos I²C) y <strong>SCL</strong> (reloj I²C). Se revisa la hoja de datos del fabricante para confirmar el pinout.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">02</div>
+          <div class="step-body">
+            <h3 class="step-title">Conectar el circuito en la protoboard</h3>
+            <p class="step-desc">Se usan cables jumper para conectar VIN al pin <strong>3.3 V</strong> del Arduino, GND a tierra, SDA al pin <strong>A4</strong> y SCL al pin <strong>A5</strong> (bus I²C del Arduino Uno).</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">03</div>
+          <div class="step-body">
+            <h3 class="step-title">Instalar la biblioteca SparkFun MAX3010x</h3>
+            <p class="step-desc">Desde el Administrador de Bibliotecas del IDE de Arduino se instala la librería <em>SparkFun MAX3010x Pulse and Proximity Sensor Library</em>, que abstrae la comunicación I²C con el sensor.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">04</div>
+          <div class="step-body">
+            <h3 class="step-title">Programar el sketch de detección de pulso</h3>
+            <p class="step-desc">Se adapta el ejemplo <em>heartRate</em> incluido en la biblioteca. El sketch inicializa el sensor, lee muestras del canal infrarrojo y aplica un algoritmo de detección de picos para calcular los BPM, que luego imprime por el monitor serial.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">05</div>
+          <div class="step-body">
+            <h3 class="step-title">Cargar el sketch y verificar la lectura</h3>
+            <p class="step-desc">Se compila y carga el programa en el Arduino. Se abre el Monitor Serial a 115,200 baudios y se coloca el dedo sobre el sensor. Los valores de BPM deben estabilizarse en 3–5 segundos.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">06</div>
+          <div class="step-body">
+            <h3 class="step-title">Calibrar y registrar resultados</h3>
+            <p class="step-desc">Se comparan las lecturas del prototipo con un oxímetro comercial para validar la precisión. Se documentan los valores obtenidos en distintos estados (reposo, ejercicio suave) y se sacan conclusiones.</p>
+          </div>
+        </div>
+
+      </div><!-- /steps-list -->
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Funcionamiento del Circuito ─── -->
+    <section class="mt-3" aria-labelledby="circ-title">
+      <span class="section-label">Electrónica</span>
+      <h2 class="section-title" id="circ-title">Funcionamiento del Circuito</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="info-grid">
+
+        <div class="info-card accent-cyan">
+          <div class="card-icon">💡</div>
+          <h3 class="card-title">Emisión de Luz</h3>
+          <p class="card-text">El MAX30102 activa alternativamente sus LEDs rojo (660 nm) e infrarrojo (880 nm). Los pulsos de luz se controlan con precisión para minimizar el consumo y el ruido en la lectura.</p>
+        </div>
+
+        <div class="info-card accent-green">
+          <div class="card-icon">📡</div>
+          <h3 class="card-title">Detección Fotoeléctrica</h3>
+          <p class="card-text">Un fotodetector de alta sensibilidad mide la luz reflejada por el tejido. Cada latido provoca un incremento en el volumen sanguíneo que modifica la absorción, creando una onda característica (PPG).</p>
+        </div>
+
+        <div class="info-card accent-purple">
+          <div class="card-icon">🔢</div>
+          <h3 class="card-title">Procesamiento Digital</h3>
+          <p class="card-text">El ADC interno del sensor digitaliza la señal y la envía al Arduino por I²C. El microcontrolador detecta los picos de la onda PPG y calcula el intervalo R-R para obtener los BPM.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Resultados Obtenidos ─── -->
+    <section class="mt-3" aria-labelledby="res-title">
+      <span class="section-label">Resultados</span>
+      <h2 class="section-title" id="res-title">Resultados Obtenidos</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <p class="prose">
+        Las pruebas realizadas con distintos usuarios mostraron que el prototipo es capaz de estabilizar una lectura confiable en aproximadamente <strong>4–6 segundos</strong> tras colocar el dedo sobre el sensor. Los valores registrados se compararon con un oxímetro de pulso de referencia, obteniendo una diferencia promedio de <strong>±3 BPM</strong>, lo cual es aceptable para un prototipo educativo.
+      </p>
+
+      <!-- Tabla de resultados representativos -->
+      <div class="info-card mt-2" style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+          <caption style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-label); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.75rem; text-align:left;">
+            Tabla de Mediciones — Comparativa Prototipo vs Referencia
+          </caption>
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);">
+              <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--cyan); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em;">ESTADO</th>
+              <th style="text-align:center; padding:0.6rem 0.75rem; color:var(--cyan); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em;">PROTOTIPO (BPM)</th>
+              <th style="text-align:center; padding:0.6rem 0.75rem; color:var(--cyan); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em;">REFERENCIA (BPM)</th>
+              <th style="text-align:center; padding:0.6rem 0.75rem; color:var(--cyan); font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.08em;">DIFERENCIA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:0.6rem 0.75rem; color:var(--text-muted);">Reposo</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--green); font-family:var(--font-mono);">68</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">66</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">+2</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:0.6rem 0.75rem; color:var(--text-muted);">Actividad leve</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--green); font-family:var(--font-mono);">84</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">82</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">+2</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; color:var(--text-muted);">Ejercicio moderado</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--green); font-family:var(--font-mono);">113</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">110</td>
+              <td style="padding:0.6rem 0.75rem; text-align:center; color:var(--text-muted); font-family:var(--font-mono);">+3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Galería de Imágenes ─── -->
+    <section class="mt-3" aria-labelledby="gal-title">
+      <span class="section-label">Evidencia Visual</span>
+      <h2 class="section-title" id="gal-title">Imágenes del Proyecto</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="gallery-grid">
+
+        <figure class="gallery-item">
+          <img src="../img/arduino1.jpg" alt="Placa Arduino Uno con sensor MAX30102 conectado mediante cables jumper" loading="lazy">
+          <figcaption class="gallery-caption">Arduino Uno + MAX30102</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../img/arduino2.jpeg" alt="Circuito completo montado en protoboard" loading="lazy">
+          <figcaption class="gallery-caption">Circuito en Protoboard</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="../img/arduino3.png" alt="Monitor serial del IDE de Arduino mostrando lecturas de BPM" loading="lazy">
+          <figcaption class="gallery-caption">Lecturas en Monitor Serial</figcaption>
+        </figure>
+
+      </div><!-- /gallery-grid -->
+    </section>
+
+  </main><!-- /page-content -->
+
+  <!-- ══════════════════════════════════════════
+       PIE DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-logo">💓 ArduinoHR — Monitor Cardíaco</p>
+      <p class="footer-text">Proyecto desarrollado por <strong>Santiago Jiménez Sombra</strong> para las materias de Páginas Web y Emprendimiento e Innovación.</p>
+      <p class="footer-year">© 2026 — Uso educativo</p>
+    </div>
+  </footer>
+
+  <!-- Toast de notificaciones -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Script (desde paginas/ se sube un nivel) -->
+  <script src="../js/script.js"></script>
+
+</body>
+</html>

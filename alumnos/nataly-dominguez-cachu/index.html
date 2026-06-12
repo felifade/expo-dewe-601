@@ -3,77 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Nataly Dominguez Cachú</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+    <title>Timbre Inteligente con SP32 | Proyecto Integrador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+<script src="js/modo-oscuro.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Nataly Dominguez Cachú</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/nataly-dominguez-cachu/
-        </div>
-    </div>
+<header class="hero">
+    <h1>🔔 Digital Bell System</h1>
+    <h3>Proyecto de automatización mediante Arduino</h3>
+    <button id="modo-btn" class="btn-modo">🌙</button>
+</header>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">SP32<span>Proyect</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#proyecto">El Proyecto</a></li>
+                <li><a href="#componentes">Componentes</a></li>
+                <li><a href="#funcionamiento">¿Cómo funciona?</a></li>
+                <li><a href="#codigo">Código</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-texto">
+                <h1>Timbre Inteligente con SP32</h1>
+                <p>Un proyecto de Emprendimiento e Innovación para modernizar los timbres tradicionales usando tecnología accesible.</p>
+                <a href="#proyecto" class="btn">Ver proyecto</a>
+            </div>
+        <img src="img/nst.jpg" alt="Circuito del timbre con SP32" class="hero-img">
+        </section>
+
+        <section id="proyecto" class="seccion">
+            <h2>Descripción del Proyecto</h2>
+            <p>Este proyecto consiste en el diseño y programación de un timbre electrónico controlado por Arduino Uno. Al presionar un pulsador, el sistema activa un buzzer que emite un sonido configurable. El objetivo es aprender sobre entradas digitales, salidas de audio y programación básica en Arduino.</p>
+        </section>
+
+        <section id="componentes" class="seccion bg-gris">
+            <h2>Materiales y Componentes</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>sp32</h3>
+                    <p>Microcontrolador principal que procesa la señal del botón y activa el buzzer.</p>
+ <img src="img/arduino.jpg" alt="Circuito del timbre con SP32" class="hero-img" style="width:5cm; height:5cm;">
+                </div>
+                <div class="card">
+                    <h3>Buzzer</h3>
+                    <p>Componente que emite el sonido al recibir voltaje desde SP32.</p>
+<img src="img/sonido.jpg" alt="Circuito del timbre con SP32" class="hero-img" style="width:5cm; height:5cm;">
+                </div>
+                <div class="card">
+                    <h3>Pulsador</h3>
+                    <p>Botón que actúa como interruptor para activar el timbre.</p>
+<img src="img/boton.jpg" alt="Circuito del timbre con SP32" class="hero-img" style="width:5cm; height:5cm;">
+                </div>
+                <div class="card">
+                    <h3>dupont</h3>
+                    <p>Cables de 10kΩ para el pulsador y proteger el circuito.</p>
+<img src="img/jompers.jpg" alt="Circuito del timbre con SP32" class="hero-img" style="width:5cm; height:5cm;">
+                </div>
+            </div>
+        </section>
+
+        <section id="funcionamiento" class="seccion">
+            <h2>¿Cómo funciona?</h2>
+            <ol class="pasos">
+                <li><strong>Entrada:</strong> Al presionar el pulsador, se envía una señal HIGH al pin digital 2 de SP32.</li>
+                <li><strong>Procesamiento:</strong> SP32 detecta el cambio y ejecuta la función tone().</li>
+                <li><strong>Salida:</strong> El buzzer conectado al pin 8 emite un sonido de 1000Hz durante 0.5 segundos.</li>
+            </ol>
+             <img src="img/tinkercat.jpg" alt="Circuito del timbre con SP32" class="hero-img">
+        </section>
+
+        <section id="codigo" class="seccion bg-gris">
+    <h2>Código Fuente - Alarma Escolar</h2>
+    <pre><code>#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+const int buzzer = 4;
+unsigned long tiempoInicio;
+bool alarma1 = false;
+bool alarma2 = false;
+
+void setup() {
+  Wire.begin(21, 22); // SDA=21, SCL=22 para ESP32
+  pinMode(buzzer, OUTPUT);
+  lcd.init();
+  lcd.backlight();
+  lcd.print("Alarma escolar");
+  tiempoInicio = millis();
+}
+
+void loop() {
+  unsigned long segundos = (millis() - tiempoInicio) / 1000;
+  
+  // Primera alarma: 10 segundos
+  if (segundos >= 10 && !alarma1) {
+    alarma1 = true;
+    lcd.clear();
+    lcd.print("Primer Alarma");
+    tone(buzzer, 3000);
+    delay(1000);
+    noTone(buzzer);
+  }
+  
+  // Segunda alarma: 20 segundos  
+  if (segundos >= 20 && !alarma2) {
+    alarma2 = true;
+    lcd.clear();
+    lcd.print("Segunda Alarma");
+    for (int i = 0; i < 2; i++) {
+      tone(buzzer, 1000);
+      delay(500);
+      noTone(buzzer);
+      delay(500);
+    }
+  }
+  delay(100);
+}</code></pre>
+</section>
+    </main>
+
+    <footer>
+        <p>Proyecto Integrador - Semana 14 |Nataly Dominguez | 5 de Junio 2026</p>
+        <p>Elaborado con HTML, CSS y JavaScript para la materia de Emprendimiento e Innovación</p>
+    </footer>
+
+    
 </body>
 </html>

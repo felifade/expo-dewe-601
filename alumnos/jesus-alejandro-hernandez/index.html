@@ -1,79 +1,183 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Jesús Alejandro Hernández</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timbre Inteligente · Arduino</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Jesús Alejandro Hernández</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/jesus-alejandro-hernandez/
-        </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="nav-icon">🔔</span>
+      <span class="brand-text">TimbreIQ</span>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="paginas/desarrollo.html">Desarrollo</a></li>
+      <li><a href="paginas/galeria.html">Galería</a></li>
+      <li><a href="paginas/acerca.html">Acerca de</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon">☀️</span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="circuit-lines"></div>
+      <div class="particle" style="--x:10%;--y:20%;--d:3s"></div>
+      <div class="particle" style="--x:80%;--y:15%;--d:4s"></div>
+      <div class="particle" style="--x:55%;--y:70%;--d:2.5s"></div>
+      <div class="particle" style="--x:25%;--y:80%;--d:5s"></div>
+      <div class="particle" style="--x:90%;--y:60%;--d:3.5s"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Proyecto Arduino · Emprendimiento e Innovación</p>
+      <h1 class="hero-title">
+        Timbre<br/><span class="accent">Inteligente</span>
+      </h1>
+      <p class="hero-desc">
+        Un sistema domótico innovador que combina conectividad, seguridad y
+        automatización mediante la plataforma Arduino.
+      </p>
+      <div class="hero-btns">
+        <a href="paginas/desarrollo.html" class="btn btn-primary">Ver Desarrollo</a>
+        <a href="paginas/acerca.html" class="btn btn-outline">Acerca del equipo</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="arduino-card">
+        <div class="arduino-board">
+          <div class="board-label">Arduino UNO</div>
+          <div class="pins">
+            <div class="pin"></div><div class="pin"></div><div class="pin"></div>
+            <div class="pin"></div><div class="pin"></div><div class="pin"></div>
+          </div>
+          <div class="chip">ATmega328P</div>
+          <div class="led-row">
+            <div class="led led-on" title="PWR"></div>
+            <div class="led led-blink" title="TX"></div>
+            <div class="led" title="RX"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CARACTERÍSTICAS -->
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title">¿Qué hace nuestro timbre?</h2>
+      <div class="features-grid">
+        <div class="feature-card" data-delay="0">
+               <div class="feature-card" data-delay="200">
+          <div class="feature-icon">🔊</div>
+          <h3>Zumbido</h3>
+          <p>Al tocar el boton el zumbador suena.</p>
+        </div>
+             </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTES INTERACTIVOS -->
+  <section class="section section-alt" id="components">
+    <div class="container">
+      <h2 class="section-title">Componentes del proyecto</h2>
+      <p class="section-sub">Haz clic en cada componente para ver más información</p>
+      <div class="components-wrapper">
+        <div class="comp-list">
+          <button class="comp-btn active" data-comp="arduino">Arduino UNO</button>
+          <button class="comp-btn" data-comp="esp">Cables Macho a macho</button>
+          <button class="comp-btn" data-comp="pir">Boton</button>
+          <button class="comp-btn" data-comp="buzzer">Zumbador</button>
+          <button class="comp-btn" data-comp="cam">moderboarth</button>
+        
+        </div>
+        <div class="comp-info" id="compInfo">
+          <div class="comp-detail active" id="arduino">
+            <h3>🔲 Arduino UNO</h3>
+            <p>El cerebro del proyecto. Microcontrolador ATmega328P con 14 pines digitales y 6 analógicos. Gestiona todos los periféricos y la lógica del sistema.</p>
+            <ul><li>Voltaje: 5V</li><li>Clock: 16 MHz</li><li>Flash: 32 KB</li></ul>
+          </div>
+          <div class="comp-detail" id="esp">
+            <h3>📡Cables Macho a macho</h3>
+            <p>Los cables macho a macho son un tipo de cable donde ambos extremos tienen conectores macho, diseñados para insertarse en conectores hembra.</p>
+            <ul><li>Protocolo: WiFi 802.11 b/g/n</li><li>Voltaje: 3.3V</li><li>Freq: 2.4 GHz</li></ul>
+          </div>
+          <div class="comp-detail" id="pir">
+            <h3>🔍 Boton</h3>
+            <p>Detecta movimiento por infrarrojos pasivos. Activa el sistema cuando hay presencia frente a la puerta antes de que se presione el timbre.</p>
+            <ul><li>Rango: hasta 7 metros</li><li>Ángulo: 120°</li><li>Voltaje: 5V - 20V</li></ul>
+          </div>
+          <div class="comp-detail" id="buzzer">
+            <h3>🔔 Zumbador</h3>
+            <p>Genera el sonido del timbre.Un zumbador o mejor conocido como buzzer (en ingles) es un pequeño transductor capaz de convertir la energía eléctrica en sonido. </p>
+            <ul><li>Frecuencia: 2300 Hz</li><li>Voltaje: 3.5V - 5V</li><li>Corriente: ≤ 30mA</li></ul>
+          </div>
+          <div class="comp-detail" id="cam">
+            <h3>📷 moderboarth</h3>
+            <p>Captura imagen del visitante al momento de presionar el timbre. La imagen se procesa y envía como notificación al smartphone del residente.</p>
+            <ul><li>Resolución: VGA (640×480)</li><li>Interfaz: SCCB/I2C</li><li>Voltaje: 3.3V</li></ul>
+          </div>
+                </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num" data-target="5">0</span>
+          <span class="stat-label">Componentes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="1">0</span>
+          <span class="stat-label">Mese de desarrollo</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Integrantes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="98">0</span>
+          <span class="stat-label">% Funcional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>¿Quieres saber cómo lo construimos?</h2>
+        <p>Explora el proceso completo de desarrollo, el código y los circuitos.</p>
+        <a href="paginas/desarrollo.html" class="btn btn-primary">Ver proceso de desarrollo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>🔔 <strong>TimbreIQ</strong> · Proyecto Arduino · Emprendimiento e Innovación</p>
+      <p class="footer-sub">Desarrollado con ❤️ y código · 2025</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,330 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #f9a8d4;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #fbcfe8;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav-links a:hover {
+    color: #fbcfe8;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 5% 60px;
+    gap: 2rem;
+    min-height: 90vh;
+}
+
+.hero-texto h1 {
+    font-size: 3rem;
+    color: #f9a8d4;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.hero-texto p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.hero-img {
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.btn {
+    display: inline-block;
+    background: #f472b6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ec4899;
+    transform: translateY(-2px);
+}
+
+/* Secciones */
+.seccion {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.seccion h2 {
+    font-size: 2.2rem;
+    color: #f9a8d4;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 900;
+}
+
+.bg-gris {
+    background: #f1f5f9;
+}
+
+/* Cards componentes */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: #f472b6;
+    margin-bottom: 0.5rem;
+}
+
+/* Lista de pasos */
+.pasos {
+    max-width: 700px;
+    margin: 2rem auto;
+    font-size: 1.1rem;
+}
+
+.pasos li {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+/* Imágenes */
+.img-centro {
+    display: block;
+    max-width: 100%;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+
+/* Código */
+pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 2rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+}
+
+/* Footer */
+footer {
+    background: #f9a8d4;
+    color: white;
+    text-align: center;
+    padding: 2rem 5%;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+/* Botón modo oscuro */
+.btn-modo {
+    background: none;
+    border: 2px solid #60a5fa;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-modo:hover {
+    background: #60a5fa;
+    transform: rotate(20deg);
+}
+
+/* Variables de color */
+/* MODO NORMAL ROSA */
+
+/* =========================
+   VARIABLES DE COLOR
+========================= */
+
+:root{
+    --bg:#fff1f7;
+    --bg-gris:#ffe4ef;
+    --texto:#374151;
+    --card:#ffffff;
+    --borde:#f9a8d4;
+    --navbar:#f9a8d4;
+}
+
+/* =========================
+   MODO OSCURO
+========================= */
+
+body.modo-oscuro{
+    --bg:#0f071a;
+    --bg-gris:#1e1035;
+    --texto:#f5f3ff;
+    --card:#2a1748;
+    --borde:#8b5cf6;
+    --navbar:#1a102c;
+}
+
+/* =========================
+   APLICACIÓN DE COLORES
+========================= */
+
+body{
+    background:var(--bg);
+    color:var(--texto);
+    transition:all .4s ease;
+}
+
+.bg-gris{
+    background:var(--bg-gris);
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--borde);
+    transition:.4s;
+}
+
+.navbar{
+    background:var(--navbar);
+    border-bottom:1px solid var(--borde);
+    transition:.4s;
+}
+
+.nav-links a{
+    color:var(--texto);
+}
+
+.logo{
+    color:white;
+}
+
+.logo span{
+    color:#fbcfe8;
+}
+
+/* TITULOS */
+
+.hero-texto h1,
+.seccion h2{
+    transition:.4s;
+}
+
+body.modo-oscuro .hero-texto h1,
+body.modo-oscuro .seccion h2,
+body.modo-oscuro .card h3{
+    color:#c084fc;
+}
+
+/* BOTONES */
+
+.btn{
+    transition:.3s;
+}
+
+body.modo-oscuro .btn{
+    background:#7c3aed;
+}
+
+body.modo-oscuro .btn:hover{
+    background:#6d28d9;
+}
+
+/* FOOTER */
+
+body.modo-oscuro footer{
+    background:#1a102c;
+}
+
+/* CÓDIGO */
+
+pre{
+    background:#0f172a;
+    border:1px solid var(--borde);
+}
+
+/* =========================
+   BOTÓN MODO OSCURO
+========================= */
+
+.btn-modo{
+    position:fixed;
+    top:15px;
+    right:20px;
+    z-index:9999;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#7c3aed;
+    color:white;
+
+    font-size:1.2rem;
+    cursor:pointer;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+
+    transition:.3s;
+}
+
+.btn-modo:hover{
+    transform:scale(1.1);
+    background:#6d28d9;
+}

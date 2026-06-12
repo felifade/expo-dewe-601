@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería · TimbreIQ</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/navbar.css"/>
+  <link rel="stylesheet" href="../css/pages.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="nav-icon">🔔</span>
+      <span class="brand-text">TimbreIQ</span>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="desarrollo.html">Desarrollo</a></li>
+      <li><a href="galeria.html" class="active">Galería</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle"><span class="theme-icon">☀️</span></button>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-tag">Visual</p>
+      <h1 class="page-title">Galería del <span class="accent">Proyecto</span></h1>
+      <p class="page-desc">Fotos del proceso de construcción y el prototipo terminado.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="proceso">Proceso</button>
+        <button class="filter-btn" data-filter="circuito">Circuito</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- Tarjetas de galería (con ilustraciones SVG placeholders) -->
+      
+
+        <div class="gallery-item" data-cat="circuito">
+          <div class="gallery-img">
+<img src="../imagenes/proye.jpeg" alt="Arduino" width="400" height="300">
+              <text x="200" y="235" text-anchor="middle" fill="#7b8ab8" font-family="monospace" font-size="12">Circuito en breadboard</text>
+            </svg>
+          </div>
+          <div class="gallery-overlay">
+            <span>⚡ Circuito en breadboard</span>
+          </div>
+        </div>
+              <div class="gallery-item" data-cat="proceso">
+          <div class="gallery-img">
+<img src="../imagenes/ide.png" alt="Proyecto Arduino" width="400" height="300">
+              <text x="200" y="225" text-anchor="middle" fill="#7b8ab8" font-family="monospace" font-size="12">Código en Arduino IDE</text>
+            </svg>
+          </div>
+          <div class="gallery-overlay">
+            <span>💻 Código en Arduino IDE</span>
+          </div>
+        </div>
+
+             </div>
+
+               <div class="gallery-overlay">
+            <span>📱 App móvil</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🔔 <strong>TimbreIQ</strong> · Proyecto Arduino · Emprendimiento e Innovación</p>
+      <p class="footer-sub">Desarrollado con ❤️ y código · 2025</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+</html>

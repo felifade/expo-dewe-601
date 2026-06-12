@@ -165,10 +165,10 @@
   }
 
   if (document.readyState === 'complete') {
-    setTimeout(finishIntro, 5200);
+    setTimeout(finishIntro, 2000);
   } else {
     window.addEventListener('load', function () {
-      setTimeout(finishIntro, 5200);
+      setTimeout(finishIntro, 2000);
     });
   }
 })();
@@ -327,7 +327,7 @@ function bindGalleryButtons() {
 bindFileTrigger();
 setupImageInput('photoFileInput', 'studentPhoto');
 setupImageInput('empresaFileInput', 'empresaPhoto', 'empresaPlaceholder');
-setupImageInput('empLogoInput', 'empLogoImg', 'empLogoPlaceholder');
+// setupImageInput('empLogoInput', 'empLogoImg', 'empLogoPlaceholder');
 bindGalleryButtons();
 
   /* ═══════════════════════════════════════════════════

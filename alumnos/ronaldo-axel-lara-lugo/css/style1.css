@@ -574,7 +574,7 @@ body.intro-active {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1862,6 +1862,18 @@ html.light-mode .gta-name-line { color: #111820; }
 html.light-mode .hero-main-title { color: #fff; }
 html.light-mode .spark { opacity: 0.45 !important; }
 html.light-mode body::after { opacity: 0.3; }
+html.light-mode [style*="color:#fff"],
+html.light-mode [style*="color: #fff"] { color: #111820 !important; }
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 { color: #111820 !important; }
+html.light-mode .cierre-title { color: #111820 !important; background: linear-gradient(135deg, var(--red) 0%, #111820 50%, var(--cyan) 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: #111820 !important; background-clip: text !important; }
+html.light-mode .cierre-sub { color: #111820 !important; }
+html.light-mode .tl-heading { color: #111820 !important; }
+html.light-mode [style*="rgba(221,228,240"] { color: #111820 !important; }
 
 /* ── BOTÓN ── */
 #theme-btn {
@@ -1891,6 +1903,11 @@ html.light-mode #theme-btn {
   border-color: rgba(0,119,170,0.3);
 }
 html.light-mode #theme-btn:hover { background: rgba(0,119,170,0.12); }
+html.light-mode .section-title { color: #111820 !important; }
+html.light-mode .cierre-title { color: #111820 !important; background: linear-gradient(135deg, var(--red) 0%, #111820 50%, var(--cyan) 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: #111820 !important; background-clip: text !important; }
+html.light-mode .cierre-sub { color: #111820 !important; }
+html.light-mode .tl-heading { color: #111820 !important; }
+html.light-mode p { color: #111820 !important; }
 
 #ev-lb-close{
     position: absolute;

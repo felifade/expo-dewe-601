@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================
+       innovacion.html — Innovación Tecnológica
+       Sistema de Monitoreo Cardíaco con Arduino
+       Estudiante: Rubí Esmeralda Lorenzo Hernández | Año: 2026
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Innovación tecnológica aplicada a la salud. Beneficios, aplicaciones y mejoras futuras del sistema de monitoreo cardíaco con Arduino.">
+  <title>Innovación | Monitor Cardíaco Arduino</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+       ══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">💓</span>
+      ArduinoHR
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="proyectos.html">Proyecto</a></li>
+      <li><a href="innovacion.html" class="active">Innovación</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="btn-theme" onclick="toggleTheme()" title="Modo claro">☀️</button>
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menú">☰</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       ENCABEZADO DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-tag">Emprendimiento e Innovación</span>
+      <h1 class="page-title">Innovación y Tecnología</h1>
+      <p class="page-subtitle">Cómo Arduino y el monitoreo cardíaco abren nuevas posibilidades educativas, médicas y sociales.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+       ══════════════════════════════════════════ -->
+  <main class="page-content" id="main-content">
+
+    <!-- ─── Innovación Tecnológica en Salud ─── -->
+    <section aria-labelledby="inno-title">
+      <span class="section-label">Contexto</span>
+      <h2 class="section-title" id="inno-title">Innovación Tecnológica Aplicada a la Salud</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <p class="prose">
+        La convergencia entre la electrónica de bajo costo, el software de código abierto y la conectividad digital ha dado lugar a una nueva generación de dispositivos de salud. Proyectos como este demuestran que ya no es necesario contar con grandes presupuestos para desarrollar herramientas de monitoreo funcionales. El <strong>Arduino</strong> y el <strong>sensor MAX30102</strong> representan una propuesta accesible para explorar los principios de la <em>fotopletismografía</em> en un entorno escolar o doméstico.
+      </p>
+      <p class="prose">
+        Este enfoque se alinea con el movimiento global de <strong>salud abierta</strong> (<em>open health</em>), que busca poner en manos de la ciudadanía herramientas antes reservadas al ámbito hospitalario, favoreciendo la prevención y el autocuidado.
+      </p>
+    </section>
+
+    <hr class="section-sep" aria-hidden="true">
+
+    <!-- ─── Beneficios del Proyecto ─── -->
+    <section class="mt-3" aria-labelledby="ben-title">
+      <span class="section-label">Ventajas</span>
+      <h2 class="section-title" id="ben-title">Beneficios del Proyecto</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="inno-grid">
+
+        <!-- Educativo -->
+        <div class="inno-card">
+          <div class="inno-icon">🎓</div>
+          <h3 class="inno-title">Aprendizaje Práctico</h3>
+          <p class="inno-text">
+            El proyecto integra conceptos de electrónica, programación en C++, biología cardiovascular y diseño de circuitos en un solo prototipo funcional. El estudiante aprende haciendo, lo cual potencia la retención del conocimiento.
+          </p>
+        </div>
+
+        <!-- Costo -->
+        <div class="inno-card green-top">
+          <div class="inno-icon">💰</div>
+          <h3 class="inno-title">Bajo Costo</h3>
+          <p class="inno-text">
+            El costo total del hardware es inferior a 15 USD, frente a cientos de dólares que cuesta un monitor de signos vitales clínico. Esto permite replicar el proyecto en cualquier institución educativa sin barreras económicas.
+          </p>
+        </div>
+
+        <!-- Accesibilidad -->
+        <div class="inno-card purple-top">
+          <div class="inno-icon">🌎</div>
+          <h3 class="inno-title">Accesibilidad Universal</h3>
+          <p class="inno-text">
+            Las comunidades rurales o con acceso limitado a servicios médicos pueden beneficiarse de dispositivos de monitoreo construidos localmente para seguimiento básico de signos vitales.
+          </p>
+        </div>
+
+        <!-- Escalabilidad -->
+        <div class="inno-card">
+          <div class="inno-icon">📈</div>
+          <h3 class="inno-title">Escalabilidad</h3>
+          <p class="inno-text">
+            El prototipo puede ampliarse para incluir conectividad WiFi (ESP8266/ESP32), almacenamiento de datos en la nube, alertas por smartphone o integración con plataformas de telemedicina.
+          </p>
+        </div>
+
+        <!-- Sostenibilidad -->
+        <div class="inno-card green-top">
+          <div class="inno-icon">♻️</div>
+          <h3 class="inno-title">Código Abierto</h3>
+          <p class="inno-text">
+            Todo el software y la documentación del proyecto están disponibles libremente. Cualquier persona puede replicarlo, mejorarlo y adaptarlo, creando un ecosistema colaborativo de innovación.
+          </p>
+        </div>
+
+        <!-- Conciencia de salud -->
+        <div class="inno-card purple-top">
+          <div class="inno-icon">❤️</div>
+          <h3 class="inno-title">Conciencia de Salud</h3>
+          <p class="inno-text">
+            Al construir su propio monitor, el estudiante desarrolla una relación más consciente con su salud cardiovascular y comprende qué significa una frecuencia cardíaca normal o anormal.
+          </p>
+        </div>
+
+      </div><!-- /inno-grid -->
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Aplicaciones Educativas y Médicas ─── -->
+    <section class="mt-3" aria-labelledby="app-title">
+      <span class="section-label">Uso Práctico</span>
+      <h2 class="section-title" id="app-title">Aplicaciones Educativas y Médicas</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="info-grid">
+
+        <div class="info-card accent-cyan">
+          <div class="card-icon">🏫</div>
+          <h3 class="card-title">Laboratorios Escolares</h3>
+          <p class="card-text">El circuito puede usarse como práctica de biofísica o electrónica en escuelas preparatorias y universidades técnicas. Es una forma tangible de conectar la teoría cardiovascular con la ingeniería.</p>
+        </div>
+
+        <div class="info-card accent-green">
+          <div class="card-icon">🏥</div>
+          <h3 class="card-title">Clínicas Comunitarias</h3>
+          <p class="card-text">En entornos con recursos limitados, un monitor de pulso basado en Arduino puede servir para triage básico, seguimiento de pacientes crónicos o tamizaje durante campañas de salud.</p>
+        </div>
+
+        <div class="info-card accent-purple">
+          <div class="card-icon">🤸</div>
+          <h3 class="card-title">Entrenamiento Deportivo</h3>
+          <p class="card-text">Un prototipo portátil podría usarse en escuelas de deportes para medir la respuesta cardíaca durante el ejercicio, ayudando a los entrenadores a personalizar las rutinas de los alumnos.</p>
+        </div>
+
+        <div class="info-card accent-cyan">
+          <div class="card-icon">👵</div>
+          <h3 class="card-title">Adultos Mayores</h3>
+          <p class="card-text">Un dispositivo simple conectado a un buzzer podría alertar a cuidadores si la frecuencia cardíaca de un adulto mayor cae por debajo o supera umbrales definidos.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Posibles Mejoras Futuras ─── -->
+    <section class="mt-3" aria-labelledby="fut-title">
+      <span class="section-label">Visión Futura</span>
+      <h2 class="section-title" id="fut-title">Posibles Mejoras Futuras</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="steps-list" role="list">
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">V2</div>
+          <div class="step-body">
+            <h3 class="step-title">Pantalla OLED integrada</h3>
+            <p class="step-desc">Agregar un display OLED 128×64 para mostrar los BPM directamente en el dispositivo, sin necesidad de un computador.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">V3</div>
+          <div class="step-body">
+            <h3 class="step-title">Conectividad WiFi y almacenamiento en la nube</h3>
+            <p class="step-desc">Migrar a una placa ESP32 para enviar datos a un servidor MQTT o plataforma como ThingSpeak, permitiendo registrar y graficar el historial de frecuencia cardíaca a lo largo del tiempo.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">V4</div>
+          <div class="step-body">
+            <h3 class="step-title">Aplicación móvil complementaria</h3>
+            <p class="step-desc">Desarrollar una app en MIT App Inventor o Flutter que reciba los datos vía Bluetooth y los presente con gráficas de tendencia y alertas configurables.</p>
+          </div>
+        </div>
+
+        <div class="step-item" role="listitem">
+          <div class="step-num" aria-hidden="true">V5</div>
+          <div class="step-body">
+            <h3 class="step-title">Inteligencia Artificial para detección de anomalías</h3>
+            <p class="step-desc">Incorporar un modelo de machine learning embebido (TinyML) capaz de identificar patrones irregulares en la onda PPG y alertar sobre posibles arritmias.</p>
+          </div>
+        </div>
+
+      </div><!-- /steps-list -->
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Arduino en el Aprendizaje Tecnológico ─── -->
+    <section class="mt-3" aria-labelledby="ard-title">
+      <span class="section-label">Plataforma Open Source</span>
+      <h2 class="section-title" id="ard-title">Importancia de Arduino en el Aprendizaje Tecnológico</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <p class="prose">
+        Arduino ha transformado la manera en que millones de estudiantes, artistas y emprendedores se acercan a la electrónica y la programación. Su filosofía de <strong>hardware libre</strong> y su ecosistema de bibliotecas de código abierto eliminan las barreras técnicas que históricamente separaban el prototipado profesional del aprendizaje escolar.
+      </p>
+      <p class="prose">
+        Para este proyecto, Arduino fue la plataforma ideal: permite iterar rápidamente, cuenta con documentación abundante en español y su comunidad global produce soluciones a prácticamente cualquier problema de hardware. El uso del MAX30102 con la biblioteca de SparkFun exemplifica cómo la comunidad open-source amplifica las capacidades del hardware estándar.
+      </p>
+
+      <div class="info-grid mt-2">
+
+        <div class="info-card accent-cyan">
+          <div class="card-icon">🌐</div>
+          <h3 class="card-title">Comunidad Global</h3>
+          <p class="card-text">Miles de tutoriales, foros y proyectos compartidos convierten a Arduino en el ecosistema más accesible para aprender electrónica desde cero.</p>
+        </div>
+
+        <div class="info-card accent-green">
+          <div class="card-icon">🔁</div>
+          <h3 class="card-title">Prototipado Rápido</h3>
+          <p class="card-text">La facilidad para probar ideas, modificar el código y observar resultados en segundos fomenta el pensamiento experimental y la resolución creativa de problemas.</p>
+        </div>
+
+        <div class="info-card accent-purple">
+          <div class="card-icon">🚀</div>
+          <h3 class="card-title">Puerta al Mundo STEM</h3>
+          <p class="card-text">Arduino introduce a los estudiantes en ciencias, tecnología, ingeniería y matemáticas de una forma práctica y motivadora, conectando teoría con resultados físicos inmediatos.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="section-sep mt-3" aria-hidden="true">
+
+    <!-- ─── Conclusiones ─── -->
+    <section class="mt-3" aria-labelledby="conc-title">
+      <span class="section-label">Reflexión Final</span>
+      <h2 class="section-title" id="conc-title">Conclusiones</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="info-card" style="padding: 2rem 2.25rem;">
+        <p class="prose" style="margin-bottom: 1rem;">
+          Este proyecto demuestra que la intersección entre tecnología de bajo costo y necesidades reales de salud puede ser abordada desde el aula. La construcción del monitor de frecuencia cardíaca con Arduino y MAX30102 no solo generó aprendizajes técnicos en electrónica y programación, sino que también abrió una conversación sobre el rol que la tecnología ciudadana puede jugar en el bienestar comunitario.
+        </p>
+        <p class="prose" style="margin-bottom: 1rem;">
+          El proceso completo —desde investigar los principios de fotopletismografía hasta conectar los cables en la protoboard y depurar el código— fomentó habilidades de pensamiento crítico, resolución de problemas y comunicación técnica que trascienden la materia de Emprendimiento e Innovación.
+        </p>
+        <p class="prose" style="margin-bottom: 0;">
+          Se concluye que proyectos de este tipo tienen un alto potencial de impacto si se escalan y adaptan correctamente, y que el camino del prototipo escolar al producto funcional es perfectamente viable con las herramientas disponibles hoy.
+        </p>
+      </div>
+
+    </section>
+
+  </main><!-- /page-content -->
+
+  <!-- ══════════════════════════════════════════
+       PIE DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-logo">💓 ArduinoHR — Monitor Cardíaco</p>
+      <p class="footer-text">Proyecto desarrollado por <strong>Rubí Esmeralda Lorenzo Hernández</strong> para las materias de Páginas Web y Emprendimiento e Innovación.</p>
+      <p class="footer-year">© 2026 — Uso educativo</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/script.js"></script>
+
+</body>
+</html>

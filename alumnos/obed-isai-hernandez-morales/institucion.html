@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</h1>
+    </header>
+ <!-- Barra de Navegación -->
+        <nav>
+            <ul>
+		<li><a href="index.html">Inicio</a></li>
+	  	<li><a href="introduccion.html">Introducción</a></li>
+		<li><a href="institucion.html">Institución</a></li>
+		<li><a href="actividades.html">Actividades</a></li>
+		<li><a href="resultados.html">Resultados</a></li>
+		<li><a href="conclusiones.html">Conclusiones</a></li>
+		<li><a href="galeria.html">Galería de Imágenes</a></li>
+		<li><a href="contacto.html">Contacto</a></li>
+		
+            </ul>
+        </nav>
+	
+	<button id="modoBtn">🌙 Modo Oscuro</button>
+<main>
+
+    <section id="institucion">
+        <h2>Información de la Institución</h2>
+
+        <p>
+            La Secretaría de Turismo del Estado de Hidalgo es la dependencia encargada
+            de planear, coordinar y promover el desarrollo turístico de la entidad.
+            Su labor se enfoca en impulsar el aprovechamiento sostenible de los recursos
+            turísticos, fortalecer la competitividad de los destinos y contribuir al
+            crecimiento económico de las distintas regiones del estado.
+        </p>
+
+        <article>
+            <h3>Misión</h3>
+            <p>
+                Impulsar el desarrollo turístico sustentable del Estado de Hidalgo,
+                promoviendo sus atractivos naturales, culturales, históricos y
+                gastronómicos, fortaleciendo la economía local y mejorando la calidad
+                de vida de la población.
+            </p>
+        </article>
+
+        <article>
+            <h3>Visión</h3>
+            <p>
+                Consolidar a Hidalgo como un destino turístico competitivo,
+                innovador y reconocido a nivel nacional e internacional,
+                ofreciendo experiencias de calidad que contribuyan al desarrollo
+                sostenible del estado.
+            </p>
+        </article>
+
+        <article>
+            <h3>Objetivos</h3>
+            <ul>
+                <li>Promover los destinos turísticos del estado.</li>
+                <li>Fortalecer la infraestructura turística.</li>
+                <li>Impulsar el turismo sustentable.</li>
+                <li>Mejorar la experiencia de los visitantes.</li>
+                <li>Fomentar la inversión en proyectos turísticos.</li>
+                <li>Difundir la riqueza cultural y natural de Hidalgo.</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Funciones Principales</h3>
+            <ul>
+                <li>Diseñar estrategias de promoción turística.</li>
+                <li>Coordinar eventos y actividades turísticas.</li>
+                <li>Brindar información y orientación a visitantes.</li>
+                <li>Apoyar el desarrollo de productos turísticos.</li>
+                <li>Promover la capacitación en el sector turístico.</li>
+            </ul>
+        </article>
+
+    </section>
+
+</main>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Proyecto Académico - Secretaría de Turismo del Estado de Hidalgo. </p>
+    </footer>
+
+<script>
+
+const botonModo = document.getElementById("modoBtn");
+
+if(localStorage.getItem("tema") === "oscuro"){
+    document.body.classList.add("dark-mode");
+    botonModo.textContent = "☀️ Modo Claro";
+}
+
+botonModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        botonModo.textContent = "☀️ Modo Claro";
+        localStorage.setItem("tema", "oscuro");
+    }else{
+        botonModo.textContent = "🌙 Modo Oscuro";
+        localStorage.setItem("tema", "claro");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

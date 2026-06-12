@@ -1,79 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Abdiel Fonseca Raymundo</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(217, 119, 6, 0.15);
-            color: #f59e0b;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(217, 119, 6, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio Profesional - Abdiel Fonseca</title>
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="badge">Formación Dual</div>
-        <h1>Abdiel Fonseca Raymundo</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/abdiel-fonseca-raymundo/
+
+  <div class="floating-art-background">
+    <img src="img/art1.jpg" class="art-float" alt="Arte Home">
+  </div>
+
+  <div class="glass-container">
+    
+    <nav class="premium-nav">
+      <ul>
+        <li><a href="index.html" class="active">home</a></li>
+        <li><a href="paginas/practicas.html">prácticas duales</a></li>
+        <li><a href="paginas/proyectos.html">proyectos ti</a></li>
+        <li><a href="paginas/contacto.html">contacto</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-btn">Modo Claro</button>
+    </nav>
+
+    <header class="hero-section">
+      <div class="hero-text">
+        <p class="subtitle">portafolio profesional</p>
+        <h1>Abdiel<br>Fonseca</h1>
+        <p class="description">
+          Desarrollador Full-Stack, Analista de Datos y Técnico en Informática.<br>
+          Próximo a egresar y listo para la integración corporativa. Especializado en modernizar la operación empresarial, liderar proyectos de E-commerce y blindar la seguridad de la información.
+        </p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <a href="paginas/contacto.html" class="btn-gold">iniciar proyecto</a>
+          <a href="docs/CV_Abdiel_Fonseca.pdf" target="_blank" class="btn-gold" style="background-color: transparent; border: 1px solid #c9a45c; color: #c9a45c;">descargar cv</a>
         </div>
-    </div>
+      </div>
+      <div class="hero-image-placeholder">
+        <img src="img/Abdiel Fonseca Raymundo.jpg" alt="Abdiel Fonseca Raymundo - Desarrollador">
+      </div>
+    </header>
+
+    <section id="habilidades" class="skills-section">
+
+    <section class="profile-section" style="margin-bottom: 70px;">
+      <h2 class="section-title">Perfil de Ingeniería</h2>
+      <div class="skill-card" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; padding: 40px;">
+        
+        <div style="width: 100px; height: 100px; border-radius: 20px; background: rgba(201, 164, 92, 0.1); border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; font-size: 3rem; flex-shrink: 0;">
+           👨‍💻
+        </div>
+
+        <div style="flex: 1; min-width: 250px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;">
+                
+                <div>
+                    <span style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;">Consultor / Alumno</span>
+                    <h4 style="color: var(--title-color); font-size: 1.1rem; margin-top: 5px;">Abdiel Fonseca Raymundo</h4>
+                </div>
+                
+                <div>
+                    <span style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;">Especialidad</span>
+                    <h4 style="color: var(--title-color); font-size: 1.1rem; margin-top: 5px;">PTB en Informática</h4>
+                </div>
+                
+                <div>
+                    <span style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;">Grupo</span>
+                    <h4 style="color: var(--title-color); font-size: 1.1rem; margin-top: 5px;">601</h4>
+                </div>
+                
+                <div>
+                    <span style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;">Dependencia Escolar</span>
+                    <h4 style="color: var(--title-color); font-size: 1.1rem; margin-top: 5px;">Conalep Hidalgo, Plantel Pachuca 2</h4>
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+      <h2 class="section-title">Habilidades y Servicios IT</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <h3>Desarrollo de Software e IA</h3>
+          <p>Desarrollo Full-Stack de páginas web corporativas y sistemas de gestión a la medida. Creación de software y scripts en <strong>Python</strong>. Diseño e integración de <strong>Inteligencia Artificial</strong> básica personalizada para automatizar y optimizar los flujos de trabajo del cliente.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Bases de Datos (SQL & NoSQL)</h3>
+          <p>Diseño, modelado y administración de bases de datos relacionales (<strong>MySQL, PostgreSQL</strong>) y no relacionales (<strong>MongoDB</strong>). Optimización de consultas, gestión de la integridad de los datos y conexión segura con arquitecturas Back-End para aplicaciones de alto rendimiento.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Infraestructura y Redes LAN</h3>
+          <p>Diseño, cableado estructurado e instalación de redes corporativas. Implementación y mantenimiento preventivo/correctivo de sistemas de alimentación ininterrumpida (<strong>UPS APC</strong>) para garantizar la protección de datos y la continuidad del negocio.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Soporte IT (Helpdesk)</h3>
+          <p>Mantenimiento preventivo y correctivo especializado para equipos de cómputo. Resolución ágil de incidencias (Troubleshooting) y asistencia técnica integral para maximizar el <em>uptime</em> y la productividad de los usuarios corporativos.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Seguridad Endpoint y Despliegue</h3>
+          <p>Blindaje de terminales (Kiosk Mode/Políticas de acceso) garantizando que los equipos operen estrictamente bajo los parámetros de seguridad del cliente. Administración, instalación y gestión de licenciamiento de <strong>Microsoft Office 365 Professional</strong>.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Business Intelligence & Lógica de Negocio</h3>
+          <p>Análisis de flujos comerciales y arquitectura de <strong>E-commerce</strong>. Diseño de software y sistemas pensando estructuralmente en la generación de ingresos, la logística de inventarios y la experiencia del usuario (UX). Capacidad para fusionar el desarrollo técnico con una mentalidad estratégica de emprendimiento corporativo.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="skills-section" style="margin-top: 60px;">
+      <h2 class="section-title">Visión, Liderazgo y Ecosistema IT</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <h3>Ecosistemas STEM y Robótica</h3>
+          <p>Involucramiento activo en la comunidad científica y tecnológica. Experiencia directa en entornos de alto rendimiento y campeonatos nacionales de Robótica y STEM. Aplicación de pensamiento lógico-matemático estructurado para comprender y optimizar la interacción crítica entre el desarrollo de código y la ingeniería de hardware.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Integración Fintech y Pagos Digitales</h3>
+          <p>Dominio en la operativa de ecosistemas financieros y bancarización digital. Experiencia práctica en la gestión de pasarelas de pago electrónico, procesadores de transacciones comerciales y el uso de plataformas de inversión. Capacidad para integrar soluciones de monetización fluidas en entornos de E-commerce y retail.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Tech Evangelism & Build in Public</h3>
+          <p>Documentación estratégica del crecimiento profesional y la transición académica hacia la ingeniería de software superior. Desarrollo de proyectos documentales enfocados en la consecución de objetivos de alto rendimiento y scalabilidad financiera, demostrando disciplina operativa, liderazgo y comunicación asertiva en la industria.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="premium-footer">
+    <p>Thank you for watching &copy; 2026 Abdiel Fonseca</p>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

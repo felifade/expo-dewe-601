@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================
+       contacto.html — Perfil del Estudiante
+       Sistema de Monitoreo Cardíaco con Arduino
+       Estudiante: Santiago Jiménez Sombra | Año: 2026
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Perfil de Santiago Jiménez Sombra, estudiante de Páginas Web y Emprendimiento e Innovación, 2026.">
+  <title>Contacto | Monitor Cardíaco Arduino</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       BARRA DE NAVEGACIÓN
+       ══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">💓</span>
+      ArduinoHR
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="proyectos.html">Proyecto</a></li>
+      <li><a href="innovacion.html">Innovación</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="btn-theme" onclick="toggleTheme()" title="Modo claro">☀️</button>
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menú">☰</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       ENCABEZADO DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-tag">Autor del Proyecto</span>
+      <h1 class="page-title">Contacto</h1>
+      <p class="page-subtitle">Conoce al estudiante detrás del Sistema de Monitoreo Cardíaco con Arduino.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+       ══════════════════════════════════════════ -->
+  <main class="page-content" id="main-content">
+
+    <div class="contact-wrapper">
+
+      <!-- ─── Tarjeta de Perfil ─── -->
+      <aside aria-label="Perfil del estudiante">
+        <div class="profile-card">
+
+          <!-- Fotografía del estudiante -->
+          <!-- Si img/estudiante.jpg no existe, se muestra el placeholder de emoji -->
+          <img
+            src="../img/estudiante.jpeg"
+            alt="Fotografía de Santiago Jiménez Sombra"
+            class="profile-avatar"
+            id="profileAvatar"
+            onerror="this.style.display='none'; document.getElementById('avatarPlaceholder').style.display='flex';"
+          >
+          <!-- Placeholder visible si la imagen falla -->
+          <div class="avatar-placeholder" id="avatarPlaceholder" style="display:none;" aria-hidden="true">👤</div>
+
+          <!-- Nombre y año -->
+          <p class="profile-name">Santiago Jiménez Sombra</p>
+          <p class="profile-year">Año Escolar 2026</p>
+
+          <!-- Etiquetas de materias -->
+          <div class="profile-tags" role="list" aria-label="Materias">
+            <span class="tag tag-cyan" role="listitem">Páginas Web</span>
+            <span class="tag tag-green" role="listitem">Emprendimiento</span>
+            <span class="tag tag-cyan" role="listitem">Innovación</span>
+          </div>
+
+        </div><!-- /profile-card -->
+      </aside>
+
+      <!-- ─── Detalles de Contacto / Información ─── -->
+      <div class="contact-details">
+
+        <!-- Bloque: Datos personales -->
+        <div class="detail-block" aria-labelledby="pers-heading">
+          <h2 id="pers-heading">Datos del Estudiante</h2>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">👤</span>
+            <div>
+              <span class="detail-label">NOMBRE COMPLETO</span>
+              <span class="detail-value">Santiago Jiménez Sombra</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📅</span>
+            <div>
+              <span class="detail-label">AÑO ESCOLAR</span>
+              <span class="detail-value">2026</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📚</span>
+            <div>
+              <span class="detail-label">MATERIA 1</span>
+              <span class="detail-value">Páginas Web</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">💡</span>
+            <div>
+              <span class="detail-label">MATERIA 2</span>
+              <span class="detail-value">Emprendimiento e Innovación</span>
+            </div>
+          </div>
+
+        </div><!-- /Datos personales -->
+
+        <!-- Bloque: Descripción del estudiante -->
+        <div class="detail-block" aria-labelledby="desc-heading">
+          <h2 id="desc-heading">Perfil del Estudiante</h2>
+          <p class="prose" style="margin-top:0.5rem;">
+            Soy <strong>Santiago Jiménez Sombra</strong>, estudiante interesado en la tecnología, la electrónica y el desarrollo de proyectos innovadores. Me apasiona la manera en que la programación y los componentes electrónicos pueden combinarse para resolver problemas reales, especialmente en áreas que impactan el bienestar de las personas.
+          </p>
+          <p class="prose">
+            Este sitio web fue creado para la materia de <strong>Páginas Web</strong> con el propósito de presentar un proyecto elaborado en <strong>Emprendimiento e Innovación</strong>, enfocado en el monitoreo de la frecuencia cardíaca mediante Arduino y el sensor MAX30102. A través de este trabajo integré conocimientos de electrónica, programación en C++, diseño web y documentación técnica.
+          </p>
+          <p class="prose" style="margin-bottom:0;">
+            Aspiro a seguir desarrollando proyectos que unan tecnología y salud, y a contribuir al movimiento de hardware abierto que pone herramientas útiles en manos de cualquier persona.
+          </p>
+        </div><!-- /Descripción -->
+
+        <!-- Bloque: Información del proyecto -->
+        <div class="detail-block" aria-labelledby="proj-heading">
+          <h2 id="proj-heading">Información del Proyecto</h2>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">🔬</span>
+            <div>
+              <span class="detail-label">NOMBRE DEL PROYECTO</span>
+              <span class="detail-value">Sistema de Monitoreo de Frecuencia Cardíaca</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">🔌</span>
+            <div>
+              <span class="detail-label">HARDWARE PRINCIPAL</span>
+              <span class="detail-value">Arduino Uno + Sensor MAX30102</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📡</span>
+            <div>
+              <span class="detail-label">PROTOCOLO DE COMUNICACIÓN</span>
+              <span class="detail-value">I²C (Inter-Integrated Circuit)</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">💻</span>
+            <div>
+              <span class="detail-label">TECNOLOGÍA WEB</span>
+              <span class="detail-value">HTML5 + CSS3 + JavaScript</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">🎯</span>
+            <div>
+              <span class="detail-label">OBJETIVO</span>
+              <span class="detail-value">Medir BPM con fotopletismografía (PPG)</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">🏷️</span>
+            <div>
+              <span class="detail-label">TIPO DE PROYECTO</span>
+              <span class="detail-value">Prototipo Educativo — Hardware Abierto</span>
+            </div>
+          </div>
+
+        </div><!-- /Proyecto -->
+
+        <!-- Bloque: Tecnologías utilizadas en el sitio web -->
+        <div class="detail-block" aria-labelledby="tech-heading">
+          <h2 id="tech-heading">Tecnologías del Sitio Web</h2>
+
+          <div class="info-grid" style="margin-top:0.75rem;">
+
+            <div class="info-card" style="padding:1.25rem;">
+              <div class="card-icon">🌐</div>
+              <h3 class="card-title" style="font-size:0.95rem;">HTML5</h3>
+              <p class="card-text">Estructura semántica del sitio con etiquetas de accesibilidad, formularios y metadatos.</p>
+            </div>
+
+            <div class="info-card" style="padding:1.25rem;">
+              <div class="card-icon">🎨</div>
+              <h3 class="card-title" style="font-size:0.95rem;">CSS3</h3>
+              <p class="card-text">Variables CSS, Grid, Flexbox, animaciones, diseño responsive y modo oscuro/claro.</p>
+            </div>
+
+            <div class="info-card" style="padding:1.25rem;">
+              <div class="card-icon">⚡</div>
+              <h3 class="card-title" style="font-size:0.95rem;">JavaScript</h3>
+              <p class="card-text">Animación ECG en Canvas, simulación de BPM, cambio de tema y notificaciones dinámicas.</p>
+            </div>
+
+          </div>
+
+        </div><!-- /Tecnologías -->
+
+      </div><!-- /contact-details -->
+
+    </div><!-- /contact-wrapper -->
+
+  </main><!-- /page-content -->
+
+  <!-- ══════════════════════════════════════════
+       PIE DE PÁGINA
+       ══════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-logo">💓 ArduinoHR — Monitor Cardíaco</p>
+      <p class="footer-text">Proyecto desarrollado por <strong>Santiago Jiménez Sombra</strong> para las materias de Páginas Web y Emprendimiento e Innovación.</p>
+      <p class="footer-year">© 2026 — Uso educativo</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/script.js"></script>
+
+</body>
+</html>

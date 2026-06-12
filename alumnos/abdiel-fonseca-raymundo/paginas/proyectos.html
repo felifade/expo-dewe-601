@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorios e Innovación - Abdiel Fonseca</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    .projects-header { margin-bottom: 50px; text-align: center; }
+    .projects-header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #ffffff; margin-bottom: 15px; }
+    .projects-header p { color: #a0a0a0; max-width: 850px; margin: 0 auto; font-size: 1rem; letter-spacing: 0.5px; }
+    .project-tag { color: #c9a45c; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: block; }
+    .project-image-box { width: 100%; height: 200px; background-color: #252525; border-radius: 15px; margin-bottom: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); }
+    .project-image-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: opacity 0.3s; }
+    .skill-card:hover .project-image-box img { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <div class="floating-art-background">
+    <img src="../img/art3.jpg" class="art-float" alt="Arte Proyectos">
+  </div>
+
+  <div class="glass-container">
+    
+    <nav class="premium-nav">
+      <ul>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="practicas.html">prácticas duales</a></li>
+        <li><a href="proyectos.html" class="active">proyectos ti</a></li>
+        <li><a href="contacto.html">contacto</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-btn">Modo Claro</button>
+    </nav>
+
+    <header class="projects-header">
+      <span class="project-tag">Trayectoria Académica de Excelencia</span>
+      <h1>Laboratorios de Innovación</h1>
+      <p>Compendio de soluciones técnicas y desarrollos experimentales realizados durante mi formación avanzada en Informática. Cada proyecto integra lógica de programación, diseño normativo de infraestructura y optimización de sistemas.</p>
+    </header>
+
+    <section class="skills-section">
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <div class="project-image-box">
+             <img src="../img/proyecto-vida.jpg" alt="Simulación JS">
+          </div>
+          <span class="project-tag">JavaScript Avanzado</span>
+          <h3>Simulación de Estados Lógicos</h3>
+          <p>Desarrollo de una interfaz dinámica basada en la manipulación del DOM. El sistema procesa eventos en tiempo real para gestionar variables de salud, implementando algoritmos de respuesta visual (gradientes dinámicos) y lógica condicional de estados críticos.</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="project-image-box">
+             <img src="../img/proyecto-lan.jpg" alt="Infraestructura Red">
+          </div>
+          <span class="project-tag">Ingeniería de Redes</span>
+          <h3>Arquitectura LAN Normatizada</h3>
+          <p>Memoria técnica para el diseño de una red corporativa bajo estándares <strong>ISO/IEC 11801</strong>. Incluye el modelado de topologías en estrella, cálculo de ancho de banda, selección de hardware activo y planes de respaldo energético ininterrumpido.</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="project-image-box">
+             <img src="../img/Motor IA Noctis.jpg" alt="Motor IA Noctis">
+          </div>
+          <span class="project-tag">I+D: Inteligencia Artificial Avanzada</span>
+          <h3>Motor de Asistencia "Noctis 3D"</h3>
+          <p>Dirección y desarrollo nativo en Python del asistente virtual "Noctis". El proyecto integra procesamiento de lenguaje natural, módulos de memoria/voz y la renderización en tiempo real de modelos tridimensionales (formato .vrm). Diseñado para automatizar soporte técnico, operar sistemas de archivos y ejecutar comandos de red mediante interacciones de voz fluidas.</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="project-image-box">
+           <img src="../img/holding-lumiere.jpg" alt="Lumiere Royale Holding Tech" onerror="this.style.display='none'">
+          </div>
+          <span class="project-tag">E-Commerce & Holding Empresarial</span>
+          <h3>Dirección Tecnológica: Lumiere Royale</h3>
+          <p>Gestión operativa y tecnológica de la marca comercial <strong>Lumiere Royale</strong> y operaciones de retail anexas. Diseño de estrategias de diversificación de ingresos y escalabilidad de marca hacia un modelo de empresa matriz. Aplicación directa de inteligencia de negocios para optimizar logística, compras a proveedores y la experiencia del cliente final.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="project-image-box">
+             <img src="../img/arduino.jpg" alt="Encendido Gestional Arduino" onerror="this.style.display='none'">
+          </div>
+          <span class="project-tag">Emprendimiento e Innovación • Arduino</span>
+          <h3>Encendido Gestional Inteligente</h3>
+          <p>Integración de visión artificial con hardware físico. Desarrollo en Python utilizando <strong>MediaPipe</strong> para el reconocimiento de gestos manuales (pulgar arriba/abajo) a través de la cámara web, enviando señales por comunicación serial a un microcontrolador <strong>Arduino ESP32</strong> para accionar componentes electrónicos en tiempo real.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="project-image-box">
+             <img src="../img/melanomaia.jpg" alt="IA Detección Melanomas" onerror="this.style.display='none'">
+          </div>
+          <span class="project-tag">Machine Learning • Hugging Face</span>
+          <h3>Motor de Diagnóstico: Melanoma IA</h3>
+          <p>Herramienta de detección temprana de cáncer de piel. El sistema utiliza un modelo de Inteligencia Artificial entrenado con miles de casos clínicos. Integrado con <strong>Python, Keras y Tkinter</strong>, procesa imágenes dermatológicas para devolver un pre-diagnóstico automatizado de lesiones benignas o malignas con alta precisión computacional.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="premium-footer">
+    <p>Thank you for watching &copy; 2026 Abdiel Fonseca</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

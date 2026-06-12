@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">Radio y Televisión de Hidalgo</div>
+
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="introduccion.html">Introducción</a></li>
+            <li><a href="institucion.html">Institución</a></li>
+            <li><a href="actividades.html">Actividades</a></li>
+            <li><a href="conclusion.html">Conclusión</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+        </ul>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Introducción</h1>
+        <p>Reporte de Actividades - Área de Telecomunicaciones, Redes y Desarrollo Web</p>
+    </header>
+
+    <main>
+
+        <!-- Datos generales -->
+        <section class="card">
+            <h2>Datos Generales</h2>
+
+            <p><strong>Institución:</strong> Radio y Televisión de Hidalgo</p>
+            <p><strong>Área:</strong> Telecomunicaciones, Redes y Desarrollo Web</p>
+            <p><strong>Ubicación:</strong> Pachuca de Soto, Hidalgo, México</p>
+            <p><strong>Tipo de Proyecto:</strong> Estadía / Prácticas Profesionales</p>
+        </section>
+
+        <!-- Introducción -->
+        <section>
+            <h2>Introducción</h2>
+
+            <p>
+                El presente reporte tiene como finalidad describir las actividades
+                realizadas durante el periodo de estadía en el área de
+                Telecomunicaciones, Redes y Desarrollo Web de Radio y Televisión de Hidalgo.
+                A través de estas actividades fue posible aplicar los conocimientos
+                adquiridos durante la formación académica en un entorno laboral real,
+                enfrentando situaciones prácticas relacionadas con la infraestructura
+                tecnológica y los sistemas de comunicación de la institución.
+            </p>
+
+            <p>
+                Durante la estancia se participó en diversas tareas orientadas al
+                mantenimiento y mejora de los servicios de telecomunicaciones,
+                soporte técnico a usuarios, revisión de líneas telefónicas,
+                organización de cableado estructurado y apoyo en proyectos de
+                desarrollo web. Estas actividades permitieron comprender la
+                importancia de una adecuada administración de los recursos
+                tecnológicos para garantizar la continuidad de las operaciones.
+            </p>
+
+            <p>
+                Asimismo, la experiencia brindó la oportunidad de fortalecer
+                habilidades técnicas y profesionales como el trabajo en equipo,
+                la comunicación efectiva, la resolución de problemas y la capacidad
+                de adaptación a las necesidades de una organización dedicada a la
+                difusión de contenidos informativos, culturales y educativos.
+            </p>
+
+            <p>
+                El contenido de este reporte presenta una descripción general de la
+                institución, las actividades desarrolladas, los conocimientos
+                adquiridos y las conclusiones obtenidas a partir de la experiencia
+                profesional realizada en Radio y Televisión de Hidalgo.
+            </p>
+        </section>
+
+        <!-- Objetivo General -->
+        <section class="card">
+            <h2>Objetivo General</h2>
+
+            <p>
+                Aplicar los conocimientos adquiridos durante la formación académica
+                en el área de Telecomunicaciones, Redes y Desarrollo Web mediante
+                la participación en actividades de soporte técnico, mantenimiento
+                de infraestructura tecnológica, organización de redes de comunicación
+                y apoyo en proyectos informáticos dentro de Radio y Televisión de Hidalgo.
+            </p>
+        </section>
+
+        <!-- Importancia -->
+        <section class="card">
+            <h2>Importancia de la Estadía</h2>
+
+            <p>
+                La realización de prácticas profesionales representa una oportunidad
+                fundamental para vincular los conocimientos teóricos con situaciones
+                reales del ámbito laboral. Esta experiencia permite desarrollar
+                competencias técnicas y profesionales que contribuyen al crecimiento
+                académico y a una mejor preparación para el ejercicio profesional.
+            </p>
+
+            <p>
+                En Radio y Televisión de Hidalgo, las actividades desarrolladas
+                contribuyeron al fortalecimiento de la infraestructura tecnológica,
+                apoyando en tareas de mantenimiento, organización y soporte que
+                favorecen el correcto funcionamiento de los servicios de comunicación
+                de la institución.
+            </p>
+        </section>
+
+    </main>
+
+<!<!-- Botón de cambio de tema -->
+<button id="theme-toggle">🌙</button>
+
+<style>
+:root{
+    --bg-color:#ffffff;
+    --text-color:#222222;
+    --card-color:#f4f4f4;
+    --accent:#2563eb;
+}
+
+body{
+    background:var(--bg-color);
+    color:var(--text-color);
+    transition:0.4s ease;
+}
+
+.card{
+    background:var(--card-color);
+    padding:20px;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+/* Modo oscuro */
+.dark-mode{
+    --bg-color:#0f172a;
+    --text-color:#ffffff;
+    --card-color:#1e293b;
+    --accent:#38bdf8;
+}
+
+#theme-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.3rem;
+    background:var(--accent);
+    color:white;
+}
+</style>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Cargar tema guardado
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        toggleBtn.textContent = "☀️";
+    }else{
+        localStorage.setItem("theme","light");
+        toggleBtn.textContent = "🌙";
+    }
+
+});
+</script>
+</body>
+</html>

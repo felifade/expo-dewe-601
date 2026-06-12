@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desarrollo · TimbreIQ</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/navbar.css"/>
+  <link rel="stylesheet" href="../css/pages.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="nav-icon">🔔</span>
+      <span class="brand-text">TimbreIQ</span>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle"><span class="theme-icon">☀️</span></button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-tag">Proceso</p>
+      <h1 class="page-title">Desarrollo del <span class="accent">Proyecto</span></h1>
+      <p class="page-desc">Desde la idea inicial hasta el prototipo funcional: cada etapa documentada.</p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Etapas de desarrollo</h2>
+      <div class="timeline">
+
+        <div class="timeline-item left">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 1–2</span>
+            <h3>Investigación y diseño</h3>
+            <p>Comenzamos investigando como crear el timbre y los materiales a comprar.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 3–4</span>
+            <h3>Selección de componentes</h3>
+            <p>Investigación y adquisición de Arduino UNO, Cables macho macho, zumbador, boton.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 5–6</span>
+            <h3>Prototipo en breadboard</h3>
+            <p>Montaje del circuito en protoboard y Pruebas del timbre.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 7–8</span>
+            <h3>Programación Arduino</h3>
+                       <div class="code-preview">
+              <pre><code><span class="code-keyword"></span> &lt;const int pinBoton = 4;   // Botón a GND&gt;
+<span class="code-keyword"></span> &lt;const int pinBuzzer = 7;  // Buzzer pasivo o activo&gt;
+
+void setup() {
+  pinMode(pinBoton, INPUT_PULLUP); // Activa resistencia interna
+  pinMode(pinBuzzer, OUTPUT);
+  digitalWrite(pinBuzzer, LOW);
+}
+
+void loop() {
+  if (digitalRead(pinBoton) == LOW) { // Botón presionado
+    tone(pinBuzzer, 2000);  // Suena a 2kHz
+    delay(200);             // Dura 200ms
+    noTone(pinBuzzer);      // Se apaga
+    delay(200);             // Antirebote simple
+  }
+}            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 9–10</span>
+            <h3>pruebas</h3>
+            <p>Las pruebas de realizaron al zumbador sobre que frecuencia debe tener o como ajustarla.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-dot">6</div>
+          <div class="timeline-card">
+            <span class="timeline-tag">Semana 11–12</span>
+            <h3>Ensamblaje final y presentación</h3>
+            <p>Una vez todo estaba correcto se lo presentamos al profe.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <footer class="footer">
+    <div class="container">
+      <p>🔔 <strong>TimbreIQ</strong> · Proyecto Arduino · Emprendimiento e Innovación</p>
+      <p class="footer-sub">Desarrollado con ❤️ y código · 2025</p>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+</html>

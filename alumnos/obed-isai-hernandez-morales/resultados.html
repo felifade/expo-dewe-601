@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Actividades Realizadas en la Secretaría de Turismo del Estado de Hidalgo</h1>
+    </header>
+ <!-- Barra de Navegación -->
+        <nav>
+            <ul>
+		<li><a href="index.html">Inicio</a></li>
+	  	<li><a href="introduccion.html">Introducción</a></li>
+		<li><a href="institucion.html">Institución</a></li>
+		<li><a href="actividades.html">Actividades</a></li>
+		<li><a href="resultados.html">Resultados</a></li>
+		<li><a href="conclusiones.html">Conclusiones</a></li>
+		<li><a href="galeria.html">Galería de Imágenes</a></li>
+		<li><a href="contacto.html">Contacto</a></li>
+		
+            </ul>
+        </nav>
+	
+	<button id="modoBtn">🌙 Modo Oscuro</button>
+<main>
+        <!-- Resultados -->
+        <section id="resultados">
+            <h2>Resultados Obtenidos</h2>
+
+            <ul>
+                <li>Desarrollo de habilidades administrativas.</li>
+                <li>Mejora en el manejo de información digital.</li>
+                <li>Conocimiento de procesos institucionales.</li>
+                <li>Experiencia en el sector turístico gubernamental.</li>
+                <li>Fortalecimiento de competencias profesionales.</li>
+            </ul>
+        </section>
+</main>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Proyecto Académico - Secretaría de Turismo del Estado de Hidalgo. </p>
+    </footer>
+
+<script>
+
+const botonModo = document.getElementById("modoBtn");
+
+if(localStorage.getItem("tema") === "oscuro"){
+    document.body.classList.add("dark-mode");
+    botonModo.textContent = "☀️ Modo Claro";
+}
+
+botonModo.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        botonModo.textContent = "☀️ Modo Claro";
+        localStorage.setItem("tema", "oscuro");
+    }else{
+        botonModo.textContent = "🌙 Modo Oscuro";
+        localStorage.setItem("tema", "claro");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institución</title>
+
+```
+<link rel="stylesheet" href="css/style.css">
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+    <div class="logo">Radio y Televisión de Hidalgo</div>
+
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="introduccion.html">Introducción</a></li>
+        <li><a href="institucion.html">Institución</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="conclusion.html">Conclusión</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Radio y Televisión de Hidalgo</h1>
+    <p>Información Institucional</p>
+</header>
+
+<main>
+
+    <section>
+        <h2>Acerca de la Institución</h2>
+
+        <p>
+            Radio y Televisión de Hidalgo es un organismo público descentralizado
+            del Gobierno del Estado de Hidalgo encargado de producir, transmitir
+            y difundir contenidos informativos, educativos, culturales y de
+            entretenimiento dirigidos a la población hidalguense.
+        </p>
+
+        <p>
+            La institución tiene como objetivo fortalecer la comunicación entre
+            la ciudadanía y el gobierno mediante la difusión de información
+            relevante, promoviendo además la cultura, la educación y la identidad
+            del estado de Hidalgo a través de diversos medios de comunicación.
+        </p>
+
+        <p>
+            Para cumplir con sus funciones, cuenta con infraestructura tecnológica,
+            equipos de transmisión, redes de comunicación y personal especializado
+            en distintas áreas como telecomunicaciones, informática, producción
+            audiovisual, ingeniería y administración.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Misión</h2>
+
+        <p>
+            Producir y difundir contenidos de calidad que contribuyan al desarrollo
+            social, educativo y cultural de la población, garantizando el acceso
+            a información veraz, objetiva y de interés público mediante el uso
+            eficiente de los medios de comunicación.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Visión</h2>
+
+        <p>
+            Ser un medio público líder e innovador, reconocido por la calidad de
+            sus contenidos, el uso de tecnologías modernas y su compromiso con la
+            sociedad hidalguense.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Valores Institucionales</h2>
+
+        <ul>
+            <li>Responsabilidad</li>
+            <li>Compromiso social</li>
+            <li>Transparencia</li>
+            <li>Trabajo en equipo</li>
+            <li>Respeto</li>
+            <li>Innovación</li>
+            <li>Ética profesional</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Infraestructura Tecnológica</h2>
+
+        <p>
+            Radio y Televisión de Hidalgo cuenta con sistemas de telecomunicaciones,
+            redes de datos, equipos de transmisión, servidores y estaciones de
+            trabajo que permiten garantizar la continuidad de los servicios de
+            comunicación y la correcta operación de sus actividades diarias.
+        </p>
+
+        <p>
+            El mantenimiento y actualización constante de esta infraestructura
+            resulta fundamental para asegurar una comunicación eficiente entre
+            las diferentes áreas de la institución y brindar un servicio de
+            calidad a la población.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Área de Telecomunicaciones, Redes y Desarrollo Web</h2>
+
+        <p>
+            Esta área es responsable de administrar y dar mantenimiento a la
+            infraestructura tecnológica utilizada por la institución. Entre sus
+            funciones se encuentran la gestión de redes, soporte técnico,
+            mantenimiento de líneas telefónicas, organización del cableado
+            estructurado y apoyo en proyectos de desarrollo web.
+        </p>
+
+        <p>
+            Durante la estadía se participó en diversas actividades relacionadas
+            con estas funciones, contribuyendo al correcto funcionamiento de los
+            sistemas de comunicación y fortaleciendo los conocimientos adquiridos
+            durante la formación académica.
+        </p>
+    </section>
+
+</main>
+
+<!<!-- Botón de cambio de tema -->
+<button id="theme-toggle">🌙</button>
+
+<style>
+:root{
+    --bg-color:#ffffff;
+    --text-color:#222222;
+    --card-color:#f4f4f4;
+    --accent:#2563eb;
+}
+
+body{
+    background:var(--bg-color);
+    color:var(--text-color);
+    transition:0.4s ease;
+}
+
+.card{
+    background:var(--card-color);
+    padding:20px;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+/* Modo oscuro */
+.dark-mode{
+    --bg-color:#0f172a;
+    --text-color:#ffffff;
+    --card-color:#1e293b;
+    --accent:#38bdf8;
+}
+
+#theme-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.3rem;
+    background:var(--accent);
+    color:white;
+}
+</style>
+
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Cargar tema guardado
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        toggleBtn.textContent = "☀️";
+    }else{
+        localStorage.setItem("theme","light");
+        toggleBtn.textContent = "🌙";
+    }
+
+});
+</script>
+
+</body>
+</html>
