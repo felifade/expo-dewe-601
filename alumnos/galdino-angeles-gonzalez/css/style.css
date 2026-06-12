@@ -1,0 +1,937 @@
+/* ===================================
+   FUENTE
+=================================== */
+
+body{
+    font-family:'Trebuchet MS', sans-serif;
+    background:
+    linear-gradient(
+        135deg,
+        #071018,
+        #0b1c2c,
+        #10253d
+    );
+
+    color:#e8f4ff;
+
+    margin:0;
+    padding:0;
+
+    overflow-x:hidden;
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#08131f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00d4ff;
+    border-radius:20px;
+}
+
+/* ===================================
+   NAV FUTURISTA
+=================================== */
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    backdrop-filter:blur(12px);
+
+    background:
+    rgba(7,16,24,.92);
+
+    border-bottom:
+    1px solid rgba(0,212,255,.25);
+
+    box-shadow:
+    0 2px 15px rgba(0,212,255,.08);
+
+}
+
+nav ul{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    list-style:none;
+
+    padding:15px;
+
+    margin:0;
+
+}
+
+nav a{
+
+    position:relative;
+
+    color:#dbeafe;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+/* Efecto al pasar el mouse */
+
+nav a:hover{
+
+    color:white;
+
+    background:
+    rgba(0,212,255,.15);
+
+    box-shadow:
+    0 0 15px rgba(0,212,255,.3);
+
+}
+
+/* Línea animada inferior */
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:5px;
+
+    width:0;
+
+    height:2px;
+
+    background:#00d4ff;
+
+    transition:.3s;
+
+    transform:translateX(-50%);
+
+}
+
+nav a:hover::after{
+
+    width:70%;
+
+}
+
+
+/* ===================================
+   PRESENTACIÓN DEL PROYECTO
+=================================== */
+
+#presentacion{
+
+    padding: 70px 50px;
+
+    text-align: center;
+
+}
+
+#presentacion h2{
+
+    margin-bottom: 40px;
+
+    font-size: 2.2rem;
+
+    color: #00d4ff;
+
+    text-shadow:
+        0 0 10px rgba(0,212,255,.5);
+
+}
+
+/* Contenedor principal */
+
+.comparacion-proyecto{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:40px;
+
+}
+
+/* Tarjetas de imágenes */
+
+.imagen-box{
+
+    background: rgba(255,255,255,.05);
+
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(0,212,255,.2);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    width:450px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 20px rgba(0,212,255,.08);
+
+}
+
+.imagen-box:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 0 30px rgba(0,212,255,.25);
+
+}
+
+.imagen-box h3{
+
+    margin-bottom:15px;
+
+    color:#00d4ff;
+
+}
+
+/* Imágenes */
+
+.imagen-box img{
+
+    width:100%;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 15px rgba(0,212,255,.15);
+
+}
+
+.imagen-box img:hover{
+
+    transform:scale(0.98);
+
+    box-shadow:
+        0 0 30px rgba(0,212,255,.4);
+
+}
+
+/* Texto descriptivo */
+
+#presentacion p{
+
+    max-width:900px;
+
+    margin:auto;
+
+    line-height:1.8;
+
+    font-size:1.1rem;
+
+}
+
+
+
+/* ===================================
+   HEADER
+=================================== */
+
+header{
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,212,255,.15),
+        rgba(0,255,170,.08)
+    );
+
+    border-bottom:
+    2px solid rgba(0,212,255,.3);
+
+}
+
+header h1{
+
+    font-size:3rem;
+
+    color:#00d4ff;
+
+    text-shadow:
+    0 0 15px #00d4ff;
+
+}
+
+header p{
+
+    color:#c6d9e6;
+
+    font-size:1.1rem;
+
+}
+
+
+/* ========================= */
+/* MODO CLARO FUTURISTA */
+/* ========================= */
+
+body.modo-claro {
+    background: linear-gradient(
+        135deg,
+        #eef8ff,
+        #dff4ff,
+        #f5fbff
+    );
+    color: #1a1a1a;
+}
+
+/* Encabezado */
+body.modo-claro header {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,200,255,0.3);
+}
+
+/* Título principal */
+body.modo-claro h1 {
+    color: #003366;
+    text-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff;
+}
+
+/* Navegación */
+body.modo-claro nav {
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 20px rgba(0,255,255,0.25);
+}
+
+body.modo-claro nav a {
+    color: #003366;
+}
+
+body.modo-claro nav a:hover {
+    color: #00aaff;
+    text-shadow: 0 0 8px #00d4ff;
+}
+
+/* Tarjetas */
+body.modo-claro .tarjeta {
+    background: rgba(255,255,255,0.95);
+    color: #111;
+    border: 1px solid rgba(0,200,255,0.2);
+
+    box-shadow:
+        0 0 15px rgba(0,200,255,0.15),
+        0 0 30px rgba(0,200,255,0.08);
+}
+
+body.modo-claro .tarjeta:hover {
+    box-shadow:
+        0 0 25px rgba(0,200,255,0.4),
+        0 0 50px rgba(0,200,255,0.2);
+}
+
+/* Imágenes */
+body.modo-claro img {
+    box-shadow:
+        0 0 20px rgba(0,200,255,0.25);
+}
+
+/* Tablas */
+body.modo-claro table {
+    background: white;
+    color: black;
+}
+
+body.modo-claro th {
+    background: #00aaff;
+    color: white;
+}
+
+/* Footer */
+body.modo-claro footer {
+    background: rgba(255,255,255,0.9);
+    color: #003366;
+    box-shadow: 0 0 20px rgba(0,200,255,0.2);
+}
+
+
+/* ===================================
+   BOTÓN MODO OSCURO
+=================================== */
+
+#toggleModo{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    z-index:9999;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    background:#00d4ff;
+
+    color:#071018;
+
+    box-shadow:
+    0 0 20px rgba(0,212,255,.4);
+
+    transition:.3s;
+
+}
+
+#toggleModo:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ===================================
+   MENÚ
+=================================== */
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    backdrop-filter:blur(10px);
+
+    background:
+    rgba(10,20,30,.8);
+
+    z-index:1000;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    list-style:none;
+
+    margin:0;
+    padding:15px;
+
+    gap:15px;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 20px;
+
+    border-radius:25px;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    background:#00d4ff;
+
+    color:#071018;
+
+}
+
+/* ===================================
+   SECCIONES
+=================================== */
+
+section{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    backdrop-filter:blur(10px);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    box-shadow:
+    0 0 20px rgba(0,212,255,.08);
+
+}
+
+/* ===================================
+   TITULOS
+=================================== */
+
+h2{
+
+    color:#00d4ff;
+
+    border-left:
+    5px solid #00d4ff;
+
+    padding-left:15px;
+
+    margin-bottom:20px;
+
+}
+
+/* ===================================
+   TARJETAS
+=================================== */
+
+.contenedor-tarjetas{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.tarjeta{
+
+    background:
+    linear-gradient(
+        145deg,
+        #0f2236,
+        #122c45
+    );
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    transition:.4s;
+
+    border:
+    1px solid rgba(0,212,255,.15);
+
+}
+
+.tarjeta:hover{
+
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+    0 0 30px rgba(0,212,255,.35);
+
+}
+
+.tarjeta img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    transition:.3s;
+
+}
+
+.tarjeta img:hover{
+
+    transform:scale(.95);
+
+}
+
+.tarjeta h3{
+
+    color:#00d4ff;
+
+}
+
+.tarjeta p{
+
+    padding:0 20px;
+
+}
+
+.btn-info{
+
+    margin:20px;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#00d4ff;
+
+    color:#071018;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-info:hover{
+
+    background:#00ffaa;
+
+}
+
+/* ===================================
+   GALERÍA
+=================================== */
+
+.galeria{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.galeria img{
+
+    width:100%;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+.galeria img:hover{
+
+    transform:scale(.95);
+
+    box-shadow:
+    0 0 25px rgba(0,212,255,.5);
+
+}
+
+/* CONTENEDOR DE IMÁGENES */
+
+.imagen-proyecto{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:50px auto;
+
+    position:relative;
+
+}
+
+/* IMAGEN */
+
+.imagen-proyecto img{
+
+    max-width:80%;
+
+    border-radius:20px;
+
+    position:relative;
+
+    z-index:2;
+
+    transition:0.4s;
+
+    animation:flotar 4s ease-in-out infinite;
+
+    box-shadow:
+    0 0 30px rgba(0,212,255,.3);
+
+}
+
+/* RESPLANDOR DETRÁS */
+
+.imagen-proyecto::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,212,255,.25),
+        transparent 70%
+    );
+
+    filter:blur(60px);
+
+    z-index:1;
+
+}
+
+/* EFECTO HOVER */
+
+.imagen-proyecto img:hover{
+
+    transform:
+    scale(1.03);
+
+    box-shadow:
+    0 0 60px rgba(0,212,255,.7);
+
+}
+
+/* ANIMACIÓN */
+
+@keyframes flotar{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* ===================================
+   MODAL
+=================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    rgba(0,0,0,.85);
+
+    z-index:99999;
+
+}
+
+.modal-contenido{
+
+    background:
+    #10253d;
+
+    width:80%;
+
+    max-width:700px;
+
+    margin:5% auto;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    border:
+    1px solid rgba(0,212,255,.3);
+
+    box-shadow:
+    0 0 30px rgba(0,212,255,.3);
+
+}
+
+.modal-contenido img{
+
+    width:60%;
+
+    border-radius:15px;
+
+}
+
+#cerrarModal{
+
+    float:right;
+
+    font-size:35px;
+
+    cursor:pointer;
+
+    color:#00d4ff;
+
+}
+
+
+/* ========================= */
+/* AUTOR */
+/* ========================= */
+
+#autor{
+
+    margin-top:60px;
+
+    padding:50px;
+
+    border-top:1px solid rgba(0,212,255,.3);
+
+    text-align:center;
+
+}
+
+.autor-contenedor{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
+
+.foto-autor{
+
+    width:220px;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:4px solid #00d4ff;
+
+    box-shadow:
+        0 0 20px rgba(0,212,255,.5),
+        0 0 40px rgba(0,212,255,.3);
+
+    transition:.3s;
+
+}
+
+.foto-autor:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(0,212,255,.8),
+        0 0 60px rgba(0,212,255,.5);
+
+}
+
+.info-autor{
+
+    max-width:500px;
+
+    text-align:left;
+
+}
+
+.info-autor p{
+
+    margin:10px 0;
+
+    line-height:1.6;
+
+}
+
+
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#9cc6db;
+
+}

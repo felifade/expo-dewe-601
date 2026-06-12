@@ -1,79 +1,453 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Construcción - Galdino Angeles González</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b130f;
-            color: #f9fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background-color: #111d17;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h1 {
-            color: #10b981;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: #d1d5db;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-        p {
-            color: #d1d5db;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .folder-info {
-            margin-top: 30px;
-            padding: 12px;
-            background-color: #0b130f;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #f59e0b;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+
+    <title>Sistema Inteligente de Medición de Distancia</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-    <div class="container">
-        <div class="badge">Estudiante Regular (No Dual)</div>
-        <h1>Galdino Angeles González</h1>
-        <h2>Sitio Web en Construcción</h2>
-        <p>Este espacio está reservado para el proyecto final de la materia <strong>Elaboración de Páginas Web</strong> (Grupo 601).</p>
-        
-        <div class="folder-info">
-            Carpeta del alumno: expo-dewe-601/alumnos/galdino-angeles-gonzalez/
+
+    <!-- BOTÓN MODO OSCURO -->
+    <button id="toggleModo">🌙 Modo Oscuro</button>
+
+    <!-- ENCABEZADO -->
+    <header id="inicio">
+
+        <h1>Sistema Inteligente de Medición de Distancia</h1>
+
+        <p>
+            Proyecto basado en Arduino Uno y Sensor Ultrasónico HC-SR04
+        </p>
+
+    </header>
+
+    <!-- MENÚ -->
+    <nav>
+
+        <ul>
+
+            <li><a href="#inicio">🏠 Inicio</a></li> 
+
+            <li><a href="#funcionamiento">⚙️ Funcionamiento</a></li> 
+
+            <li><a href="#componentes">🔧 Componentes</a></li>
+
+            <li><a href="#galeria">🖼️ Galería</a></li>
+
+            <li><a href="#costos">💰 Costos</a></li>
+
+            <li><a href="#contacto">📩 Contacto</a></li>
+
+        </ul>
+
+    </nav>
+
+    <main>
+
+    <section id="presentacion">
+
+    <h2>🚀 Presentación del Proyecto</h2>
+
+    <div class="comparacion-proyecto">
+
+        <div class="imagen-box">
+
+            <h3>📷 Proyecto Real</h3>
+
+            <img src="img/proyecto_real.jpg"
+                 alt="Proyecto Real">
+
         </div>
+
+        <div class="imagen-box">
+
+            <h3>💻 Simulación en Tinkercad</h3>
+
+            <img src="img/proyecto.jpg"
+                 alt="Simulación en Tinkercad">
+
+        </div>
+
     </div>
+
+    <p>
+
+        Este proyecto consiste en un sistema inteligente de medición
+        de distancia utilizando Arduino Uno, un sensor ultrasónico
+        HC-SR04 y LEDs indicadores. Primero fue diseñado y probado
+        mediante una simulación en Tinkercad y posteriormente fue
+        construido físicamente para comprobar su funcionamiento.
+
+    </p>
+
+</section>
+  
+
+        <!-- FUNCIONAMIENTO -->
+
+        <section id="funcionamiento">
+
+            <h2>⚙️ Funcionamiento del Proyecto</h2>
+
+            <p>
+
+                Este sistema utiliza un sensor ultrasónico HC-SR04 para
+                medir la distancia entre el dispositivo y un objeto.
+
+                Dependiendo de la distancia detectada, Arduino activará
+                un LED específico para indicar el rango medido.
+
+            </p>
+
+            <div class="imagen-proyecto">
+
+                <img src="img/circuito.jpg"
+                     alt="Diagrama del Circuito">
+
+            </div>
+
+            <h3>Proceso de Funcionamiento</h3>
+
+            <ol>
+
+                <li>El sensor HC-SR04 emite una onda ultrasónica.</li>
+
+                <li>La onda rebota en el objeto detectado.</li>
+
+                <li>El sensor recibe el eco de regreso.</li>
+
+                <li>Arduino calcula la distancia.</li>
+
+                <li>Se enciende el LED correspondiente.</li>
+
+            </ol>
+
+        </section>
+
+        <!-- COMPONENTES -->
+
+        <section id="componentes">
+
+            <h2>🔧 Componentes Utilizados</h2>
+
+            <div class="contenedor-tarjetas">
+
+                <article class="tarjeta">
+
+                    <img src="img/arduino.jpg" alt="Arduino Uno">
+
+                    <h3>Arduino Uno</h3>
+
+                    <p>
+
+                        Microcontrolador encargado de procesar los datos
+                        enviados por el sensor.
+
+                    </p>
+
+                    <p><strong>Costo:</strong> $180 - $350 MXN</p>
+
+                </article>
+
+                <article class="tarjeta">
+
+                    <img src="img/sensor.jpg" alt="HC-SR04">
+
+                    <h3>Sensor HC-SR04</h3>
+
+                    <p>
+
+                        Sensor ultrasónico utilizado para medir
+                        distancias mediante ondas de sonido.
+
+                    </p>
+
+                    <p><strong>Costo:</strong> $40 - $90 MXN</p>
+
+                </article>
+
+                <article class="tarjeta">
+
+                    <img src="img/protoboard.jpg" alt="Protoboard">
+
+                    <h3>Protoboard</h3>
+
+                    <p>
+
+                        Permite realizar conexiones sin necesidad
+                        de soldar componentes.
+
+                    </p>
+
+                    <p><strong>Costo:</strong> $50 - $120 MXN</p>
+
+                </article>
+
+                <article class="tarjeta">
+
+    <img src="img/led_rojo.jpg" alt="LED Rojo">
+
+    <h3>🔴 LED Rojo</h3>
+
+    <p>
+        Indica que el objeto se encuentra muy cerca
+        del sensor ultrasónico.
+    </p>
+
+    <p><strong>Costo:</strong> $2 - $5 MXN</p>
+
+</article>
+
+<article class="tarjeta">
+
+    <img src="img/led_amarillo.jpg" alt="LED Amarillo">
+
+    <h3>🟡 LED Amarillo</h3>
+
+    <p>
+        Indica una distancia intermedia entre
+        el sensor y el objeto detectado.
+    </p>
+
+    <p><strong>Costo:</strong> $2 - $5 MXN</p>
+
+</article>
+
+<article class="tarjeta">
+
+    <img src="img/led_verde.jpg" alt="LED Verde">
+
+    <h3>🟢 LED Verde</h3>
+
+    <p>
+        Indica que el objeto se encuentra
+        a una distancia segura.
+    </p>
+
+    <p><strong>Costo:</strong> $2 - $5 MXN</p>
+
+</article>
+
+
+<article class="tarjeta">
+
+    <img src="img/resistencia.jpg" alt="Resistencia de 220 ohmios">
+
+    <h3>⚡ Resistencia de 220 Ω</h3>
+
+    <p>
+
+        Limita la corriente eléctrica que pasa a través
+        de los LEDs, evitando daños en los componentes
+        y garantizando un funcionamiento seguro.
+
+    </p>
+
+    <p><strong>Costo:</strong> $1 - $3 MXN c/u</p>
+
+</article>
+
+
+
+                <article class="tarjeta">
+
+                    <img src="img/jumper.jpg" alt="Jumpers">
+
+                    <h3>Jumpers</h3>
+
+                    <p>
+
+                        Cables utilizados para conectar los
+                        componentes entre sí.
+
+                    </p>
+
+                    <p><strong>Costo:</strong> $20 - $60 MXN</p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- GALERÍA -->
+
+        <section id="galeria">
+
+            <h2>🖼️ Galería del Proyecto</h2>
+
+            <div class="galeria-grid">
+
+                <img src="img/circuito.jpg" width="30%" alt="Circuito">
+
+                <img src="img/arduino.jpg" width="20%" alt="Arduino">
+
+                <img src="img/sensor.jpg" width="20%" alt="Sensor">
+
+                <img src="img/protoboard.jpg" width="20%" alt="Protoboard">
+
+                <img src="img/led_verde.jpg" width="20%" alt="LED Verde">
+
+		 <img src="img/led_amarillo.jpg" width="20%" alt="LED Amarillo">
+
+		 <img src="img/led_rojo.jpg" width="20%" alt="LED Rojo">
+
+                 <img src="img/resistencia.jpg" width="20%" alt="LED Rojo">
+
+
+            </div>
+
+        </section>
+
+        <!-- COSTOS -->
+
+        <section id="costos">
+
+            <h2>💰 Costos Aproximados</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Componente</th>
+
+                    <th>Costo Aproximado</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Arduino Uno</td>
+
+                    <td>$180 - $350 MXN</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Sensor HC-SR04</td>
+
+                    <td>$40 - $90 MXN</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Protoboard</td>
+
+                    <td>$50 - $120 MXN</td>
+
+                </tr>
+
+                <tr>
+    <td>LED Rojo</td>
+    <td>$2 - $5 MXN</td>
+</tr>
+
+<tr>
+    <td>LED Amarillo</td>
+    <td>$2 - $5 MXN</td>
+</tr>
+
+<tr>
+    <td>LED Verde</td>
+    <td>$2 - $5 MXN</td>
+</tr>
+
+<tr>
+    <td>Resistencia 220 Ω</td>
+    <td>$1 - $3 MXN c/u</td>
+</tr>
+
+                    <td>Jumper</td>
+
+                    <td>$20 - $60 MXN</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+        <!-- CONTACTO -->
+
+        <section id="contacto">
+
+            <h2>📩 Comentarios</h2>
+
+            <form>
+
+                <label>Nombre</label>
+                <input type="text">
+
+                <label>Correo</label>
+                <input type="email">
+
+                <label>Comentario</label>
+                <textarea rows="5"></textarea>
+
+                <input type="submit" value="Enviar">
+
+            </form>
+
+        </section>
+
+    </main>
+
+<section id="autor">
+
+    <h2>👨‍💻 Hecho por el Alumno</h2>
+
+    <div class="autor-contenedor">
+
+        <img src="img/foto_alumno.jpg"
+             alt="Foto del Alumno"
+             class="foto-autor">
+
+        <div class="info-autor">
+
+            <p><strong>Nombre:</strong> Galdino Ángeles Gpnzález</p>
+
+            <p><strong>Grupo:</strong> 601</p>
+
+            <p><strong>Semestre:</strong> 6° Semestre</p>
+
+            <p><strong>Carrera:</strong> Informática</p>
+
+            <p>
+                Esta págian fue hecha con el conosimientos adquirido en las
+		actividades realizadas en la matería de Diseño y Elaboración
+		de Páginas enseñada por el docente Félife López Salazar en el
+		CONALEP Plantel "Pachuca II".
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <footer>
+
+        <p>
+            Proyecto de Arduino - Sistema Inteligente de Medición de Distancia
+        </p>
+
+    </footer>
+
+    <!-- JS -->
+
+    <script src="js/modo.js"></script>
+
 </body>
+
 </html>
+
